@@ -1,0 +1,797 @@
+(base) sderhami@SOM-22RT2Q6-L ~ % curl "https://api.nal.usda.gov/fdc/v1/food/172385?api_key=fVlFuOnPNFIE4Tckf0GpPw9hPFQwhDqLIoKtJjBA" | jq '.foodNutrients[] | {id: .nutrient.id, name: .nutrient.name, amount, unit: .nutrient.unitName}'
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 52938    0 52938    0     0  44499      0 --:--:--  0:00:01 --:--:-- 44523
+{
+  "id": 2045,
+  "name": "Proximates",
+  "amount": null,
+  "unit": "g"
+}
+{
+  "id": 1051,
+  "name": "Water",
+  "amount": 66.47,
+  "unit": "g"
+}
+{
+  "id": 1008,
+  "name": "Energy",
+  "amount": 221,
+  "unit": "kcal"
+}
+{
+  "id": 1062,
+  "name": "Energy",
+  "amount": 926,
+  "unit": "kJ"
+}
+{
+  "id": 1003,
+  "name": "Protein",
+  "amount": 16.52,
+  "unit": "g"
+}
+{
+  "id": 1004,
+  "name": "Total lipid (fat)",
+  "amount": 16.61,
+  "unit": "g"
+}
+{
+  "id": 1007,
+  "name": "Ash",
+  "amount": 0.81,
+  "unit": "g"
+}
+{
+  "id": 2039,
+  "name": "Carbohydrates",
+  "amount": null,
+  "unit": "g"
+}
+{
+  "id": 1005,
+  "name": "Carbohydrate, by difference",
+  "amount": 0.25,
+  "unit": "g"
+}
+{
+  "id": 1079,
+  "name": "Fiber, total dietary",
+  "amount": 0,
+  "unit": "g"
+}
+{
+  "id": 2000,
+  "name": "Total Sugars",
+  "amount": 0,
+  "unit": "g"
+}
+{
+  "id": 2043,
+  "name": "Minerals",
+  "amount": null,
+  "unit": "mg"
+}
+{
+  "id": 1087,
+  "name": "Calcium, Ca",
+  "amount": 7,
+  "unit": "mg"
+}
+{
+  "id": 1089,
+  "name": "Iron, Fe",
+  "amount": 0.68,
+  "unit": "mg"
+}
+{
+  "id": 1090,
+  "name": "Magnesium, Mg",
+  "amount": 18,
+  "unit": "mg"
+}
+{
+  "id": 1091,
+  "name": "Phosphorus, P",
+  "amount": 157,
+  "unit": "mg"
+}
+{
+  "id": 1092,
+  "name": "Potassium, K",
+  "amount": 204,
+  "unit": "mg"
+}
+{
+  "id": 1093,
+  "name": "Sodium, Na",
+  "amount": 81,
+  "unit": "mg"
+}
+{
+  "id": 1095,
+  "name": "Zinc, Zn",
+  "amount": 1.29,
+  "unit": "mg"
+}
+{
+  "id": 1098,
+  "name": "Copper, Cu",
+  "amount": 0.054,
+  "unit": "mg"
+}
+{
+  "id": 1101,
+  "name": "Manganese, Mn",
+  "amount": 0.013,
+  "unit": "mg"
+}
+{
+  "id": 1103,
+  "name": "Selenium, Se",
+  "amount": 18.9,
+  "unit": "µg"
+}
+{
+  "id": 2046,
+  "name": "Vitamins and Other Components",
+  "amount": null,
+  "unit": "g"
+}
+{
+  "id": 1162,
+  "name": "Vitamin C, total ascorbic acid",
+  "amount": 0,
+  "unit": "mg"
+}
+{
+  "id": 1165,
+  "name": "Thiamin",
+  "amount": 0.073,
+  "unit": "mg"
+}
+{
+  "id": 1166,
+  "name": "Riboflavin",
+  "amount": 0.145,
+  "unit": "mg"
+}
+{
+  "id": 1167,
+  "name": "Niacin",
+  "amount": 4.625,
+  "unit": "mg"
+}
+{
+  "id": 1170,
+  "name": "Pantothenic acid",
+  "amount": 0.19,
+  "unit": "mg"
+}
+{
+  "id": 1175,
+  "name": "Vitamin B-6",
+  "amount": 0.347,
+  "unit": "mg"
+}
+{
+  "id": 1177,
+  "name": "Folate, total",
+  "amount": 3,
+  "unit": "µg"
+}
+{
+  "id": 1186,
+  "name": "Folic acid",
+  "amount": 0,
+  "unit": "µg"
+}
+{
+  "id": 1187,
+  "name": "Folate, food",
+  "amount": 3,
+  "unit": "µg"
+}
+{
+  "id": 1190,
+  "name": "Folate, DFE",
+  "amount": 3,
+  "unit": "µg"
+}
+{
+  "id": 1180,
+  "name": "Choline, total",
+  "amount": 45.7,
+  "unit": "mg"
+}
+{
+  "id": 1198,
+  "name": "Betaine",
+  "amount": 9.8,
+  "unit": "mg"
+}
+{
+  "id": 1178,
+  "name": "Vitamin B-12",
+  "amount": 0.62,
+  "unit": "µg"
+}
+{
+  "id": 1246,
+  "name": "Vitamin B-12, added",
+  "amount": 0,
+  "unit": "µg"
+}
+{
+  "id": 1106,
+  "name": "Vitamin A, RAE",
+  "amount": 23,
+  "unit": "µg"
+}
+{
+  "id": 1105,
+  "name": "Retinol",
+  "amount": 23,
+  "unit": "µg"
+}
+{
+  "id": 1107,
+  "name": "Carotene, beta",
+  "amount": 0,
+  "unit": "µg"
+}
+{
+  "id": 1108,
+  "name": "Carotene, alpha",
+  "amount": 0,
+  "unit": "µg"
+}
+{
+  "id": 1120,
+  "name": "Cryptoxanthin, beta",
+  "amount": 0,
+  "unit": "µg"
+}
+{
+  "id": 1104,
+  "name": "Vitamin A, IU",
+  "amount": 78,
+  "unit": "IU"
+}
+{
+  "id": 1122,
+  "name": "Lycopene",
+  "amount": 0,
+  "unit": "µg"
+}
+{
+  "id": 1123,
+  "name": "Lutein + zeaxanthin",
+  "amount": 108,
+  "unit": "µg"
+}
+{
+  "id": 1109,
+  "name": "Vitamin E (alpha-tocopherol)",
+  "amount": 0.21,
+  "unit": "mg"
+}
+{
+  "id": 1242,
+  "name": "Vitamin E, added",
+  "amount": 0,
+  "unit": "mg"
+}
+{
+  "id": 1125,
+  "name": "Tocopherol, beta",
+  "amount": 0,
+  "unit": "mg"
+}
+{
+  "id": 1126,
+  "name": "Tocopherol, gamma",
+  "amount": 0.09,
+  "unit": "mg"
+}
+{
+  "id": 1127,
+  "name": "Tocopherol, delta",
+  "amount": 0,
+  "unit": "mg"
+}
+{
+  "id": 1128,
+  "name": "Tocotrienol, alpha",
+  "amount": 0.02,
+  "unit": "mg"
+}
+{
+  "id": 1129,
+  "name": "Tocotrienol, beta",
+  "amount": 0.02,
+  "unit": "mg"
+}
+{
+  "id": 1130,
+  "name": "Tocotrienol, gamma",
+  "amount": 0.03,
+  "unit": "mg"
+}
+{
+  "id": 1131,
+  "name": "Tocotrienol, delta",
+  "amount": 0,
+  "unit": "mg"
+}
+{
+  "id": 1110,
+  "name": "Vitamin D (D2 + D3), International Units",
+  "amount": 3,
+  "unit": "IU"
+}
+{
+  "id": 1114,
+  "name": "Vitamin D (D2 + D3)",
+  "amount": 0.1,
+  "unit": "µg"
+}
+{
+  "id": 1112,
+  "name": "Vitamin D3 (cholecalciferol)",
+  "amount": 0.1,
+  "unit": "µg"
+}
+{
+  "id": 1185,
+  "name": "Vitamin K (phylloquinone)",
+  "amount": 2.1,
+  "unit": "µg"
+}
+{
+  "id": 2044,
+  "name": "Lipids",
+  "amount": null,
+  "unit": "g"
+}
+{
+  "id": 1258,
+  "name": "Fatty acids, total saturated",
+  "amount": 4.524,
+  "unit": "g"
+}
+{
+  "id": 1259,
+  "name": "SFA 4:0",
+  "amount": 0.001,
+  "unit": "g"
+}
+{
+  "id": 1260,
+  "name": "SFA 6:0",
+  "amount": 0,
+  "unit": "g"
+}
+{
+  "id": 1261,
+  "name": "SFA 8:0",
+  "amount": 0.001,
+  "unit": "g"
+}
+{
+  "id": 1262,
+  "name": "SFA 10:0",
+  "amount": 0.003,
+  "unit": "g"
+}
+{
+  "id": 1263,
+  "name": "SFA 12:0",
+  "amount": 0.008,
+  "unit": "g"
+}
+{
+  "id": 1264,
+  "name": "SFA 14:0",
+  "amount": 0.092,
+  "unit": "g"
+}
+{
+  "id": 1299,
+  "name": "SFA 15:0",
+  "amount": 0.011,
+  "unit": "g"
+}
+{
+  "id": 1265,
+  "name": "SFA 16:0",
+  "amount": 3.511,
+  "unit": "g"
+}
+{
+  "id": 1300,
+  "name": "SFA 17:0",
+  "amount": 0.019,
+  "unit": "g"
+}
+{
+  "id": 1266,
+  "name": "SFA 18:0",
+  "amount": 0.85,
+  "unit": "g"
+}
+{
+  "id": 1267,
+  "name": "SFA 20:0",
+  "amount": 0.011,
+  "unit": "g"
+}
+{
+  "id": 1273,
+  "name": "SFA 22:0",
+  "amount": 0.014,
+  "unit": "g"
+}
+{
+  "id": 1301,
+  "name": "SFA 24:0",
+  "amount": 0.002,
+  "unit": "g"
+}
+{
+  "id": 1292,
+  "name": "Fatty acids, total monounsaturated",
+  "amount": 6.94,
+  "unit": "g"
+}
+{
+  "id": 1274,
+  "name": "MUFA 14:1",
+  "amount": 0.033,
+  "unit": "g"
+}
+{
+  "id": 1333,
+  "name": "MUFA 15:1",
+  "amount": 0,
+  "unit": "g"
+}
+{
+  "id": 1275,
+  "name": "MUFA 16:1",
+  "amount": 0.98,
+  "unit": "g"
+}
+{
+  "id": 1314,
+  "name": "MUFA 16:1 c",
+  "amount": 0.973,
+  "unit": "g"
+}
+{
+  "id": 1323,
+  "name": "MUFA 17:1",
+  "amount": 0.014,
+  "unit": "g"
+}
+{
+  "id": 1268,
+  "name": "MUFA 18:1",
+  "amount": 5.832,
+  "unit": "g"
+}
+{
+  "id": 1315,
+  "name": "MUFA 18:1 c",
+  "amount": 5.779,
+  "unit": "g"
+}
+{
+  "id": 1277,
+  "name": "MUFA 20:1",
+  "amount": 0.078,
+  "unit": "g"
+}
+{
+  "id": 1279,
+  "name": "MUFA 22:1",
+  "amount": 0.002,
+  "unit": "g"
+}
+{
+  "id": 1317,
+  "name": "MUFA 22:1 c",
+  "amount": 0.002,
+  "unit": "g"
+}
+{
+  "id": 1312,
+  "name": "MUFA 24:1 c",
+  "amount": 0.001,
+  "unit": "g"
+}
+{
+  "id": 1293,
+  "name": "Fatty acids, total polyunsaturated",
+  "amount": 3.467,
+  "unit": "g"
+}
+{
+  "id": 1269,
+  "name": "PUFA 18:2",
+  "amount": 3.096,
+  "unit": "g"
+}
+{
+  "id": 1316,
+  "name": "PUFA 18:2 n-6 c,c",
+  "amount": 3.05,
+  "unit": "g"
+}
+{
+  "id": 1311,
+  "name": "PUFA 18:2 CLAs",
+  "amount": 0.021,
+  "unit": "g"
+}
+{
+  "id": 1270,
+  "name": "PUFA 18:3",
+  "amount": 0.162,
+  "unit": "g"
+}
+{
+  "id": 1404,
+  "name": "PUFA 18:3 n-3 c,c,c (ALA)",
+  "amount": 0.144,
+  "unit": "g"
+}
+{
+  "id": 1321,
+  "name": "PUFA 18:3 n-6 c,c,c",
+  "amount": 0.018,
+  "unit": "g"
+}
+{
+  "id": 1276,
+  "name": "PUFA 18:4",
+  "amount": 0.003,
+  "unit": "g"
+}
+{
+  "id": 1313,
+  "name": "PUFA 20:2 n-6 c,c",
+  "amount": 0.021,
+  "unit": "g"
+}
+{
+  "id": 1325,
+  "name": "PUFA 20:3",
+  "amount": 0.035,
+  "unit": "g"
+}
+{
+  "id": 1405,
+  "name": "PUFA 20:3 n-3",
+  "amount": 0.001,
+  "unit": "g"
+}
+{
+  "id": 1406,
+  "name": "PUFA 20:3 n-6",
+  "amount": 0.034,
+  "unit": "g"
+}
+{
+  "id": 1271,
+  "name": "PUFA 20:4",
+  "amount": 0.104,
+  "unit": "g"
+}
+{
+  "id": 1278,
+  "name": "PUFA 20:5 n-3 (EPA)",
+  "amount": 0.004,
+  "unit": "g"
+}
+{
+  "id": 1411,
+  "name": "PUFA 22:4",
+  "amount": 0.024,
+  "unit": "g"
+}
+{
+  "id": 1280,
+  "name": "PUFA 22:5 n-3 (DPA)",
+  "amount": 0.01,
+  "unit": "g"
+}
+{
+  "id": 1272,
+  "name": "PUFA 22:6 n-3 (DHA)",
+  "amount": 0.007,
+  "unit": "g"
+}
+{
+  "id": 1257,
+  "name": "Fatty acids, total trans",
+  "amount": 0.085,
+  "unit": "g"
+}
+{
+  "id": 1329,
+  "name": "Fatty acids, total trans-monoenoic",
+  "amount": 0.06,
+  "unit": "g"
+}
+{
+  "id": 1303,
+  "name": "TFA 16:1 t",
+  "amount": 0.007,
+  "unit": "g"
+}
+{
+  "id": 1304,
+  "name": "TFA 18:1 t",
+  "amount": 0.053,
+  "unit": "g"
+}
+{
+  "id": 1305,
+  "name": "TFA 22:1 t",
+  "amount": 0,
+  "unit": "g"
+}
+{
+  "id": 1306,
+  "name": "TFA 18:2 t not further defined",
+  "amount": 0.025,
+  "unit": "g"
+}
+{
+  "id": 1331,
+  "name": "Fatty acids, total trans-polyenoic",
+  "amount": 0.025,
+  "unit": "g"
+}
+{
+  "id": 1253,
+  "name": "Cholesterol",
+  "amount": 98,
+  "unit": "mg"
+}
+{
+  "id": 2042,
+  "name": "Amino acids",
+  "amount": null,
+  "unit": "g"
+}
+{
+  "id": 1210,
+  "name": "Tryptophan",
+  "amount": 0.167,
+  "unit": "g"
+}
+{
+  "id": 1211,
+  "name": "Threonine",
+  "amount": 0.735,
+  "unit": "g"
+}
+{
+  "id": 1212,
+  "name": "Isoleucine",
+  "amount": 0.731,
+  "unit": "g"
+}
+{
+  "id": 1213,
+  "name": "Leucine",
+  "amount": 1.318,
+  "unit": "g"
+}
+{
+  "id": 1214,
+  "name": "Lysine",
+  "amount": 1.448,
+  "unit": "g"
+}
+{
+  "id": 1215,
+  "name": "Methionine",
+  "amount": 0.438,
+  "unit": "g"
+}
+{
+  "id": 1216,
+  "name": "Cystine",
+  "amount": 0.183,
+  "unit": "g"
+}
+{
+  "id": 1217,
+  "name": "Phenylalanine",
+  "amount": 0.632,
+  "unit": "g"
+}
+{
+  "id": 1218,
+  "name": "Tyrosine",
+  "amount": 0.579,
+  "unit": "g"
+}
+{
+  "id": 1219,
+  "name": "Valine",
+  "amount": 0.764,
+  "unit": "g"
+}
+{
+  "id": 1220,
+  "name": "Arginine",
+  "amount": 1.157,
+  "unit": "g"
+}
+{
+  "id": 1221,
+  "name": "Histidine",
+  "amount": 0.465,
+  "unit": "g"
+}
+{
+  "id": 1222,
+  "name": "Alanine",
+  "amount": 1.015,
+  "unit": "g"
+}
+{
+  "id": 1223,
+  "name": "Aspartic acid",
+  "amount": 1.554,
+  "unit": "g"
+}
+{
+  "id": 1224,
+  "name": "Glutamic acid",
+  "amount": 2.571,
+  "unit": "g"
+}
+{
+  "id": 1225,
+  "name": "Glycine",
+  "amount": 1.005,
+  "unit": "g"
+}
+{
+  "id": 1226,
+  "name": "Proline",
+  "amount": 0.773,
+  "unit": "g"
+}
+{
+  "id": 1227,
+  "name": "Serine",
+  "amount": 0.675,
+  "unit": "g"
+}
+{
+  "id": 1018,
+  "name": "Alcohol, ethyl",
+  "amount": 0,
+  "unit": "g"
+}
+{
+  "id": 1057,
+  "name": "Caffeine",
+  "amount": 0,
+  "unit": "mg"
+}
+{
+  "id": 1058,
+  "name": "Theobromine",
+  "amount": 0,
+  "unit": "mg"
+}
+(base) sderhami@SOM-22RT2Q6-L ~ % 

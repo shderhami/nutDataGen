@@ -1,0 +1,437 @@
+"""
+Tests for usda_api.py
+
+Uses mock API responses for offline testing.
+Live API tests are marked with @pytest.mark.live and skip if no API key.
+"""
+import sys
+import os
+from pathlib import Path
+from unittest.mock import patch, Mock
+
+import pytest
+
+# Add parent directory to path for imports
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
+from usda_api import (
+    USDAAPIError,
+    fetch_food_data,
+    extract_nutrients,
+    fetch_sr_legacy,
+    fetch_foundation,
+    get_food_description,
+    search_foods,
+    get_derivation_description,
+    DERIVATION_CODES,
+)
+
+
+# Sample mock responses
+MOCK_FOOD_RESPONSE = {
+    "fdcId": 171116,
+    "description": "Chicken, broiler or fryers, thigh, meat only, raw",
+    "dataType": "SR Legacy",
+    "foodNutrients": [
+        {
+            "nutrient": {
+                "id": 1003,
+                "name": "Protein",
+                "unitName": "g"
+            },
+            "amount": 19.6,
+            "numberOfDataPoints": 10,
+            "min": 18.0,
+            "max": 21.0,
+            "median": 19.5,
+            "standardError": 0.3,
+            "foodNutrientDerivation": {
+                "code": "A",
+                "description": "Analytical"
+            },
+            "footnote": "Test footnote"
+        },
+        {
+            "nutrient": {
+                "id": 1004,
+                "name": "Total lipid (fat)",
+                "unitName": "g"
+            },
+            "amount": 6.99,
+            "foodNutrientDerivation": {
+                "code": "C",
+                "description": "Calculated"
+            }
+        },
+        {
+            "nutrient": {
+                "id": 1008,
+                "name": "Energy",
+                "unitName": "kcal"
+            },
+            "amount": 142
+        },
+        {
+            "nutrient": {
+                "id": 1087,
+                "name": "Calcium, Ca",
+                "unitName": "mg"
+            },
+            "amount": 8
+        },
+        {
+            "nutrient": {
+                "id": 1089,
+                "name": "Iron, Fe",
+                "unitName": "mg"
+            },
+            "amount": 1.3
+        },
+    ]
+}
+
+MOCK_SEARCH_RESPONSE = {
+    "foods": [
+        {"fdcId": 171116, "description": "Chicken thigh, raw"},
+        {"fdcId": 171117, "description": "Chicken breast, raw"},
+    ],
+    "totalHits": 2
+}
+
+
+class TestFetchFoodData:
+    """Tests for fetch_food_data function."""
+
+    def test_raises_error_without_api_key(self):
+        """Test that fetch_food_data raises error without API key."""
+        with patch.dict(os.environ, {"USDA_API_KEY": ""}, clear=False):
+            # Force reload to get empty API key
+            with pytest.raises(USDAAPIError) as exc_info:
+                fetch_food_data(171116, api_key="")
+            assert "API key" in str(exc_info.value)
+
+    @patch('usda_api.requests.get')
+    def test_successful_fetch(self, mock_get):
+        """Test successful API fetch."""
+        mock_response = Mock()
+        mock_response.status_code = 200
+        mock_response.json.return_value = MOCK_FOOD_RESPONSE
+        mock_get.return_value = mock_response
+
+        result = fetch_food_data(171116, api_key="test_key")
+
+        assert result["fdcId"] == 171116
+        assert "Chicken" in result["description"]
+
+    @patch('usda_api.requests.get')
+    def test_404_raises_error(self, mock_get):
+        """Test that 404 response raises error."""
+        mock_response = Mock()
+        mock_response.status_code = 404
+        mock_get.return_value = mock_response
+
+        with pytest.raises(USDAAPIError) as exc_info:
+            fetch_food_data(999999, api_key="test_key")
+        assert "not found" in str(exc_info.value)
+
+    @patch('usda_api.requests.get')
+    def test_403_raises_error(self, mock_get):
+        """Test that 403 response raises error for invalid API key."""
+        mock_response = Mock()
+        mock_response.status_code = 403
+        mock_get.return_value = mock_response
+
+        with pytest.raises(USDAAPIError) as exc_info:
+            fetch_food_data(171116, api_key="invalid_key")
+        assert "Invalid" in str(exc_info.value) or "API key" in str(exc_info.value)
+
+    @patch('usda_api.requests.get')
+    def test_429_raises_rate_limit_error(self, mock_get):
+        """Test that 429 response raises rate limit error."""
+        mock_response = Mock()
+        mock_response.status_code = 429
+        mock_get.return_value = mock_response
+
+        with pytest.raises(USDAAPIError) as exc_info:
+            fetch_food_data(171116, api_key="test_key")
+        assert "Rate limit" in str(exc_info.value)
+
+    @patch('usda_api.requests.get')
+    def test_timeout_raises_error(self, mock_get):
+        """Test that timeout raises error."""
+        import requests
+        mock_get.side_effect = requests.exceptions.Timeout()
+
+        with pytest.raises(USDAAPIError) as exc_info:
+            fetch_food_data(171116, api_key="test_key")
+        assert "timed out" in str(exc_info.value)
+
+    @patch('usda_api.requests.get')
+    def test_connection_error_raises_error(self, mock_get):
+        """Test that connection error raises error."""
+        import requests
+        mock_get.side_effect = requests.exceptions.ConnectionError()
+
+        with pytest.raises(USDAAPIError) as exc_info:
+            fetch_food_data(171116, api_key="test_key")
+        assert "connection" in str(exc_info.value).lower()
+
+
+class TestExtractNutrients:
+    """Tests for extract_nutrients function."""
+
+    def test_returns_correct_structure(self):
+        """Test extract_nutrients returns correct structure."""
+        result = extract_nutrients(MOCK_FOOD_RESPONSE, [1003, 1004])
+
+        assert 1003 in result
+        assert 1004 in result
+        assert "name" in result[1003]
+        assert "value" in result[1003]
+        assert "unit" in result[1003]
+
+    def test_extracts_correct_values(self):
+        """Test that correct values are extracted."""
+        result = extract_nutrients(MOCK_FOOD_RESPONSE, [1003, 1004, 1008])
+
+        assert result[1003]["value"] == 19.6
+        assert result[1004]["value"] == 6.99
+        assert result[1008]["value"] == 142
+
+    def test_handles_missing_nutrients(self):
+        """Test extract_nutrients returns None for missing nutrients."""
+        result = extract_nutrients(MOCK_FOOD_RESPONSE, [1003, 9999])
+
+        assert result[1003]["value"] == 19.6
+        assert result[9999]["value"] is None
+        assert result[9999]["name"] is None
+
+    def test_handles_empty_nutrient_list(self):
+        """Test extract_nutrients with empty nutrient list."""
+        result = extract_nutrients(MOCK_FOOD_RESPONSE, [])
+        assert result == {}
+
+    def test_handles_empty_food_data(self):
+        """Test extract_nutrients with empty food data."""
+        result = extract_nutrients({}, [1003])
+        assert 1003 in result
+        assert result[1003]["value"] is None
+
+    def test_extracts_metadata_fields(self):
+        """Test extract_nutrients extracts metadata fields."""
+        result = extract_nutrients(MOCK_FOOD_RESPONSE, [1003])
+
+        assert result[1003]["num_samples"] == 10
+        assert result[1003]["min_value"] == 18.0
+        assert result[1003]["max_value"] == 21.0
+        assert result[1003]["median_value"] == 19.5
+        assert result[1003]["derivation_description"] == "Analytical"
+        # Note: standard_error and footnote removed - USDA API does not provide these
+
+    def test_extracts_derivation_from_code(self):
+        """Test extract_nutrients gets derivation description from code."""
+        result = extract_nutrients(MOCK_FOOD_RESPONSE, [1004])
+
+        assert result[1004]["derivation_description"] == "Calculated"
+
+    def test_handles_missing_metadata(self):
+        """Test extract_nutrients handles missing metadata gracefully."""
+        result = extract_nutrients(MOCK_FOOD_RESPONSE, [1008])
+
+        # Metadata should be None for nutrients without it
+        assert result[1008]["num_samples"] is None
+        assert result[1008]["min_value"] is None
+        assert result[1008]["max_value"] is None
+
+
+class TestGetDerivationDescription:
+    """Tests for get_derivation_description function."""
+
+    def test_returns_description_from_api(self):
+        """Test returns description directly from API response."""
+        derivation = {"code": "A", "description": "Analytical"}
+        result = get_derivation_description(derivation)
+        assert result == "Analytical"
+
+    def test_falls_back_to_code_lookup(self):
+        """Test falls back to code lookup when no description."""
+        derivation = {"code": "C"}
+        result = get_derivation_description(derivation)
+        assert result == "Calculated"
+
+    def test_returns_code_for_unknown(self):
+        """Test returns code if not in lookup table."""
+        derivation = {"code": "XYZ"}
+        result = get_derivation_description(derivation)
+        assert result == "XYZ"
+
+    def test_returns_empty_for_none(self):
+        """Test returns empty string for None input."""
+        result = get_derivation_description(None)
+        assert result == ""
+
+    def test_returns_empty_for_empty_dict(self):
+        """Test returns empty string for empty dict."""
+        result = get_derivation_description({})
+        assert result == ""
+
+
+class TestDerivationCodes:
+    """Tests for DERIVATION_CODES constant."""
+
+    def test_contains_common_codes(self):
+        """Test DERIVATION_CODES contains common codes."""
+        assert "A" in DERIVATION_CODES
+        assert "C" in DERIVATION_CODES
+        assert "E" in DERIVATION_CODES
+
+    def test_analytical_is_correct(self):
+        """Test Analytical derivation is correct."""
+        assert DERIVATION_CODES["A"] == "Analytical"
+
+    def test_calculated_is_correct(self):
+        """Test Calculated derivation is correct."""
+        assert DERIVATION_CODES["C"] == "Calculated"
+
+
+class TestFetchSrLegacy:
+    """Tests for fetch_sr_legacy function."""
+
+    @patch('usda_api.fetch_food_data')
+    def test_returns_expected_structure(self, mock_fetch):
+        """Test fetch_sr_legacy returns expected structure."""
+        mock_fetch.return_value = MOCK_FOOD_RESPONSE
+
+        result = fetch_sr_legacy(171116, api_key="test_key")
+
+        assert "fdc_id" in result
+        assert "description" in result
+        assert "data_type" in result
+        assert "nutrients" in result
+
+    @patch('usda_api.fetch_food_data')
+    def test_returns_correct_fdc_id(self, mock_fetch):
+        """Test fetch_sr_legacy returns correct FDC ID."""
+        mock_fetch.return_value = MOCK_FOOD_RESPONSE
+
+        result = fetch_sr_legacy(171116, api_key="test_key")
+
+        assert result["fdc_id"] == 171116
+
+    @patch('usda_api.fetch_food_data')
+    def test_extracts_all_fediaf_nutrients(self, mock_fetch):
+        """Test that all FEDIAF nutrients are attempted to be extracted."""
+        mock_fetch.return_value = MOCK_FOOD_RESPONSE
+
+        result = fetch_sr_legacy(171116, api_key="test_key")
+
+        # Should have nutrients dict
+        assert isinstance(result["nutrients"], dict)
+        # Should include common nutrients
+        assert 1003 in result["nutrients"]  # Protein
+
+
+class TestFetchFoundation:
+    """Tests for fetch_foundation function."""
+
+    @patch('usda_api.fetch_food_data')
+    def test_returns_expected_structure(self, mock_fetch):
+        """Test fetch_foundation returns expected structure."""
+        mock_fetch.return_value = MOCK_FOOD_RESPONSE
+
+        result = fetch_foundation(746784, api_key="test_key")
+
+        assert "fdc_id" in result
+        assert "description" in result
+        assert "nutrients" in result
+
+
+class TestGetFoodDescription:
+    """Tests for get_food_description function."""
+
+    @patch('usda_api.fetch_food_data')
+    def test_returns_description(self, mock_fetch):
+        """Test get_food_description returns description."""
+        mock_fetch.return_value = MOCK_FOOD_RESPONSE
+
+        result = get_food_description(171116, api_key="test_key")
+
+        assert "Chicken" in result
+
+    @patch('usda_api.fetch_food_data')
+    def test_returns_empty_for_missing_description(self, mock_fetch):
+        """Test returns empty string if description missing."""
+        mock_fetch.return_value = {"fdcId": 123}
+
+        result = get_food_description(123, api_key="test_key")
+
+        assert result == ""
+
+
+class TestSearchFoods:
+    """Tests for search_foods function."""
+
+    @patch('usda_api.requests.get')
+    def test_successful_search(self, mock_get):
+        """Test successful food search."""
+        mock_response = Mock()
+        mock_response.status_code = 200
+        mock_response.json.return_value = MOCK_SEARCH_RESPONSE
+        mock_get.return_value = mock_response
+
+        result = search_foods("chicken", api_key="test_key")
+
+        assert len(result) == 2
+        assert result[0]["fdcId"] == 171116
+
+    @patch('usda_api.requests.get')
+    def test_search_with_data_type_filter(self, mock_get):
+        """Test search with data type filter."""
+        mock_response = Mock()
+        mock_response.status_code = 200
+        mock_response.json.return_value = MOCK_SEARCH_RESPONSE
+        mock_get.return_value = mock_response
+
+        search_foods("chicken", data_type="SR Legacy", api_key="test_key")
+
+        # Verify data type was passed to API
+        call_args = mock_get.call_args
+        assert "dataType" in call_args.kwargs.get("params", call_args[1].get("params", {}))
+
+    def test_search_raises_error_without_api_key(self):
+        """Test that search raises error without API key."""
+        with pytest.raises(USDAAPIError) as exc_info:
+            search_foods("chicken", api_key="")
+        assert "API key" in str(exc_info.value)
+
+
+# Live API tests - only run if a valid API key is available
+def _has_valid_api_key():
+    """Check if a valid-looking API key is set (not empty or placeholder)."""
+    key = os.environ.get("USDA_API_KEY", "")
+    return key and len(key) > 10 and key != "your_api_key_here"
+
+@pytest.mark.skipif(
+    not _has_valid_api_key(),
+    reason="USDA_API_KEY not set or is placeholder"
+)
+class TestLiveAPI:
+    """Live API tests - require USDA_API_KEY environment variable."""
+
+    def test_fetch_chicken_thigh(self):
+        """Test fetching known chicken thigh FDC ID."""
+        result = fetch_food_data(171116)
+        assert "Chicken" in result.get("description", "")
+
+    def test_protein_value_reasonable_range(self):
+        """Test that protein value for chicken thigh is in reasonable range."""
+        result = fetch_sr_legacy(171116)
+        protein = result["nutrients"].get(1003, {})
+        value = protein.get("value")
+        if value is not None:
+            assert 15 <= value <= 30, f"Protein {value}g outside expected range"
+
+    def test_fetch_invalid_id_raises_error(self):
+        """Test that invalid FDC ID raises error."""
+        with pytest.raises(USDAAPIError):
+            fetch_food_data(999999999)
