@@ -29,4 +29,4 @@ htmlcov/
 ~$*.docx
 
 # Data files (optional - uncomment if you don't want to track)
-# nutrition_data_system/data/*.csv
+# data/*.csv
