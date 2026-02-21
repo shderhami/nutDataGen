@@ -39,12 +39,29 @@ SKIP_VALIDATION_THRESHOLD = 5.0  # Skip AI validation if SR/Foundation differ by
 AI_CONCURRENT_LIMIT = 5          # Max concurrent API requests
 AI_MAX_CONCURRENT_LIMIT = 10     # Hard cap on concurrency
 
+# AI Model for validation
+AI_MODEL = "claude-opus-4-6"
+
 # AI Mock Mode (set to True for testing without real API calls)
 AI_MOCK_MODE = os.environ.get("AI_MOCK_MODE", "false").lower() == "true"
 
-# File paths
+# PostgreSQL Database Configuration
+DATABASE_HOST = os.environ.get("DATABASE_HOST", "localhost")
+DATABASE_PORT = int(os.environ.get("DATABASE_PORT", "5432"))
+DATABASE_NAME = os.environ.get("DATABASE_NAME", "cat_food_formulator")
+DATABASE_USER = os.environ.get("DATABASE_USER", "postgres")
+DATABASE_PASSWORD = os.environ.get("DATABASE_PASSWORD", "postgres")
+
+DATABASE_URL = (
+    f"postgresql://{DATABASE_USER}:{DATABASE_PASSWORD}"
+    f"@{DATABASE_HOST}:{DATABASE_PORT}/{DATABASE_NAME}"
+)
+
+# Food ID sequence start (professional IDs, not starting from 1)
+FOOD_ID_SEQUENCE_START = 10001
+
+# File paths (data directory kept for legacy compatibility)
 DATA_DIR = Path(__file__).parent / "data"
-DATABASE_FILE = DATA_DIR / "nutrition_database.csv"
 
 # Ensure data directory exists
 DATA_DIR.mkdir(exist_ok=True)

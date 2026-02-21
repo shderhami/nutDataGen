@@ -12,6 +12,7 @@ from typing import Optional
 from dataclasses import dataclass
 
 from config import (
+    AI_MODEL,
     AI_RATE_LIMIT_RPM,
     AI_MIN_REQUEST_INTERVAL,
     AI_MAX_RETRIES,
@@ -253,8 +254,9 @@ def call_claude_api(prompt: str, api_key: Optional[str] = None) -> str:
         client = anthropic.Anthropic(api_key=key)
 
         message = client.messages.create(
-            model="claude-sonnet-4-20250514",
+            model=AI_MODEL,
             max_tokens=4096,
+            temperature=0.3,
             messages=[
                 {"role": "user", "content": prompt}
             ]
@@ -869,8 +871,9 @@ async def _call_claude_api_async(
         await rate_limiter.acquire()
 
         message = await client.messages.create(
-            model="claude-sonnet-4-20250514",
+            model=AI_MODEL,
             max_tokens=4096,
+            temperature=0.3,
             messages=[{"role": "user", "content": prompt}]
         )
 

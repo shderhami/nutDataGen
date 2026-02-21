@@ -81,27 +81,46 @@ class TestPromptFoodInfo:
     def test_returns_correct_structure(self, mock_input):
         """Test prompt_food_info returns correct structure."""
         mock_input.side_effect = [
-            "FOOD_001",        # food_id
             "Test Food",       # food_name
+            "1",               # category (Muscle Meat by number)
             "171116",          # sr_fdc_id
-            "746784"           # foundation_fdc_id
+            "746784",          # foundation_fdc_id
+            "ml",              # base_unit
+            "200",             # portion_qty
+            "1.0",             # grams_per_unit
+            "3.5",             # me_kcal_per_unit
+            "5.99",            # price_per_unit
+            "CAD",             # currency
         ]
 
         result = prompt_food_info()
 
-        assert result["food_id"] == "FOOD_001"
         assert result["food_name"] == "Test Food"
+        assert result["category"] == "Muscle Meat"
         assert result["sr_fdc_id"] == 171116
         assert result["foundation_fdc_id"] == 746784
+        assert result["base_unit"] == "ml"
+        assert result["portion_qty"] == 200.0
+        assert result["grams_per_unit"] == 1.0
+        assert result["me_kcal_per_unit"] == 3.5
+        assert result["price_per_unit"] == 5.99
+        assert result["currency"] == "CAD"
+        assert "food_id" not in result
 
     @patch('builtins.input')
     def test_handles_empty_foundation_id(self, mock_input):
         """Test handles empty foundation FDC ID."""
         mock_input.side_effect = [
-            "FOOD_001",        # food_id
             "Test Food",       # food_name
+            "Organ Meat",      # category (by name)
             "171116",          # sr_fdc_id
-            ""                 # foundation_fdc_id (skip)
+            "",                # foundation_fdc_id (skip)
+            "",                # base_unit (default g)
+            "",                # portion_qty (default 100)
+            "1.0",             # grams_per_unit
+            "",                # me_kcal_per_unit (skip)
+            "2.50",            # price_per_unit
+            "",                # currency (default USD)
         ]
 
         result = prompt_food_info()
@@ -112,10 +131,16 @@ class TestPromptFoodInfo:
     def test_handles_invalid_sr_fdc_id_skips(self, mock_input):
         """Test handles invalid SR FDC ID by skipping (setting to None)."""
         mock_input.side_effect = [
-            "FOOD_001",        # food_id
             "Test Food",       # food_name
+            "3",               # category (Fish & Seafood)
             "invalid",         # invalid sr_fdc_id - now skipped
-            ""                 # foundation_fdc_id
+            "",                # foundation_fdc_id
+            "",                # base_unit (default g)
+            "",                # portion_qty (default 100)
+            "1.0",             # grams_per_unit
+            "",                # me_kcal_per_unit (skip)
+            "2.50",            # price_per_unit
+            "",                # currency (default)
         ]
 
         result = prompt_food_info()
@@ -126,16 +151,47 @@ class TestPromptFoodInfo:
     def test_handles_empty_sr_fdc_id(self, mock_input):
         """Test handles empty SR FDC ID (skips)."""
         mock_input.side_effect = [
-            "FOOD_001",        # food_id
             "Test Food",       # food_name
+            "Supplement",      # category (by name)
             "",                # sr_fdc_id (skip)
-            ""                 # foundation_fdc_id (skip)
+            "",                # foundation_fdc_id (skip)
+            "",                # base_unit (default g)
+            "",                # portion_qty (default 100)
+            "1.0",             # grams_per_unit
+            "",                # me_kcal_per_unit (skip)
+            "2.50",            # price_per_unit
+            "",                # currency (default)
         ]
 
         result = prompt_food_info()
 
         assert result["sr_fdc_id"] is None
         assert result["foundation_fdc_id"] is None
+
+    @patch('builtins.input')
+    def test_defaults_for_base_unit_and_portion(self, mock_input):
+        """Test defaults for base_unit, portion_qty, currency."""
+        mock_input.side_effect = [
+            "Test Food",       # food_name
+            "4",               # category (Egg)
+            "",                # sr_fdc_id (skip)
+            "",                # foundation_fdc_id (skip)
+            "",                # base_unit (default g)
+            "",                # portion_qty (default 100)
+            "1.0",             # grams_per_unit
+            "",                # me_kcal_per_unit (skip)
+            "2.50",            # price_per_unit
+            "",                # currency (default USD)
+        ]
+
+        result = prompt_food_info()
+
+        assert result["base_unit"] == "g"
+        assert result["portion_qty"] == 100.0
+        assert result["grams_per_unit"] == 1.0
+        assert result["me_kcal_per_unit"] is None
+        assert result["price_per_unit"] == 2.50
+        assert result["currency"] == "USD"
 
 
 class TestPromptDiscrepancyDecision:
@@ -329,9 +385,9 @@ class TestDisplayFinalSummary:
     def test_displays_summary(self, capsys):
         """Test display_final_summary shows summary."""
         food_data = [
-            {"fediaf_nutrient_name": "Protein", "value": "20", "unit": "g", "source": "sr_legacy"},
-            {"fediaf_nutrient_name": "Fat", "value": "10", "unit": "g", "source": "foundation"},
-            {"fediaf_nutrient_name": "Taurine", "value": "", "unit": "mg", "source": "skipped"},
+            {"fediaf_nutrient_name": "Protein", "value": 20.0, "unit": "g", "source": "sr_legacy"},
+            {"fediaf_nutrient_name": "Fat", "value": 10.0, "unit": "g", "source": "foundation"},
+            {"fediaf_nutrient_name": "Taurine", "value": None, "unit": "mg", "source": "skipped"},
         ]
 
         display_final_summary(food_data, "Test Food")

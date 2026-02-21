@@ -4,8 +4,8 @@ FEDIAF 2024/2025 Nutrient Requirements Reference Data.
 Complete reference data for all 50 nutrients required for cat food formulation
 following FEDIAF Nutritional Guidelines.
 
-Custom nutrient IDs (not from USDA):
-- 9001: Taurine (always missing from USDA, requires literature source)
+Note: Taurine (USDA nutrient ID 1234) is defined in the USDA nutrient schema
+but has no data in SR Legacy or Foundation datasets. Requires literature source.
 """
 from typing import Optional
 
@@ -117,9 +117,9 @@ FEDIAF_NUTRIENTS = [
         "notes": ""
     },
 
-    # ========== Taurine (CRITICAL - custom ID 9001, not in USDA) ==========
+    # ========== Taurine (USDA ID 1234, no data in SR Legacy/Foundation) ==========
     {
-        "nutrient_id": 9001,
+        "nutrient_id": 1234,
         "nutrient_name": "Taurine",
         "unit": "mg",
         "fediaf_required": True,
@@ -456,8 +456,8 @@ def get_nutrient_by_name(name: str) -> Optional[dict]:
     return None
 
 
-# TAURINE_NUTRIENT_ID is used to identify taurine (custom ID, not in USDA)
-TAURINE_NUTRIENT_ID = 9001
+# TAURINE_NUTRIENT_ID is used to identify taurine (USDA ID 1234, no data in datasets)
+TAURINE_NUTRIENT_ID = 1234
 
 
 def get_taurine_nutrient() -> Optional[dict]:

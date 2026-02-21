@@ -4,6 +4,9 @@
 # macOS
 .DS_Store
 
+# Virtual environment
+.venv/
+
 # Python
 __pycache__/
 *.py[cod]
@@ -25,8 +28,12 @@ htmlcov/
 *.swp
 *.swo
 
-# Word temp files
+# Office temp/lock files
 ~$*.docx
+~$*.xlsx
+
+# Generated supplement templates (contain user data)
+templates/*.csv
 
 # Data files (optional - uncomment if you don't want to track)
 # data/*.csv

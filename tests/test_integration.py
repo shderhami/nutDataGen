@@ -4,8 +4,6 @@ Integration tests for main.py
 Tests complete workflow with mocked API and user input.
 """
 import sys
-import os
-import tempfile
 from pathlib import Path
 from unittest.mock import patch, Mock
 
@@ -18,6 +16,7 @@ from main import (
     build_nutrient_record,
     process_single_food,
 )
+from database import NutrientRecord
 from fediaf_nutrients import get_all_nutrients, get_usda_nutrient_ids
 
 
@@ -57,12 +56,10 @@ class TestBuildNutrientRecord:
     """Tests for build_nutrient_record function."""
 
     def test_creates_valid_record(self):
-        """Test creates valid record matching schema."""
+        """Test creates valid record matching database schema."""
         record = build_nutrient_record(
-            food_id="TEST_001",
             food_name="Test Food",
-            sr_fdc_id=171116,
-            foundation_fdc_id=746784,
+            food_id=1001,
             nutrient_id=1003,
             fediaf_nutrient_name="Crude Protein",
             usda_nutrient_name="Protein",
@@ -72,20 +69,17 @@ class TestBuildNutrientRecord:
             comment="Test comment"
         )
 
-        assert record["food_id"] == "TEST_001"
-        assert record["food_name"] == "Test Food"
+        assert record["food_id"] == 1001
         assert record["fediaf_nutrient_name"] == "Crude Protein"
         assert record["usda_nutrient_name"] == "Protein"
-        assert record["value"] == "20.5"
+        assert record["value"] == 20.5
         assert record["source"] == "sr_legacy"
 
     def test_handles_none_values(self):
         """Test handles None values correctly."""
         record = build_nutrient_record(
-            food_id="TEST_001",
             food_name="Test Food",
-            sr_fdc_id=171116,
-            foundation_fdc_id=None,
+            food_id=1001,
             nutrient_id=None,
             fediaf_nutrient_name="Taurine",
             usda_nutrient_name=None,
@@ -94,18 +88,15 @@ class TestBuildNutrientRecord:
             source="skipped"
         )
 
-        assert record["foundation_fdc_id"] == ""
-        assert record["nutrient_id"] == ""
-        assert record["usda_nutrient_name"] == ""
-        assert record["value"] == ""
+        assert record["nutrient_id"] is None
+        assert record["usda_nutrient_name"] is None
+        assert record["value"] is None
 
     def test_includes_usda_metadata(self):
         """Test includes USDA metadata fields."""
         record = build_nutrient_record(
-            food_id="TEST_001",
             food_name="Test Food",
-            sr_fdc_id=171116,
-            foundation_fdc_id=746784,
+            food_id=1001,
             nutrient_id=1003,
             fediaf_nutrient_name="Crude Protein",
             usda_nutrient_name="Protein",
@@ -120,22 +111,20 @@ class TestBuildNutrientRecord:
             derivation_description="Analytical"
         )
 
-        assert record["num_samples"] == "10"
-        assert record["min_value"] == "18.5"
-        assert record["max_value"] == "22.5"
-        assert record["median_value"] == "20.3"
+        assert record["num_samples"] == 10
+        assert record["min_value"] == 18.5
+        assert record["max_value"] == 22.5
+        assert record["median_value"] == 20.3
         assert record["year_acquired"] == "2019"
         assert record["derivation_description"] == "Analytical"
-        # SE is now estimated from range since USDA API doesn't provide it
-        assert record["estimated_se"] != ""
+        # SE is estimated from range
+        assert record["estimated_se"] is not None
 
     def test_calculates_statistics(self):
         """Test calculates statistical fields from range estimation."""
         record = build_nutrient_record(
-            food_id="TEST_001",
             food_name="Test Food",
-            sr_fdc_id=171116,
-            foundation_fdc_id=746784,
+            food_id=1001,
             nutrient_id=1003,
             fediaf_nutrient_name="Crude Protein",
             usda_nutrient_name="Protein",
@@ -147,11 +136,11 @@ class TestBuildNutrientRecord:
             max_value=22.0
         )
 
-        # Should have calculated statistics
-        assert record["confidence_interval_lower"] != ""
-        assert record["confidence_interval_upper"] != ""
-        assert record["coefficient_of_variation"] != ""
-        assert record["range_uncertainty"] != ""
+        # Should have calculated statistics (native floats, not strings)
+        assert record["confidence_interval_lower"] is not None
+        assert record["confidence_interval_upper"] is not None
+        assert record["coefficient_of_variation"] is not None
+        assert record["range_uncertainty"] is not None
 
 
 class TestProcessSingleFood:
@@ -160,7 +149,6 @@ class TestProcessSingleFood:
     @pytest.fixture
     def food_info(self):
         return {
-            "food_id": "CHKN_THIGH_RAW_001",
             "food_name": "Chicken thigh, meat only, raw",
             "sr_fdc_id": 171116,
             "foundation_fdc_id": 746784
@@ -169,7 +157,6 @@ class TestProcessSingleFood:
     @pytest.fixture
     def food_info_sr_only(self):
         return {
-            "food_id": "CHKN_THIGH_RAW_001",
             "food_name": "Chicken thigh, meat only, raw",
             "sr_fdc_id": 171116,
             "foundation_fdc_id": None
@@ -184,7 +171,7 @@ class TestProcessSingleFood:
         self, mock_missing, mock_sr_only, mock_disc, mock_fetch_found, mock_fetch_sr, food_info
     ):
         """Test processing food with both SR Legacy and Foundation data."""
-        # Setup mocks with full metadata (standard_error and footnote removed - USDA API doesn't provide these)
+        # Setup mocks with full metadata
         mock_fetch_sr.return_value = {
             "fdc_id": 171116,
             "description": "Chicken thigh",
@@ -251,15 +238,15 @@ class TestProcessSingleFood:
         }
 
         mock_missing.return_value = {
-            "nutrient_id": 9001,
+            "nutrient_id": 1234,
             "nutrient_name": "Taurine",
             "chosen_value": 170.0,
             "chosen_source": "literature",
             "comment": "Source: Spitze et al. 2003"
         }
 
-        # Process
-        records = process_single_food(food_info)
+        # Process with food_id as first arg
+        records = process_single_food(1001, food_info)
 
         # Verify
         assert len(records) > 0
@@ -294,14 +281,14 @@ class TestProcessSingleFood:
 
         # Mock missing nutrient prompt (now requires a value)
         mock_missing.return_value = {
-            "nutrient_id": 9001,
+            "nutrient_id": 1234,
             "nutrient_name": "Taurine",
             "chosen_value": 170.0,
             "chosen_source": "literature",
             "comment": "Source: Spitze et al. 2003"
         }
 
-        records = process_single_food(food_info_sr_only)
+        records = process_single_food(1001, food_info_sr_only)
 
         assert len(records) > 0
         assert mock_fetch_sr.called
@@ -323,7 +310,7 @@ class TestProcessSingleFood:
             "comment": "Source: Test literature"
         }
 
-        records = process_single_food(food_info_sr_only)
+        records = process_single_food(1001, food_info_sr_only)
 
         # Should still produce records (all from literature)
         assert len(records) > 0
@@ -348,17 +335,15 @@ class TestFediafNutrientsCoverage:
 
 
 class TestSchemaCompliance:
-    """Tests to verify output matches expected schema."""
+    """Tests to verify output matches expected database schema."""
 
-    def test_record_has_all_fields(self):
-        """Test that records have all required schema fields."""
-        from database import SCHEMA_HEADERS
+    def test_record_has_all_required_fields(self):
+        """Test that records have all required NutrientRecord fields."""
+        from database import _NUTRIENT_COLUMNS
 
         record = build_nutrient_record(
-            food_id="TEST",
-            food_name="Test",
-            sr_fdc_id=123,
-            foundation_fdc_id=456,
+            food_name="Test Food",
+            food_id=1001,
             nutrient_id=1003,
             fediaf_nutrient_name="Crude Protein",
             usda_nutrient_name="Protein",
@@ -367,5 +352,5 @@ class TestSchemaCompliance:
             source="sr_legacy"
         )
 
-        for field in SCHEMA_HEADERS:
+        for field in _NUTRIENT_COLUMNS:
             assert field in record, f"Missing field: {field}"

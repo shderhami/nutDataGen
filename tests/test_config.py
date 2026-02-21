@@ -12,7 +12,8 @@ from config import (
     BASE_URL,
     DISCREPANCY_THRESHOLDS,
     DATA_DIR,
-    DATABASE_FILE
+    DATABASE_URL,
+    FOOD_ID_SEQUENCE_START,
 )
 
 
@@ -55,10 +56,16 @@ def test_data_dir_is_path():
     assert isinstance(DATA_DIR, Path)
 
 
-def test_database_file_is_path():
-    """Test that DATABASE_FILE is a valid Path object."""
-    assert isinstance(DATABASE_FILE, Path)
-    assert str(DATABASE_FILE).endswith(".csv")
+def test_database_url_is_valid():
+    """Test that DATABASE_URL is a valid PostgreSQL connection string."""
+    assert isinstance(DATABASE_URL, str)
+    assert DATABASE_URL.startswith("postgresql://")
+
+
+def test_food_id_sequence_start():
+    """Test that FOOD_ID_SEQUENCE_START is a reasonable starting ID."""
+    assert isinstance(FOOD_ID_SEQUENCE_START, int)
+    assert FOOD_ID_SEQUENCE_START >= 1000
 
 
 def test_data_dir_exists():

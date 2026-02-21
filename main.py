@@ -5,16 +5,15 @@ USDA Nutrition Data Extraction System - Main Entry Point
 Orchestrates the complete workflow for extracting, comparing, and storing
 nutrition data from USDA FoodData Central databases.
 """
-import sys
 from typing import Optional
 
-from config import DATABASE_FILE
+from config import AI_MODEL
+from db_connection import close_db
 from fediaf_nutrients import (
     get_all_nutrients,
     get_usda_nutrient_ids,
     get_taurine_nutrient,
     get_nutrient_by_id,
-    TAURINE_NUTRIENT_ID,
 )
 from usda_api import (
     USDAAPIError,
@@ -27,9 +26,11 @@ from comparison import (
 )
 from database import (
     initialize_database,
-    food_exists,
+    food_exists_by_name,
+    add_ingredient,
     add_food_nutrients,
     create_nutrient_record,
+    delete_food,
 )
 from user_interaction import (
     display_welcome,
@@ -48,7 +49,12 @@ from user_interaction import (
 from ai_validation import (
     validate_nutrients_concurrent,
     format_ai_suggestion,
-    AIValidationResult,
+)
+from supplement_template import (
+    generate_template,
+    read_template,
+    display_supplement_summary,
+    TEMPLATES_DIR,
 )
 
 
@@ -133,10 +139,8 @@ def validate_nutrient_coverage(
 
 
 def build_nutrient_record(
-    food_id: str,
     food_name: str,
-    sr_fdc_id: Optional[int],
-    foundation_fdc_id: Optional[int],
+    food_id: int,
     nutrient_id: Optional[int],
     fediaf_nutrient_name: str,
     usda_nutrient_name: Optional[str],
@@ -144,7 +148,6 @@ def build_nutrient_record(
     value: Optional[float],
     source: str,
     comment: Optional[str] = None,
-    portion_size: str = "100g",
     # USDA metadata fields (from selected source)
     num_samples: Optional[int] = None,
     min_value: Optional[float] = None,
@@ -156,20 +159,18 @@ def build_nutrient_record(
     ai_recommendation: Optional[str] = None,
     ai_justification: Optional[str] = None,
     ai_source: Optional[str] = None,
-    ai_confidence: Optional[str] = None
+    ai_confidence: Optional[str] = None,
+    ai_model: Optional[str] = None
 ) -> dict:
     """
-    Create single nutrient record matching schema.
+    Create single nutrient record matching database schema.
 
     Includes USDA metadata from the selected source for error calculation.
     Includes AI validation fields for literature cross-reference.
-    Note: standard_error and footnote removed - USDA API does not provide these.
     """
     return create_nutrient_record(
-        food_id=food_id,
         food_name=food_name,
-        sr_legacy_fdc_id=sr_fdc_id,
-        foundation_fdc_id=foundation_fdc_id,
+        food_id=food_id,
         nutrient_id=nutrient_id,
         fediaf_nutrient_name=fediaf_nutrient_name,
         usda_nutrient_name=usda_nutrient_name,
@@ -177,7 +178,6 @@ def build_nutrient_record(
         value=value,
         source=source,
         comment=comment,
-        portion_size=portion_size,
         num_samples=num_samples,
         min_value=min_value,
         max_value=max_value,
@@ -187,21 +187,22 @@ def build_nutrient_record(
         ai_recommendation=ai_recommendation,
         ai_justification=ai_justification,
         ai_source=ai_source,
-        ai_confidence=ai_confidence
+        ai_confidence=ai_confidence,
+        ai_model=ai_model
     )
 
 
-def process_single_food(food_info: dict) -> list[dict]:
+def process_single_food(food_id: int, food_info: dict) -> list[dict]:
     """
     Process one food item through complete workflow.
 
     Args:
-        food_info: Dict with food_id, food_name, sr_fdc_id, foundation_fdc_id
+        food_id: Auto-generated food_id from the database
+        food_info: Dict with food_name, sr_fdc_id, foundation_fdc_id
 
     Returns:
         List of nutrient records ready for saving
     """
-    food_id = food_info["food_id"]
     food_name = food_info["food_name"]
     sr_fdc_id = food_info.get("sr_fdc_id")
     foundation_fdc_id = food_info.get("foundation_fdc_id")
@@ -209,7 +210,6 @@ def process_single_food(food_info: dict) -> list[dict]:
     records = []
     sr_data = None
     foundation_data = None
-    portion_size = "100g"
 
     # Fetch SR Legacy data if provided
     if sr_fdc_id:
@@ -218,8 +218,6 @@ def process_single_food(food_info: dict) -> list[dict]:
             sr_data = fetch_sr_legacy(sr_fdc_id)
             sr_nutrient_count = sum(1 for n in sr_data["nutrients"].values() if n["value"] is not None)
             display_success(f"Retrieved {sr_nutrient_count} of {len(get_usda_nutrient_ids())} FEDIAF-required nutrients")
-            # Get portion size from API response (USDA data is always per 100g)
-            portion_size = sr_data.get("portion_size", "100g")
         except USDAAPIError as e:
             display_error(f"Failed to fetch SR Legacy data: {e}")
             display_info("Continuing without SR Legacy data...")
@@ -245,12 +243,12 @@ def process_single_food(food_info: dict) -> list[dict]:
         # Calculate missing nutrients dynamically from comparison results
         # Includes nutrients missing from both databases + Taurine (always missing)
         missing_nutrients = []
-        for nid in comparison.get("missing_both", []):
-            nutrient_info = get_nutrient_by_id(nid)
+        for entry in comparison.get("missing_both", []):
+            nutrient_info = get_nutrient_by_id(entry["nutrient_id"])
             if nutrient_info:
                 missing_nutrients.append(nutrient_info)
 
-        # Always add Taurine (custom ID 9001, never in USDA)
+        # Always add Taurine (USDA ID 1234, no data in USDA datasets)
         taurine = get_taurine_nutrient()
         if taurine and taurine["nutrient_id"] not in [n["nutrient_id"] for n in missing_nutrients]:
             missing_nutrients.append(taurine)
@@ -279,7 +277,8 @@ def process_single_food(food_info: dict) -> list[dict]:
                     "ai_recommendation": ai_result.recommendation,
                     "ai_justification": ai_result.justification,
                     "ai_source": ai_result.literature_source,
-                    "ai_confidence": ai_result.confidence
+                    "ai_confidence": ai_result.confidence,
+                    "ai_model": AI_MODEL,
                 }
             return {}
 
@@ -291,10 +290,8 @@ def process_single_food(food_info: dict) -> list[dict]:
             foundation_meta = match.get("foundation_metadata", {})
             ai_fields = get_ai_fields(nid)
             records.append(build_nutrient_record(
-                food_id=food_id,
                 food_name=food_name,
-                sr_fdc_id=sr_fdc_id,
-                foundation_fdc_id=foundation_fdc_id,
+                food_id=food_id,
                 nutrient_id=nid,
                 fediaf_nutrient_name=nutrient_info["nutrient_name"] if nutrient_info else f"Unknown ({nid})",
                 usda_nutrient_name=match["nutrient_name"],
@@ -302,7 +299,6 @@ def process_single_food(food_info: dict) -> list[dict]:
                 value=value,
                 source="foundation",
                 comment=f"Auto-accepted (< 5% difference with SR Legacy: {match['sr_value']})",
-                portion_size=portion_size,
                 # USDA metadata from Foundation (selected source)
                 num_samples=foundation_meta.get("num_samples"),
                 min_value=foundation_meta.get("min_value"),
@@ -314,7 +310,8 @@ def process_single_food(food_info: dict) -> list[dict]:
                 ai_recommendation=ai_fields.get("ai_recommendation"),
                 ai_justification=ai_fields.get("ai_justification"),
                 ai_source=ai_fields.get("ai_source"),
-                ai_confidence=ai_fields.get("ai_confidence")
+                ai_confidence=ai_fields.get("ai_confidence"),
+                ai_model=ai_fields.get("ai_model")
             ))
 
         # Process discrepancies - require user decision
@@ -346,10 +343,8 @@ def process_single_food(food_info: dict) -> list[dict]:
                     meta = {}  # For literature or skipped, no USDA metadata
 
                 records.append(build_nutrient_record(
-                    food_id=food_id,
                     food_name=food_name,
-                    sr_fdc_id=sr_fdc_id,
-                    foundation_fdc_id=foundation_fdc_id,
+                    food_id=food_id,
                     nutrient_id=nid,
                     fediaf_nutrient_name=nutrient_info["nutrient_name"] if nutrient_info else f"Unknown ({nid})",
                     usda_nutrient_name=decision["nutrient_name"],
@@ -357,7 +352,6 @@ def process_single_food(food_info: dict) -> list[dict]:
                     value=decision["chosen_value"],
                     source=decision["chosen_source"],
                     comment=decision["comment"],
-                    portion_size=portion_size,
                     # USDA metadata from selected source
                     num_samples=meta.get("num_samples"),
                     min_value=meta.get("min_value"),
@@ -391,10 +385,8 @@ def process_single_food(food_info: dict) -> list[dict]:
                 ai_fields = get_ai_fields(nid)
 
                 records.append(build_nutrient_record(
-                    food_id=food_id,
                     food_name=food_name,
-                    sr_fdc_id=sr_fdc_id,
-                    foundation_fdc_id=foundation_fdc_id,
+                    food_id=food_id,
                     nutrient_id=nid,
                     fediaf_nutrient_name=nutrient_info["nutrient_name"] if nutrient_info else f"Unknown ({nid})",
                     usda_nutrient_name=decision["nutrient_name"],
@@ -402,7 +394,6 @@ def process_single_food(food_info: dict) -> list[dict]:
                     value=decision["chosen_value"],
                     source=decision["chosen_source"],
                     comment=decision["comment"],
-                    portion_size=portion_size,
                     # USDA metadata from SR Legacy
                     num_samples=sr_meta.get("num_samples"),
                     min_value=sr_meta.get("min_value"),
@@ -439,10 +430,8 @@ def process_single_food(food_info: dict) -> list[dict]:
                     print(f"    AI Analysis: {ai_suggestion}")
 
                 records.append(build_nutrient_record(
-                    food_id=food_id,
                     food_name=food_name,
-                    sr_fdc_id=sr_fdc_id,
-                    foundation_fdc_id=foundation_fdc_id,
+                    food_id=food_id,
                     nutrient_id=nid,
                     fediaf_nutrient_name=nutrient_info["nutrient_name"] if nutrient_info else f"Unknown ({nid})",
                     usda_nutrient_name=nutrient["nutrient_name"],
@@ -450,7 +439,6 @@ def process_single_food(food_info: dict) -> list[dict]:
                     value=value,
                     source="foundation",
                     comment="Foundation only (not in SR Legacy)",
-                    portion_size=portion_size,
                     # USDA metadata from Foundation
                     num_samples=foundation_meta.get("num_samples"),
                     min_value=foundation_meta.get("min_value"),
@@ -486,7 +474,7 @@ def process_single_food(food_info: dict) -> list[dict]:
             if nutrient_info:
                 missing_nutrients.append(nutrient_info)
 
-        # Always add Taurine (custom ID 9001, never in USDA)
+        # Always add Taurine (USDA ID 1234, no data in USDA datasets)
         taurine = get_taurine_nutrient()
         if taurine and taurine["nutrient_id"] not in [n["nutrient_id"] for n in missing_nutrients]:
             missing_nutrients.append(taurine)
@@ -538,7 +526,8 @@ def process_single_food(food_info: dict) -> list[dict]:
                     "ai_recommendation": ai_result.recommendation,
                     "ai_justification": ai_result.justification,
                     "ai_source": ai_result.literature_source,
-                    "ai_confidence": ai_result.confidence
+                    "ai_confidence": ai_result.confidence,
+                    "ai_model": AI_MODEL,
                 }
             return {}
 
@@ -592,10 +581,8 @@ def process_single_food(food_info: dict) -> list[dict]:
                 meta = {}
 
             records.append(build_nutrient_record(
-                food_id=food_id,
                 food_name=food_name,
-                sr_fdc_id=sr_fdc_id,
-                foundation_fdc_id=foundation_fdc_id,
+                food_id=food_id,
                 nutrient_id=nid,
                 fediaf_nutrient_name=nutrient_info["nutrient_name"] if nutrient_info else f"Unknown ({nid})",
                 usda_nutrient_name=decision["nutrient_name"],
@@ -603,7 +590,6 @@ def process_single_food(food_info: dict) -> list[dict]:
                 value=decision["chosen_value"],
                 source=decision["chosen_source"],
                 comment=decision["comment"],
-                portion_size=portion_size,
                 # USDA metadata (only if SR Legacy was accepted)
                 num_samples=meta.get("num_samples"),
                 min_value=meta.get("min_value"),
@@ -615,7 +601,8 @@ def process_single_food(food_info: dict) -> list[dict]:
                 ai_recommendation=ai_fields.get("ai_recommendation"),
                 ai_justification=ai_fields.get("ai_justification"),
                 ai_source=ai_fields.get("ai_source"),
-                ai_confidence=ai_fields.get("ai_confidence")
+                ai_confidence=ai_fields.get("ai_confidence"),
+                ai_model=ai_fields.get("ai_model")
             ))
 
     # Scenario 3: Only Foundation data available (no SR Legacy)
@@ -638,7 +625,7 @@ def process_single_food(food_info: dict) -> list[dict]:
             if nutrient_info:
                 missing_nutrients.append(nutrient_info)
 
-        # Always add Taurine (custom ID 9001, never in USDA)
+        # Always add Taurine (USDA ID 1234, no data in USDA datasets)
         taurine = get_taurine_nutrient()
         if taurine and taurine["nutrient_id"] not in [n["nutrient_id"] for n in missing_nutrients]:
             missing_nutrients.append(taurine)
@@ -690,7 +677,8 @@ def process_single_food(food_info: dict) -> list[dict]:
                     "ai_recommendation": ai_result.recommendation,
                     "ai_justification": ai_result.justification,
                     "ai_source": ai_result.literature_source,
-                    "ai_confidence": ai_result.confidence
+                    "ai_confidence": ai_result.confidence,
+                    "ai_model": AI_MODEL,
                 }
             return {}
 
@@ -716,10 +704,8 @@ def process_single_food(food_info: dict) -> list[dict]:
             ai_fields = get_ai_fields(nid)
 
             records.append(build_nutrient_record(
-                food_id=food_id,
                 food_name=food_name,
-                sr_fdc_id=sr_fdc_id,
-                foundation_fdc_id=foundation_fdc_id,
+                food_id=food_id,
                 nutrient_id=nid,
                 fediaf_nutrient_name=nutrient_info["nutrient_name"] if nutrient_info else f"Unknown ({nid})",
                 usda_nutrient_name=nutrient["name"],
@@ -727,7 +713,6 @@ def process_single_food(food_info: dict) -> list[dict]:
                 value=value,
                 source="foundation",
                 comment="Foundation only (SR Legacy not available)",
-                portion_size=portion_size,
                 # USDA metadata from Foundation
                 num_samples=foundation_meta.get("num_samples"),
                 min_value=foundation_meta.get("min_value"),
@@ -739,7 +724,8 @@ def process_single_food(food_info: dict) -> list[dict]:
                 ai_recommendation=ai_fields.get("ai_recommendation"),
                 ai_justification=ai_fields.get("ai_justification"),
                 ai_source=ai_fields.get("ai_source"),
-                ai_confidence=ai_fields.get("ai_confidence")
+                ai_confidence=ai_fields.get("ai_confidence"),
+                ai_model=ai_fields.get("ai_model")
             ))
 
     # Scenario 4: Neither SR Legacy nor Foundation available
@@ -801,14 +787,13 @@ def process_single_food(food_info: dict) -> list[dict]:
                     "ai_recommendation": ai_result.recommendation,
                     "ai_justification": ai_result.justification,
                     "ai_source": ai_result.literature_source,
-                    "ai_confidence": ai_result.confidence
+                    "ai_confidence": ai_result.confidence,
+                    "ai_model": AI_MODEL,
                 }
 
             records.append(build_nutrient_record(
-                food_id=food_id,
                 food_name=food_name,
-                sr_fdc_id=sr_fdc_id,
-                foundation_fdc_id=foundation_fdc_id,
+                food_id=food_id,
                 nutrient_id=decision["nutrient_id"],
                 fediaf_nutrient_name=nutrient["nutrient_name"],
                 usda_nutrient_name=None,  # Not available in USDA
@@ -816,13 +801,75 @@ def process_single_food(food_info: dict) -> list[dict]:
                 value=decision["chosen_value"],
                 source=decision["chosen_source"],
                 comment=decision["comment"],
-                portion_size=portion_size,
                 # AI validation fields
                 ai_recommendation=ai_fields.get("ai_recommendation"),
                 ai_justification=ai_fields.get("ai_justification"),
                 ai_source=ai_fields.get("ai_source"),
-                ai_confidence=ai_fields.get("ai_confidence")
+                ai_confidence=ai_fields.get("ai_confidence"),
+                ai_model=ai_fields.get("ai_model")
             ))
+
+    return records
+
+
+def process_supplement(food_id: int, food_name: str) -> list[dict]:
+    """
+    Process a supplement using a pre-filled CSV template.
+
+    Bypasses USDA fetch, comparison, and AI validation. Reads nutrient values
+    from a CSV template file, shows non-zero nutrients for confirmation, and
+    creates records with source="product_label" for entered values and
+    value=0/source="not_in_supplement" for the rest.
+
+    Args:
+        food_id: Auto-generated food_id from the database.
+        food_name: Name of the supplement.
+
+    Returns:
+        List of nutrient records ready for saving, or empty list on failure.
+    """
+    # Auto-detect template from food name
+    default_path = TEMPLATES_DIR / f"{food_name.lower().replace(' ', '_')}.csv"
+    if default_path.exists():
+        file_path = input(f"Enter template CSV path [{default_path}]: ").strip()
+        if not file_path:
+            file_path = str(default_path)
+    else:
+        file_path = input("Enter path to filled supplement template CSV: ").strip()
+        if not file_path:
+            display_error("No file path provided.")
+            return []
+
+    try:
+        template_data = read_template(file_path)
+    except FileNotFoundError as e:
+        display_error(str(e))
+        return []
+    except ValueError as e:
+        display_error(f"Invalid template: {e}")
+        return []
+
+    display_supplement_summary(template_data)
+
+    if not prompt_confirmation("Accept these values?"):
+        display_info("Supplement entry cancelled.")
+        return []
+
+    records: list[dict] = []
+    for nutrient in template_data["nutrients"]:
+        has_value = nutrient["value"] is not None and nutrient["value"] != 0
+
+        records.append(create_nutrient_record(
+            food_name=food_name,
+            food_id=food_id,
+            nutrient_id=nutrient["nutrient_id"],
+            fediaf_nutrient_name=nutrient["fediaf_nutrient_name"],
+            usda_nutrient_name=None,
+            unit=nutrient["unit"],
+            value=nutrient["value"] if has_value else 0.0,
+            source="product_label" if has_value else "not_in_supplement",
+            comment="From supplement template" if has_value else "Zero - not in supplement",
+        ))
 
     return records
 
@@ -831,49 +878,114 @@ def main():
     """Main entry point."""
     display_welcome()
 
-    # Initialize database
-    initialize_database()
+    from config import AI_MOCK_MODE
+    if AI_MOCK_MODE:
+        print("[MOCK MODE] AI validation is using mock responses (AI_MOCK_MODE=true)\n")
 
-    while True:
-        # Get food info from user
-        food_info = prompt_food_info()
+    try:
+        # Initialize database connection
+        initialize_database()
 
-        # Check if food already exists
-        if food_exists(food_info["food_id"]):
-            if not prompt_confirmation(f"Food '{food_info['food_id']}' already exists. Overwrite?"):
-                display_info("Skipping this food.")
+        while True:
+            food_id = None
+
+            # Get food info from user (no food_id — auto-generated)
+            food_info = prompt_food_info()
+            food_name = food_info["food_name"]
+
+            # Check if food already exists by name
+            existing_id = food_exists_by_name(food_name)
+            if existing_id:
+                if not prompt_confirmation(
+                    f"Food '{food_name}' already exists (ID: {existing_id}). Add as new entry?"
+                ):
+                    display_info("Skipping this food.")
+                    if prompt_confirmation("Process another food?"):
+                        continue
+                    else:
+                        break
+
+            # Create ingredient record — auto-generates food_id
+            food_id = add_ingredient(
+                food_name=food_name,
+                category=food_info["category"],
+                base_unit=food_info["base_unit"],
+                portion_qty=food_info["portion_qty"],
+                grams_per_unit=food_info["grams_per_unit"],
+                me_kcal_per_unit=food_info.get("me_kcal_per_unit"),
+                sr_legacy_fdc_id=food_info.get("sr_fdc_id"),
+                foundation_fdc_id=food_info.get("foundation_fdc_id"),
+                price_per_unit=food_info["price_per_unit"],
+                currency=food_info.get("currency", "USD"),
+            )
+            display_success(f"Created ingredient '{food_name}' with ID {food_id}")
+
+            # Process the food - supplements use CSV template, others use USDA pipeline
+            if food_info["category"] == "Supplement":
+                records = process_supplement(food_id, food_name)
+            else:
+                records = process_single_food(food_id, food_info)
+
+            if not records:
+                display_error("No records were created.")
+                # Clean up the orphaned ingredient row
+                delete_food(food_id)
+                food_id = None
                 if prompt_confirmation("Process another food?"):
                     continue
                 else:
                     break
 
-        # Process the food
-        records = process_single_food(food_info)
+            # Validate completeness — all 50 nutrients must be present
+            expected_count = len(get_all_nutrients())
+            if len(records) != expected_count:
+                display_error(
+                    f"Expected {expected_count} nutrients but got {len(records)}. "
+                    "Cannot save incomplete data."
+                )
+                delete_food(food_id)
+                food_id = None
+                if prompt_confirmation("Process another food?"):
+                    continue
+                else:
+                    break
 
-        if not records:
-            display_error("No records were created.")
-            if prompt_confirmation("Process another food?"):
-                continue
+            # Display final summary
+            display_final_summary(records, food_name)
+
+            # Confirm save
+            if prompt_confirmation("Save to database?"):
+                added = add_food_nutrients(records)
+                display_success(f"Saved {added} nutrient records for '{food_name}' (ID: {food_id})")
             else:
+                display_info("Not saved. Removing ingredient entry.")
+                delete_food(food_id)
+                food_id = None
+
+            # Ask to continue
+            print("-" * 60)
+            if not prompt_confirmation("Process another food?"):
                 break
 
-        # Display final summary
-        display_final_summary(records, food_info["food_name"])
+        print("\nThank you for using the USDA Nutrition Data Extraction System!")
 
-        # Confirm save
-        if prompt_confirmation("Save to database?"):
-            added = add_food_nutrients(records, str(DATABASE_FILE))
-            display_success(f"Saved {added} nutrient records to {DATABASE_FILE}")
-        else:
-            display_info("Not saved.")
-
-        # Ask to continue
-        print("-" * 60)
-        if not prompt_confirmation("Process another food?"):
-            break
-
-    print("\nThank you for using the USDA Nutrition Data Extraction System!")
+    except KeyboardInterrupt:
+        print("\n\nInterrupted by user.")
+        # Clean up orphaned ingredient if we created one but didn't save nutrients
+        if food_id is not None:
+            display_info(f"Cleaning up incomplete ingredient (ID: {food_id})...")
+            delete_food(food_id)
+    finally:
+        close_db()
 
 
 if __name__ == "__main__":
-    main()
+    import sys
+
+    if len(sys.argv) >= 3 and sys.argv[1] == "--generate-template":
+        supplement_name = " ".join(sys.argv[2:])
+        path = generate_template(supplement_name)
+        print(f"Template generated: {path}")
+        print(f"Fill in the '{supplement_name}' column with nutrient values, then run the program.")
+    else:
+        main()

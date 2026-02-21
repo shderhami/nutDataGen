@@ -169,11 +169,11 @@ class TestGetTaurineNutrient:
         assert result is not None
         assert result["nutrient_name"] == "Taurine"
 
-    def test_taurine_has_custom_id(self):
-        """Test Taurine has custom nutrient ID 9001."""
+    def test_taurine_has_usda_id(self):
+        """Test Taurine has USDA nutrient ID 1234."""
         result = get_taurine_nutrient()
         assert result["nutrient_id"] == TAURINE_NUTRIENT_ID
-        assert result["nutrient_id"] == 9001
+        assert result["nutrient_id"] == 1234
 
     def test_taurine_unit_is_mg(self):
         """Test Taurine unit is mg."""

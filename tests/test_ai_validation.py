@@ -499,7 +499,7 @@ class TestShouldSkipValidation:
     def test_does_not_skip_missing(self):
         """Test not skipping missing nutrients."""
         nutrient_data = {
-            "nutrient_id": 9001,
+            "nutrient_id": 1234,
             "nutrient_name": "Taurine",
             "prompt_type": "missing",
         }
@@ -627,7 +627,7 @@ class TestValidateNutrientSingle:
     def test_validates_missing_nutrient(self):
         """Test validating a missing nutrient."""
         nutrient_data = {
-            "nutrient_id": 9001,
+            "nutrient_id": 1234,
             "nutrient_name": "Taurine",
             "unit": "mg",
             "prompt_type": "missing"
@@ -635,7 +635,7 @@ class TestValidateNutrientSingle:
 
         result = validate_nutrient_single("Chicken liver, raw", nutrient_data)
 
-        assert result.nutrient_id == 9001
+        assert result.nutrient_id == 1234
         assert result.nutrient_name == "Taurine"
         assert result.recommendation in ["literature", "estimate", "insufficient_data"]
 
@@ -746,7 +746,7 @@ class TestValidateNutrientsSequential:
         }
 
         missing_nutrients = [
-            {"nutrient_id": 9001, "nutrient_name": "Taurine", "unit": "mg"}
+            {"nutrient_id": 1234, "nutrient_name": "Taurine", "unit": "mg"}
         ]
 
         results = validate_nutrients_sequential(
@@ -757,7 +757,7 @@ class TestValidateNutrientsSequential:
             missing_nutrients=missing_nutrients
         )
 
-        assert 9001 in results
+        assert 1234 in results
 
     def test_returns_empty_for_no_nutrients(self):
         """Test returns empty dict when no nutrients."""
@@ -964,7 +964,7 @@ class TestValidateNutrientsConcurrent:
         }
 
         missing_nutrients = [
-            {"nutrient_id": 9001, "nutrient_name": "Taurine", "unit": "mg"}
+            {"nutrient_id": 1234, "nutrient_name": "Taurine", "unit": "mg"}
         ]
 
         results = validate_nutrients_concurrent(
@@ -975,7 +975,7 @@ class TestValidateNutrientsConcurrent:
             missing_nutrients=missing_nutrients
         )
 
-        assert 9001 in results
+        assert 1234 in results
 
     def test_returns_empty_for_no_nutrients(self):
         """Test returns empty dict when no nutrients."""
