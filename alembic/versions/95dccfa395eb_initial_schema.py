@@ -47,6 +47,7 @@ def upgrade() -> None:
         sa.Column("me_kcal_per_unit", sa.Numeric(10, 4), nullable=True),
         sa.Column("sr_legacy_fdc_id", sa.Integer(), nullable=True),
         sa.Column("foundation_fdc_id", sa.Integer(), nullable=True),
+        sa.Column("cooking_method", sa.String(20), nullable=True),
         sa.Column("price_per_unit", sa.Numeric(10, 4), nullable=False),
         sa.Column("currency", sa.String(3), nullable=True, server_default="USD"),
         sa.Column("created_at", sa.DateTime(), server_default=sa.text("CURRENT_TIMESTAMP")),
@@ -64,6 +65,12 @@ def upgrade() -> None:
     op.execute(
         "ALTER TABLE ingredients ADD CONSTRAINT chk_category "
         f"CHECK (category IN ({', '.join(repr(c) for c in VALID_CATEGORIES.split(', '))}))"
+    )
+
+    # Enforce valid cooking_method values (NULL allowed)
+    op.execute(
+        "ALTER TABLE ingredients ADD CONSTRAINT chk_cooking_method "
+        "CHECK (cooking_method IN ('raw', 'cooked'))"
     )
 
     op.execute("ALTER SEQUENCE ingredients_food_id_seq OWNED BY ingredients.food_id")

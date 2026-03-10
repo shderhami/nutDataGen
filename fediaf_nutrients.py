@@ -15,6 +15,7 @@ FEDIAF_NUTRIENTS = [
     {
         "nutrient_id": 1003,
         "nutrient_name": "Crude Protein",
+        "usda_name": "Protein",
         "unit": "g",
         "fediaf_required": True,
         "category": "Protein",
@@ -23,6 +24,7 @@ FEDIAF_NUTRIENTS = [
     {
         "nutrient_id": 1220,
         "nutrient_name": "Arginine",
+        "usda_name": "Arginine",
         "unit": "g",
         "fediaf_required": True,
         "category": "Amino Acid",
@@ -31,6 +33,7 @@ FEDIAF_NUTRIENTS = [
     {
         "nutrient_id": 1221,
         "nutrient_name": "Histidine",
+        "usda_name": "Histidine",
         "unit": "g",
         "fediaf_required": True,
         "category": "Amino Acid",
@@ -39,6 +42,7 @@ FEDIAF_NUTRIENTS = [
     {
         "nutrient_id": 1212,
         "nutrient_name": "Isoleucine",
+        "usda_name": "Isoleucine",
         "unit": "g",
         "fediaf_required": True,
         "category": "Amino Acid",
@@ -47,6 +51,7 @@ FEDIAF_NUTRIENTS = [
     {
         "nutrient_id": 1213,
         "nutrient_name": "Leucine",
+        "usda_name": "Leucine",
         "unit": "g",
         "fediaf_required": True,
         "category": "Amino Acid",
@@ -55,6 +60,7 @@ FEDIAF_NUTRIENTS = [
     {
         "nutrient_id": 1214,
         "nutrient_name": "Lysine",
+        "usda_name": "Lysine",
         "unit": "g",
         "fediaf_required": True,
         "category": "Amino Acid",
@@ -63,6 +69,7 @@ FEDIAF_NUTRIENTS = [
     {
         "nutrient_id": 1215,
         "nutrient_name": "Methionine",
+        "usda_name": "Methionine",
         "unit": "g",
         "fediaf_required": True,
         "category": "Amino Acid",
@@ -71,6 +78,7 @@ FEDIAF_NUTRIENTS = [
     {
         "nutrient_id": 1216,
         "nutrient_name": "Cystine",
+        "usda_name": "Cystine",
         "unit": "g",
         "fediaf_required": True,
         "category": "Amino Acid",
@@ -79,6 +87,7 @@ FEDIAF_NUTRIENTS = [
     {
         "nutrient_id": 1217,
         "nutrient_name": "Phenylalanine",
+        "usda_name": "Phenylalanine",
         "unit": "g",
         "fediaf_required": True,
         "category": "Amino Acid",
@@ -87,6 +96,7 @@ FEDIAF_NUTRIENTS = [
     {
         "nutrient_id": 1218,
         "nutrient_name": "Tyrosine",
+        "usda_name": "Tyrosine",
         "unit": "g",
         "fediaf_required": True,
         "category": "Amino Acid",
@@ -95,6 +105,7 @@ FEDIAF_NUTRIENTS = [
     {
         "nutrient_id": 1211,
         "nutrient_name": "Threonine",
+        "usda_name": "Threonine",
         "unit": "g",
         "fediaf_required": True,
         "category": "Amino Acid",
@@ -103,6 +114,7 @@ FEDIAF_NUTRIENTS = [
     {
         "nutrient_id": 1210,
         "nutrient_name": "Tryptophan",
+        "usda_name": "Tryptophan",
         "unit": "g",
         "fediaf_required": True,
         "category": "Amino Acid",
@@ -111,6 +123,7 @@ FEDIAF_NUTRIENTS = [
     {
         "nutrient_id": 1219,
         "nutrient_name": "Valine",
+        "usda_name": "Valine",
         "unit": "g",
         "fediaf_required": True,
         "category": "Amino Acid",
@@ -121,6 +134,7 @@ FEDIAF_NUTRIENTS = [
     {
         "nutrient_id": 1234,
         "nutrient_name": "Taurine",
+        "usda_name": "Taurine",
         "unit": "mg",
         "fediaf_required": True,
         "category": "Amino Acid",
@@ -131,6 +145,7 @@ FEDIAF_NUTRIENTS = [
     {
         "nutrient_id": 1004,
         "nutrient_name": "Total Fat",
+        "usda_name": "Total lipid (fat)",
         "unit": "g",
         "fediaf_required": True,
         "category": "Fat",
@@ -139,6 +154,7 @@ FEDIAF_NUTRIENTS = [
     {
         "nutrient_id": 1269,
         "nutrient_name": "Linoleic acid",
+        "usda_name": "PUFA 18:2",
         "unit": "g",
         "fediaf_required": True,
         "category": "Fatty Acid",
@@ -147,6 +163,7 @@ FEDIAF_NUTRIENTS = [
     {
         "nutrient_id": 1271,
         "nutrient_name": "Arachidonic acid",
+        "usda_name": "PUFA 20:4",
         "unit": "g",
         "fediaf_required": True,
         "category": "Fatty Acid",
@@ -155,6 +172,7 @@ FEDIAF_NUTRIENTS = [
     {
         "nutrient_id": 1270,
         "nutrient_name": "Alpha-linolenic acid",
+        "usda_name": "PUFA 18:3",
         "unit": "g",
         "fediaf_required": True,
         "category": "Fatty Acid",
@@ -163,6 +181,7 @@ FEDIAF_NUTRIENTS = [
     {
         "nutrient_id": 1278,
         "nutrient_name": "EPA",
+        "usda_name": "PUFA 20:5 n-3 (EPA)",
         "unit": "g",
         "fediaf_required": True,
         "category": "Fatty Acid",
@@ -171,6 +190,7 @@ FEDIAF_NUTRIENTS = [
     {
         "nutrient_id": 1272,
         "nutrient_name": "DHA",
+        "usda_name": "PUFA 22:6 n-3 (DHA)",
         "unit": "g",
         "fediaf_required": True,
         "category": "Fatty Acid",
@@ -181,6 +201,7 @@ FEDIAF_NUTRIENTS = [
     {
         "nutrient_id": 1087,
         "nutrient_name": "Calcium",
+        "usda_name": "Calcium, Ca",
         "unit": "mg",
         "fediaf_required": True,
         "category": "Mineral",
@@ -189,6 +210,7 @@ FEDIAF_NUTRIENTS = [
     {
         "nutrient_id": 1091,
         "nutrient_name": "Phosphorus",
+        "usda_name": "Phosphorus, P",
         "unit": "mg",
         "fediaf_required": True,
         "category": "Mineral",
@@ -197,6 +219,7 @@ FEDIAF_NUTRIENTS = [
     {
         "nutrient_id": 1092,
         "nutrient_name": "Potassium",
+        "usda_name": "Potassium, K",
         "unit": "mg",
         "fediaf_required": True,
         "category": "Mineral",
@@ -205,6 +228,7 @@ FEDIAF_NUTRIENTS = [
     {
         "nutrient_id": 1093,
         "nutrient_name": "Sodium",
+        "usda_name": "Sodium, Na",
         "unit": "mg",
         "fediaf_required": True,
         "category": "Mineral",
@@ -213,6 +237,7 @@ FEDIAF_NUTRIENTS = [
     {
         "nutrient_id": 1088,
         "nutrient_name": "Chloride",
+        "usda_name": "Chloride",
         "unit": "mg",
         "fediaf_required": True,
         "category": "Mineral",
@@ -221,6 +246,7 @@ FEDIAF_NUTRIENTS = [
     {
         "nutrient_id": 1090,
         "nutrient_name": "Magnesium",
+        "usda_name": "Magnesium, Mg",
         "unit": "mg",
         "fediaf_required": True,
         "category": "Mineral",
@@ -229,6 +255,7 @@ FEDIAF_NUTRIENTS = [
     {
         "nutrient_id": 1089,
         "nutrient_name": "Iron",
+        "usda_name": "Iron, Fe",
         "unit": "mg",
         "fediaf_required": True,
         "category": "Mineral",
@@ -237,6 +264,7 @@ FEDIAF_NUTRIENTS = [
     {
         "nutrient_id": 1098,
         "nutrient_name": "Copper",
+        "usda_name": "Copper, Cu",
         "unit": "mg",
         "fediaf_required": True,
         "category": "Mineral",
@@ -245,6 +273,7 @@ FEDIAF_NUTRIENTS = [
     {
         "nutrient_id": 1101,
         "nutrient_name": "Manganese",
+        "usda_name": "Manganese, Mn",
         "unit": "mg",
         "fediaf_required": True,
         "category": "Mineral",
@@ -253,6 +282,7 @@ FEDIAF_NUTRIENTS = [
     {
         "nutrient_id": 1095,
         "nutrient_name": "Zinc",
+        "usda_name": "Zinc, Zn",
         "unit": "mg",
         "fediaf_required": True,
         "category": "Mineral",
@@ -261,6 +291,7 @@ FEDIAF_NUTRIENTS = [
     {
         "nutrient_id": 1100,
         "nutrient_name": "Iodine",
+        "usda_name": "Iodine",
         "unit": "µg",
         "fediaf_required": True,
         "category": "Mineral",
@@ -269,6 +300,7 @@ FEDIAF_NUTRIENTS = [
     {
         "nutrient_id": 1103,
         "nutrient_name": "Selenium",
+        "usda_name": "Selenium, Se",
         "unit": "µg",
         "fediaf_required": True,
         "category": "Mineral",
@@ -279,6 +311,7 @@ FEDIAF_NUTRIENTS = [
     {
         "nutrient_id": 1106,
         "nutrient_name": "Vitamin A",
+        "usda_name": "Vitamin A, RAE",
         "unit": "IU",
         "fediaf_required": True,
         "category": "Vitamin",
@@ -287,6 +320,7 @@ FEDIAF_NUTRIENTS = [
     {
         "nutrient_id": 1110,
         "nutrient_name": "Vitamin D",
+        "usda_name": "Vitamin D (D2 + D3), International Units",
         "unit": "IU",
         "fediaf_required": True,
         "category": "Vitamin",
@@ -295,6 +329,7 @@ FEDIAF_NUTRIENTS = [
     {
         "nutrient_id": 1109,
         "nutrient_name": "Vitamin E",
+        "usda_name": "Vitamin E (alpha-tocopherol)",
         "unit": "IU",
         "fediaf_required": True,
         "category": "Vitamin",
@@ -303,6 +338,7 @@ FEDIAF_NUTRIENTS = [
     {
         "nutrient_id": 1185,
         "nutrient_name": "Vitamin K",
+        "usda_name": "Vitamin K (phylloquinone)",
         "unit": "µg",
         "fediaf_required": True,
         "category": "Vitamin",
@@ -311,6 +347,7 @@ FEDIAF_NUTRIENTS = [
     {
         "nutrient_id": 1165,
         "nutrient_name": "Thiamin",
+        "usda_name": "Thiamin",
         "unit": "mg",
         "fediaf_required": True,
         "category": "Vitamin",
@@ -319,6 +356,7 @@ FEDIAF_NUTRIENTS = [
     {
         "nutrient_id": 1166,
         "nutrient_name": "Riboflavin",
+        "usda_name": "Riboflavin",
         "unit": "mg",
         "fediaf_required": True,
         "category": "Vitamin",
@@ -327,6 +365,7 @@ FEDIAF_NUTRIENTS = [
     {
         "nutrient_id": 1167,
         "nutrient_name": "Niacin",
+        "usda_name": "Niacin",
         "unit": "mg",
         "fediaf_required": True,
         "category": "Vitamin",
@@ -335,6 +374,7 @@ FEDIAF_NUTRIENTS = [
     {
         "nutrient_id": 1170,
         "nutrient_name": "Pantothenic acid",
+        "usda_name": "Pantothenic acid",
         "unit": "mg",
         "fediaf_required": True,
         "category": "Vitamin",
@@ -343,6 +383,7 @@ FEDIAF_NUTRIENTS = [
     {
         "nutrient_id": 1175,
         "nutrient_name": "Pyridoxine",
+        "usda_name": "Vitamin B-6",
         "unit": "mg",
         "fediaf_required": True,
         "category": "Vitamin",
@@ -351,6 +392,7 @@ FEDIAF_NUTRIENTS = [
     {
         "nutrient_id": 1177,
         "nutrient_name": "Folic acid",
+        "usda_name": "Folate, total",
         "unit": "µg",
         "fediaf_required": True,
         "category": "Vitamin",
@@ -359,6 +401,7 @@ FEDIAF_NUTRIENTS = [
     {
         "nutrient_id": 1178,
         "nutrient_name": "Cobalamin",
+        "usda_name": "Vitamin B-12",
         "unit": "µg",
         "fediaf_required": True,
         "category": "Vitamin",
@@ -367,6 +410,7 @@ FEDIAF_NUTRIENTS = [
     {
         "nutrient_id": 1176,
         "nutrient_name": "Biotin",
+        "usda_name": "Biotin",
         "unit": "µg",
         "fediaf_required": True,
         "category": "Vitamin",
@@ -375,6 +419,7 @@ FEDIAF_NUTRIENTS = [
     {
         "nutrient_id": 1180,
         "nutrient_name": "Choline",
+        "usda_name": "Choline, total",
         "unit": "mg",
         "fediaf_required": True,
         "category": "Vitamin",
@@ -385,6 +430,7 @@ FEDIAF_NUTRIENTS = [
     {
         "nutrient_id": 1008,
         "nutrient_name": "Energy",
+        "usda_name": "Energy",
         "unit": "kcal",
         "fediaf_required": True,
         "category": "Other",
@@ -393,6 +439,7 @@ FEDIAF_NUTRIENTS = [
     {
         "nutrient_id": 1051,
         "nutrient_name": "Water",
+        "usda_name": "Water",
         "unit": "g",
         "fediaf_required": True,
         "category": "Other",
@@ -401,6 +448,7 @@ FEDIAF_NUTRIENTS = [
     {
         "nutrient_id": 1007,
         "nutrient_name": "Ash",
+        "usda_name": "Ash",
         "unit": "g",
         "fediaf_required": True,
         "category": "Other",
@@ -409,6 +457,7 @@ FEDIAF_NUTRIENTS = [
     {
         "nutrient_id": 1079,
         "nutrient_name": "Crude Fiber",
+        "usda_name": "Fiber, total dietary",
         "unit": "g",
         "fediaf_required": True,
         "category": "Other",
@@ -417,6 +466,7 @@ FEDIAF_NUTRIENTS = [
     {
         "nutrient_id": 1005,
         "nutrient_name": "Carbohydrate",
+        "usda_name": "Carbohydrate, by difference",
         "unit": "g",
         "fediaf_required": True,
         "category": "Other",

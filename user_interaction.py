@@ -96,6 +96,14 @@ def prompt_food_info() -> dict:
         except ValueError:
             print("Invalid Foundation FDC ID, skipping.")
 
+    # Cooking method (default: None)
+    cooking_method: str | None = None
+    cm_input = input("Enter cooking method (raw/cooked) [none]: ").strip().lower()
+    if cm_input in ("raw", "cooked"):
+        cooking_method = cm_input
+    elif cm_input:
+        print("Invalid cooking method, setting to none.")
+
     # Base unit (default: g)
     valid_units_str = ", ".join(VALID_BASE_UNITS)
     base_unit_input = input(f"Enter base unit ({valid_units_str}) [g]: ").strip().lower()
@@ -159,6 +167,7 @@ def prompt_food_info() -> dict:
         "category": category,
         "sr_fdc_id": sr_fdc_id,
         "foundation_fdc_id": foundation_fdc_id,
+        "cooking_method": cooking_method,
         "base_unit": base_unit,
         "portion_qty": portion_qty,
         "grams_per_unit": grams_per_unit,

@@ -122,6 +122,35 @@ class TestAddIngredient:
                 portion_qty=100.0, grams_per_unit=1.0,
             )
 
+    def test_rejects_invalid_cooking_method(self, mock_db):
+        """Test add_ingredient rejects invalid cooking_method."""
+        with pytest.raises(ValueError, match="Invalid cooking_method"):
+            add_ingredient(
+                "Chicken thigh", category="Muscle Meat", base_unit="g",
+                portion_qty=100.0, grams_per_unit=1.0,
+                cooking_method="fried",
+            )
+
+    def test_accepts_valid_cooking_method(self, mock_db):
+        """Test add_ingredient accepts valid cooking_method values."""
+        mock_db.fetchone.return_value = {"food_id": 10001}
+        result = add_ingredient(
+            "Chicken thigh", category="Muscle Meat", base_unit="g",
+            portion_qty=100.0, grams_per_unit=1.0,
+            cooking_method="raw",
+        )
+        assert result == 10001
+
+    def test_accepts_none_cooking_method(self, mock_db):
+        """Test add_ingredient accepts None cooking_method."""
+        mock_db.fetchone.return_value = {"food_id": 10001}
+        result = add_ingredient(
+            "Taurine powder", category="Supplement", base_unit="g",
+            portion_qty=100.0, grams_per_unit=1.0,
+            cooking_method=None,
+        )
+        assert result == 10001
+
 
 class TestAddFoodNutrients:
     """Tests for add_food_nutrients function."""

@@ -16,6 +16,24 @@ class USDAAPIError(Exception):
     pass
 
 
+# Mapping from USDA nutrient number (abridged format) to nutrient ID (full format).
+# Some FDC IDs only return data in abridged format, which uses "number" (str)
+# instead of "nutrient.id" (int). This mapping covers all 46 FEDIAF nutrients
+# that have USDA nutrient IDs (excludes Chloride, Iodine, Biotin, Taurine).
+NUTRIENT_NUMBER_TO_ID: dict[str, int] = {
+    "203": 1003, "204": 1004, "205": 1005, "207": 1007, "208": 1008,
+    "255": 1051, "291": 1079, "301": 1087, "303": 1089, "304": 1090,
+    "305": 1091, "306": 1092, "307": 1093, "309": 1095, "312": 1098,
+    "315": 1101, "317": 1103, "320": 1106, "323": 1109, "324": 1110,
+    "404": 1165, "405": 1166, "406": 1167, "410": 1170, "415": 1175,
+    "417": 1177, "418": 1178, "421": 1180, "430": 1185,
+    "501": 1210, "502": 1211, "503": 1212, "504": 1213, "505": 1214,
+    "506": 1215, "507": 1216, "508": 1217, "509": 1218, "510": 1219,
+    "511": 1220, "512": 1221,
+    "618": 1269, "619": 1270, "620": 1271, "621": 1272, "629": 1278,
+}
+
+
 # Derivation code to full description mapping
 # Based on USDA FoodData Central derivation codes
 DERIVATION_CODES = {
@@ -102,8 +120,19 @@ def fetch_food_data(fdc_id: int, api_key: Optional[str] = None) -> dict:
         response = requests.get(url, params=params, timeout=30)
 
         if response.status_code == 404:
-            raise USDAAPIError(f"Food with FDC ID {fdc_id} not found")
-        elif response.status_code == 403:
+            # Some FDC IDs (e.g., newer Foundation entries) only work with
+            # abridged format. Retry before giving up.
+            params["format"] = "abridged"
+            response = requests.get(url, params=params, timeout=30)
+            if response.status_code == 404:
+                raise USDAAPIError(f"Food with FDC ID {fdc_id} not found")
+            elif response.status_code != 200:
+                raise USDAAPIError(f"API error: HTTP {response.status_code}")
+            data = response.json()
+            data["_abridged"] = True
+            return data
+
+        if response.status_code == 403:
             raise USDAAPIError("Invalid or expired API key")
         elif response.status_code == 429:
             raise USDAAPIError("Rate limit exceeded. Please wait and try again.")
@@ -167,6 +196,25 @@ def extract_nutrients(food_data: dict, nutrient_ids: list[int]) -> dict:
 
     # Get nutrients from the response
     food_nutrients = food_data.get("foodNutrients", [])
+
+    # Abridged format uses flat structure with "number" field instead of nested "nutrient.id"
+    if food_data.get("_abridged"):
+        for fn in food_nutrients:
+            number = str(fn.get("number", ""))
+            nid = NUTRIENT_NUMBER_TO_ID.get(number)
+            if nid and nid in nutrient_ids:
+                result[nid] = {
+                    "name": fn.get("name"),
+                    "value": fn.get("amount"),
+                    "unit": fn.get("unitName"),
+                    "num_samples": None,
+                    "min_value": None,
+                    "max_value": None,
+                    "median_value": None,
+                    "year_acquired": None,
+                    "derivation_description": fn.get("derivationDescription", ""),
+                }
+        return result
 
     for fn in food_nutrients:
         # Handle different response structures

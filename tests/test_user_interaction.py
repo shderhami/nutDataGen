@@ -85,6 +85,7 @@ class TestPromptFoodInfo:
             "1",               # category (Muscle Meat by number)
             "171116",          # sr_fdc_id
             "746784",          # foundation_fdc_id
+            "raw",             # cooking_method
             "ml",              # base_unit
             "200",             # portion_qty
             "1.0",             # grams_per_unit
@@ -95,10 +96,11 @@ class TestPromptFoodInfo:
 
         result = prompt_food_info()
 
-        assert result["food_name"] == "Test Food"
+        assert result["food_name"] == "test food"
         assert result["category"] == "Muscle Meat"
         assert result["sr_fdc_id"] == 171116
         assert result["foundation_fdc_id"] == 746784
+        assert result["cooking_method"] == "raw"
         assert result["base_unit"] == "ml"
         assert result["portion_qty"] == 200.0
         assert result["grams_per_unit"] == 1.0
@@ -115,6 +117,7 @@ class TestPromptFoodInfo:
             "Organ Meat",      # category (by name)
             "171116",          # sr_fdc_id
             "",                # foundation_fdc_id (skip)
+            "",                # cooking_method (default none)
             "",                # base_unit (default g)
             "",                # portion_qty (default 100)
             "1.0",             # grams_per_unit
@@ -126,6 +129,7 @@ class TestPromptFoodInfo:
         result = prompt_food_info()
 
         assert result["foundation_fdc_id"] is None
+        assert result["cooking_method"] is None
 
     @patch('builtins.input')
     def test_handles_invalid_sr_fdc_id_skips(self, mock_input):
@@ -135,6 +139,7 @@ class TestPromptFoodInfo:
             "3",               # category (Fish & Seafood)
             "invalid",         # invalid sr_fdc_id - now skipped
             "",                # foundation_fdc_id
+            "cooked",          # cooking_method
             "",                # base_unit (default g)
             "",                # portion_qty (default 100)
             "1.0",             # grams_per_unit
@@ -146,6 +151,7 @@ class TestPromptFoodInfo:
         result = prompt_food_info()
 
         assert result["sr_fdc_id"] is None
+        assert result["cooking_method"] == "cooked"
 
     @patch('builtins.input')
     def test_handles_empty_sr_fdc_id(self, mock_input):
@@ -155,6 +161,7 @@ class TestPromptFoodInfo:
             "Supplement",      # category (by name)
             "",                # sr_fdc_id (skip)
             "",                # foundation_fdc_id (skip)
+            "",                # cooking_method (default none)
             "",                # base_unit (default g)
             "",                # portion_qty (default 100)
             "1.0",             # grams_per_unit
@@ -176,6 +183,7 @@ class TestPromptFoodInfo:
             "4",               # category (Egg)
             "",                # sr_fdc_id (skip)
             "",                # foundation_fdc_id (skip)
+            "",                # cooking_method (default none)
             "",                # base_unit (default g)
             "",                # portion_qty (default 100)
             "1.0",             # grams_per_unit
@@ -190,6 +198,7 @@ class TestPromptFoodInfo:
         assert result["portion_qty"] == 100.0
         assert result["grams_per_unit"] == 1.0
         assert result["me_kcal_per_unit"] is None
+        assert result["cooking_method"] is None
         assert result["price_per_unit"] == 2.50
         assert result["currency"] == "USD"
 

@@ -796,7 +796,7 @@ def process_single_food(food_id: int, food_info: dict) -> list[dict]:
                 food_id=food_id,
                 nutrient_id=decision["nutrient_id"],
                 fediaf_nutrient_name=nutrient["nutrient_name"],
-                usda_nutrient_name=None,  # Not available in USDA
+                usda_nutrient_name=nutrient.get("usda_name", nutrient["nutrient_name"]),
                 unit=nutrient["unit"],
                 value=decision["chosen_value"],
                 source=decision["chosen_source"],
@@ -858,13 +858,15 @@ def process_supplement(food_id: int, food_name: str) -> list[dict]:
     records: list[dict] = []
     for nutrient in template_data["nutrients"]:
         has_value = nutrient["value"] is not None and nutrient["value"] != 0
+        fediaf_info = get_nutrient_by_id(nutrient["nutrient_id"])
+        usda_name = fediaf_info["usda_name"] if fediaf_info else nutrient["fediaf_nutrient_name"]
 
         records.append(create_nutrient_record(
             food_name=food_name,
             food_id=food_id,
             nutrient_id=nutrient["nutrient_id"],
             fediaf_nutrient_name=nutrient["fediaf_nutrient_name"],
-            usda_nutrient_name=None,
+            usda_nutrient_name=usda_name,
             unit=nutrient["unit"],
             value=nutrient["value"] if has_value else 0.0,
             source="product_label" if has_value else "not_in_supplement",
@@ -915,6 +917,7 @@ def main():
                 me_kcal_per_unit=food_info.get("me_kcal_per_unit"),
                 sr_legacy_fdc_id=food_info.get("sr_fdc_id"),
                 foundation_fdc_id=food_info.get("foundation_fdc_id"),
+                cooking_method=food_info.get("cooking_method"),
                 price_per_unit=food_info["price_per_unit"],
                 currency=food_info.get("currency", "USD"),
             )

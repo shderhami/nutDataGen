@@ -88,6 +88,8 @@ VALID_CATEGORIES = (
     "Dairy", "Fat & Oil", "Plant Matter", "Supplement",
 )
 
+VALID_COOKING_METHODS = ("raw", "cooked")
+
 
 def add_ingredient(
     food_name: str,
@@ -98,6 +100,7 @@ def add_ingredient(
     me_kcal_per_unit: Optional[float] = None,
     sr_legacy_fdc_id: Optional[int] = None,
     foundation_fdc_id: Optional[int] = None,
+    cooking_method: Optional[str] = None,
     price_per_unit: float = 0.0,
     currency: str = "USD",
 ) -> int:
@@ -112,6 +115,11 @@ def add_ingredient(
             f"Invalid base_unit '{base_unit}'. "
             f"Must be one of: {', '.join(VALID_BASE_UNITS)}"
         )
+    if cooking_method is not None and cooking_method not in VALID_COOKING_METHODS:
+        raise ValueError(
+            f"Invalid cooking_method '{cooking_method}'. "
+            f"Must be one of: {', '.join(VALID_COOKING_METHODS)} (or None)"
+        )
     db = get_db()
     with db.cursor() as cur:
         cur.execute(
@@ -119,13 +127,13 @@ def add_ingredient(
             INSERT INTO ingredients
                 (food_name, category, base_unit, portion_qty, grams_per_unit,
                  me_kcal_per_unit, sr_legacy_fdc_id, foundation_fdc_id,
-                 price_per_unit, currency)
-            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+                 cooking_method, price_per_unit, currency)
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
             RETURNING food_id
             """,
             (food_name, category, base_unit, portion_qty, grams_per_unit,
              me_kcal_per_unit, sr_legacy_fdc_id, foundation_fdc_id,
-             price_per_unit, currency),
+             cooking_method, price_per_unit, currency),
         )
         row = cur.fetchone()
         if row is None:

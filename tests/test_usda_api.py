@@ -16,6 +16,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from usda_api import (
     USDAAPIError,
+    NUTRIENT_NUMBER_TO_ID,
     fetch_food_data,
     extract_nutrients,
     fetch_sr_legacy,
@@ -90,6 +91,52 @@ MOCK_FOOD_RESPONSE = {
     ]
 }
 
+MOCK_ABRIDGED_RESPONSE = {
+    "fdcId": 748967,
+    "description": "Eggs, Grade A, Large, egg whole",
+    "dataType": "Foundation",
+    "foodNutrients": [
+        {
+            "number": "203",
+            "name": "Protein",
+            "amount": 12.4,
+            "unitName": "G",
+            "derivationCode": "NC",
+            "derivationDescription": "Calculated",
+        },
+        {
+            "number": "204",
+            "name": "Total lipid (fat)",
+            "amount": 9.96,
+            "unitName": "G",
+            "derivationCode": "A",
+            "derivationDescription": "Analytical",
+        },
+        {
+            "number": "208",
+            "name": "Energy",
+            "amount": 148,
+            "unitName": "KCAL",
+            "derivationCode": "NC",
+            "derivationDescription": "Calculated",
+        },
+        {
+            "number": "301",
+            "name": "Calcium, Ca",
+            "amount": 48.0,
+            "unitName": "MG",
+            "derivationCode": "A",
+            "derivationDescription": "Analytical",
+        },
+        {
+            "number": "999",
+            "name": "Unknown Nutrient",
+            "amount": 1.0,
+            "unitName": "MG",
+        },
+    ],
+}
+
 MOCK_SEARCH_RESPONSE = {
     "foods": [
         {"fdcId": 171116, "description": "Chicken thigh, raw"},
@@ -124,8 +171,8 @@ class TestFetchFoodData:
         assert "Chicken" in result["description"]
 
     @patch('usda_api.requests.get')
-    def test_404_raises_error(self, mock_get):
-        """Test that 404 response raises error."""
+    def test_404_both_formats_raises_error(self, mock_get):
+        """Test that 404 on both full and abridged raises error."""
         mock_response = Mock()
         mock_response.status_code = 404
         mock_get.return_value = mock_response
@@ -133,6 +180,29 @@ class TestFetchFoodData:
         with pytest.raises(USDAAPIError) as exc_info:
             fetch_food_data(999999, api_key="test_key")
         assert "not found" in str(exc_info.value)
+        # Should have been called twice: full format then abridged
+        assert mock_get.call_count == 2
+
+    @patch('usda_api.requests.get')
+    def test_404_falls_back_to_abridged(self, mock_get):
+        """Test that 404 on full format retries with abridged."""
+        full_response = Mock()
+        full_response.status_code = 404
+        abridged_response = Mock()
+        abridged_response.status_code = 200
+        abridged_response.json.return_value = dict(MOCK_ABRIDGED_RESPONSE)
+        mock_get.side_effect = [full_response, abridged_response]
+
+        result = fetch_food_data(748967, api_key="test_key")
+
+        assert result["fdcId"] == 748967
+        assert result["_abridged"] is True
+        assert mock_get.call_count == 2
+        # Second call should include format=abridged
+        second_call_params = mock_get.call_args_list[1].kwargs.get(
+            "params", mock_get.call_args_list[1][1].get("params", {})
+        )
+        assert second_call_params.get("format") == "abridged"
 
     @patch('usda_api.requests.get')
     def test_403_raises_error(self, mock_get):
@@ -242,6 +312,109 @@ class TestExtractNutrients:
         assert result[1008]["num_samples"] is None
         assert result[1008]["min_value"] is None
         assert result[1008]["max_value"] is None
+
+
+class TestExtractNutrientsAbridged:
+    """Tests for extract_nutrients with abridged format responses."""
+
+    def test_extracts_values_from_abridged(self):
+        """Test extract_nutrients correctly maps abridged number to nutrient ID."""
+        abridged_data = dict(MOCK_ABRIDGED_RESPONSE)
+        abridged_data["_abridged"] = True
+
+        result = extract_nutrients(abridged_data, [1003, 1004, 1008, 1087])
+
+        assert result[1003]["value"] == 12.4
+        assert result[1003]["name"] == "Protein"
+        assert result[1004]["value"] == 9.96
+        assert result[1008]["value"] == 148
+        assert result[1087]["value"] == 48.0
+
+    def test_abridged_unit_preserved(self):
+        """Test that unit from abridged format is preserved."""
+        abridged_data = dict(MOCK_ABRIDGED_RESPONSE)
+        abridged_data["_abridged"] = True
+
+        result = extract_nutrients(abridged_data, [1003, 1087])
+
+        assert result[1003]["unit"] == "G"
+        assert result[1087]["unit"] == "MG"
+
+    def test_abridged_metadata_is_none(self):
+        """Test that metadata not in abridged format is None."""
+        abridged_data = dict(MOCK_ABRIDGED_RESPONSE)
+        abridged_data["_abridged"] = True
+
+        result = extract_nutrients(abridged_data, [1003])
+
+        assert result[1003]["num_samples"] is None
+        assert result[1003]["min_value"] is None
+        assert result[1003]["max_value"] is None
+        assert result[1003]["median_value"] is None
+        assert result[1003]["year_acquired"] is None
+
+    def test_abridged_derivation_description(self):
+        """Test that derivation description is extracted from abridged."""
+        abridged_data = dict(MOCK_ABRIDGED_RESPONSE)
+        abridged_data["_abridged"] = True
+
+        result = extract_nutrients(abridged_data, [1003, 1004])
+
+        assert result[1003]["derivation_description"] == "Calculated"
+        assert result[1004]["derivation_description"] == "Analytical"
+
+    def test_abridged_missing_nutrients_are_none(self):
+        """Test that requested nutrients not in abridged data have None values."""
+        abridged_data = dict(MOCK_ABRIDGED_RESPONSE)
+        abridged_data["_abridged"] = True
+
+        result = extract_nutrients(abridged_data, [1003, 1234])  # 1234 = Taurine
+
+        assert result[1003]["value"] == 12.4
+        assert result[1234]["value"] is None
+
+    def test_abridged_ignores_unmapped_numbers(self):
+        """Test that nutrients with unknown numbers are ignored."""
+        abridged_data = dict(MOCK_ABRIDGED_RESPONSE)
+        abridged_data["_abridged"] = True
+
+        # number "999" is in mock data but not in NUTRIENT_NUMBER_TO_ID
+        result = extract_nutrients(abridged_data, [1003])
+
+        assert 1003 in result
+        assert result[1003]["value"] == 12.4
+
+
+class TestNutrientNumberToId:
+    """Tests for NUTRIENT_NUMBER_TO_ID mapping."""
+
+    def test_mapping_covers_fediaf_nutrients(self):
+        """Test that mapping covers all FEDIAF nutrients with USDA IDs."""
+        from fediaf_nutrients import FEDIAF_NUTRIENTS
+
+        # 4 nutrients have no USDA data: Chloride, Iodine, Biotin, Taurine
+        unmapped_ids = {1088, 1100, 1176, 1234}
+        fediaf_ids = {
+            n["nutrient_id"]
+            for n in FEDIAF_NUTRIENTS
+            if n["nutrient_id"] is not None and n["nutrient_id"] not in unmapped_ids
+        }
+        mapped_ids = set(NUTRIENT_NUMBER_TO_ID.values())
+
+        assert fediaf_ids.issubset(mapped_ids)
+
+    def test_mapping_values_are_unique(self):
+        """Test that all mapped nutrient IDs are unique."""
+        ids = list(NUTRIENT_NUMBER_TO_ID.values())
+        assert len(ids) == len(set(ids))
+
+    def test_protein_mapping(self):
+        """Test Protein number-to-ID mapping."""
+        assert NUTRIENT_NUMBER_TO_ID["203"] == 1003
+
+    def test_fat_mapping(self):
+        """Test Fat number-to-ID mapping."""
+        assert NUTRIENT_NUMBER_TO_ID["204"] == 1004
 
 
 class TestGetDerivationDescription:
