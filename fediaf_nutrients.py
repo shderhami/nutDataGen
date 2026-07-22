@@ -1,15 +1,15 @@
 """
 FEDIAF 2024/2025 Nutrient Requirements Reference Data.
 
-Complete reference data for all 50 nutrients required for cat food formulation
-following FEDIAF Nutritional Guidelines.
+Complete reference data for all 52 tracked nutrients for cat food formulation:
+50 FEDIAF-required + 2 secondary constraint nutrients.
 
 Note: Taurine (USDA nutrient ID 1234) is defined in the USDA nutrient schema
 but has no data in SR Legacy or Foundation datasets. Requires literature source.
 """
 from typing import Optional
 
-# Complete list of FEDIAF-required nutrients (50 total)
+# Complete list of tracked nutrients (52 total: 50 FEDIAF-required + 2 secondary constraints)
 FEDIAF_NUTRIENTS = [
     # ========== Protein & Amino Acids (15 nutrients) ==========
     {
@@ -141,7 +141,7 @@ FEDIAF_NUTRIENTS = [
         "notes": "Critical for cats; Requires literature source (Spitze et al. 2003)"
     },
 
-    # ========== Fats & Fatty Acids (6 nutrients) ==========
+    # ========== Fats & Fatty Acids (6 FEDIAF-required + 2 secondary) ==========
     {
         "nutrient_id": 1004,
         "nutrient_name": "Total Fat",
@@ -195,6 +195,26 @@ FEDIAF_NUTRIENTS = [
         "fediaf_required": True,
         "category": "Fatty Acid",
         "notes": "22:6 omega-3 (PUFA 22:6 n-3); Mainly in fish"
+    },
+
+    # --- Secondary constraint fatty acids (not FEDIAF-required) ---
+    {
+        "nutrient_id": 1293,
+        "nutrient_name": "Fatty acids, total polyunsaturated",
+        "usda_name": "Fatty acids, total polyunsaturated",
+        "unit": "g",
+        "fediaf_required": False,
+        "category": "Fatty Acid",
+        "notes": "Secondary constraint; sum of all PUFA"
+    },
+    {
+        "nutrient_id": 1280,
+        "nutrient_name": "DPA 22:5 n-3",
+        "usda_name": "PUFA 22:5 n-3 (DPA)",
+        "unit": "g",
+        "fediaf_required": False,
+        "category": "Fatty Acid",
+        "notes": "22:5 omega-3; Secondary constraint for omega-3 balance"
     },
 
     # ========== Minerals (12 nutrients) ==========
@@ -476,8 +496,18 @@ FEDIAF_NUTRIENTS = [
 
 
 def get_all_nutrients() -> list[dict]:
-    """Returns complete FEDIAF nutrient list."""
+    """Returns complete nutrient list (FEDIAF-required + secondary constraints)."""
     return FEDIAF_NUTRIENTS.copy()
+
+
+def get_fediaf_required_nutrients() -> list[dict]:
+    """Returns only FEDIAF-required nutrients (fediaf_required=True)."""
+    return [n.copy() for n in FEDIAF_NUTRIENTS if n["fediaf_required"]]
+
+
+def get_secondary_nutrients() -> list[dict]:
+    """Returns secondary constraint nutrients (fediaf_required=False)."""
+    return [n.copy() for n in FEDIAF_NUTRIENTS if not n["fediaf_required"]]
 
 
 def get_usda_nutrient_ids() -> list[int]:

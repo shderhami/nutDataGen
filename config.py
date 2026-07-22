@@ -29,8 +29,8 @@ DISCREPANCY_THRESHOLDS = {
 # AI Validation Rate Limiting (Anthropic Tier 1)
 AI_RATE_LIMIT_RPM = 50           # Requests per minute (Tier 1)
 AI_MIN_REQUEST_INTERVAL = 1.2    # Seconds between requests (60/50 = 1.2s)
-AI_MAX_RETRIES = 3               # Max retry attempts on failure
-AI_RETRY_BASE_DELAY = 2.0        # Base delay for exponential backoff (seconds)
+AI_MAX_RETRIES = 5               # Max retry attempts on failure
+AI_RETRY_BASE_DELAY = 4.0        # Base delay for exponential backoff (seconds)
 
 # Smart Skipping Thresholds
 SKIP_VALIDATION_THRESHOLD = 5.0  # Skip AI validation if SR/Foundation differ by < 5%

@@ -92,6 +92,11 @@ class TestPromptFoodInfo:
             "3.5",             # me_kcal_per_unit
             "5.99",            # price_per_unit
             "CAD",             # currency
+            "butcher",         # source
+            "",                # amazon_url (skip)
+            "",                # chewy_url (skip)
+            "chicken",         # protein_species
+            "",                # display_name (default to title-cased food_name)
         ]
 
         result = prompt_food_info()
@@ -107,6 +112,12 @@ class TestPromptFoodInfo:
         assert result["me_kcal_per_unit"] == 3.5
         assert result["price_per_unit"] == 5.99
         assert result["currency"] == "CAD"
+        assert result["source"] == "butcher"
+        assert result["amazon_url"] is None
+        assert result["chewy_url"] is None
+        assert result["supplement_info"] is None
+        assert result["protein_species"] == "chicken"
+        assert result["display_name"] == "Test Food"
         assert "food_id" not in result
 
     @patch('builtins.input')
@@ -124,12 +135,20 @@ class TestPromptFoodInfo:
             "",                # me_kcal_per_unit (skip)
             "2.50",            # price_per_unit
             "",                # currency (default USD)
+            "",                # source (default grocery for non-Supplement)
+            "",                # amazon_url (skip)
+            "",                # chewy_url (skip)
+            "",                # protein_species (skip)
+            "",                # display_name (default)
         ]
 
         result = prompt_food_info()
 
         assert result["foundation_fdc_id"] is None
         assert result["cooking_method"] is None
+        assert result["source"] == "grocery"
+        assert result["supplement_info"] is None
+        assert result["protein_species"] is None
 
     @patch('builtins.input')
     def test_handles_invalid_sr_fdc_id_skips(self, mock_input):
@@ -146,34 +165,48 @@ class TestPromptFoodInfo:
             "",                # me_kcal_per_unit (skip)
             "2.50",            # price_per_unit
             "",                # currency (default)
+            "",                # source (default grocery for non-Supplement)
+            "",                # amazon_url (skip)
+            "",                # chewy_url (skip)
+            "fish",            # protein_species
+            "",                # display_name (default)
         ]
 
         result = prompt_food_info()
 
         assert result["sr_fdc_id"] is None
         assert result["cooking_method"] == "cooked"
+        assert result["protein_species"] == "fish"
 
     @patch('builtins.input')
     def test_handles_empty_sr_fdc_id(self, mock_input):
         """Test handles empty SR FDC ID (skips)."""
         mock_input.side_effect = [
-            "Test Food",       # food_name
-            "Supplement",      # category (by name)
-            "",                # sr_fdc_id (skip)
-            "",                # foundation_fdc_id (skip)
-            "",                # cooking_method (default none)
-            "",                # base_unit (default g)
-            "",                # portion_qty (default 100)
-            "1.0",             # grams_per_unit
-            "",                # me_kcal_per_unit (skip)
-            "2.50",            # price_per_unit
-            "",                # currency (default)
+            "Test Food",                # food_name
+            "Supplement",               # category (by name)
+            "",                         # sr_fdc_id (skip)
+            "",                         # foundation_fdc_id (skip)
+            "",                         # cooking_method (default none)
+            "",                         # base_unit (default g)
+            "",                         # portion_qty (default 100)
+            "1.0",                      # grams_per_unit
+            "",                         # me_kcal_per_unit (skip)
+            "2.50",                     # price_per_unit
+            "",                         # currency (default)
+            "",                         # source (default 'online' for Supplement)
+            "",                         # amazon_url (skip)
+            "",                         # chewy_url (skip)
+            "Trace mineral powder",     # supplement_info (prompted because source=online)
+            "",                         # protein_species (skip)
+            "",                         # display_name (default)
         ]
 
         result = prompt_food_info()
 
         assert result["sr_fdc_id"] is None
         assert result["foundation_fdc_id"] is None
+        assert result["source"] == "online"
+        assert result["supplement_info"] == "Trace mineral powder"
 
     @patch('builtins.input')
     def test_defaults_for_base_unit_and_portion(self, mock_input):
@@ -190,6 +223,11 @@ class TestPromptFoodInfo:
             "",                # me_kcal_per_unit (skip)
             "2.50",            # price_per_unit
             "",                # currency (default USD)
+            "",                # source (default grocery for non-Supplement)
+            "",                # amazon_url (skip)
+            "",                # chewy_url (skip)
+            "",                # protein_species (skip)
+            "",                # display_name (default)
         ]
 
         result = prompt_food_info()
@@ -201,6 +239,8 @@ class TestPromptFoodInfo:
         assert result["cooking_method"] is None
         assert result["price_per_unit"] == 2.50
         assert result["currency"] == "USD"
+        assert result["source"] == "grocery"
+        assert result["display_name"] == "Test Food"
 
 
 class TestPromptDiscrepancyDecision:

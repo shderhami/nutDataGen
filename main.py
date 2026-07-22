@@ -63,7 +63,7 @@ def validate_nutrient_coverage(
     missing_nutrients: list[dict]
 ) -> bool:
     """
-    Validate that all 50 FEDIAF-required nutrients are accounted for.
+    Validate that all tracked nutrients are accounted for.
 
     Displays a summary of nutrient coverage by category:
     - Matches (both SR and Foundation)
@@ -77,10 +77,10 @@ def validate_nutrient_coverage(
         missing_nutrients: List of nutrients missing from USDA
 
     Returns:
-        True if all 50 nutrients are accounted for, False otherwise
+        True if all nutrients are accounted for, False otherwise
     """
     all_nutrients = get_all_nutrients()
-    expected_count = len(all_nutrients)  # Should be 50
+    expected_count = len(all_nutrients)
 
     # Count nutrients in each category
     matches_count = len(comparison.get("matches", []))
@@ -104,7 +104,7 @@ def validate_nutrient_coverage(
     print(f"  TOTAL ACCOUNTED:                {total_count:3d} / {expected_count}")
 
     if total_count == expected_count:
-        print("  ✓ All 50 nutrients accounted for")
+        print(f"  ✓ All {expected_count} nutrients accounted for")
         print("=" * 60)
         return True
     else:
@@ -253,7 +253,7 @@ def process_single_food(food_id: int, food_info: dict) -> list[dict]:
         if taurine and taurine["nutrient_id"] not in [n["nutrient_id"] for n in missing_nutrients]:
             missing_nutrients.append(taurine)
 
-        # Validate all 50 nutrients are accounted for
+        # Validate all nutrients are accounted for
         validate_nutrient_coverage(comparison, missing_nutrients)
 
         # Run AI validation on all nutrients
@@ -502,7 +502,7 @@ def process_single_food(food_id: int, food_info: dict) -> list[dict]:
             "missing_both": list(missing_from_sr)
         }
 
-        # Validate all 50 nutrients are accounted for
+        # Validate all nutrients are accounted for
         validate_nutrient_coverage(sr_only_comparison, missing_nutrients)
 
         # Run AI validation
@@ -653,7 +653,7 @@ def process_single_food(food_id: int, food_info: dict) -> list[dict]:
             "missing_both": list(missing_from_foundation)
         }
 
-        # Validate all 50 nutrients are accounted for
+        # Validate all nutrients are accounted for
         validate_nutrient_coverage(foundation_only_comparison, missing_nutrients)
 
         # Run AI validation
@@ -747,7 +747,7 @@ def process_single_food(food_id: int, food_info: dict) -> list[dict]:
             "missing_both": [n["nutrient_id"] for n in missing_nutrients if n["nutrient_id"]]
         }
 
-        # Validate all 50 nutrients are accounted for
+        # Validate all nutrients are accounted for
         validate_nutrient_coverage(empty_comparison, missing_nutrients)
 
         # Run AI validation to get literature suggestions
@@ -920,6 +920,12 @@ def main():
                 cooking_method=food_info.get("cooking_method"),
                 price_per_unit=food_info["price_per_unit"],
                 currency=food_info.get("currency", "USD"),
+                source=food_info.get("source", "grocery"),
+                amazon_url=food_info.get("amazon_url"),
+                chewy_url=food_info.get("chewy_url"),
+                supplement_info=food_info.get("supplement_info"),
+                protein_species=food_info.get("protein_species"),
+                display_name=food_info.get("display_name"),
             )
             display_success(f"Created ingredient '{food_name}' with ID {food_id}")
 
@@ -939,7 +945,7 @@ def main():
                 else:
                     break
 
-            # Validate completeness — all 50 nutrients must be present
+            # Validate completeness — all nutrients must be present
             expected_count = len(get_all_nutrients())
             if len(records) != expected_count:
                 display_error(

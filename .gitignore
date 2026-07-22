@@ -37,3 +37,6 @@ templates/*.csv
 
 # Data files (optional - uncomment if you don't want to track)
 # data/*.csv
+
+# Database backups / dumps (generated artifacts, not source)
+backups/

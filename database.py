@@ -85,10 +85,19 @@ VALID_BASE_UNITS = ("g", "ml", "tsp", "tbsp", "drop", "capsule", "tablet", "unit
 
 VALID_CATEGORIES = (
     "Muscle Meat", "Organ Meat", "Fish & Seafood", "Egg",
-    "Dairy", "Fat & Oil", "Plant Matter", "Supplement",
+    "Dairy", "Fish Oil", "Plant Matter", "Supplement", "Base",
 )
 
-VALID_COOKING_METHODS = ("raw", "cooked")
+VALID_COOKING_METHODS = ("raw", "cooked", "boiled-drained")
+
+VALID_SOURCES = ("grocery", "butcher", "online", "homemade", "none")
+
+SUPPLEMENT_INFO_SOURCES = ("online", "homemade")
+
+VALID_PROTEIN_SPECIES = (
+    "chicken", "beef", "fish", "turkey",
+    "lamb", "pork", "duck", "rabbit", "mussel",
+)
 
 
 def add_ingredient(
@@ -103,6 +112,12 @@ def add_ingredient(
     cooking_method: Optional[str] = None,
     price_per_unit: float = 0.0,
     currency: str = "USD",
+    source: str = "grocery",
+    amazon_url: Optional[str] = None,
+    chewy_url: Optional[str] = None,
+    supplement_info: Optional[str] = None,
+    protein_species: Optional[str] = None,
+    display_name: Optional[str] = None,
 ) -> int:
     """Insert a new ingredient and return the auto-generated food_id."""
     if category not in VALID_CATEGORIES:
@@ -120,20 +135,40 @@ def add_ingredient(
             f"Invalid cooking_method '{cooking_method}'. "
             f"Must be one of: {', '.join(VALID_COOKING_METHODS)} (or None)"
         )
+    if source not in VALID_SOURCES:
+        raise ValueError(
+            f"Invalid source '{source}'. "
+            f"Must be one of: {', '.join(VALID_SOURCES)}"
+        )
+    if protein_species is not None and protein_species not in VALID_PROTEIN_SPECIES:
+        raise ValueError(
+            f"Invalid protein_species '{protein_species}'. "
+            f"Must be one of: {', '.join(VALID_PROTEIN_SPECIES)} (or None)"
+        )
+    if supplement_info is not None and source not in SUPPLEMENT_INFO_SOURCES:
+        raise ValueError(
+            "supplement_info can only be set when source is one of: "
+            f"{', '.join(SUPPLEMENT_INFO_SOURCES)}"
+        )
     db = get_db()
     with db.cursor() as cur:
         cur.execute(
             """
             INSERT INTO ingredients
-                (food_name, category, base_unit, portion_qty, grams_per_unit,
-                 me_kcal_per_unit, sr_legacy_fdc_id, foundation_fdc_id,
-                 cooking_method, price_per_unit, currency)
-            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+                (food_name, category, base_unit, portion_qty,
+                 grams_per_unit, me_kcal_per_unit, sr_legacy_fdc_id,
+                 foundation_fdc_id, cooking_method, price_per_unit, currency,
+                 source, amazon_url, chewy_url, supplement_info,
+                 protein_species, display_name)
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,
+                    %s, %s, %s, %s, %s, %s)
             RETURNING food_id
             """,
             (food_name, category, base_unit, portion_qty, grams_per_unit,
              me_kcal_per_unit, sr_legacy_fdc_id, foundation_fdc_id,
-             cooking_method, price_per_unit, currency),
+             cooking_method, price_per_unit, currency,
+             source, amazon_url, chewy_url, supplement_info,
+             protein_species, display_name),
         )
         row = cur.fetchone()
         if row is None:
@@ -245,7 +280,7 @@ def update_nutrient(
     return True
 
 
-def validate_nutrient_completeness(food_id: int, expected_count: int = 50) -> bool:
+def validate_nutrient_completeness(food_id: int, expected_count: int = 52) -> bool:
     """Validate that all required nutrients exist for a food in the database."""
     db = get_db()
     with db.cursor() as cur:

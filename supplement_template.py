@@ -24,7 +24,7 @@ def generate_template(supplement_name: str) -> Path:
     """
     Generate a CSV template for a supplement.
 
-    Creates a CSV file with all 50 FEDIAF nutrients as rows and the supplement
+    Creates a CSV file with all tracked nutrients as rows and the supplement
     name as the value column header. The user fills in nutrient values from
     the product label.
 

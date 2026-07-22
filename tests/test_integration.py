@@ -301,7 +301,7 @@ class TestProcessSingleFood:
         from usda_api import USDAAPIError
         mock_fetch_sr.side_effect = USDAAPIError("API Error")
 
-        # Mock missing nutrient prompts to provide values (all 50 nutrients will be missing)
+        # Mock missing nutrient prompts to provide values (all nutrients will be missing)
         mock_missing.return_value = {
             "nutrient_id": 1003,
             "nutrient_name": "Protein",
@@ -320,12 +320,12 @@ class TestProcessSingleFood:
 
 
 class TestFediafNutrientsCoverage:
-    """Tests to verify all 50 FEDIAF nutrients are handled."""
+    """Tests to verify all tracked nutrients are handled."""
 
-    def test_50_nutrients_defined(self):
-        """Test that exactly 50 nutrients are defined."""
+    def test_all_nutrients_defined(self):
+        """Test that exactly 52 nutrients are defined (50 FEDIAF + 2 secondary)."""
         all_nutrients = get_all_nutrients()
-        assert len(all_nutrients) == 50
+        assert len(all_nutrients) == 52
 
     def test_usda_ids_extracted(self):
         """Test that USDA IDs are properly extracted."""

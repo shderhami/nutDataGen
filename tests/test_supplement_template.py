@@ -72,15 +72,15 @@ class TestGenerateTemplate:
                 header = next(reader)
                 assert header == ["nutrient_id", "fediaf_nutrient_name", "unit", "Taurine Powder"]
 
-    def test_has_50_nutrient_rows(self, tmp_path):
-        """Test template has 50 nutrient rows."""
+    def test_has_52_nutrient_rows(self, tmp_path):
+        """Test template has 52 nutrient rows."""
         with patch("supplement_template.TEMPLATES_DIR", tmp_path):
             path = generate_template("Test Supplement")
             with open(path, "r", encoding="utf-8") as f:
                 reader = csv.reader(f)
                 next(reader)  # skip header
                 rows = list(reader)
-                assert len(rows) == 50
+                assert len(rows) == 52
 
     def test_value_column_empty(self, tmp_path):
         """Test value column is empty in template."""
@@ -112,7 +112,7 @@ class TestReadTemplate:
         result = read_template(path)
 
         assert result["supplement_name"] == "Taurine Powder"
-        assert len(result["nutrients"]) == 50
+        assert len(result["nutrients"]) == 52
 
         # Check taurine value
         taurine = next(n for n in result["nutrients"] if n["nutrient_id"] == 1234)
@@ -173,7 +173,7 @@ class TestReadTemplate:
             read_template(file_path)
 
     def test_missing_nutrients(self, tmp_path):
-        """Test ValueError when template has fewer than 50 nutrients."""
+        """Test ValueError when template has fewer than 52 nutrients."""
         file_path = tmp_path / "incomplete.csv"
         with open(file_path, "w", newline="") as f:
             writer = csv.writer(f)
@@ -275,8 +275,8 @@ class TestDisplaySupplementSummary:
 class TestProcessSupplement:
     """Tests for process_supplement function in main.py."""
 
-    def test_creates_50_records(self, tmp_template):
-        """Test supplement processing creates exactly 50 nutrient records."""
+    def test_creates_52_records(self, tmp_template):
+        """Test supplement processing creates exactly 52 nutrient records."""
         from main import process_supplement
 
         path = tmp_template(
@@ -289,7 +289,7 @@ class TestProcessSupplement:
                 mock_create.side_effect = lambda **kwargs: kwargs
                 records = process_supplement(food_id=10005, food_name="Taurine Powder")
 
-        assert len(records) == 50
+        assert len(records) == 52
 
     def test_nonzero_source_is_product_label(self, tmp_template):
         """Test non-zero nutrient source is 'product_label'."""

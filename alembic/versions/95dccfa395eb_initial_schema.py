@@ -20,7 +20,7 @@ branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
 
 VALID_BASE_UNITS = "g, ml, tsp, tbsp, drop, capsule, tablet, unit"
-VALID_CATEGORIES = "Muscle Meat, Organ Meat, Fish & Seafood, Egg, Dairy, Fat & Oil, Plant Matter, Supplement"
+VALID_CATEGORIES = "Muscle Meat, Organ Meat, Fish & Seafood, Egg, Dairy, Fish Oil, Plant Matter, Supplement"
 
 
 def upgrade() -> None:

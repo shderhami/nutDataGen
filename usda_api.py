@@ -18,8 +18,8 @@ class USDAAPIError(Exception):
 
 # Mapping from USDA nutrient number (abridged format) to nutrient ID (full format).
 # Some FDC IDs only return data in abridged format, which uses "number" (str)
-# instead of "nutrient.id" (int). This mapping covers all 46 FEDIAF nutrients
-# that have USDA nutrient IDs (excludes Chloride, Iodine, Biotin, Taurine).
+# instead of "nutrient.id" (int). This mapping covers 48 tracked nutrients
+# (excludes Chloride, Iodine, Biotin, Taurine which have no USDA data).
 NUTRIENT_NUMBER_TO_ID: dict[str, int] = {
     "203": 1003, "204": 1004, "205": 1005, "207": 1007, "208": 1008,
     "255": 1051, "291": 1079, "301": 1087, "303": 1089, "304": 1090,
@@ -31,6 +31,7 @@ NUTRIENT_NUMBER_TO_ID: dict[str, int] = {
     "506": 1215, "507": 1216, "508": 1217, "509": 1218, "510": 1219,
     "511": 1220, "512": 1221,
     "618": 1269, "619": 1270, "620": 1271, "621": 1272, "629": 1278,
+    "631": 1280, "646": 1293,
 }
 
 

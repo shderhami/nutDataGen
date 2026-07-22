@@ -260,7 +260,7 @@ class TestValidateNutrientCompleteness:
 
     def test_returns_true_when_complete(self, mock_db):
         """Test returns True when count matches expected."""
-        mock_db.fetchone.return_value = {"cnt": 50}
+        mock_db.fetchone.return_value = {"cnt": 52}
         assert validate_nutrient_completeness(1001) is True
 
     def test_returns_false_when_incomplete(self, mock_db):

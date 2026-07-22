@@ -28,7 +28,18 @@ VALID_BASE_UNITS = ("g", "ml", "tsp", "tbsp", "drop", "capsule", "tablet", "unit
 
 VALID_CATEGORIES = (
     "Muscle Meat", "Organ Meat", "Fish & Seafood", "Egg",
-    "Dairy", "Fat & Oil", "Plant Matter", "Supplement",
+    "Dairy", "Fish Oil", "Plant Matter", "Supplement", "Base",
+)
+
+VALID_COOKING_METHODS = ("raw", "cooked", "boiled-drained")
+
+VALID_SOURCES = ("grocery", "butcher", "online", "homemade", "none")
+
+SUPPLEMENT_INFO_SOURCES = ("online", "homemade")
+
+VALID_PROTEIN_SPECIES = (
+    "chicken", "beef", "fish", "turkey",
+    "lamb", "pork", "duck", "rabbit", "mussel",
 )
 
 
@@ -47,12 +58,19 @@ def prompt_food_info() -> dict:
             "category": str,
             "sr_fdc_id": int or None,
             "foundation_fdc_id": int or None,
+            "cooking_method": str or None,
             "base_unit": str,
             "portion_qty": float,
             "grams_per_unit": float,
             "me_kcal_per_unit": float or None,
-            "price_per_unit": float or None,
+            "price_per_unit": float,
             "currency": str,
+            "source": str,
+            "amazon_url": str or None,
+            "chewy_url": str or None,
+            "supplement_info": str or None,
+            "protein_species": str or None,
+            "display_name": str,
         }
     """
     print("-" * 40)
@@ -98,8 +116,9 @@ def prompt_food_info() -> dict:
 
     # Cooking method (default: None)
     cooking_method: str | None = None
-    cm_input = input("Enter cooking method (raw/cooked) [none]: ").strip().lower()
-    if cm_input in ("raw", "cooked"):
+    cm_prompt = f"Enter cooking method ({'/'.join(VALID_COOKING_METHODS)}) [none]: "
+    cm_input = input(cm_prompt).strip().lower()
+    if cm_input in VALID_COOKING_METHODS:
         cooking_method = cm_input
     elif cm_input:
         print("Invalid cooking method, setting to none.")
@@ -162,6 +181,49 @@ def prompt_food_info() -> dict:
     currency_input = input("Enter currency [USD]: ").strip()
     currency = currency_input.upper() if currency_input else "USD"
 
+    # Source (default: grocery; auto-set to 'online' for Supplement category)
+    default_source = "online" if category == "Supplement" else "grocery"
+    source = ""
+    while source not in VALID_SOURCES:
+        src_input = input(
+            f"Enter source ({'/'.join(VALID_SOURCES)}) [{default_source}]: "
+        ).strip().lower()
+        source = src_input if src_input else default_source
+        if source not in VALID_SOURCES:
+            print(f"Invalid source. Must be one of: {', '.join(VALID_SOURCES)}")
+
+    # Amazon URL (optional)
+    amazon_input = input("Enter Amazon URL (or press Enter to skip): ").strip()
+    amazon_url = amazon_input if amazon_input else None
+
+    # Chewy URL (optional)
+    chewy_input = input("Enter Chewy URL (or press Enter to skip): ").strip()
+    chewy_url = chewy_input if chewy_input else None
+
+    # Supplement info (only allowed when source is online or homemade; DB enforces this)
+    supplement_info: str | None = None
+    if source in SUPPLEMENT_INFO_SOURCES:
+        si_input = input("Enter supplement info (or press Enter to skip): ").strip()
+        supplement_info = si_input if si_input else None
+
+    # Protein species (optional; constrained to VALID_PROTEIN_SPECIES)
+    protein_species: str | None = None
+    ps_input = input(
+        f"Enter protein species ({'/'.join(VALID_PROTEIN_SPECIES)}) "
+        "(or press Enter to skip): "
+    ).strip().lower()
+    if ps_input:
+        if ps_input in VALID_PROTEIN_SPECIES:
+            protein_species = ps_input
+        else:
+            print("Invalid protein species, setting to none.")
+
+    # Display name (optional; defaults to title-cased food_name)
+    dn_input = input(
+        f"Enter display name [{food_name.title()}]: "
+    ).strip()
+    display_name = dn_input if dn_input else food_name.title()
+
     return {
         "food_name": food_name,
         "category": category,
@@ -174,6 +236,12 @@ def prompt_food_info() -> dict:
         "me_kcal_per_unit": me_kcal_per_unit,
         "price_per_unit": price_per_unit,
         "currency": currency,
+        "source": source,
+        "amazon_url": amazon_url,
+        "chewy_url": chewy_url,
+        "supplement_info": supplement_info,
+        "protein_species": protein_species,
+        "display_name": display_name,
     }
 
 
