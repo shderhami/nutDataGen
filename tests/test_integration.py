@@ -139,7 +139,8 @@ class TestBuildNutrientRecord:
         # Should have calculated statistics (native floats, not strings)
         assert record["confidence_interval_lower"] is not None
         assert record["confidence_interval_upper"] is not None
-        assert record["coefficient_of_variation"] is not None
+        # coefficient_of_variation is now owned by the CV pipeline (None from the insert path)
+        assert record["coefficient_of_variation"] is None
         assert record["range_uncertainty"] is not None
 
 

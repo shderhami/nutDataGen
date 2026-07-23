@@ -1,0 +1,487 @@
+score,decision,prep,n_obs,source_dataset,source_food_id,description,reasons
+0.0,drop,other,23,sr28,21260,"TACO BELL, Original Taco with beef, cheese and lettuce",-brand -dish/prepared -multi-ingredient
+0.0,drop,other,25,fdc_sr_legacy,169036,"CARRABBA'S ITALIAN GRILL, cheese ravioli with marinara sauce",-dish/prepared -multi-ingredient
+0.0,drop,other,23,sr28,21295,"PIZZA HUT 14"" Cheese Pizza, THIN 'N CRISPY Crust",-brand -dish/prepared
+0.0,drop,other,24,fdc_sr_legacy,173287,"PAPA JOHN'S 14"" Cheese Pizza, Thin Crust",-brand -dish/prepared
+0.0,drop,other,28,sr28,36056,"Restaurant, Mexican, cheese tamales",-fastfood/babyfood/restaurant
+0.0,drop,other,24,fdc_sr_legacy,170732,"TACO BELL, Soft Taco with chicken, cheese and lettuce",-brand -dish/prepared -multi-ingredient
+0.0,drop,other,24,fdc_sr_legacy,170788,"Fast foods, breadstick, soft, prepared with garlic and parmesan cheese",-fastfood/babyfood/restaurant -multi-ingredient
+0.0,drop,other,28,fdc_sr_legacy,173284,"PAPA JOHN'S 14"" Cheese Pizza, Original Crust",-brand -dish/prepared
+0.0,drop,other,20,sr28,21061,"Fast foods, burrito, with beans and cheese",-fastfood/babyfood/restaurant -dish/prepared -multi-ingredient
+0.0,drop,other,25,sr28,21290,"LITTLE CAESARS 14"" Cheese Pizza, Large Deep Dish Crust",-brand -dish/prepared
+0.0,drop,other,24,sr28,16167,"USDA Commodity, Peanut Butter, smooth",-fastfood/babyfood/restaurant
+0.0,drop,other,26,sr28,21080,"Fast foods, nachos, with cheese, beans, ground beef, and tomatoes",-fastfood/babyfood/restaurant -multi-ingredient
+0.0,drop,other,28,sr28,21064,"Fast foods, burrito, with beans, cheese, and beef",-fastfood/babyfood/restaurant -dish/prepared -multi-ingredient
+0.0,drop,other,26,fdc_sr_legacy,168078,"DENNY'S, macaroni & cheese, from kid's menu",-brand -dish/prepared
+0.0,drop,other,22,sr28,21279,"DOMINO'S 14"" Cheese Pizza, Crunchy Thin Crust",-brand -dish/prepared
+0.0,drop,other,23,fdc_sr_legacy,170332,"TACO BELL, Original Taco with beef, cheese and lettuce",-brand -dish/prepared -multi-ingredient
+0.0,drop,other,4,sr28,12088,"Nuts, cashew butter, plain, without salt added",-plant-analog(wrong-class)
+0.0,drop,other,30,sr28,21301,"Fast Food, Pizza Chain, 14"" pizza, cheese topping, thin crust",-fastfood/babyfood/restaurant -dish/prepared
+0.0,drop,other,29,sr28,21159,"SUBWAY, steak & cheese sub on white bread with American cheese, lettuce and tomato",-brand -dish/prepared -multi-ingredient
+0.0,drop,other,23,fdc_sr_legacy,170722,"WENDY'S, CLASSIC SINGLE Hamburger, no cheese",-brand -dish/prepared
+0.0,drop,other,27,sr28,21512,"PIZZA HUT 14"" Cheese Pizza, Stuffed Crust",-brand -dish/prepared
+0.0,drop,other,21,sr28,21278,"DOMINO'S 14"" Cheese Pizza, Ultimate Deep Dish Crust",-brand -dish/prepared
+0.0,drop,other,26,fdc_sr_legacy,172042,"PIZZA HUT 12"" Cheese Pizza, THIN 'N CRISPY Crust",-brand -dish/prepared
+0.0,drop,other,25,fdc_sr_legacy,172047,"LITTLE CAESARS 14"" Original Round Cheese Pizza, Regular Crust",+cut/part -brand -dish/prepared
+0.0,drop,other,23,fdc_sr_legacy,170727,"BURGER KING, WHOPPER, no cheese",-brand -dish/prepared
+0.0,drop,other,22,fdc_sr_legacy,170323,"WENDY'S, Jr. Hamburger, without cheese",-brand -dish/prepared
+0.0,drop,other,31,fdc_foundation,2257046,"Oat milk, unsweetened, plain, refrigerated",-plant-analog(wrong-class)
+0.0,drop,other,26,sr28,21078,"Fast foods, nachos, with cheese",-fastfood/babyfood/restaurant -multi-ingredient
+0.0,drop,other,26,fdc_sr_legacy,170292,"Fast foods, nachos, with cheese, beans, ground beef, and tomatoes",-fastfood/babyfood/restaurant -multi-ingredient
+0.0,drop,other,18,fdc_foundation,747429,"Cheese, American, restaurant",-fastfood/babyfood/restaurant
+0.0,drop,other,28,sr28,21283,"PAPA JOHN'S 14"" Cheese Pizza, Original Crust",-brand -dish/prepared
+0.0,drop,other,29,fdc_sr_legacy,172032,"Fast foods, english muffin, with cheese and sausage",-fastfood/babyfood/restaurant -dish/prepared -multi-ingredient
+0.0,drop,other,24,sr28,21262,"TACO BELL, Soft Taco with chicken, cheese and lettuce",-brand -dish/prepared -multi-ingredient
+0.0,drop,other,29,fdc_sr_legacy,173292,"Fast Food, Pizza Chain, 14"" pizza, cheese topping, regular crust",-fastfood/babyfood/restaurant -dish/prepared
+0.0,drop,other,29,sr28,21299,"Fast Food, Pizza Chain, 14"" pizza, cheese topping, regular crust",-fastfood/babyfood/restaurant -dish/prepared
+0.0,drop,other,29,sr28,36052,"Restaurant, Mexican, cheese quesadilla",-fastfood/babyfood/restaurant
+0.0,drop,other,34,fdc_foundation,1750337,"Soy milk, unsweetened, plain, shelf stable",-plant-analog(wrong-class)
+0.0,drop,other,27,sr28,21511,"Fast Food, Pizza Chain, 14"" pizza, cheese topping, stuffed crust",-fastfood/babyfood/restaurant -dish/prepared
+0.0,drop,other,25,fdc_sr_legacy,173289,"LITTLE CAESARS 14"" Cheese Pizza, Thin Crust",-brand -dish/prepared
+0.0,drop,other,26,fdc_sr_legacy,167657,"ON THE BORDER, soft taco with ground beef, cheese and lettuce",-dish/prepared -multi-ingredient
+0.0,drop,other,19,fdc_sr_legacy,170763,"Fast foods, taco with beef, cheese and lettuce, soft",-fastfood/babyfood/restaurant -dish/prepared -multi-ingredient
+0.0,drop,other,26,sr28,21272,"PIZZA HUT 12"" Cheese Pizza, Pan Crust",-brand -dish/prepared
+0.0,drop,other,22,sr28,21241,"WENDY'S, Jr. Hamburger, without cheese",-brand -dish/prepared
+0.0,drop,other,27,sr28,22976,"Ravioli, cheese with tomato sauce, frozen, not prepared, includes regular and light entrees",-dish/prepared -multi-ingredient
+0.0,drop,other,26,fdc_sr_legacy,170291,"Fast foods, nachos, with cheese",-fastfood/babyfood/restaurant -multi-ingredient
+0.0,drop,other,29,sr28,36050,"Restaurant, Mexican, cheese enchilada",-fastfood/babyfood/restaurant
+0.0,drop,other,27,sr28,36054,"OLIVE GARDEN, cheese ravioli with marinara sauce",-dish/prepared -multi-ingredient
+0.0,drop,other,19,sr28,21486,"Fast foods, taco with beef, cheese and lettuce, soft",-fastfood/babyfood/restaurant -dish/prepared -multi-ingredient
+0.0,drop,other,26,sr28,18927,"Crackers, cheese, sandwich-type with cheese filling",-dish/prepared -multi-ingredient
+0.0,drop,other,29,fdc_sr_legacy,170311,"Fast foods, submarine sandwich, steak and cheese on white bread with cheese, lettuce and tomato",-fastfood/babyfood/restaurant -dish/prepared -multi-ingredient
+0.0,drop,other,28,sr28,36017,"Restaurant, family style, macaroni & cheese, from kids' menu",-fastfood/babyfood/restaurant -dish/prepared
+0.0,drop,other,23,sr28,21082,"Fast foods, taco with beef, cheese and lettuce, hard shell",-fastfood/babyfood/restaurant -dish/prepared -multi-ingredient
+0.0,drop,other,23,sr28,21294,"PIZZA HUT 14"" Cheese Pizza, Pan Crust",-brand -dish/prepared
+0.0,drop,other,21,fdc_sr_legacy,173283,"DOMINO'S 14"" Cheese Pizza, Ultimate Deep Dish Crust",-brand -dish/prepared
+0.0,drop,other,23,fdc_sr_legacy,172051,"PIZZA HUT 14"" Cheese Pizza, THIN 'N CRISPY Crust",-brand -dish/prepared
+0.0,drop,other,24,sr28,21277,"DOMINO'S 14"" Cheese Pizza, Classic Hand-Tossed Crust",-brand -dish/prepared
+0.0,drop,other,23,fdc_sr_legacy,173291,"PIZZA HUT 14"" Cheese Pizza, Pan Crust",-brand -dish/prepared
+0.0,drop,other,27,fdc_sr_legacy,169770,"Macaroni and cheese, box mix with cheese sauce, prepared",-dish/prepared -multi-ingredient
+0.0,drop,other,27,fdc_sr_legacy,169037,"OLIVE GARDEN, cheese ravioli with marinara sauce",-dish/prepared -multi-ingredient
+0.0,drop,other,28,fdc_sr_legacy,169839,"Restaurant, family style, macaroni & cheese, from kids' menu",-fastfood/babyfood/restaurant -dish/prepared
+0.0,drop,other,8,sr28,11392,"Potatoes, hash brown, frozen, with butter sauce, unprepared",-dish/prepared -multi-ingredient
+0.0,drop,other,24,sr28,21520,"Fast foods, breadstick, soft, prepared with garlic and parmesan cheese",-fastfood/babyfood/restaurant -multi-ingredient
+0.0,drop,other,15,sr28,18230,"Crackers, standard snack-type, sandwich, with cheese filling",-dish/prepared -multi-ingredient
+0.0,drop,other,24,sr28,21517,"Fast foods, crispy chicken in tortilla, with lettuce, cheese, and ranch sauce",-fastfood/babyfood/restaurant -dish/prepared -multi-ingredient
+0.0,drop,other,29,fdc_sr_legacy,170310,"SUBWAY, steak & cheese sub on white bread with American cheese, lettuce and tomato",-brand -dish/prepared -multi-ingredient
+0.0,drop,other,29,sr28,36061,"Restaurant, Mexican, soft taco with ground beef, cheese and lettuce",-fastfood/babyfood/restaurant -dish/prepared -multi-ingredient
+0.0,drop,other,21,fdc_sr_legacy,168603,"Nuts, almond butter, plain, with salt added",-plant-analog(wrong-class)
+0.0,drop,other,28,fdc_sr_legacy,173278,"Fast foods, burrito, with beans, cheese, and beef",-fastfood/babyfood/restaurant -dish/prepared -multi-ingredient
+0.0,drop,other,25,fdc_foundation,2257044,"Soy milk, sweetened, plain, refrigerated",-plant-analog(wrong-class)
+0.0,drop,other,19,sr28,21487,"Fast foods, taco with chicken, lettuce and cheese, soft",-fastfood/babyfood/restaurant -dish/prepared -multi-ingredient
+0.0,drop,other,3,sr28,19322,"Puddings, coconut cream, dry mix, instant",-dish/prepared -plant-analog(wrong-class)
+0.0,drop,other,25,sr28,36053,"CARRABBA'S ITALIAN GRILL, cheese ravioli with marinara sauce",-dish/prepared -multi-ingredient
+0.0,drop,other,29,fdc_sr_legacy,169855,"Restaurant, Mexican, cheese enchilada",-fastfood/babyfood/restaurant
+0.0,drop,other,1,sr28,12588,"Nuts, cashew butter, plain, with salt added",-plant-analog(wrong-class)
+0.0,drop,other,24,fdc_sr_legacy,173282,"DOMINO'S 14"" Cheese Pizza, Classic Hand-Tossed Crust",-brand -dish/prepared
+0.0,drop,other,29,fdc_sr_legacy,167662,"Restaurant, Latino, pupusas con queso (pupusas, cheese)",-fastfood/babyfood/restaurant
+0.0,drop,other,25,fdc_sr_legacy,172050,"LITTLE CAESARS 14"" Cheese Pizza, Large Deep Dish Crust",-brand -dish/prepared
+0.0,drop,other,24,fdc_sr_legacy,170785,"Fast foods, crispy chicken in tortilla, with lettuce, cheese, and ranch sauce",-fastfood/babyfood/restaurant -dish/prepared -multi-ingredient
+0.0,drop,other,26,sr28,36613,"DENNY'S, macaroni & cheese, from kid's menu",-brand -dish/prepared
+0.0,drop,other,29,fdc_sr_legacy,167658,"Restaurant, Mexican, soft taco with ground beef, cheese and lettuce",-fastfood/babyfood/restaurant -dish/prepared -multi-ingredient
+0.0,drop,other,29,fdc_foundation,2257045,"Almond milk, unsweetened, plain, refrigerated",-plant-analog(wrong-class)
+0.0,drop,other,18,sr28,21507,"WENDY'S, Double Stack, with cheese",-brand -multi-ingredient
+0.0,drop,other,25,sr28,21292,"LITTLE CAESARS 14"" Cheese Pizza, Thin Crust",-brand -dish/prepared
+0.0,drop,other,23,sr28,21293,"PIZZA HUT 14"" Cheese Pizza, Hand-Tossed Crust",-brand -dish/prepared
+0.0,drop,other,18,fdc_sr_legacy,170784,"WENDY'S, Double Stack, with cheese",-brand -multi-ingredient
+0.0,drop,other,27,fdc_sr_legacy,170774,"PIZZA HUT 14"" Cheese Pizza, Stuffed Crust",-brand -dish/prepared
+0.0,drop,other,26,fdc_sr_legacy,172041,"PIZZA HUT 12"" Cheese Pizza, Pan Crust",-brand -dish/prepared
+0.0,drop,other,29,sr28,36055,"Restaurant, Italian, cheese ravioli with marinara sauce",-fastfood/babyfood/restaurant -dish/prepared -multi-ingredient
+0.0,drop,other,27,sr28,32005,"Macaroni and cheese, box mix with cheese sauce, prepared",-dish/prepared -multi-ingredient
+0.0,drop,other,34,fdc_foundation,1999630,"Soy milk, unsweetened, plain, shelf stable",-plant-analog(wrong-class)
+0.0,drop,other,30,fdc_sr_legacy,173294,"Fast Food, Pizza Chain, 14"" pizza, cheese topping, thin crust",-fastfood/babyfood/restaurant -dish/prepared
+0.0,drop,other,29,sr28,21020,"Fast foods, english muffin, with cheese and sausage",-fastfood/babyfood/restaurant -dish/prepared -multi-ingredient
+0.0,drop,other,29,fdc_sr_legacy,173293,"Fast Food, Pizza Chain, 14"" pizza, cheese topping, thick crust",-fastfood/babyfood/restaurant -dish/prepared
+0.0,drop,other,21,sr28,12195,"Nuts, almond butter, plain, without salt added",-plant-analog(wrong-class)
+0.0,drop,other,29,sr28,36409,"Restaurant, Latino, pupusas con queso (pupusas, cheese)",-fastfood/babyfood/restaurant
+0.0,drop,other,24,sr28,21261,"TACO BELL, Soft Taco with beef, cheese and lettuce",-brand -dish/prepared -multi-ingredient
+0.0,drop,other,29,fdc_sr_legacy,169038,"Restaurant, Italian, cheese ravioli with marinara sauce",-fastfood/babyfood/restaurant -dish/prepared -multi-ingredient
+0.0,drop,other,12,sr28,32004,"Macaroni and cheese, box mix with cheese sauce, unprepared",-dish/prepared -multi-ingredient
+0.0,drop,other,21,fdc_sr_legacy,168588,"Nuts, almond butter, plain, without salt added",-plant-analog(wrong-class)
+0.0,drop,other,32,fdc_foundation,2262074,"Almond butter, creamy",-plant-analog(wrong-class)
+0.0,drop,other,4,sr28,21023,"Fast foods, french toast with butter",-fastfood/babyfood/restaurant
+0.0,drop,other,23,fdc_sr_legacy,170689,"Fast foods, taco with beef, cheese and lettuce, hard shell",-fastfood/babyfood/restaurant -dish/prepared -multi-ingredient
+0.0,drop,other,23,sr28,21252,"BURGER KING, WHOPPER, no cheese",-brand -dish/prepared
+0.0,drop,other,28,fdc_sr_legacy,169856,"Restaurant, Mexican, cheese tamales",-fastfood/babyfood/restaurant
+0.0,drop,other,19,fdc_foundation,1999631,"Almond milk, unsweetened, plain, shelf stable",-plant-analog(wrong-class)
+0.0,drop,other,26,sr28,36060,"ON THE BORDER, soft taco with ground beef, cheese and lettuce",-dish/prepared -multi-ingredient
+0.0,drop,other,29,fdc_sr_legacy,169035,"Restaurant, Mexican, cheese quesadilla",-fastfood/babyfood/restaurant
+0.0,drop,other,24,sr28,21286,"PAPA JOHN'S 14"" Cheese Pizza, Thin Crust",-brand -dish/prepared
+0.0,drop,other,24,sr28,21384,"BURGER KING, CROISSAN'WICH with Sausage and Cheese",-brand -dish/prepared -multi-ingredient
+0.0,drop,other,2,sr28,19324,"Puddings, coconut cream, dry mix, regular",-dish/prepared -plant-analog(wrong-class)
+0.0,drop,other,19,fdc_foundation,1750338,"Almond milk, unsweetened, plain, shelf stable",-plant-analog(wrong-class)
+0.0,drop,other,26,sr28,21271,"PIZZA HUT 12"" Cheese Pizza, Hand-Tossed Crust",-brand -dish/prepared
+0.0,drop,other,20,fdc_sr_legacy,172039,"Fast foods, burrito, with beans and cheese",-fastfood/babyfood/restaurant -dish/prepared -multi-ingredient
+0.0,drop,other,29,sr28,21160,"Fast foods, submarine sandwich, steak and cheese on white bread with cheese, lettuce and tomato",-fastfood/babyfood/restaurant -dish/prepared -multi-ingredient
+0.0,drop,other,24,sr28,36003,"APPLEBEE'S, KRAFT, Macaroni & Cheese, from kid's menu",-brand -dish/prepared
+0.0,drop,other,23,fdc_sr_legacy,173290,"PIZZA HUT 14"" Cheese Pizza, Hand-Tossed Crust",-brand -dish/prepared
+0.0,drop,other,16,sr28,18225,"Crackers, rye, sandwich-type with cheese filling",-dish/prepared -multi-ingredient
+0.0,drop,other,23,sr28,21239,"WENDY'S, CLASSIC SINGLE Hamburger, no cheese",-brand -dish/prepared
+0.0,drop,other,21,sr28,12695,"Nuts, almond butter, plain, with salt added",-plant-analog(wrong-class)
+0.0,drop,other,29,sr28,21300,"Fast Food, Pizza Chain, 14"" pizza, cheese topping, thick crust",-fastfood/babyfood/restaurant -dish/prepared
+0.0,drop,other,27,fdc_sr_legacy,170773,"Fast Food, Pizza Chain, 14"" pizza, cheese topping, stuffed crust",-fastfood/babyfood/restaurant -dish/prepared
+0.0,drop,other,22,fdc_sr_legacy,172043,"DOMINO'S 14"" Cheese Pizza, Crunchy Thin Crust",-brand -dish/prepared
+0.0,drop,other,25,sr28,21287,"LITTLE CAESARS 14"" Original Round Cheese Pizza, Regular Crust",+cut/part -brand -dish/prepared
+0.0,drop,other,26,sr28,21273,"PIZZA HUT 12"" Cheese Pizza, THIN 'N CRISPY Crust",-brand -dish/prepared
+0.0,drop,other,24,fdc_sr_legacy,170333,"TACO BELL, Soft Taco with beef, cheese and lettuce",-brand -dish/prepared -multi-ingredient
+0.0,drop,other,26,fdc_sr_legacy,167925,"Crackers, cheese, sandwich-type with cheese filling",-dish/prepared -multi-ingredient
+0.0,drop,other,27,fdc_sr_legacy,172113,"Ravioli, cheese with tomato sauce, frozen, not prepared, includes regular and light entrees",-dish/prepared -multi-ingredient
+0.0,drop,other,1,fdc_sr_legacy,174832,"Beverages, almond milk, unsweetened, shelf stable",-plant-analog(wrong-class)
+0.0,drop,other,26,fdc_sr_legacy,172040,"PIZZA HUT 12"" Cheese Pizza, Hand-Tossed Crust",-brand -dish/prepared
+0.0,drop,other,14,sr28,14091,"Beverages, almond milk, unsweetened, shelf stable",-plant-analog(wrong-class)
+0.0,drop,other,12,fdc_sr_legacy,169769,"Macaroni and cheese, box mix with cheese sauce, unprepared",-dish/prepared -multi-ingredient
+0.0,drop,other,24,fdc_sr_legacy,173316,"BURGER KING, CROISSAN'WICH with Sausage and Cheese",-brand -dish/prepared -multi-ingredient
+0.0,drop,other,24,fdc_sr_legacy,169010,"APPLEBEE'S, KRAFT, Macaroni & Cheese, from kid's menu",-brand -dish/prepared
+0.0,drop,other,19,fdc_sr_legacy,170764,"Fast foods, taco with chicken, lettuce and cheese, soft",-fastfood/babyfood/restaurant -dish/prepared -multi-ingredient
+0.05,drop,other,26,fdc_sr_legacy,174068,"Dip, salsa con queso, cheese and salsa- medium",-dish/prepared
+0.05,drop,other,28,sr28,36040,"CRACKER BARREL, macaroni n' cheese",-dish/prepared
+0.05,drop,other,35,sr28,22910,"Lasagna, cheese, frozen, prepared",-dish/prepared
+0.05,drop,other,16,sr28,18434,"Crackers, cheese, low sodium",-dish/prepared
+0.05,drop,other,20,sr28,8576,"Cereals, CREAM OF WHEAT, 1 minute cook time, dry",-dish/prepared
+0.05,drop,other,1,sr28,19185,"Puddings, chocolate, dry mix, instant, prepared with whole milk",-dish/prepared
+0.05,drop,other,23,sr28,18231,"Crackers, standard snack-type, sandwich, with peanut butter filling",-dish/prepared
+0.05,drop,other,12,sr28,18421,"Cookies, butter, commercially prepared, unenriched",-dish/prepared
+0.05,drop,other,3,sr28,19049,"Snacks, M&M MARS, COMBOS Snacks Cheddar Cheese Pretzel",-dish/prepared
+0.05,drop,other,1,fdc_sr_legacy,169583,"Candies, MARS SNACKFOOD US, M&M's Milk Chocolate Candies",-dish/prepared
+0.05,drop,other,14,sr28,18223,"Crackers, milk",-dish/prepared
+0.05,drop,other,17,sr28,19421,"Snacks, potato chips, cheese-flavor",-dish/prepared
+0.05,drop,other,27,fdc_sr_legacy,167530,"Crackers, cream, Gamesa Sabrosas",-dish/prepared
+0.05,drop,other,1,fdc_sr_legacy,171660,"Cereals, CREAM OF WHEAT, instant, dry",-dish/prepared
+0.05,drop,other,28,fdc_sr_legacy,173336,"Burrito, bean and cheese, frozen",-dish/prepared
+0.05,drop,other,25,fdc_sr_legacy,173327,"HOT POCKETS Ham 'N Cheese Stuffed Sandwich, frozen",-dish/prepared
+0.05,drop,other,19,sr28,1161,"Cheese substitute, mozzarella",-imitation
+0.05,drop,other,15,fdc_sr_legacy,170244,"Snacks, corn-based, extruded, puffs or twists, cheese-flavor, unenriched",-dish/prepared
+0.05,drop,other,25,fdc_sr_legacy,173341,"Macaroni and cheese, dry mix, prepared with 2% milk and 80% stick margarine from dry mix",-dish/prepared
+0.05,drop,other,5,sr28,8106,"Cereals, CREAM OF WHEAT, instant, dry",-dish/prepared
+0.05,drop,other,7,sr28,18241,"Croissants, cheese",-dish/prepared
+0.05,drop,other,23,fdc_sr_legacy,174984,"Crackers, standard snack-type, sandwich, with peanut butter filling",-dish/prepared
+0.05,drop,other,28,fdc_sr_legacy,174975,"Crackers, cheese, regular",-dish/prepared
+0.05,drop,other,22,fdc_sr_legacy,168958,"Pasta mix, Italian four cheese lasagna, unprepared",-dish/prepared
+0.05,drop,other,22,sr28,32017,"Pasta mix, Italian four cheese lasagna, unprepared",-dish/prepared
+0.05,drop,other,24,fdc_sr_legacy,174070,"Sauce, peanut, made from peanut butter, water, soy sauce",-dish/prepared
+0.05,drop,other,3,sr28,1074,"Sour cream, imitation, cultured",-imitation
+0.05,drop,other,25,fdc_sr_legacy,169835,"T.G.I. FRIDAY'S, macaroni & cheese, from kid's menu",-dish/prepared
+0.05,drop,other,24,sr28,27059,"Sauce, peanut, made from peanut butter, water, soy sauce",-dish/prepared
+0.05,drop,other,26,sr28,18185,"Cookies, peanut butter, commercially prepared, regular",-dish/prepared
+0.05,drop,other,28,sr28,22918,"Burrito, bean and cheese, frozen",-dish/prepared
+0.05,drop,other,28,fdc_sr_legacy,169849,"CRACKER BARREL, macaroni n' cheese",-dish/prepared
+0.05,drop,other,22,fdc_sr_legacy,171658,"Cereals, farina, enriched, assorted brands including CREAM OF WHEAT, quick (1-3 minutes), dry",-dish/prepared
+0.05,drop,other,20,fdc_sr_legacy,173010,"Cereals, CREAM OF WHEAT, 1 minute cook time, dry",-dish/prepared
+0.05,drop,other,18,sr28,19040,"Snacks, popcorn, cheese-flavor",-dish/prepared
+0.05,drop,other,5,sr28,18186,"Cookies, peanut butter, commercially prepared, soft-type",-dish/prepared
+0.05,drop,other,23,sr28,19057,"Snacks, tortilla chips, nacho cheese",-dish/prepared
+0.05,drop,other,26,sr28,36609,"CRACKER BARREL, macaroni n' cheese plate, from kid's menu",-dish/prepared
+0.05,drop,other,19,sr28,27053,"Dip, OLD EL PASO, Cheese 'n Salsa, medium",-dish/prepared
+0.05,drop,other,11,fdc_sr_legacy,167531,"Crackers, cream, La Moderna Rikis Cream Crackers",-dish/prepared
+0.05,drop,other,9,sr28,44048,"Cheese food, pasteurized process, American, imitation, without added vitamin D",-imitation
+0.05,drop,other,26,sr28,27052,"Dip, salsa con queso, cheese and salsa- medium",-dish/prepared
+0.05,drop,other,23,fdc_sr_legacy,167949,"Snacks, corn-based, extruded, puffs or twists, cheese-flavor",-dish/prepared
+0.05,drop,other,11,sr28,18155,"Cookies, butter, commercially prepared, enriched",-dish/prepared
+0.05,drop,other,25,sr28,36009,"T.G.I. FRIDAY'S, macaroni & cheese, from kid's menu",-dish/prepared
+0.05,drop,other,22,sr28,8573,"Cereals, CREAM OF WHEAT, 2 1/2 minute cook time, dry",-dish/prepared
+0.05,drop,other,1,fdc_sr_legacy,173901,"Cereals, CREAM OF WHEAT, regular, 10 minute cooking, dry",-dish/prepared
+0.05,drop,other,18,sr28,19043,"Snacks, potato chips, sour-cream-and-onion-flavor",-dish/prepared
+0.05,drop,other,25,sr28,22960,"Macaroni and cheese, dry mix, prepared with 2% milk and 80% stick margarine from dry mix",-dish/prepared
+0.05,drop,other,24,sr28,18215,"Crackers, cheese, sandwich-type with peanut butter filling",-dish/prepared
+0.05,drop,other,7,sr28,18234,"Crackers, wheat, sandwich, with peanut butter filling",-dish/prepared
+0.05,drop,other,26,fdc_sr_legacy,172727,"Cookies, peanut butter, commercially prepared, regular",-dish/prepared
+0.05,drop,other,5,sr28,7940,"Macaroni and cheese loaf, chicken, pork and beef",-dish/prepared
+0.05,drop,other,14,sr28,18239,"Croissants, butter",-dish/prepared
+0.05,drop,other,12,sr28,18090,"Cake, boston cream pie, commercially prepared",-dish/prepared
+0.05,drop,other,29,sr28,36611,"DENNY'S, mozzarella cheese sticks",-brand
+0.05,drop,other,22,sr28,8104,"Cereals, farina, enriched, assorted brands including CREAM OF WHEAT, quick (1-3 minutes), dry",-dish/prepared
+0.05,drop,other,18,sr28,19802,"Snacks, corn-based, extruded, puffs or twists, cheese-flavor, unenriched",-dish/prepared
+0.05,drop,other,17,sr28,18272,"Ice cream cones, sugar, rolled-type",-dish/prepared
+0.05,drop,other,26,fdc_sr_legacy,167671,"CRACKER BARREL, macaroni n' cheese plate, from kid's menu",-dish/prepared
+0.05,drop,other,28,sr28,18214,"Crackers, cheese, regular",-dish/prepared
+0.05,drop,other,23,fdc_sr_legacy,167559,"Snacks, tortilla chips, nacho cheese",-dish/prepared
+0.05,drop,other,1,sr28,19141,"Candies, MARS SNACKFOOD US, M&M's Milk Chocolate Candies",-dish/prepared
+0.05,drop,other,3,fdc_sr_legacy,172965,"Macaroni and cheese loaf, chicken, pork and beef",-dish/prepared
+0.05,drop,other,27,fdc_sr_legacy,173342,"Macaroni and cheese, frozen entree",-dish/prepared
+0.05,drop,other,3,sr28,8100,"Cereals, CREAM OF RICE, dry",-dish/prepared
+0.05,drop,other,15,sr28,18187,"Cookies, peanut butter, refrigerated dough",-dish/prepared
+0.05,drop,other,27,sr28,18961,"Crackers, cream, GAMESA SABROSAS",-dish/prepared
+0.05,drop,other,17,sr28,18190,"Cookies, peanut butter sandwich, regular",-dish/prepared
+0.05,drop,other,35,fdc_sr_legacy,173333,"Lasagna, cheese, frozen, prepared",-dish/prepared
+0.05,drop,other,7,sr28,8102,"Cereals, CREAM OF WHEAT, regular, 10 minute cooking, dry",-dish/prepared
+0.05,drop,other,22,fdc_sr_legacy,174655,"Cereals, CREAM OF WHEAT, 2 1/2 minute cook time, dry",-dish/prepared
+0.05,drop,other,29,fdc_sr_legacy,168076,"DENNY'S, mozzarella cheese sticks",-brand
+0.05,drop,other,11,sr28,18962,"Crackers, cream, LA MODERNA RIKIS CREAM CRACKERS",-dish/prepared
+0.05,drop,other,26,sr28,22537,"HOT POCKETS Ham 'N Cheese Stuffed Sandwich, frozen",-dish/prepared
+0.05,drop,other,24,fdc_sr_legacy,174976,"Crackers, cheese, sandwich-type with peanut butter filling",-dish/prepared
+0.05,drop,other,4,sr28,19026,"Snacks, granola bars, soft, coated, milk chocolate coating, peanut butter",-dish/prepared
+0.05,drop,other,22,sr28,19008,"Snacks, corn-based, extruded, puffs or twists, cheese-flavor",-dish/prepared
+0.05,drop,other,27,sr28,22970,"Macaroni and cheese, frozen entree",-dish/prepared
+0.05,drop,other,17,sr28,18271,"Ice cream cones, cake or wafer-type",-dish/prepared
+0.2,drop,raw,1,sr28,12117,"Nuts, coconut milk, raw (liquid expressed from grated meat and water)",+raw -plant-analog(wrong-class)
+0.4,review,other,3,sr28,1059,"Milk, filled, fluid, with blend of hydrogenated vegetable oils",-multi-ingredient
+0.4,review,other,3,sr28,7918,"Sausage, summer, pork and beef, sticks, with cheddar cheese",-multi-ingredient
+0.65,keep,other,28,sr28,1040,"Cheese, swiss",
+0.65,keep,other,1,sr28,1093,"Milk, dry, nonfat, calcium reduced",
+0.65,keep,other,22,sr28,1285,"Yogurt, Greek, strawberry, nonfat",
+0.65,keep,other,26,fdc_sr_legacy,172182,"Cheese, cottage, lowfat, 2% milkfat",
+0.65,keep,other,13,sr28,18103,"Coffeecake, cheese",
+0.65,keep,other,19,sr28,1005,"Cheese, brick",
+0.65,keep,other,7,sr28,1006,"Cheese, brie",
+0.65,keep,other,28,sr28,1017,"Cheese, cream",
+0.65,keep,other,14,sr28,1033,"Cheese, parmesan, hard",
+0.65,keep,other,26,sr28,16098,"Peanut butter, smooth style, with salt",
+0.65,keep,other,25,fdc_foundation,325036,"Cheese, parmesan, grated",
+0.65,keep,other,9,sr28,1045,"Cheese food, cold pack, American",
+0.65,keep,other,19,sr28,1117,"Yogurt, plain, low fat, 12 grams protein per 8 ounce",
+0.65,keep,other,16,fdc_sr_legacy,170872,"Milk, lowfat, fluid, 1% milkfat, with added vitamin A and vitamin D",
+0.65,keep,other,23,sr28,1227,"Cheese, dry white, queso seco",
+0.65,keep,other,6,sr28,1122,"Yogurt, fruit, low fat, 11 grams protein per 8 ounce",
+0.65,keep,other,1,sr28,1218,"Yogurt, fruit variety, nonfat, fortified with vitamin D",
+0.65,keep,other,15,sr28,1159,"Cheese, goat, soft type",
+0.65,keep,other,22,sr28,12540,"Seeds, sunflower seed butter, with salt added",
+0.65,keep,other,18,fdc_sr_legacy,171296,"Yogurt, Greek, nonfat, vanilla, CHOBANI",
+0.65,keep,other,23,fdc_sr_legacy,170902,"Yogurt, Greek, vanilla, nonfat",
+0.65,keep,other,17,sr28,1039,"Cheese, roquefort",
+0.65,keep,other,23,sr28,1049,"Cream, fluid, half and half",
+0.65,keep,other,10,sr28,1025,"Cheese, monterey",
+0.65,keep,other,22,sr28,1174,"Milk, reduced fat, fluid, 2% milkfat, without added vitamin A and vitamin D",
+0.65,keep,other,25,fdc_sr_legacy,169034,"ON THE BORDER, cheese quesadilla",
+0.65,keep,other,20,sr28,1289,"Kefir, lowfat, plain, LIFEWAY",
+0.65,keep,other,29,fdc_sr_legacy,172704,"Cake, pound, commercially prepared, butter (includes fresh and frozen)",
+0.65,keep,other,13,sr28,11948,"Pickles, cucumber, sweet, low sodium (includes bread and butter pickles)",
+0.65,keep,other,18,sr28,1293,"Yogurt, Greek, plain, whole milk",
+0.65,keep,other,17,fdc_sr_legacy,170904,"Kefir, lowfat, plain, LIFEWAY",
+0.65,keep,other,13,fdc_foundation,2647438,"Cheese, monterey jack, solid",
+0.65,keep,other,33,fdc_foundation,329830,"Cheese, dry white, queso seco",
+0.65,keep,other,1,fdc_sr_legacy,173456,"Yogurt, fruit, low fat, 9 grams protein per 8 ounce, fortified with vitamin D",
+0.65,keep,other,19,sr28,1280,"Yogurt, Greek, nonfat, strawberry, DANNON OIKOS",
+0.65,keep,other,19,fdc_sr_legacy,171299,"Yogurt, Greek, nonfat, strawberry, DANNON OIKOS",
+0.65,keep,other,20,sr28,1151,"Milk, nonfat, fluid, without added vitamin A and vitamin D (fat free or skim)",
+0.65,keep,other,1,sr28,1165,"Cheese, mexican, queso anejo",
+0.65,keep,other,26,sr28,1253,"Cheese, pasteurized process, American, without added vitamin D",
+0.65,keep,other,1,fdc_sr_legacy,172218,"Yogurt, fruit, lowfat, with low calorie sweetener, fortified with vitamin D",
+0.65,keep,other,27,fdc_sr_legacy,169771,"Taquitos, frozen, chicken and cheese, oven-heated",
+0.65,keep,other,19,sr28,1297,"Yogurt, Greek, vanilla, lowfat",
+0.65,keep,other,23,fdc_sr_legacy,171265,"Milk, whole, 3.25% milkfat, with added vitamin D",
+0.65,keep,other,23,fdc_sr_legacy,170859,"Cream, fluid, heavy whipping",
+0.65,keep,other,20,sr28,1007,"Cheese, camembert",
+0.65,keep,other,30,fdc_sr_legacy,170899,"Cheese, cheddar, sharp, sliced",
+0.65,keep,other,16,fdc_sr_legacy,170845,"Cheese, mozzarella, whole milk",
+0.65,keep,other,4,sr28,14130,"Carbonated beverage, cream soda",
+0.65,keep,other,24,sr28,1002,"Butter, whipped, with salt",
+0.65,keep,other,11,sr28,1022,"Cheese, gouda",
+0.65,keep,other,25,sr28,16398,"Peanut butter, smooth style, without salt",
+0.65,keep,other,15,sr28,1294,"Yogurt, Greek, fruit, whole milk",
+0.65,keep,other,26,fdc_sr_legacy,174266,"Peanut butter, smooth style, with salt (Includes foods for USDA's Food Distribution Program)",
+0.65,keep,other,26,fdc_foundation,326135,"Cheese, swiss",
+0.65,keep,other,1,sr28,1089,"Milk, low sodium, fluid",
+0.65,keep,other,23,sr28,1079,"Milk, reduced fat, fluid, 2% milkfat, with added vitamin A and vitamin D",
+0.65,keep,other,21,fdc_sr_legacy,170881,"Milk, chocolate, lowfat, with added vitamin A and vitamin D",
+0.65,keep,other,4,sr28,1080,"Milk, reduced fat, fluid, 2% milkfat, with added nonfat milk solids and vitamin A and vitamin D",
+0.65,keep,other,18,fdc_sr_legacy,170857,"Cream, fluid, light (coffee cream or table cream)",
+0.65,keep,other,6,sr28,1120,"Yogurt, fruit, low fat, 9 grams protein per 8 ounce",
+0.65,keep,other,5,sr28,1034,"Cheese, port de salut",
+0.65,keep,other,2,sr28,1021,"Cheese, gjetost",
+0.65,keep,other,19,sr28,1004,"Cheese, blue",
+0.65,keep,other,15,sr28,1037,"Cheese, ricotta, part skim milk",
+0.65,keep,other,15,fdc_sr_legacy,170905,"Yogurt, Greek, fruit, whole milk",
+0.65,keep,other,2,sr28,1086,"Milk, nonfat, fluid, with added nonfat milk solids, vitamin A and vitamin D (fat free or skim)",
+0.65,keep,other,8,sr28,1038,"Cheese, romano",
+0.65,keep,other,17,sr28,1014,"Cheese, cottage, nonfat, uncreamed, dry, large or small curd",
+0.65,keep,other,24,fdc_sr_legacy,173411,"Butter, whipped, with salt",
+0.65,keep,other,15,sr28,1169,"Cheese, low-sodium, cheddar or colby",
+0.65,keep,other,7,sr28,1217,"Yogurt, fruit, low fat, 10 grams protein per 8 ounce, fortified with vitamin D",
+0.65,keep,other,20,fdc_sr_legacy,172205,"Milk, reduced fat, fluid, 2% milkfat, without added vitamin A and vitamin D",
+0.65,keep,other,2,sr28,1087,"Milk, nonfat, fluid, protein fortified, with added vitamin A and vitamin D (fat free and skim)",
+0.65,keep,other,21,sr28,19120,"Candies, milk chocolate",
+0.65,keep,other,27,fdc_sr_legacy,171244,"Cheese, mozzarella, low moisture, part-skim",
+0.65,keep,other,33,fdc_foundation,746765,"Cheese, dry white, queso seco",
+0.65,keep,other,19,sr28,1030,"Cheese, muenster",
+0.65,keep,other,17,sr28,1048,"Cheese spread, pasteurized process, American",
+0.65,keep,other,21,sr28,1012,"Cheese, cottage, creamed, large or small curd",
+0.65,keep,other,25,sr28,1211,"Milk, whole, 3.25% milkfat, without added vitamin A and vitamin D",
+0.65,keep,other,19,sr28,1018,"Cheese, edam",
+0.65,keep,other,15,sr28,1157,"Cheese, goat, semisoft type",
+0.65,keep,other,1,sr28,1027,"Cheese, mozzarella, whole milk, low moisture",
+0.65,keep,other,18,fdc_sr_legacy,171304,"Yogurt, Greek, plain, whole milk",
+0.65,keep,other,23,sr28,1104,"Milk, chocolate, lowfat, with added vitamin A and vitamin D",
+0.65,keep,other,17,fdc_foundation,2346384,"Cottage cheese, full fat, large or small curd",
+0.65,keep,other,20,fdc_sr_legacy,171300,"Yogurt, Greek, strawberry, lowfat",
+0.65,keep,other,16,sr28,14183,"Beverages, coffee, ready to drink, iced, mocha, milk based",
+0.65,keep,other,7,sr28,1292,"Milk, chocolate, fat free, with added vitamin A and vitamin D",
+0.65,keep,other,23,fdc_sr_legacy,172217,"Milk, whole, 3.25% milkfat, without added vitamin A and vitamin D",
+0.65,keep,other,5,sr28,1016,"Cheese, cottage, lowfat, 1% milkfat",
+0.65,keep,other,29,fdc_sr_legacy,171251,"Cheese, swiss",
+0.65,keep,other,25,fdc_sr_legacy,170910,"Milk, chocolate, lowfat, reduced sugar",
+0.65,keep,other,5,sr28,1081,"Milk, reduced fat, fluid, 2% milkfat, protein fortified, with added vitamin A and vitamin D",
+0.65,keep,other,34,fdc_foundation,746776,"Milk, nonfat, fluid, with added vitamin A and vitamin D (fat free or skim)",
+0.65,keep,other,16,sr28,1212,"Milk, dry, whole, without added vitamin D",
+0.65,keep,other,25,fdc_sr_legacy,170851,"Cheese, ricotta, whole milk",
+0.65,keep,other,17,sr28,18121,"Cake, pound, commercially prepared, other than all butter, enriched",
+0.65,keep,other,20,sr28,11940,"Pickles, cucumber, sweet (includes bread and butter pickles)",
+0.65,keep,other,7,sr28,1154,"Milk, dry, nonfat, regular, with added vitamin A and vitamin D",
+0.65,keep,other,11,sr28,1112,"Whey, acid, fluid",
+0.65,keep,other,27,sr28,1252,"Cheese product, pasteurized process, American, vitamin D fortified",
+0.65,keep,other,13,fdc_foundation,2647441,"Cheese, oaxaca, solid",
+0.65,keep,other,12,sr28,1156,"Cheese, goat, hard type",
+0.65,keep,other,10,fdc_foundation,2758989,"Peanut butter, Creamy",
+0.65,keep,other,6,sr28,1203,"Yogurt, fruit, lowfat, with low calorie sweetener",
+0.65,keep,other,29,sr28,32007,"Taquitos, frozen, beef and cheese, oven-heated",
+0.65,keep,other,27,fdc_sr_legacy,171291,"Cheese food, pasteurized process, American, without added vitamin D",
+0.65,keep,other,32,fdc_foundation,2262072,"Peanut butter, creamy",
+0.65,keep,other,37,fdc_foundation,321359,"Milk, reduced fat, fluid, 2% milkfat, with added vitamin A and vitamin D",
+0.65,keep,other,27,fdc_sr_legacy,171289,"Cheese product, pasteurized process, American, vitamin D fortified",
+0.65,keep,other,26,fdc_foundation,746767,"Cheese, swiss",
+0.65,keep,other,22,fdc_sr_legacy,170901,"Yogurt, Greek, strawberry, nonfat",
+0.65,keep,other,12,fdc_foundation,2647442,"Cheese, queso fresco, solid",
+0.65,keep,other,23,fdc_foundation,328841,"Cheese, cottage, lowfat, 2% milkfat",
+0.65,keep,other,17,sr28,1114,"Whey, sweet, fluid",
+0.65,keep,other,26,sr28,1015,"Cheese, cottage, lowfat, 2% milkfat",
+0.65,keep,other,32,fdc_foundation,330137,"Yogurt, Greek, plain, nonfat",
+0.65,keep,other,27,sr28,1046,"Cheese food, pasteurized process, American, vitamin D fortified",
+0.65,keep,other,20,sr28,1107,"Milk, human, mature, fluid",
+0.65,keep,other,30,sr28,1270,"Cheese, cheddar, sharp, sliced",
+0.65,keep,other,29,fdc_sr_legacy,169772,"Taquitos, frozen, beef and cheese, oven-heated",
+0.65,keep,other,11,sr28,1111,"Milk shakes, thick vanilla",
+0.65,keep,other,3,sr28,1083,"Milk, lowfat, fluid, 1% milkfat, with added nonfat milk solids, vitamin A and vitamin D",
+0.65,keep,other,36,fdc_foundation,746782,"Milk, whole, 3.25% milkfat, with added vitamin D",
+0.65,keep,other,21,fdc_sr_legacy,168595,"Seeds, sunflower seed butter, with salt added (Includes foods for USDA's Food Distribution Program)",
+0.65,keep,other,27,sr28,1254,"Cheese food, pasteurized process, American, without added vitamin D",
+0.65,keep,other,1,fdc_sr_legacy,170886,"Yogurt, plain, low fat",
+0.65,keep,other,27,sr28,32006,"Taquitos, frozen, chicken and cheese, oven-heated",
+0.65,keep,other,18,fdc_sr_legacy,171269,"Milk, nonfat, fluid, with added vitamin A and vitamin D (fat free or skim)",
+0.65,keep,other,18,sr28,1290,"Kefir, lowfat, strawberry, LIFEWAY",
+0.65,keep,other,26,sr28,1260,"Cheese, cheddar, reduced fat",
+0.65,keep,other,20,sr28,1092,"Milk, dry, nonfat, instant, with added vitamin A and vitamin D",
+0.65,keep,other,25,fdc_sr_legacy,172470,"Peanut butter, smooth style, without salt",
+0.65,keep,other,23,fdc_sr_legacy,172469,"Peanut butter, chunk style, without salt",
+0.65,keep,other,26,fdc_foundation,329370,"Cheese, mozzarella, low moisture, part-skim",
+0.65,keep,other,20,fdc_sr_legacy,169378,"Pickles, cucumber, sweet (includes bread and butter pickles)",
+0.65,keep,other,1,fdc_sr_legacy,173457,"Yogurt, fruit, low fat, 10 grams protein per 8 ounce, fortified with vitamin D",
+0.65,keep,other,6,sr28,1121,"Yogurt, fruit, low fat, 10 grams protein per 8 ounce",
+0.65,keep,other,21,sr28,12040,"Seeds, sunflower seed butter, without salt",
+0.65,keep,other,1,fdc_sr_legacy,173458,"Yogurt, fruit variety, nonfat, fortified with vitamin D",
+0.65,keep,other,19,fdc_foundation,2259795,"Cheese, parmesan, grated, refrigerated",
+0.65,keep,other,27,sr28,36049,"ON THE BORDER, cheese enchilada",
+0.65,keep,other,7,sr28,1216,"Yogurt, fruit, low fat, 9 grams protein per 8 ounce, fortified with vitamin D",
+0.65,keep,other,13,fdc_foundation,2647443,"Cheese, cotija, solid",
+0.65,keep,other,18,sr28,1011,"Cheese, colby",
+0.65,keep,other,22,fdc_foundation,324860,"Peanut butter, smooth style, with salt",
+0.65,keep,other,3,sr28,1168,"Cheese, low fat, cheddar or colby",
+0.65,keep,other,1,sr28,1167,"Cheese, mexican, queso chihuahua",
+0.65,keep,other,24,fdc_sr_legacy,174265,"Peanut butter, chunk style, with salt",
+0.65,keep,other,16,fdc_foundation,2346385,"Cream cheese, full fat, block",
+0.65,keep,other,16,sr28,19132,"Candies, milk chocolate, with almonds",
+0.65,keep,other,27,fdc_sr_legacy,170896,"Cheese spread, American or Cheddar cheese base, reduced fat",
+0.65,keep,other,11,sr28,19126,"Candies, milk chocolate coated peanuts",
+0.65,keep,other,30,sr28,1009,"Cheese, cheddar",
+0.65,keep,other,19,fdc_sr_legacy,170903,"Yogurt, Greek, plain, lowfat",
+0.65,keep,other,14,fdc_foundation,2647439,"Cheese, pasteurized process cheese food or product, American, singles",
+0.65,keep,other,21,fdc_sr_legacy,167587,"Candies, milk chocolate",
+0.65,keep,other,13,sr28,14179,"Beverages, coffee, ready to drink, milk based, sweetened",
+0.65,keep,other,18,sr28,1204,"Cheese, parmesan, dry grated, reduced fat",
+0.65,keep,other,19,fdc_sr_legacy,170907,"Yogurt, Greek, vanilla, lowfat",
+0.65,keep,other,27,fdc_foundation,328637,"Cheese, cheddar",
+0.65,keep,other,8,sr28,19127,"Candies, milk chocolate coated raisins",
+0.65,keep,other,21,sr28,1284,"Yogurt, Greek, strawberry, lowfat",
+0.65,keep,other,18,sr28,1026,"Cheese, mozzarella, whole milk",
+0.65,keep,other,28,fdc_sr_legacy,173418,"Cheese, cream",
+0.65,keep,other,23,sr28,16397,"Peanut butter, chunk style, without salt",
+0.65,keep,other,13,sr28,1208,"Cheese, provolone, reduced fat",
+0.65,keep,other,13,sr28,18418,"Cake, pound, commercially prepared, other than all butter, unenriched",
+0.65,keep,other,19,sr28,1091,"Milk, dry, nonfat, regular, without added vitamin A and vitamin D",
+0.65,keep,other,20,fdc_foundation,330415,"Yogurt, Greek, strawberry, nonfat",
+0.65,keep,other,25,sr28,1077,"Milk, whole, 3.25% milkfat, with added vitamin D",
+0.65,keep,other,9,sr28,1019,"Cheese, feta",
+0.65,keep,other,37,fdc_foundation,746778,"Milk, reduced fat, fluid, 2% milkfat, with added vitamin A and vitamin D",
+0.65,keep,other,10,fdc_foundation,2647437,"Yogurt, plain, nonfat",
+0.65,keep,other,4,sr28,1146,"Cheese, parmesan, shredded",
+0.65,keep,other,35,fdc_foundation,746772,"Milk, lowfat, fluid, 1% milkfat, with added vitamin A and vitamin D",
+0.65,keep,other,23,sr28,16399,"Peanut butter with omega-3, creamy",
+0.65,keep,other,19,sr28,1281,"Yogurt, Greek, nonfat, strawberry, CHOBANI",
+0.65,keep,other,23,sr28,1256,"Yogurt, Greek, plain, nonfat",
+0.65,keep,other,34,fdc_foundation,322559,"Milk, nonfat, fluid, with added vitamin A and vitamin D (fat free or skim)",
+0.65,keep,other,24,sr28,1305,"Milk, chocolate, lowfat, reduced sugar",
+0.65,keep,other,21,sr28,1082,"Milk, lowfat, fluid, 1% milkfat, with added vitamin A and vitamin D",
+0.65,keep,other,9,sr28,1024,"Cheese, limburger",
+0.65,keep,other,19,sr28,1108,"Milk, indian buffalo, fluid",
+0.65,keep,other,19,fdc_sr_legacy,171255,"Cream, fluid, half and half",
+0.65,keep,other,1,sr28,12169,"Seeds, sesame butter, paste",
+0.65,keep,other,1,sr28,42290,"Milk, fluid, nonfat, calcium fortified (fat free or skim)",
+0.65,keep,other,15,sr28,1088,"Milk, buttermilk, fluid, cultured, lowfat",
+0.65,keep,other,28,sr28,1029,"Cheese, mozzarella, low moisture, part-skim",
+0.65,keep,other,8,sr28,1145,"Butter, without salt",
+0.65,keep,other,8,sr28,1155,"Milk, dry, nonfat, instant, without added vitamin A and vitamin D",
+0.65,keep,other,24,sr28,1053,"Cream, fluid, heavy whipping",
+0.65,keep,other,6,sr28,1054,"Cream, whipped, cream topping, pressurized",
+0.65,keep,other,15,fdc_sr_legacy,173441,"Milk, fluid, 1% fat, without added vitamin A and vitamin D",
+0.65,keep,other,6,sr28,1008,"Cheese, caraway",
+0.65,keep,other,16,fdc_sr_legacy,171301,"Kefir, lowfat, strawberry, LIFEWAY",
+0.65,keep,other,20,sr28,1287,"Yogurt, Greek, plain, lowfat",
+0.65,keep,other,25,fdc_sr_legacy,171290,"Cheese, pasteurized process, American, without added vitamin D",
+0.65,keep,other,18,sr28,1106,"Milk, goat, fluid, with added vitamin D",
+0.65,keep,other,21,fdc_sr_legacy,171257,"Cream, sour, cultured",
+0.65,keep,other,35,fdc_foundation,322228,"Milk, lowfat, fluid, 1% milkfat, with added vitamin A and vitamin D",
+0.65,keep,other,27,fdc_sr_legacy,171252,"Cheese food, pasteurized process, American, vitamin D fortified",
+0.65,keep,other,16,sr28,1090,"Milk, dry, whole, with added vitamin D",
+0.65,keep,other,20,sr28,1050,"Cream, fluid, light (coffee cream or table cream)",
+0.65,keep,other,20,fdc_sr_legacy,170155,"Seeds, sunflower seed butter, without salt",
+0.65,keep,other,24,sr28,16097,"Peanut butter, chunk style, with salt",
+0.65,keep,other,16,sr28,1052,"Cream, fluid, light whipping",
+0.65,keep,other,13,sr28,7032,Ham and cheese loaf or roll,
+0.65,keep,other,10,sr28,1023,"Cheese, gruyere",
+0.65,keep,other,1,fdc_sr_legacy,170887,"Yogurt, plain, skim milk",
+0.65,keep,other,27,fdc_sr_legacy,173414,"Cheese, cheddar (Includes foods for USDA's Food Distribution Program)",
+0.65,keep,other,18,fdc_sr_legacy,171297,"Yogurt, Greek, strawberry, DANNON OIKOS",
+0.65,keep,other,16,fdc_sr_legacy,174119,"Beverages, coffee, ready to drink, iced, mocha, milk based",
+0.65,keep,other,25,sr28,36051,"ON THE BORDER, cheese quesadilla",
+0.65,keep,other,20,sr28,1035,"Cheese, provolone",
+0.65,keep,other,20,sr28,1278,"Yogurt, Greek, nonfat, vanilla, DANNON OIKOS",
+0.65,keep,other,16,sr28,1036,"Cheese, ricotta, whole milk",
+0.65,keep,other,27,fdc_sr_legacy,169854,"ON THE BORDER, cheese enchilada",
+0.65,keep,other,7,sr28,1047,"Cheese food, pasteurized process, swiss",
+0.65,keep,other,10,sr28,19701,"Candies, semisweet chocolate, made with butter",
+0.65,keep,other,5,sr28,1084,"Milk, lowfat, fluid, 1% milkfat, protein fortified, with added vitamin A and vitamin D",
+0.65,keep,other,29,sr28,1042,"Cheese, pasteurized process, American, fortified with vitamin D",
+0.65,keep,other,18,sr28,1275,"Yogurt, Greek, nonfat, vanilla, CHOBANI",
+0.65,keep,other,27,sr28,1259,"Cheese spread, American or Cheddar cheese base, reduced fat",
+0.65,keep,other,17,fdc_foundation,2346387,"Cream, sour, full fat",
+0.65,keep,other,4,sr28,1028,"Cheese, mozzarella, part skim milk",
+0.65,keep,other,25,sr28,1229,"Cheese, white, queso blanco",
+0.65,keep,other,4,sr28,1010,"Cheese, cheshire",
+0.65,keep,other,28,sr28,1271,"Cheese, mozzarella, low moisture, part-skim, shredded",
+0.65,keep,other,26,fdc_sr_legacy,171292,"Cheese, cheddar, reduced fat (Includes foods for USDA's Food Distribution Program)",
+0.65,keep,other,23,sr28,1286,"Yogurt, Greek, vanilla, nonfat",
+0.65,keep,other,33,fdc_foundation,746766,"Cheese, ricotta, whole milk",
+0.65,keep,other,9,sr28,1102,"Milk, chocolate, fluid, commercial, whole, with added vitamin A and vitamin D",
+0.65,keep,other,13,fdc_sr_legacy,171880,"Beverages, coffee, ready to drink, milk based, sweetened",
+0.65,keep,other,10,sr28,1110,"Milk shakes, thick chocolate",
+0.65,keep,other,32,fdc_foundation,2262073,"Sesame butter, creamy",
+0.65,keep,other,7,sr28,1219,"Yogurt, fruit, lowfat, with low calorie sweetener, fortified with vitamin D",
+0.65,keep,other,28,fdc_sr_legacy,170900,"Cheese, mozzarella, low moisture, part-skim, shredded",
+0.65,keep,other,21,fdc_sr_legacy,171267,"Milk, reduced fat, fluid, 2% milkfat, with added vitamin A and vitamin D",
+0.65,keep,other,19,sr28,7033,Ham and cheese spread,
+0.65,keep,other,8,sr28,1041,"Cheese, tilsit",
+0.65,keep,other,26,sr28,1032,"Cheese, parmesan, grated",
+0.65,keep,other,18,fdc_sr_legacy,173452,"Cheese, parmesan, dry grated, reduced fat",
+0.65,keep,other,16,fdc_foundation,2346386,"Cream, heavy",
+0.65,keep,other,24,sr28,1228,"Cheese, fresh, queso fresco",
+0.65,keep,other,16,fdc_sr_legacy,173432,"Milk, nonfat, fluid, without added vitamin A and vitamin D (fat free or skim)",
+0.65,keep,other,6,fdc_sr_legacy,171312,"Yogurt, Greek, nonfat, plain, CHOBANI",
+0.65,keep,other,13,fdc_foundation,2647440,"Cheese, provolone, sliced",
+0.65,keep,other,1,sr28,1118,"Yogurt, plain, skim milk, 13 grams protein per 8 ounce",
+0.65,keep,other,1,sr28,1031,"Cheese, neufchatel",
+0.65,keep,other,25,fdc_foundation,325198,"Cheese, pasteurized process, American, vitamin D fortified",
+0.65,keep,other,26,fdc_sr_legacy,171247,"Cheese, parmesan, grated",
+0.65,keep,other,20,fdc_sr_legacy,171298,"Yogurt, Greek, nonfat, vanilla, DANNON OIKOS",
+0.65,keep,other,33,fdc_foundation,323444,"Cheese, ricotta, whole milk",
+0.65,keep,other,23,sr28,1056,"Cream, sour, cultured",
+0.65,keep,other,16,sr28,1044,"Cheese, pasteurized process, swiss",
+0.65,keep,other,21,sr28,1085,"Milk, nonfat, fluid, with added vitamin A and vitamin D (fat free or skim)",
+0.65,keep,other,18,fdc_foundation,2259793,"Yogurt, plain, whole milk",
+0.65,keep,other,29,sr28,18120,"Cake, pound, commercially prepared, butter (includes fresh and frozen)",
+0.65,keep,other,23,fdc_sr_legacy,170894,"Yogurt, Greek, plain, nonfat (Includes foods for USDA's Food Distribution Program)",
+0.65,keep,other,20,sr28,1175,"Milk, fluid, 1% fat, without added vitamin A and vitamin D",
+0.65,keep,other,20,fdc_foundation,2259796,"Cheese, feta, whole milk, crumbled",
+0.65,keep,other,36,fdc_foundation,322892,"Milk, whole, 3.25% milkfat, with added vitamin D",
+0.65,keep,other,18,fdc_foundation,2259794,"Yogurt, Greek, plain, whole milk",
+0.65,keep,other,28,fdc_sr_legacy,170853,"Cheese, pasteurized process, American, fortified with vitamin D",
+0.65,keep,other,18,sr28,1276,"Yogurt, Greek, strawberry, DANNON OIKOS",
+0.65,keep,other,8,fdc_sr_legacy,173430,"Butter, without salt",
+0.65,keep,other,24,fdc_sr_legacy,174294,"Peanut Butter, smooth (Includes foods for USDA's Food Distribution Program)",

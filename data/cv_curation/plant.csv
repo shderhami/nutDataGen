@@ -1,0 +1,688 @@
+score,decision,prep,n_obs,source_dataset,source_food_id,description,reasons
+0.0,drop,other,3,sr28,3127,"Babyfood, vegetables, spinach, creamed, strained",-fastfood/babyfood/restaurant
+0.0,drop,other,24,fdc_sr_legacy,171371,"Babyfood, GERBER, GRADUATES Lil Biscuits Vanilla Wheat",-fastfood/babyfood/restaurant -brand -dish/prepared
+0.0,drop,other,28,sr28,21213,"SUBWAY, cold cut sub on white bread with lettuce and tomato",-brand -dish/prepared
+0.0,drop,other,27,fdc_sr_legacy,170707,"Fast foods, submarine sandwich, ham on white bread with lettuce and tomato",-fastfood/babyfood/restaurant -dish/prepared
+0.0,drop,other,27,sr28,21209,"SUBWAY, black forest ham sub on white bread with lettuce and tomato",-brand -dish/prepared
+0.0,drop,other,1,sr28,3166,"Babyfood, juice, apple",-fastfood/babyfood/restaurant
+0.0,drop,other,3,sr28,3159,"Babyfood, fruit, pears and pineapple, junior",-fastfood/babyfood/restaurant
+0.0,drop,other,1,sr28,8028,"Cereals ready-to-eat, KELLOGG, KELLOGG'S ALL-BRAN COMPLETE Wheat Flakes",-brand -dish/prepared
+0.0,drop,other,6,sr28,4029,"Salad dressing, mayonnaise, imitation, soybean without cholesterol",-dish/prepared -imitation
+0.0,drop,other,27,fdc_sr_legacy,170313,"Fast foods, submarine sandwich, bacon, lettuce, and tomato on white bread",-fastfood/babyfood/restaurant -dish/prepared
+0.0,drop,other,25,sr28,21264,"TACO BELL, Bean Burrito",-brand -dish/prepared
+0.0,drop,other,22,fdc_sr_legacy,170969,"Babyfood, cereal, rice, dry fortified",-fastfood/babyfood/restaurant -dish/prepared
+0.0,drop,other,26,fdc_sr_legacy,169028,"Restaurant, family style, chili with meat and beans",-fastfood/babyfood/restaurant
+0.0,drop,other,21,sr28,3023,"Finger snacks, GERBER GRADUATE PUFFS, apple and cinnamon",-brand -dish/prepared
+0.0,drop,other,1,sr28,3268,"Babyfood, juice, apple and cherry",-fastfood/babyfood/restaurant
+0.0,drop,other,4,sr28,3176,"Babyfood, juice, orange and banana",-fastfood/babyfood/restaurant
+0.0,drop,other,25,fdc_sr_legacy,170734,"TACO BELL, Bean Burrito",-brand -dish/prepared
+0.0,drop,other,27,sr28,21156,"Fast foods, submarine sandwich, ham on white bread with lettuce and tomato",-fastfood/babyfood/restaurant -dish/prepared
+0.0,drop,other,4,sr28,3152,"Babyfood, fruit, apple and raspberry, strained",-fastfood/babyfood/restaurant
+0.0,drop,other,3,sr28,3128,"Babyfood, fruit, apricot with tapioca, junior",-fastfood/babyfood/restaurant
+0.0,drop,other,17,fdc_sr_legacy,170939,"Babyfood, vegetables, peas, strained",-fastfood/babyfood/restaurant
+0.0,drop,other,21,fdc_sr_legacy,172252,"Babyfood, finger snacks, GERBER, GRADUATES, PUFFS, apple and cinnamon",-fastfood/babyfood/restaurant -brand -dish/prepared
+0.0,drop,other,28,sr28,36408,"Restaurant, Latino, pupusas con frijoles (pupusas, bean)",-fastfood/babyfood/restaurant
+0.0,drop,other,24,sr28,36406,"Restaurant, Latino, Arroz con habichuelas colorados (Rice And Red Beans)",-fastfood/babyfood/restaurant
+0.0,drop,other,5,sr28,3118,"Babyfood, fruit, apricot with tapioca, strained",-fastfood/babyfood/restaurant
+0.0,drop,other,1,sr28,3119,"Babyfood, vegetables, corn, creamed, strained",-fastfood/babyfood/restaurant
+0.0,drop,other,1,sr28,3117,"Babyfood, fruit, applesauce, junior",-fastfood/babyfood/restaurant
+0.0,drop,other,1,sr28,3137,"Babyfood, fruit, prunes with tapioca, without ascorbic acid, junior",-fastfood/babyfood/restaurant
+0.0,drop,other,2,sr28,3165,"Babyfood, fruit, apple and blueberry, junior",-fastfood/babyfood/restaurant
+0.0,drop,other,3,sr28,3236,"Babyfood, dessert, fruit dessert, without ascorbic acid, junior",-fastfood/babyfood/restaurant -dish/prepared
+0.0,drop,other,2,sr28,3173,"Babyfood, juice, orange and apple",-fastfood/babyfood/restaurant
+0.0,drop,other,2,sr28,3136,"Babyfood, fruit, prunes with tapioca, without ascorbic acid, strained",-fastfood/babyfood/restaurant
+0.0,drop,other,1,sr28,8068,"Cereals ready-to-eat, KELLOGG, KELLOGG'S CORN POPS",-brand -dish/prepared
+0.0,drop,other,26,sr28,36417,"Restaurant, Mexican, spanish rice",-fastfood/babyfood/restaurant
+0.0,drop,other,4,sr28,3212,"Babyfood, cereal, rice, with bananas, dry",-fastfood/babyfood/restaurant -dish/prepared
+0.0,drop,other,5,sr28,3156,"Babyfood, fruit, bananas and pineapple with tapioca, junior",-fastfood/babyfood/restaurant
+0.0,drop,other,17,fdc_sr_legacy,172274,"Babyfood, vegetables, squash, strained",-fastfood/babyfood/restaurant
+0.0,drop,other,5,sr28,3235,"Babyfood, dessert, fruit dessert, without ascorbic acid, strained",-fastfood/babyfood/restaurant -dish/prepared
+0.0,drop,other,19,sr28,21139,"Fast foods, potato, mashed",-fastfood/babyfood/restaurant
+0.0,drop,other,6,sr28,3283,"Babyfood, vegetables, garden vegetable, strained",-fastfood/babyfood/restaurant
+0.0,drop,other,4,sr28,3168,"Babyfood, juice, apple and peach",-fastfood/babyfood/restaurant
+0.0,drop,other,9,sr28,3181,"Babyfood, cereal, barley, dry fortified",-fastfood/babyfood/restaurant -dish/prepared
+0.0,drop,other,4,sr28,3132,"Babyfood, fruit, pears, strained",-fastfood/babyfood/restaurant
+0.0,drop,other,27,fdc_sr_legacy,170712,"SUBWAY, black forest ham sub on white bread with lettuce and tomato",-brand -dish/prepared
+0.0,drop,other,6,sr28,3238,"Babyfood, dessert, tropical fruit, junior",-fastfood/babyfood/restaurant -dish/prepared
+0.0,drop,other,17,fdc_sr_legacy,172275,"Babyfood, vegetables, squash, junior",-fastfood/babyfood/restaurant
+0.0,drop,other,26,sr28,36037,"Restaurant, family style, chili with meat and beans",-fastfood/babyfood/restaurant
+0.0,drop,other,3,sr28,3179,"Babyfood, juice, mixed fruit",-fastfood/babyfood/restaurant
+0.0,drop,other,4,sr28,3279,"Babyfood, dinner, mixed vegetable, junior",-fastfood/babyfood/restaurant -dish/prepared
+0.0,drop,other,28,fdc_sr_legacy,168068,"Restaurant, Latino, black bean soup",-fastfood/babyfood/restaurant -dish/prepared
+0.0,drop,other,29,fdc_sr_legacy,170307,"SUBWAY, SUBWAY CLUB sub on white bread with lettuce and tomato",-brand -dish/prepared
+0.0,drop,other,28,fdc_sr_legacy,170315,"SUBWAY, cold cut sub on white bread with lettuce and tomato",-brand -dish/prepared
+0.0,drop,other,27,fdc_sr_legacy,170312,"SUBWAY, B.L.T. sub on white bread with bacon, lettuce and tomato",-brand -dish/prepared -multi-ingredient
+0.0,drop,other,6,sr28,3278,"Babyfood, dinner, mixed vegetable, strained",-fastfood/babyfood/restaurant -dish/prepared
+0.0,drop,other,27,sr28,36411,"Restaurant, Latino, tamale, corn",-fastfood/babyfood/restaurant
+0.0,drop,other,4,sr28,3153,"Babyfood, fruit, apple and raspberry, junior",-fastfood/babyfood/restaurant
+0.0,drop,other,6,sr28,3129,"Babyfood, fruit, bananas with tapioca, strained",-fastfood/babyfood/restaurant
+0.0,drop,other,6,sr28,3092,"Babyfood, vegetables, green beans, junior",-fastfood/babyfood/restaurant
+0.0,drop,other,17,sr28,3131,"Babyfood, fruit, peaches, junior",-fastfood/babyfood/restaurant
+0.0,drop,other,28,fdc_sr_legacy,167661,"Restaurant, Latino, pupusas con frijoles (pupusas, bean)",-fastfood/babyfood/restaurant
+0.0,drop,other,4,sr28,3171,"Babyfood, juice, apple and prune",-fastfood/babyfood/restaurant
+0.0,drop,other,22,sr28,19441,"Snacks, KELLOGG'S, NUTRI-GRAIN Cereal Bars, fruit",-brand -dish/prepared
+0.0,drop,other,1,sr28,8020,"Cereals ready-to-eat, KELLOGG, KELLOGG'S Corn Flakes",-brand -dish/prepared
+0.0,drop,other,27,sr28,21162,"Fast foods, submarine sandwich, bacon, lettuce, and tomato on white bread",-fastfood/babyfood/restaurant -dish/prepared
+0.0,drop,other,28,fdc_sr_legacy,170696,"Fast foods, submarine sandwich, cold cut on white bread with lettuce and tomato",-fastfood/babyfood/restaurant -dish/prepared
+0.0,drop,other,3,sr28,3116,"Babyfood, fruit, applesauce, strained",-fastfood/babyfood/restaurant
+0.0,drop,other,1,sr28,19269,"Snacks, GENERAL MILLS, BETTY CROCKER Fruit Roll Ups, berry flavored, with vitamin C",-brand -dish/prepared
+0.0,drop,other,24,sr28,36625,"Restaurant, Chinese, vegetable lo mein, without meat",-fastfood/babyfood/restaurant
+0.0,drop,other,19,fdc_sr_legacy,170699,"Fast foods, potato, mashed",-fastfood/babyfood/restaurant
+0.0,drop,other,21,fdc_sr_legacy,168084,"Restaurant, Chinese, vegetable chow mein, without meat or noodles",-fastfood/babyfood/restaurant -dish/prepared
+0.0,drop,other,6,sr28,3233,"Babyfood, dessert, fruit pudding, pineapple, strained",-fastfood/babyfood/restaurant -dish/prepared
+0.0,drop,other,1,sr28,3174,"Babyfood, juice, orange and apple and banana",-fastfood/babyfood/restaurant
+0.0,drop,other,27,fdc_sr_legacy,167664,"Restaurant, Latino, tamale, corn",-fastfood/babyfood/restaurant
+0.0,drop,other,28,sr28,36413,"Restaurant, Latino, black bean soup",-fastfood/babyfood/restaurant -dish/prepared
+0.0,drop,other,3,sr28,3134,"Babyfood, fruit, plums with tapioca, without ascorbic acid, strained",-fastfood/babyfood/restaurant
+0.0,drop,other,1,sr28,3280,"Babyfood, fruit, bananas with tapioca, junior",-fastfood/babyfood/restaurant
+0.0,drop,other,3,sr28,8003,"Cereals ready-to-eat, KELLOGG, KELLOGG'S APPLE JACKS",-brand -dish/prepared
+0.0,drop,other,29,sr28,21152,"SUBWAY, SUBWAY CLUB sub on white bread with lettuce and tomato",-brand -dish/prepared
+0.0,drop,other,25,fdc_sr_legacy,172049,"LITTLE CAESARS 14"" Original Round Meat and Vegetable Pizza, Regular Crust",+cut/part -brand -dish/prepared
+0.0,drop,other,17,fdc_sr_legacy,171336,"Babyfood, fruit, peaches, strained",-fastfood/babyfood/restaurant
+0.0,drop,other,2,sr28,3157,"Babyfood, fruit, bananas and pineapple with tapioca, strained",-fastfood/babyfood/restaurant
+0.0,drop,other,27,sr28,21161,"SUBWAY, B.L.T. sub on white bread with bacon, lettuce and tomato",-brand -dish/prepared -multi-ingredient
+0.0,drop,other,17,sr28,3130,"Babyfood, fruit, peaches, strained",-fastfood/babyfood/restaurant
+0.0,drop,other,28,sr28,21304,"Fast Food, Pizza Chain, 14"" pizza, meat and vegetable topping, regular crust",-fastfood/babyfood/restaurant -dish/prepared
+0.0,drop,other,17,fdc_sr_legacy,171337,"Babyfood, fruit, peaches, junior",-fastfood/babyfood/restaurant
+0.0,drop,other,24,sr28,8508,"Cereals ready-to-eat, USDA Commodity Corn and Rice (includes all commodity brands)",-fastfood/babyfood/restaurant -dish/prepared
+0.0,drop,other,25,sr28,36405,"Restaurant, Latino, Arroz con frijoles negros (rice and black beans)",-fastfood/babyfood/restaurant
+0.0,drop,other,24,fdc_sr_legacy,168063,"Restaurant, Latino, arroz con leche (rice pudding)",-fastfood/babyfood/restaurant -dish/prepared
+0.0,drop,other,4,sr28,3164,"Babyfood, fruit, apple and blueberry, strained",-fastfood/babyfood/restaurant
+0.0,drop,other,2,sr28,3143,"Babyfood, fruit, applesauce and apricots, junior",-fastfood/babyfood/restaurant
+0.0,drop,other,24,fdc_sr_legacy,168065,"Restaurant, Latino, Arroz con habichuelas colorados (Rice And Red Beans)",-fastfood/babyfood/restaurant
+0.0,drop,other,22,sr28,8509,"Cereals ready-to-eat, USDA Commodity Rice Crisps (includes all commodity brands)",-fastfood/babyfood/restaurant -dish/prepared
+0.0,drop,other,26,fdc_sr_legacy,167665,"Restaurant, Mexican, spanish rice",-fastfood/babyfood/restaurant
+0.0,drop,other,22,fdc_sr_legacy,168862,"Snacks, KELLOGG, KELLOGG'S, NUTRI-GRAIN Cereal Bars, fruit",-brand -dish/prepared
+0.0,drop,other,1,sr28,3150,"Babyfood, fruit, applesauce and pineapple, strained",-fastfood/babyfood/restaurant
+0.0,drop,other,17,sr28,3105,"Babyfood, vegetables, squash, junior",-fastfood/babyfood/restaurant
+0.0,drop,other,17,sr28,3104,"Babyfood, vegetables, squash, strained",-fastfood/babyfood/restaurant
+0.0,drop,other,5,sr28,3170,"Babyfood, juice, apple and plum",-fastfood/babyfood/restaurant
+0.0,drop,other,6,sr28,4027,"Salad dressing, mayonnaise, imitation, soybean",-dish/prepared -imitation
+0.0,drop,other,3,sr28,3135,"Babyfood, fruit, plums with tapioca, without ascorbic acid, junior",-fastfood/babyfood/restaurant
+0.0,drop,other,25,sr28,21289,"LITTLE CAESARS 14"" Original Round Meat and Vegetable Pizza, Regular Crust",+cut/part -brand -dish/prepared
+0.0,drop,other,19,sr28,21060,"Fast foods, burrito, with beans",-fastfood/babyfood/restaurant -dish/prepared
+0.0,drop,other,2,sr28,3226,"Babyfood, dessert, fruit pudding, orange, strained",-fastfood/babyfood/restaurant -dish/prepared
+0.0,drop,other,3,sr28,3195,"Babyfood, cereal, rice, with applesauce and bananas, strained",-fastfood/babyfood/restaurant -dish/prepared
+0.0,drop,other,4,sr28,3158,"Babyfood, fruit, pears and pineapple, strained",-fastfood/babyfood/restaurant
+0.0,drop,other,1,sr28,3220,"Babyfood, dessert, dutch apple, strained",-fastfood/babyfood/restaurant -dish/prepared
+0.0,drop,other,17,sr28,8065,"Cereals ready-to-eat, KELLOGG, KELLOGG'S RICE KRISPIES",-brand -dish/prepared
+0.0,drop,other,3,sr28,3133,"Babyfood, fruit, pears, junior",-fastfood/babyfood/restaurant
+0.0,drop,other,3,sr28,3211,"Babyfood, cereal, high protein, with apple and orange, dry",-fastfood/babyfood/restaurant -dish/prepared
+0.0,drop,other,25,fdc_sr_legacy,168064,"Restaurant, Latino, Arroz con frijoles negros (rice and black beans)",-fastfood/babyfood/restaurant
+0.0,drop,other,36,fdc_foundation,334720,"Restaurant, Latino, pupusas con frijoles (pupusas, bean)",-fastfood/babyfood/restaurant
+0.0,drop,other,20,fdc_sr_legacy,172271,"Babyfood, vegetables, green beans, strained",-fastfood/babyfood/restaurant
+0.0,drop,other,24,sr28,36404,"Restaurant, Latino, arroz con leche (rice pudding)",-fastfood/babyfood/restaurant -dish/prepared
+0.0,drop,other,28,sr28,21124,"Fast foods, submarine sandwich, cold cut on white bread with lettuce and tomato",-fastfood/babyfood/restaurant -dish/prepared
+0.0,drop,other,2,sr28,3142,"Babyfood, fruit, applesauce and apricots, strained",-fastfood/babyfood/restaurant
+0.0,drop,other,24,fdc_sr_legacy,167677,"Restaurant, Chinese, vegetable lo mein, without meat",-fastfood/babyfood/restaurant
+0.0,drop,other,22,sr28,3194,"Babyfood, cereal, rice, dry fortified",-fastfood/babyfood/restaurant -dish/prepared
+0.0,drop,other,21,sr28,36624,"Restaurant, Chinese, vegetable chow mein, without meat or noodles",-fastfood/babyfood/restaurant -dish/prepared
+0.0,drop,other,17,sr28,3121,"Babyfood, vegetables, peas, strained",-fastfood/babyfood/restaurant
+0.0,drop,other,28,fdc_sr_legacy,172055,"Fast Food, Pizza Chain, 14"" pizza, meat and vegetable topping, regular crust",-fastfood/babyfood/restaurant -dish/prepared
+0.0,drop,other,20,sr28,3091,"Babyfood, vegetables, green beans, strained",-fastfood/babyfood/restaurant
+0.05,drop,other,25,fdc_sr_legacy,167962,"Snacks, potato chips, barbecue-flavor",-dish/prepared
+0.05,drop,other,21,sr28,27068,"Dip, FRITO'S, bean, original flavor",-dish/prepared
+0.05,drop,other,2,sr28,16082,"Noodles, chinese, cellophane or long rice (mung beans), dehydrated",-dish/prepared
+0.05,drop,other,23,sr28,8132,"Cereals, oats, instant, fortified, with raisins and spice, dry",-dish/prepared
+0.05,drop,other,14,sr28,18412,"Bread, cornbread, dry mix, unenriched (includes corn muffin mix)",-dish/prepared
+0.05,drop,other,13,sr28,8092,"Cereals, QUAKER, corn grits, instant, plain, dry",-dish/prepared
+0.05,drop,other,11,sr28,19051,"Snacks, rice cracker brown rice, plain",-dish/prepared
+0.05,drop,other,10,sr28,19052,"Snacks, rice cakes, brown rice, buckwheat",-dish/prepared
+0.05,drop,other,19,sr28,19445,"Snacks, potato chips, made from dried potatoes, fat-free, made with olestra",-dish/prepared
+0.05,drop,other,11,sr28,8157,"Cereals ready-to-eat, wheat, puffed, fortified",-dish/prepared
+0.05,drop,other,20,fdc_sr_legacy,173904,"Cereals, oats, regular and quick, not fortified, dry",-dish/prepared
+0.05,drop,other,16,sr28,18246,"Danish pastry, fruit, enriched (includes apple, cinnamon, raisin, lemon, raspberry, strawberry)",-dish/prepared
+0.05,drop,other,20,sr28,8122,"Cereals, oats, instant, fortified, plain, dry",-dish/prepared
+0.05,drop,other,25,fdc_sr_legacy,173920,"Cereals, oats, instant, fortified, maple and brown sugar, dry",-dish/prepared
+0.05,drop,other,21,fdc_sr_legacy,171664,"Cereals, oats, instant, fortified, with cinnamon and spice, dry",-dish/prepared
+0.05,drop,other,4,sr28,19413,"Snacks, rice cakes, brown rice, corn",-dish/prepared
+0.05,drop,other,10,sr28,19053,"Snacks, rice cakes, brown rice, sesame seed",-dish/prepared
+0.05,drop,other,25,fdc_sr_legacy,172749,"Crackers, whole-wheat",-dish/prepared
+0.05,drop,other,23,fdc_sr_legacy,168853,"Snack, potato chips, made from dried potatoes, plain",-dish/prepared
+0.05,drop,other,22,fdc_sr_legacy,174090,"Rolls, hamburger or hot dog, whole wheat",-dish/prepared
+0.05,drop,other,14,fdc_sr_legacy,173887,"Cereals ready-to-eat, RALSTON CRISP RICE",-dish/prepared
+0.05,drop,other,23,sr28,19045,"Snacks, potato chips, made from dried potatoes, reduced fat",-dish/prepared
+0.05,drop,other,11,sr28,20105,"Macaroni, vegetable, enriched, dry",-dish/prepared
+0.05,drop,other,27,fdc_sr_legacy,167537,"Snacks, corn-based, extruded, chips, plain",-dish/prepared
+0.05,drop,other,12,sr28,18222,"Crackers, melba toast, wheat",-dish/prepared
+0.05,drop,other,13,sr28,16125,Soy sauce made from hydrolyzed vegetable protein,-dish/prepared
+0.05,drop,other,25,sr28,25063,"Snacks, potato chips, made from dried potatoes (preformed), multigrain",-dish/prepared
+0.05,drop,other,20,fdc_sr_legacy,171661,"Cereals, oats, instant, fortified, plain, dry",-dish/prepared
+0.05,drop,other,18,sr28,35236,"Stew, pinto bean and hominy, badufsuki (Hopi)",-dish/prepared
+0.05,drop,other,1,sr28,18280,"Muffins, corn, dry mix, prepared",-dish/prepared
+0.05,drop,other,22,sr28,18262,"English muffins, raisin-cinnamon (includes apple-cinnamon)",-dish/prepared
+0.05,drop,other,22,fdc_sr_legacy,167522,"Pie, Dutch Apple, Commercially Prepared",-dish/prepared
+0.05,drop,other,13,fdc_sr_legacy,174279,Soy sauce made from hydrolyzed vegetable protein,-dish/prepared
+0.05,drop,other,5,sr28,18283,"Muffins, oat bran",-dish/prepared
+0.05,drop,other,14,sr28,18431,"Danish pastry, fruit, unenriched (includes apple, cinnamon, raisin, strawberry)",-dish/prepared
+0.05,drop,other,4,sr28,19422,"Snacks, potato chips, reduced fat",-dish/prepared
+0.05,drop,other,2,fdc_sr_legacy,173910,"Cereals ready-to-eat, POST, Shredded Wheat, original big biscuit",-dish/prepared
+0.05,drop,other,10,sr28,8156,"Cereals ready-to-eat, rice, puffed, fortified",-dish/prepared
+0.05,drop,other,27,fdc_sr_legacy,174985,"Crackers, wheat, regular",-dish/prepared
+0.05,drop,other,18,sr28,8084,"Cereals ready-to-eat, wheat germ, toasted, plain",-dish/prepared
+0.05,drop,other,19,sr28,19414,"Snacks, rice cakes, brown rice, multigrain",-dish/prepared
+0.05,drop,other,18,sr28,8506,"Cereals ready-to-eat, RALSTON Corn Flakes",-dish/prepared
+0.05,drop,other,19,fdc_sr_legacy,168864,"Snacks, potato chips, made from dried potatoes, fat-free, made with olestra",-dish/prepared
+0.05,drop,other,26,sr28,18235,"Crackers, whole-wheat",-dish/prepared
+0.05,drop,other,3,sr28,19318,"Puddings, banana, dry mix, instant",-dish/prepared
+0.05,drop,other,18,sr28,18301,"Pie, apple, commercially prepared, enriched flour",-dish/prepared
+0.05,drop,other,16,sr28,20133,"Rice noodles, dry",-dish/prepared
+0.05,drop,other,22,fdc_sr_legacy,173002,"Cereals ready-to-eat, RALSTON Enriched Wheat Bran flakes",-dish/prepared
+0.05,drop,other,15,fdc_sr_legacy,171583,"Soup, vegetable broth, ready to serve",-dish/prepared
+0.05,drop,other,17,fdc_sr_legacy,174648,"Cereals ready-to-eat, RALSTON Corn Flakes",-dish/prepared
+0.05,drop,other,18,fdc_sr_legacy,172760,"Muffins, English, raisin-cinnamon, toasted (includes apple-cinnamon)",-dish/prepared
+0.05,drop,other,21,fdc_sr_legacy,171834,"Dip, FRITO'S, bean, original flavor",-dish/prepared
+0.05,drop,other,15,fdc_sr_legacy,172474,"Soy sauce, reduced sodium, made from hydrolyzed vegetable protein",-dish/prepared
+0.05,drop,other,18,fdc_sr_legacy,172473,"Soy sauce made from soy and wheat (shoyu), low sodium",-dish/prepared
+0.05,drop,other,22,sr28,8504,"Cereals ready-to-eat, RALSTON Enriched Wheat Bran flakes",-dish/prepared
+0.05,drop,other,22,fdc_sr_legacy,174997,"Muffins, English, raisin-cinnamon (includes apple-cinnamon)",-dish/prepared
+0.05,drop,other,15,sr28,18443,"Pie, apple, commercially prepared, unenriched flour",-dish/prepared
+0.05,drop,other,21,sr28,27065,"Dip, bean, original flavor",-dish/prepared
+0.05,drop,other,18,sr28,19004,"Snacks, corn-based, extruded, chips, barbecue-flavor",-dish/prepared
+0.05,drop,other,25,sr28,8680,"Cereals, oats, instant, fortified, maple and brown sugar, dry",-dish/prepared
+0.05,drop,other,26,fdc_sr_legacy,171846,"Crackers, standard snack-type, with whole wheat",-dish/prepared
+0.05,drop,other,1,sr28,8148,"Cereals ready-to-eat, POST, Shredded Wheat, original spoon-size",-dish/prepared
+0.05,drop,other,23,sr28,8120,"Cereals, oats, regular and quick, not fortified, dry",-dish/prepared
+0.05,drop,other,3,sr28,6122,"Gravy, mushroom, dry, powder",-dish/prepared
+0.05,drop,other,23,fdc_sr_legacy,174089,"Rolls, hamburger or hot dog, wheat/cracked wheat",-dish/prepared
+0.05,drop,other,25,fdc_sr_legacy,174804,"Snacks, potato chips, made from dried potatoes (preformed), multigrain",-dish/prepared
+0.05,drop,other,22,sr28,8090,"Cereals, corn grits, white, regular and quick, enriched, dry",-dish/prepared
+0.05,drop,other,18,sr28,19415,"Snacks, potato sticks",-dish/prepared
+0.05,drop,other,24,sr28,18949,"Crackers, whole-wheat, reduced fat",-dish/prepared
+0.05,drop,other,7,sr28,19013,"Snacks, fruit leather, pieces",-dish/prepared
+0.05,drop,other,24,sr28,18326,"Pie, pumpkin, commercially prepared",-dish/prepared
+0.05,drop,other,26,sr28,28308,"Crackers, standard snack-type, with whole wheat",-dish/prepared
+0.05,drop,other,22,sr28,18944,"Pie, Dutch Apple, Commercially Prepared",-dish/prepared
+0.05,drop,other,24,fdc_sr_legacy,167933,"Crackers, whole-wheat, reduced fat",-dish/prepared
+0.05,drop,other,21,fdc_sr_legacy,171832,"Dip, bean, original flavor",-dish/prepared
+0.05,drop,other,12,sr28,18219,"Crackers, matzo, whole-wheat",-dish/prepared
+0.05,drop,other,19,sr28,16123,Soy sauce made from soy and wheat (shoyu),-dish/prepared
+0.05,drop,other,22,sr28,8159,"Cereals, corn grits, yellow, regular and quick, enriched, dry",-dish/prepared
+0.05,drop,other,21,fdc_sr_legacy,171654,"Cereals, corn grits, white, regular and quick, enriched, dry",-dish/prepared
+0.05,drop,other,24,fdc_sr_legacy,172787,"Pie, pumpkin, commercially prepared",-dish/prepared
+0.05,drop,other,12,sr28,6615,"Soup, SWANSON, vegetable broth",-dish/prepared
+0.05,drop,other,20,fdc_sr_legacy,174277,Soy sauce made from soy and wheat (shoyu),-dish/prepared
+0.05,drop,other,13,fdc_sr_legacy,171656,"Cereals, QUAKER, corn grits, instant, plain, dry",-dish/prepared
+0.05,drop,other,15,sr28,19007,"Snacks, corn-based, extruded, onion-flavor",-dish/prepared
+0.05,drop,other,16,sr28,20126,"Spaghetti, spinach, dry",-dish/prepared
+0.05,drop,other,18,sr28,18263,"English muffins, raisin-cinnamon, toasted (includes apple-cinnamon)",-dish/prepared
+0.05,drop,other,23,fdc_sr_legacy,167553,"Snacks, potato chips, made from dried potatoes, reduced fat",-dish/prepared
+0.05,drop,other,18,fdc_sr_legacy,173003,"Cereals ready-to-eat, RALSTON Corn Biscuits",-dish/prepared
+0.05,drop,other,2,sr28,8147,"Cereals ready-to-eat, POST, Shredded Wheat, original big biscuit",-dish/prepared
+0.05,drop,other,20,fdc_sr_legacy,168782,"Puddings, rice, ready-to-eat",-dish/prepared
+0.05,drop,other,15,sr28,6700,"Soup, vegetable broth, ready to serve",-dish/prepared
+0.05,drop,other,27,sr28,19003,"Snacks, corn-based, extruded, chips, plain",-dish/prepared
+0.05,drop,other,11,sr28,25059,"Snacks, brown rice chips",-dish/prepared
+0.05,drop,other,10,fdc_sr_legacy,171180,"Soup, SWANSON, vegetable broth",-dish/prepared
+0.05,drop,other,5,sr28,18240,"Croissants, apple",-dish/prepared
+0.05,drop,other,20,sr28,19193,"Puddings, rice, ready-to-eat",-dish/prepared
+0.05,drop,other,15,sr28,16425,"Soy sauce, reduced sodium, made from hydrolyzed vegetable protein",-dish/prepared
+0.05,drop,other,4,sr28,19416,"Snacks, rice cakes, brown rice, rye",-dish/prepared
+0.05,drop,other,15,sr28,8025,"Cereals ready-to-eat, RALSTON CRISP RICE",-dish/prepared
+0.05,drop,other,23,sr28,18950,"Crackers, wheat, reduced fat",-dish/prepared
+0.05,drop,other,23,sr28,28312,"Rolls, hamburger or hot dog, wheat/cracked wheat",-dish/prepared
+0.05,drop,other,15,sr28,18428,"Crackers, wheat, low salt",-dish/prepared
+0.05,drop,other,16,sr28,8144,"Cereals, whole wheat hot natural cereal, dry",-dish/prepared
+0.05,drop,other,19,sr28,8505,"Cereals ready-to-eat, RALSTON Corn Biscuits",-dish/prepared
+0.05,drop,other,18,fdc_sr_legacy,169006,"Stew, pinto bean and hominy, badufsuki (Hopi)",-dish/prepared
+0.05,drop,other,18,sr28,16424,"Soy sauce made from soy and wheat (shoyu), low sodium",-dish/prepared
+0.05,drop,other,23,sr28,28313,"Rolls, hamburger or hot dog, whole wheat",-dish/prepared
+0.05,drop,other,27,sr28,18232,"Crackers, wheat, regular",-dish/prepared
+0.05,drop,other,6,sr28,8160,"Cereals, corn grits, yellow, regular and quick, unenriched, dry",-dish/prepared
+0.05,drop,other,23,fdc_sr_legacy,167934,"Crackers, wheat, reduced fat",-dish/prepared
+0.05,drop,other,17,sr28,8128,"Cereals, oats, instant, fortified, with cinnamon and spice, dry",-dish/prepared
+0.05,drop,other,25,sr28,19042,"Snacks, potato chips, barbecue-flavor",-dish/prepared
+0.05,drop,other,1,sr28,8066,"Cereals ready-to-eat, QUAKER, QUAKER Puffed Rice",-dish/prepared
+0.05,drop,other,1,sr28,8146,"Cereals ready-to-eat, QUAKER, QUAKER Puffed Wheat",-dish/prepared
+0.05,drop,other,24,sr28,19410,"Snack, potato chips, made from dried potatoes, plain",-dish/prepared
+0.05,drop,other,3,sr28,19320,"Puddings, banana, dry mix, regular",-dish/prepared
+0.05,drop,other,3,sr28,18279,"Muffins, corn, commercially prepared",-dish/prepared
+0.05,drop,other,19,sr28,18429,"Crackers, whole-wheat, low salt",-dish/prepared
+0.05,drop,other,11,sr28,19014,"Snacks, fruit leather, rolls",-dish/prepared
+0.05,drop,other,9,sr28,18264,"English muffins, wheat",-dish/prepared
+0.05,drop,other,1,fdc_sr_legacy,173896,"Cereals ready-to-eat, wheat germ, toasted, plain",-dish/prepared
+0.05,drop,other,17,sr28,18022,"Bread, cornbread, dry mix, enriched (includes corn muffin mix)",-dish/prepared
+0.3,review,raw,15,fdc_foundation,2727579,"Squash, spaghetti, peeled, seeded, raw",+raw -dish/prepared
+0.3,review,raw,13,fdc_foundation,2727578,"Squash, pie pumpkin, peeled, seeded, raw",+raw -dish/prepared
+0.3,review,raw,18,sr28,11492,"Squash, winter, spaghetti, raw",+raw -dish/prepared
+0.4,review,other,19,sr28,28338,"Bread, gluten-free, white, made with tapioca starch and brown rice flour",-multi-ingredient
+0.4,review,other,19,fdc_sr_legacy,174101,"Bread, gluten-free, white, made with tapioca starch and brown rice flour",-multi-ingredient
+0.4,review,other,21,sr28,28337,"Bread, gluten-free, white, made with rice flour, corn starch, and/or tapioca",-multi-ingredient
+0.4,review,other,21,fdc_sr_legacy,174100,"Bread, gluten-free, white, made with rice flour, corn starch, and/or tapioca",-multi-ingredient
+0.4,review,other,16,fdc_sr_legacy,171862,"Rolls, gluten-free, white, made with rice flour, rice starch, and corn starch",-multi-ingredient
+0.4,review,other,16,sr28,28341,"Rolls, gluten-free, white, made with rice flour, rice starch, and corn starch",-multi-ingredient
+0.65,keep,other,10,fdc_foundation,747430,"Beans, Dry, Medium Red (0% moisture)",
+0.65,keep,other,20,sr28,18952,"Tostada shells, corn",
+0.65,keep,other,19,sr28,20072,"Wheat, hard red winter",
+0.65,keep,other,20,sr28,11473,"Squash, summer, crookneck and straightneck, frozen, unprepared",
+0.65,keep,other,16,fdc_foundation,2758996,"Tortilla, wheat flour, shelf stable",
+0.65,keep,other,12,sr28,18299,"Pancakes, whole-wheat, dry mix, incomplete",
+0.65,keep,other,16,sr28,31032,"Vegetable smoothie, NAKED JUICE, KALE BLAZER",
+0.65,keep,other,26,sr28,18075,"Bread, whole-wheat, commercially prepared",
+0.65,keep,other,17,sr28,28285,"Bread, chapati or roti, whole wheat, commercially prepared, frozen",
+0.65,keep,other,18,sr28,11322,"Peas and carrots, frozen, unprepared",
+0.65,keep,other,14,sr28,31035,"Vegetable juice, BOLTHOUSE FARMS, DAILY GREENS",
+0.65,keep,other,22,sr28,20649,"Wheat flour, whole-grain, soft wheat",
+0.65,keep,other,11,fdc_foundation,335442,"Beans, Dry, Tan (0% moisture)",
+0.65,keep,other,26,fdc_foundation,2003604,"Mushroom, pioppini",
+0.65,keep,other,17,sr28,20090,"Rice flour, brown",
+0.65,keep,other,28,fdc_foundation,2003598,"Mushroom, portabella",
+0.65,keep,other,12,sr28,18066,"Bread, wheat bran",
+0.65,keep,other,7,sr28,11946,"Pickles, cucumber, sour, low sodium",
+0.65,keep,other,7,sr28,4073,"Margarine, regular, hard, soybean (hydrogenated)",
+0.65,keep,other,16,sr28,20324,"Cornmeal, white, self-rising, bolted, with wheat flour added, enriched",
+0.65,keep,other,22,sr28,20641,"Wheat flour, white (industrial), 13% protein, bleached, unenriched",
+0.65,keep,other,17,fdc_foundation,790276,"Flour, corn, yellow, fine meal, enriched",
+0.65,keep,other,22,fdc_sr_legacy,170016,"Peas, green, frozen, unprepared (Includes foods for USDA's Food Distribution Program)",
+0.65,keep,other,10,fdc_sr_legacy,168544,"Corn, sweet, white, frozen, kernels cut off cob, unprepared",
+0.65,keep,other,14,sr28,9513,"Fruit juice smoothie, ODWALLA, ORIGINAL SUPERFOOD",
+0.65,keep,other,19,sr28,11398,"Potato puffs, frozen, unprepared",
+0.65,keep,other,21,sr28,11178,"Corn, sweet, yellow, frozen, kernels cut off cob, unprepared",
+0.65,keep,other,22,fdc_sr_legacy,168944,"Wheat flour, whole-grain, soft wheat",
+0.65,keep,other,19,fdc_sr_legacy,169829,"Tortilla, blue corn, Sakwavikaviki (Hopi)",
+0.65,keep,other,22,sr28,20640,"Wheat flour, white (industrial), 13% protein, bleached, enriched",
+0.65,keep,other,20,sr28,20019,"Corn flour, masa, unenriched, white",
+0.65,keep,other,20,sr28,20623,"Wheat flour, white (industrial), 9% protein, bleached, enriched",
+0.65,keep,other,19,sr28,20083,"Wheat flour, white, bread, enriched",
+0.65,keep,other,20,fdc_sr_legacy,168558,"Pickles, cucumber, dill or kosher dill",
+0.65,keep,other,19,fdc_sr_legacy,168563,"Pickles, cucumber, dill, reduced sodium",
+0.65,keep,other,16,sr28,20071,"Wheat, hard red spring",
+0.65,keep,other,25,fdc_sr_legacy,172686,"Bread, wheat",
+0.65,keep,other,19,fdc_foundation,790085,"Flour, whole wheat, unenriched",
+0.65,keep,other,22,fdc_sr_legacy,172021,"Wheat flour, white (industrial), 15% protein, bleached, enriched",
+0.65,keep,other,7,fdc_sr_legacy,168213,"Fruit juice smoothie, ODWALLA, strawberry banana",
+0.65,keep,other,32,fdc_foundation,2262075,"Flaxseed, ground",
+0.65,keep,other,19,sr28,28286,"Bread, paratha, whole wheat, commercially prepared, frozen",
+0.65,keep,other,9,fdc_sr_legacy,174176,"Beverages, fruit juice drink, reduced sugar, with vitamin E added",
+0.65,keep,other,27,fdc_foundation,2003602,"Mushroom, maitake",
+0.65,keep,other,22,fdc_sr_legacy,172022,"Wheat flour, white (industrial), 15% protein, bleached, unenriched",
+0.65,keep,other,11,fdc_foundation,747434,"Beans, Dry, Tan (0% moisture)",
+0.65,keep,other,18,fdc_foundation,789951,"Flour, wheat, all-purpose, enriched, unbleached",
+0.65,keep,other,19,fdc_sr_legacy,169694,"Corn flour, masa, enriched, white",
+0.65,keep,other,18,sr28,9410,"Apple juice, frozen concentrate, unsweetened, undiluted, with added ascorbic acid",
+0.65,keep,other,18,sr28,11037,"Lima beans, immature seeds, frozen, fordhook, unprepared",
+0.65,keep,other,13,sr28,35130,"Mush, blue corn with ash (Navajo)",
+0.65,keep,other,17,sr28,9018,"Apple juice, frozen concentrate, unsweetened, diluted with 3 volume water without added ascorbic acid",
+0.65,keep,other,15,fdc_sr_legacy,167799,"Fruit juice smoothie, BOLTHOUSE FARMS, strawberry banana",
+0.65,keep,other,21,sr28,32002,"Rice and vermicelli mix, rice pilaf flavor, unprepared",
+0.65,keep,other,22,fdc_sr_legacy,168940,"Wheat flour, white (industrial), 11.5% protein, bleached, unenriched",
+0.65,keep,other,17,sr28,20060,"Rice bran, crude",
+0.65,keep,other,21,sr28,20630,"Wheat flour, white (industrial), 10% protein, unbleached, enriched",
+0.65,keep,other,22,sr28,20635,"Wheat flour, white (industrial), 11.5% protein, bleached, unenriched",
+0.65,keep,other,18,sr28,11137,"Cauliflower, frozen, unprepared",
+0.65,keep,other,2,fdc_sr_legacy,168894,"Wheat flour, white, all-purpose, enriched, bleached",
+0.65,keep,other,22,fdc_sr_legacy,168941,"Wheat flour, white (industrial), 11.5% protein, unbleached, enriched",
+0.65,keep,other,2,fdc_sr_legacy,168896,"Wheat flour, white, bread, enriched",
+0.65,keep,other,16,sr28,20024,"Cornmeal, yellow, self-rising, bolted, with wheat flour added, enriched",
+0.65,keep,other,15,fdc_sr_legacy,168214,"Fruit juice smoothie, NAKED JUICE, strawberry banana",
+0.65,keep,other,16,fdc_foundation,2003596,"Tomato juice, with added ingredients, from concentrate, shelf stable",
+0.65,keep,other,19,sr28,20015,"Corn bran, crude",
+0.65,keep,other,27,fdc_sr_legacy,167927,"Toaster Pastries, fruit, frosted (include apples, blueberry, cherry, strawberry)",
+0.65,keep,other,22,sr28,18065,"Bread, wheat, toasted",
+0.65,keep,other,17,sr28,9411,"Apple juice, frozen concentrate, unsweetened, diluted with 3 volume water, with added ascorbic acid",
+0.65,keep,other,1,fdc_sr_legacy,169968,"Broccoli, frozen, chopped, unprepared",
+0.65,keep,other,28,fdc_foundation,2003603,"Mushroom, beech",
+0.65,keep,other,19,sr28,11039,"Lima beans, immature seeds, frozen, baby, unprepared",
+0.65,keep,other,7,fdc_sr_legacy,175109,"Beverages, Propel Zero, fruit-flavored, non-carbonated",
+0.65,keep,other,11,fdc_foundation,335927,"Beans, Dry, Small White (0% moisture)",
+0.65,keep,other,16,sr28,20076,"Wheat, durum",
+0.65,keep,other,26,fdc_sr_legacy,169738,"Pasta, whole-wheat, dry (Includes foods for USDA's Food Distribution Program)",
+0.65,keep,other,15,sr28,20082,"Wheat flour, white, all-purpose, self-rising, enriched",
+0.65,keep,other,22,sr28,11060,"Beans, snap, green, frozen, all styles, unprepared",
+0.65,keep,other,18,sr28,11574,"Turnip greens, frozen, unprepared",
+0.65,keep,other,22,sr28,20645,"Wheat flour, white (industrial), 15% protein, bleached, enriched",
+0.65,keep,other,11,fdc_foundation,336067,"Beans, Dry, Great Northern (0% moisture)",
+0.65,keep,other,2,sr28,14604,"Water, non-carbonated, bottles, natural fruit flavors, sweetened with low calorie sweetener",
+0.65,keep,other,22,sr28,20636,"Wheat flour, white (industrial), 11.5% protein, unbleached, enriched",
+0.65,keep,other,2,fdc_sr_legacy,171926,"Water, non-carbonated, bottles, natural fruit flavors, sweetened with low calorie sweetener",
+0.65,keep,other,18,fdc_sr_legacy,169741,"Oat flour, partially debranned",
+0.65,keep,other,1,sr28,14262,"Beverages, citrus fruit juice drink, frozen concentrate",
+0.65,keep,other,16,fdc_sr_legacy,170047,"Potato puffs, frozen, unprepared",
+0.65,keep,other,26,sr28,20124,"Pasta, whole-wheat, dry",
+0.65,keep,other,19,sr28,20077,"Wheat bran, crude",
+0.65,keep,other,16,sr28,18939,"Toaster pastries, fruit, toasted (include apple, blueberry, cherry, strawberry)",
+0.65,keep,other,11,fdc_foundation,335774,"Beans, Dry, Small Red (0% moisture)",
+0.65,keep,other,1,fdc_sr_legacy,168869,"Cornmeal, yellow, self-rising, bolted, with wheat flour added, enriched",
+0.65,keep,other,15,sr28,9515,"Fruit juice smoothie, BOLTHOUSE FARMS, GREEN GOODNESS",
+0.65,keep,other,11,fdc_foundation,747446,"Beans, Dry, Great Northern (0% moisture)",
+0.65,keep,other,8,sr28,11941,"Pickles, cucumber, sour",
+0.65,keep,other,19,sr28,20078,"Wheat germ, crude",
+0.65,keep,other,16,sr28,20074,"Wheat, hard white",
+0.65,keep,other,17,fdc_sr_legacy,174075,"Bread, chapati or roti, whole wheat, commercially prepared, frozen",
+0.65,keep,other,25,sr28,18064,"Bread, wheat",
+0.65,keep,other,26,fdc_sr_legacy,175035,"Toaster pastries, fruit (includes apple, blueberry, cherry, strawberry)",
+0.65,keep,other,20,sr28,11094,"Broccoli, frozen, spears, unprepared",
+0.65,keep,other,1,fdc_sr_legacy,168895,"Wheat flour, white, all-purpose, self-rising, enriched",
+0.65,keep,other,1,fdc_sr_legacy,170289,"Corn bran, crude",
+0.65,keep,other,19,fdc_sr_legacy,174076,"Bread, paratha, whole wheat, commercially prepared, frozen",
+0.65,keep,other,17,fdc_foundation,1999634,"Tomato, roma",
+0.65,keep,other,18,fdc_foundation,2346396,"Oats, whole grain, rolled, old fashioned",
+0.65,keep,other,18,fdc_foundation,790214,"Flour, rice, white, unenriched",
+0.65,keep,other,18,fdc_sr_legacy,175036,"Tortillas, ready-to-bake or -fry, corn",
+0.65,keep,other,19,fdc_sr_legacy,168398,"Corn, sweet, yellow, frozen, kernels cut off cob, unprepared (Includes foods for USDA's Food Distribution Program)",
+0.65,keep,other,11,fdc_foundation,335782,"Beans, Dry, Cranberry (0% moisture)",
+0.65,keep,other,21,fdc_sr_legacy,172019,"Wheat flour, white (industrial), 10% protein, bleached, unenriched",
+0.65,keep,other,11,fdc_foundation,335428,"Beans, Dry, Flor de Mayo (0% moisture)",
+0.65,keep,other,14,sr28,9443,"Juice, apple and grape blend, with added ascorbic acid",
+0.65,keep,other,11,fdc_foundation,747442,"Beans, Dry, Small White (0% moisture)",
+0.65,keep,other,26,sr28,18362,"Toaster pastries, fruit (includes apple, blueberry, cherry, strawberry)",
+0.65,keep,other,11,fdc_foundation,335433,"Beans, Dry, Carioca (0% moisture)",
+0.65,keep,other,22,fdc_sr_legacy,172020,"Wheat flour, white (industrial), 13% protein, bleached, unenriched",
+0.65,keep,other,21,fdc_sr_legacy,168951,"Rice and vermicelli mix, rice pilaf flavor, unprepared",
+0.65,keep,other,16,sr28,11479,"Squash, summer, zucchini, includes skin, frozen, unprepared",
+0.65,keep,other,21,sr28,20581,"Wheat flour, white, all-purpose, enriched, unbleached",
+0.65,keep,other,11,fdc_foundation,747437,"Beans, Dry, Cranberry (0% moisture)",
+0.65,keep,other,11,fdc_foundation,335930,"Beans, Dry, Red (0% moisture)",
+0.65,keep,other,19,fdc_sr_legacy,169749,"Corn flour, yellow, masa, enriched",
+0.65,keep,other,20,fdc_foundation,1999633,"Spinach, mature",
+0.65,keep,other,25,sr28,11463,"Spinach, frozen, chopped or leaf, unprepared",
+0.65,keep,other,20,fdc_sr_legacy,172016,"Wheat flour, white (industrial), 9% protein, bleached, enriched",
+0.65,keep,other,20,sr28,11312,"Peas, green, frozen, unprepared",
+0.65,keep,other,27,sr28,18938,"Toaster Pastries, fruit, frosted (include apples, blueberry, cherry, strawberry)",
+0.65,keep,other,27,fdc_sr_legacy,173345,"Corn dogs, frozen, prepared",
+0.65,keep,other,16,fdc_sr_legacy,167928,"Toaster pastries, fruit, toasted (include apple, blueberry, cherry, strawberry)",
+0.65,keep,other,1,sr28,11663,"Seaweed, agar, dried",
+0.65,keep,other,24,sr28,36044,"ON THE BORDER, Mexican rice",
+0.65,keep,other,19,sr28,11730,"Beans, snap, yellow, frozen, all styles, unprepared",
+0.65,keep,other,22,sr28,20647,Millet flour,
+0.65,keep,other,17,sr28,11272,"Mustard greens, frozen, unprepared",
+0.65,keep,other,14,fdc_sr_legacy,174921,"Bread, reduced-calorie, wheat",
+0.65,keep,other,15,fdc_sr_legacy,168009,"Schar, Gluten-Free, Wheat-Free, Classic White Bread",
+0.65,keep,other,2,fdc_sr_legacy,171945,"Beverages, fruit juice drink, greater than 3% fruit juice, high vitamin C and added thiamin",
+0.65,keep,other,23,fdc_sr_legacy,170556,"Seeds, pumpkin and squash seed kernels, dried",
+0.65,keep,other,21,sr28,20629,"Wheat flour, white (industrial), 10% protein, bleached, unenriched",
+0.65,keep,other,18,fdc_foundation,2512379,"Millet, whole grain",
+0.65,keep,other,7,sr28,18059,"Bread, rice bran",
+0.65,keep,other,18,fdc_sr_legacy,172689,"Bread, whole-wheat, commercially prepared, toasted",
+0.65,keep,other,21,fdc_sr_legacy,168938,"Wheat flour, white (industrial), 10% protein, unbleached, enriched",
+0.65,keep,other,13,fdc_sr_legacy,167627,"Mush, blue corn with ash (Navajo)",
+0.65,keep,other,11,fdc_foundation,747432,"Beans, Dry, Flor de Mayo (0% moisture)",
+0.65,keep,other,21,fdc_sr_legacy,168964,"Rice mix, white and wild, flavored, unprepared",
+0.65,keep,other,18,fdc_foundation,1750353,"Spinach, mature",
+0.65,keep,other,23,sr28,20135,"Pasta, whole grain, 51% whole wheat, remaining unenriched semolina, dry",
+0.65,keep,other,18,fdc_foundation,2346397,"Oats, whole grain, steel cut",
+0.65,keep,other,26,fdc_sr_legacy,168959,"Spanish rice mix, dry mix, unprepared",
+0.65,keep,other,19,sr28,35239,"Tortilla, blue corn, Sakwavikaviki (Hopi)",
+0.65,keep,other,21,fdc_sr_legacy,172017,"Wheat flour, white (industrial), 9% protein, bleached, unenriched",
+0.65,keep,other,11,fdc_foundation,335695,"Beans, Dry, Pinto (0% moisture)",
+0.65,keep,other,14,fdc_sr_legacy,168208,"Fruit juice smoothie, ODWALLA, ORIGINAL SUPERFOOD",
+0.65,keep,other,2,fdc_sr_legacy,168936,"Wheat flour, white, all-purpose, enriched, unbleached",
+0.65,keep,other,20,fdc_sr_legacy,172025,"Pasta, whole grain, 51% whole wheat, remaining enriched semolina, dry (Includes foods for USDA's Food Distribution Program)",
+0.65,keep,other,22,fdc_sr_legacy,172687,"Bread, wheat, toasted",
+0.65,keep,other,11,fdc_foundation,747444,"Beans, Dry, Black (0% moisture)",
+0.65,keep,other,11,sr28,20314,"Corn grain, white",
+0.65,keep,other,20,sr28,11937,"Pickles, cucumber, dill or kosher dill",
+0.65,keep,other,7,sr28,19351,"Syrups, corn, high-fructose",
+0.65,keep,other,28,fdc_foundation,2003601,"Mushroom, crimini",
+0.65,keep,other,17,sr28,11235,"Kale, frozen, unprepared",
+0.65,keep,other,3,sr28,18037,"Bread, oat bran",
+0.65,keep,other,15,sr28,20073,"Wheat, soft red winter",
+0.65,keep,other,18,fdc_sr_legacy,169830,"Bread, blue corn, somiviki (Hopi)",
+0.65,keep,other,10,fdc_foundation,335425,"Beans, Dry, Brown (0% moisture)",
+0.65,keep,other,17,fdc_foundation,1104812,"Flour, rice, brown",
+0.65,keep,other,11,fdc_foundation,747439,"Beans, Dry, Pink (0% moisture)",
+0.65,keep,other,15,sr28,28369,"SCHAR, Gluten-Free, Wheat-Free, Classic White Bread",
+0.65,keep,other,15,sr28,20004,"Barley, hulled",
+0.65,keep,other,17,sr28,11180,"Corn, sweet, yellow, frozen, kernels on cob, unprepared",
+0.65,keep,other,22,sr28,20634,"Wheat flour, white (industrial), 11.5% protein, bleached, enriched",
+0.65,keep,other,23,sr28,11910,"Corn, sweet, white, frozen, kernels cut off cob, unprepared",
+0.65,keep,other,11,fdc_foundation,747436,"Beans, Dry, Carioca (0% moisture)",
+0.65,keep,other,12,fdc_foundation,2644282,"Chickpeas, (garbanzo beans, bengal gram), dry",
+0.65,keep,other,18,sr28,18076,"Bread, whole-wheat, commercially prepared, toasted",
+0.65,keep,other,11,fdc_foundation,747441,"Beans, Dry, Navy (0% moisture)",
+0.65,keep,other,27,fdc_foundation,2003600,"Mushroom, enoki",
+0.65,keep,other,26,fdc_sr_legacy,172688,"Bread, whole-wheat, commercially prepared",
+0.65,keep,other,20,fdc_sr_legacy,169696,"Corn flour, masa, unenriched, white",
+0.65,keep,other,14,sr28,18106,"Coffeecake, fruit",
+0.65,keep,other,18,fdc_foundation,789890,"Flour, wheat, all-purpose, enriched, bleached",
+0.65,keep,other,24,fdc_sr_legacy,169031,"ON THE BORDER, Mexican rice",
+0.65,keep,other,1,fdc_sr_legacy,168836,"Syrups, corn, dark",
+0.65,keep,other,11,sr28,20038,Oats,
+0.65,keep,other,5,fdc_sr_legacy,171944,"Beverages, Fruit flavored drink, reduced sugar, greater than 3% fruit juice, high vitamin C, added calcium",
+0.65,keep,other,21,sr28,20628,"Wheat flour, white (industrial), 10% protein, bleached, enriched",
+0.65,keep,other,19,fdc_foundation,2512372,"Flour, quinoa",
+0.65,keep,other,22,sr28,18363,"Tortillas, ready-to-bake or -fry, corn",
+0.65,keep,other,14,sr28,20129,"Wheat flours, bread, unenriched",
+0.65,keep,other,16,sr28,9531,"Fruit juice smoothie, NAKED JUICE, strawberry banana",
+0.65,keep,other,18,sr28,11501,"Succotash, (corn and limas), frozen, unprepared",
+0.65,keep,other,18,sr28,35240,"Bread, blue corn, somiviki (Hopi)",
+0.65,keep,other,17,sr28,9516,"Fruit juice smoothie, BOLTHOUSE FARMS, strawberry banana",
+0.65,keep,other,11,fdc_foundation,335785,"Beans, Dry, Light Tan (0% moisture)",
+0.65,keep,other,24,fdc_sr_legacy,168952,"Rice and vermicelli mix, rice pilaf flavor, prepared with 80% margarine",
+0.65,keep,other,10,fdc_foundation,335777,"Beans, Dry, Medium Red (0% moisture)",
+0.65,keep,other,19,sr28,18967,"Bread, white wheat",
+0.65,keep,other,16,fdc_foundation,2758997,"Tortilla, corn, shelf stable",
+0.65,keep,other,11,fdc_foundation,335306,"Beans, Dry, Pink (0% moisture)",
+0.65,keep,other,17,fdc_foundation,1750344,"Mushroom, lion's mane",
+0.65,keep,other,2,fdc_sr_legacy,169723,"Wheat flour, white, cake, enriched",
+0.65,keep,other,14,fdc_sr_legacy,167798,"Fruit juice smoothie, BOLTHOUSE FARMS, GREEN GOODNESS",
+0.65,keep,other,28,fdc_foundation,1999626,"Mushroom, lion's mane",
+0.65,keep,other,18,sr28,11516,"Sweet potato, frozen, unprepared",
+0.65,keep,other,12,fdc_sr_legacy,167796,"Fruit juice smoothie, NAKED JUICE, GREEN MACHINE",
+0.65,keep,other,14,sr28,18055,"Bread, reduced-calorie, wheat",
+0.65,keep,other,19,sr28,18025,"Bread, cracked-wheat",
+0.65,keep,other,25,sr28,12220,"Seeds, flaxseed",
+0.65,keep,other,18,sr28,9017,"Apple juice, frozen concentrate, unsweetened, undiluted, without added ascorbic acid",
+0.65,keep,other,23,sr28,12014,"Seeds, pumpkin and squash seed kernels, dried",
+0.65,keep,other,19,fdc_sr_legacy,167532,"Bread, white wheat",
+0.65,keep,other,1,fdc_sr_legacy,168924,"Cornmeal, white, self-rising, bolted, with wheat flour added, enriched",
+0.65,keep,other,16,sr28,4628,"Margarine, 80% fat, stick, includes regular and hydrogenated corn and soybean oils",
+0.65,keep,other,12,sr28,9508,"Fruit juice smoothie, NAKED JUICE, GREEN MACHINE",
+0.65,keep,other,15,fdc_sr_legacy,173587,"Margarine, 80% fat, stick, includes regular and hydrogenated corn and soybean oils",
+0.65,keep,other,16,fdc_foundation,2758994,"Bread, 100% whole wheat, commercial",
+0.65,keep,other,27,sr28,22969,"Chili with beans, microwavable bowls",
+0.65,keep,other,17,sr28,18449,"Tortillas, ready-to-bake or -fry, corn, without added salt",
+0.65,keep,other,24,fdc_sr_legacy,169287,"Spinach, frozen, chopped or leaf, unprepared (Includes foods for USDA's Food Distribution Program)",
+0.65,keep,other,18,sr28,20132,"Oat flour, partially debranned",
+0.65,keep,other,15,fdc_sr_legacy,169767,"Vegetable juice, BOLTHOUSE FARMS, DAILY GREENS",
+0.65,keep,other,11,fdc_foundation,747445,"Beans, Dry, Pinto (0% moisture)",
+0.65,keep,other,16,sr28,20481,"Wheat flour, white, all-purpose, unenriched",
+0.65,keep,other,17,sr28,11913,"Corn, sweet, white, frozen, kernels on cob, unprepared",
+0.65,keep,other,19,sr28,20017,"Corn flour, masa, enriched, white",
+0.65,keep,other,22,sr28,20646,"Wheat flour, white (industrial), 15% protein, bleached, unenriched",
+0.65,keep,other,23,fdc_sr_legacy,168915,"Pasta, whole grain, 51% whole wheat, remaining unenriched semolina, dry",
+0.65,keep,other,22,fdc_sr_legacy,168939,"Wheat flour, white (industrial), 11.5% protein, bleached, enriched",
+0.65,keep,other,17,sr28,20084,"Wheat flour, white, cake, enriched",
+0.65,keep,other,14,fdc_sr_legacy,168197,"Juice, apple and grape blend, with added ascorbic acid",
+0.65,keep,other,21,fdc_sr_legacy,169962,"Beans, snap, green, frozen, all styles, unprepared (Includes foods for USDA's Food Distribution Program)",
+0.65,keep,other,16,sr28,20075,"Wheat, soft white",
+0.65,keep,other,19,sr28,11947,"Pickles, cucumber, dill, reduced sodium",
+0.65,keep,other,27,sr28,22973,"Corn dogs, frozen, prepared",
+0.65,keep,other,19,sr28,20317,"Corn flour, yellow, masa, enriched",
+0.65,keep,other,25,fdc_sr_legacy,169414,"Seeds, flaxseed",
+0.65,keep,other,13,sr28,21140,"Side dishes, potato salad",
+0.65,keep,other,10,sr28,14636,"Beverages, fruit juice drink, reduced sugar, with vitamin E added",
+0.65,keep,other,10,sr28,20086,"Wheat flour, white, tortilla mix, enriched",
+0.65,keep,other,13,sr28,2007,"Spices, celery seed",
+0.65,keep,other,16,fdc_foundation,1750354,"Tomato, roma",
+0.65,keep,other,7,sr28,14462,"Beverages, Propel Zero, fruit-flavored, non-carbonated",
+0.65,keep,other,16,fdc_foundation,1104867,"Flour, rice, glutinous",
+0.65,keep,other,10,fdc_foundation,747433,"Beans, Dry, Brown (0% moisture)",
+0.65,keep,other,27,fdc_sr_legacy,172110,"Chili with beans, microwavable bowls",
+0.65,keep,other,11,fdc_foundation,747443,"Beans, Dry, Small Red (0% moisture)",
+0.65,keep,other,21,sr28,20624,"Wheat flour, white (industrial), 9% protein, bleached, unenriched",
+0.65,keep,other,21,fdc_sr_legacy,172018,"Wheat flour, white (industrial), 10% protein, bleached, enriched",
+0.65,keep,other,12,fdc_foundation,2644284,"Blackeye pea, dry",
+0.65,keep,other,26,sr28,32018,"Spanish rice mix, dry mix, unprepared",
+0.65,keep,other,5,sr28,14647,"Beverages, Fruit flavored drink, reduced sugar, greater than 3% fruit juice, high vitamin C, added calcium",
+0.65,keep,other,5,sr28,18042,"Bread, pita, whole-wheat",
+0.65,keep,other,11,fdc_foundation,335419,"Beans, Dry, Navy (0% moisture)",
+0.65,keep,other,7,sr28,9530,"Fruit juice smoothie, ODWALLA, strawberry banana",
+0.65,keep,other,24,sr28,32003,"Rice and vermicelli mix, rice pilaf flavor, prepared with 80% margarine",
+0.65,keep,other,18,fdc_foundation,790018,"Flour, wheat, all-purpose, unenriched, unbleached",
+0.65,keep,other,17,sr28,20381,"Wheat flour, white, all-purpose, enriched, calcium-fortified",
+0.65,keep,other,19,fdc_foundation,2512376,"Flour, barley",
+0.65,keep,other,20,fdc_sr_legacy,167525,"Tostada shells, corn",
+0.65,keep,other,20,sr28,11092,"Broccoli, frozen, chopped, unprepared",
+0.65,keep,other,11,sr28,20014,"Corn grain, yellow",
+0.65,keep,other,22,fdc_foundation,335240,"Bread, whole-wheat, commercially prepared",
+0.65,keep,other,18,fdc_foundation,1750352,"Spinach, baby",
+0.65,keep,other,20,fdc_foundation,2261421,"Flour, oat, whole grain",
+0.65,keep,other,11,fdc_foundation,747435,"Beans, Dry, Light Tan (0% moisture)",
+0.65,keep,other,15,fdc_foundation,2003590,"Apple juice, with added vitamin C, from concentrate, shelf stable",
+0.65,keep,other,20,fdc_foundation,324653,"Pickles, cucumber, dill or kosher dill",
+0.65,keep,other,21,sr28,20081,"Wheat flour, white, all-purpose, enriched, bleached",
+0.65,keep,other,22,fdc_sr_legacy,172023,Millet flour,
+0.65,keep,other,19,fdc_foundation,1999632,"Spinach, baby",
+0.65,keep,other,18,sr28,20087,"Wheat, sprouted",
+0.65,keep,other,20,sr28,20653,"Pasta, whole grain, 51% whole wheat, remaining enriched semolina, dry",
+0.65,keep,other,11,sr28,12006,"Seeds, chia seeds, dried",
+0.65,keep,other,22,fdc_sr_legacy,168942,"Wheat flour, white (industrial), 13% protein, bleached, enriched",
+0.65,keep,other,23,fdc_sr_legacy,168893,"Wheat flour, whole-grain (Includes foods for USDA's Food Distribution Program)",
+0.65,keep,other,20,fdc_foundation,2261422,"Flour, potato",
+0.65,keep,other,4,sr28,19349,"Syrups, corn, dark",
+0.65,keep,other,11,fdc_sr_legacy,170554,"Seeds, chia seeds, dried",
+0.65,keep,other,11,fdc_foundation,335912,"Beans, Dry, Black (0% moisture)",
+0.65,keep,other,11,fdc_foundation,747431,"Beans, Dry, Red (0% moisture)",
+0.65,keep,other,24,sr28,20080,"Wheat flour, whole-grain",
+0.65,keep,other,11,fdc_foundation,2644281,"Beans, cannellini, dry",
+0.9,keep,raw,19,sr28,11740,"Broccoli, flower clusters, raw",+raw
+0.9,keep,raw,25,fdc_sr_legacy,172428,"Peas, green, split, mature seeds, raw",+raw
+0.9,keep,raw,17,sr28,16085,"Peas, green, split, mature seeds, raw",+raw
+0.9,keep,raw,14,fdc_sr_legacy,169225,"Cucumber, peeled, raw",+raw
+0.9,keep,raw,14,fdc_foundation,2685572,"Cabbage, bok choy, raw",+raw
+0.9,keep,raw,23,sr28,11251,"Lettuce, cos or romaine, raw",+raw
+0.9,keep,raw,14,fdc_foundation,2727584,"Leeks, bulb and greens, root removed, raw",+raw
+0.9,keep,raw,4,sr28,16042,"Beans, pinto, mature seeds, raw",+raw
+0.9,keep,raw,23,sr28,11257,"Lettuce, red leaf, raw",+raw
+0.9,keep,raw,20,sr28,16101,"Pigeon peas (red gram), mature seeds, raw",+raw
+0.9,keep,raw,17,fdc_foundation,2710838,"Rice, red, unenriched, dry, raw",+raw
+0.9,keep,raw,19,sr28,11143,"Celery, raw",+raw
+0.9,keep,raw,21,sr28,11167,"Corn, sweet, yellow, raw",+raw
+0.9,keep,raw,12,sr28,20031,"Millet, raw",+raw
+0.9,keep,raw,22,fdc_sr_legacy,175199,"Beans, pinto, mature seeds, raw (Includes foods for USDA's Food Distribution Program)",+raw
+0.9,keep,raw,23,sr28,11253,"Lettuce, green leaf, raw",+raw
+0.9,keep,raw,14,fdc_foundation,2727583,"Cabbage, napa, leaf, destemmed, raw",+raw
+0.9,keep,raw,2,fdc_sr_legacy,168462,"Spinach, raw",+raw
+0.9,keep,raw,17,sr28,11900,"Corn, sweet, white, raw",+raw
+0.9,keep,raw,21,fdc_sr_legacy,169977,"Cabbage, red, raw",+raw
+0.9,keep,raw,19,sr28,11252,"Lettuce, iceberg (includes crisphead types), raw",+raw
+0.9,keep,raw,16,fdc_foundation,2710825,"Rice, black, unenriched, raw",+raw
+0.9,keep,raw,17,sr28,20444,"Rice, white, long-grain, regular, raw, unenriched",+raw
+0.9,keep,raw,10,sr28,20040,"Rice, brown, medium-grain, raw",+raw
+0.9,keep,raw,17,sr28,11304,"Peas, green, raw",+raw
+0.9,keep,raw,1,sr28,11205,"Cucumber, with peel, raw",+raw
+0.9,keep,raw,16,sr28,11149,"Chayote, fruit, raw",+raw
+0.9,keep,raw,23,fdc_sr_legacy,169248,"Lettuce, iceberg (includes crisphead types), raw",+raw
+0.9,keep,raw,16,fdc_foundation,2346389,"Lettuce, romaine, green, raw",+raw
+0.9,keep,raw,19,sr28,16056,"Chickpeas (garbanzo beans, bengal gram), mature seeds, raw",+raw
+0.9,keep,raw,23,fdc_sr_legacy,170381,"Broccoli raab, raw",+raw
+0.9,keep,raw,5,fdc_sr_legacy,169303,"Sweet potato leaves, raw",+raw
+0.9,keep,raw,20,fdc_sr_legacy,169961,"Beans, snap, green, raw",+raw
+0.9,keep,raw,19,sr28,16024,"Beans, great northern, mature seeds, raw",+raw
+0.9,keep,raw,11,fdc_sr_legacy,169256,"Mustard greens, raw",+raw
+0.9,keep,raw,18,fdc_foundation,2512380,"Rice, brown, long grain, unenriched, raw",+raw
+0.9,keep,raw,19,fdc_sr_legacy,170487,"Squash, summer, all varieties, raw",+raw
+0.9,keep,raw,11,sr28,11270,"Mustard greens, raw",+raw
+0.9,keep,raw,3,sr28,9231,"Passion-fruit, (granadilla), purple, raw",+raw
+0.9,keep,raw,11,sr28,20050,"Rice, white, medium-grain, raw, enriched",+raw
+0.9,keep,raw,16,fdc_foundation,2346400,"Beans, snap, green, raw",+raw
+0.9,keep,raw,19,sr28,16045,"Beans, small white, mature seeds, raw",+raw
+0.9,keep,raw,17,sr28,11643,"Squash, winter, all varieties, raw",+raw
+0.9,keep,raw,20,fdc_sr_legacy,169986,"Cauliflower, raw",+raw
+0.9,keep,raw,20,fdc_foundation,323505,"Kale, raw",+raw
+0.9,keep,raw,21,fdc_sr_legacy,168429,"Lettuce, butterhead (includes boston and bibb types), raw",+raw
+0.9,keep,raw,23,fdc_sr_legacy,169988,"Celery, raw",+raw
+0.9,keep,raw,19,sr28,11477,"Squash, summer, zucchini, includes skin, raw",+raw
+0.9,keep,raw,15,fdc_foundation,2747660,"Peppers, banana or Hungarian wax, seeded, raw",+raw
+0.9,keep,raw,19,sr28,11043,"Mung beans, mature seeds, sprouted, raw",+raw
+0.9,keep,raw,16,fdc_foundation,2346390,"Lettuce, leaf, red, raw",+raw
+0.9,keep,raw,11,sr28,16049,"Beans, white, mature seeds, raw",+raw
+0.9,keep,raw,13,fdc_foundation,2346406,"Cucumber, with peel, raw",+raw
+0.9,keep,raw,19,sr28,11316,"Peas, mature seeds, sprouted, raw",+raw
+0.9,keep,raw,13,fdc_foundation,2727585,"Green onion, (scallion), bulb and greens, root removed, raw",+raw
+0.9,keep,raw,16,sr28,16071,"Lima beans, large, mature seeds, raw",+raw
+0.9,keep,raw,20,sr28,11965,"Cauliflower, green, raw",+raw
+0.9,keep,raw,2,fdc_sr_legacy,170061,"Turnip greens, raw",+raw
+0.9,keep,raw,9,sr28,11086,"Beet greens, raw",+raw
+0.9,keep,raw,11,fdc_sr_legacy,173756,"Chickpeas (garbanzo beans, bengal gram), mature seeds, raw",+raw
+0.9,keep,raw,2,sr28,11485,"Squash, winter, butternut, raw",+raw
+0.9,keep,raw,20,sr28,11052,"Beans, snap, green, raw",+raw
+0.9,keep,raw,21,sr28,11112,"Cabbage, red, raw",+raw
+0.9,keep,raw,5,sr28,11505,"Sweet potato leaves, raw",+raw
+0.9,keep,raw,19,fdc_sr_legacy,169998,"Corn, sweet, yellow, raw",+raw
+0.9,keep,raw,7,sr28,20450,"Rice, white, medium-grain, raw, unenriched",+raw
+0.9,keep,raw,14,sr28,16135,"Winged beans, mature seeds, raw",+raw
+0.9,keep,raw,18,sr28,11135,"Cauliflower, raw",+raw
+0.9,keep,raw,11,sr28,11119,"Cabbage, chinese (pe-tsai), raw",+raw
+0.9,keep,raw,22,fdc_sr_legacy,169376,"Mushroom, white, exposed to ultraviolet light, raw",+raw
+0.9,keep,raw,4,sr28,11482,"Squash, winter, acorn, raw",+raw
+0.9,keep,raw,20,sr28,11457,"Spinach, raw",+raw
+0.9,keep,raw,18,fdc_sr_legacy,173745,"Beans, navy, mature seeds, raw",+raw
+0.9,keep,raw,4,sr28,11568,"Turnip greens, raw",+raw
+0.9,keep,raw,13,fdc_foundation,2685571,"Squash, winter, acorn, raw",+raw
+0.9,keep,raw,13,fdc_foundation,2346408,"Cabbage, red, raw",+raw
+0.9,keep,raw,33,fdc_foundation,327923,"Lettuce, cos or romaine, raw",+raw
+0.9,keep,raw,2,sr28,16037,"Beans, navy, mature seeds, raw",+raw
+0.9,keep,raw,8,sr28,11595,"Winged beans, immature seeds, raw",+raw
+0.9,keep,raw,19,sr28,11741,"Broccoli, stalks, raw",+raw
+0.9,keep,raw,14,fdc_foundation,2685573,"Cauliflower, raw",+raw
+0.9,keep,raw,18,sr28,11749,"Cabbage, common (danish, domestic, and pointed types), freshly harvest, raw",+raw
+0.9,keep,raw,30,sr28,11090,"Broccoli, raw",+raw
+0.9,keep,raw,20,fdc_sr_legacy,168464,"Squash, summer, crookneck and straightneck, raw",+raw
+0.9,keep,raw,10,sr28,16067,"Hyacinth beans, mature seeds, raw",+raw
+0.9,keep,raw,9,fdc_sr_legacy,170375,"Beet greens, raw",+raw
+0.9,keep,raw,4,sr28,11938,"Mushroom, white, exposed to ultraviolet light, raw",+raw
+0.9,keep,raw,1,sr28,16016,"Beans, black turtle, mature seeds, raw",+raw
+0.9,keep,raw,20,fdc_sr_legacy,169389,"Cauliflower, green, raw",+raw
+0.9,keep,raw,21,fdc_sr_legacy,168421,"Kale, raw",+raw
+0.9,keep,raw,13,fdc_foundation,2685569,"Squash, summer, yellow, includes skin, raw",+raw
+0.9,keep,raw,4,sr28,11669,"Seaweed, wakame, raw",+raw
+0.9,keep,raw,9,sr28,11445,"Seaweed, kelp, raw",+raw
+0.9,keep,raw,2,fdc_sr_legacy,168409,"Cucumber, with peel, raw",+raw
+0.9,keep,raw,6,sr28,16133,"Yardlong beans, mature seeds, raw",+raw
+0.9,keep,raw,19,sr28,16019,"Beans, cranberry (roman), mature seeds, raw",+raw
+0.9,keep,raw,17,fdc_foundation,2747653,"Beet greens, raw",+raw
+0.9,keep,raw,16,sr28,11722,"Beans, snap, yellow, raw",+raw
+0.9,keep,raw,17,fdc_foundation,2710835,"Corn flour, masa harina, white or yellow, dry, raw",+raw
+0.9,keep,raw,19,sr28,20033,"Oat bran, raw",+raw
+0.9,keep,raw,19,sr28,16040,"Beans, pink, mature seeds, raw",+raw
+0.9,keep,raw,17,sr28,11206,"Cucumber, peeled, raw",+raw
+0.9,keep,raw,17,fdc_sr_legacy,170489,"Squash, winter, all varieties, raw",+raw
+0.9,keep,raw,20,sr28,11109,"Cabbage, raw",+raw
+0.9,keep,raw,16,fdc_foundation,2346388,"Lettuce, iceberg, raw",+raw
+0.9,keep,raw,3,sr28,11442,"Seaweed, agar, raw",+raw
+0.9,keep,raw,21,fdc_sr_legacy,168482,"Sweet potato, raw, unprepared (Includes foods for USDA's Food Distribution Program)",+raw
+0.9,keep,raw,37,fdc_sr_legacy,170379,"Broccoli, raw",+raw
+0.9,keep,raw,19,sr28,20088,"Wild rice, raw",+raw
+0.9,keep,raw,18,sr28,11750,"Cabbage, common (danish, domestic, and pointed types), stored, raw",+raw
+0.9,keep,raw,19,sr28,16074,"Lima beans, thin seeded (baby), mature seeds, raw",+raw
+0.9,keep,raw,6,sr28,11446,"Seaweed, laver, raw",+raw
+0.9,keep,raw,19,sr28,20005,"Barley, pearled, raw",+raw
+0.9,keep,raw,13,fdc_foundation,2685570,"Squash, winter, butternut, raw",+raw
+0.9,keep,raw,13,fdc_foundation,2685568,"Squash, summer, green, zucchini, includes skin, raw",+raw
+0.9,keep,raw,7,sr28,20452,"Rice, white, short-grain, raw, unenriched",+raw
+0.9,keep,raw,36,fdc_foundation,321900,"Broccoli, raw",+raw
+0.9,keep,raw,17,fdc_foundation,2710821,"Wild rice, dry, raw",+raw
+0.9,keep,raw,22,fdc_sr_legacy,169703,"Rice, brown, long-grain, raw (Includes foods for USDA's Food Distribution Program)",+raw
+0.9,keep,raw,18,sr28,16083,"Mungo beans, mature seeds, raw",+raw
+0.9,keep,raw,19,sr28,11739,"Broccoli, leaves, raw",+raw
+0.9,keep,raw,18,fdc_foundation,2512381,"Rice, white, long grain, unenriched, raw",+raw
+0.9,keep,raw,20,sr28,11467,"Squash, summer, crookneck and straightneck, raw",+raw
+0.9,keep,raw,3,sr28,11444,"Seaweed, irishmoss, raw",+raw
+0.9,keep,raw,22,fdc_sr_legacy,169247,"Lettuce, cos or romaine, raw",+raw
+0.9,keep,raw,13,fdc_foundation,2346407,"Cabbage, green, raw",+raw
+0.9,keep,raw,23,sr28,11250,"Lettuce, butterhead (includes boston and bibb types), raw",+raw
+0.9,keep,raw,11,sr28,11233,"Kale, raw",+raw
+0.9,keep,raw,17,fdc_foundation,2710826,"Corn, sweet, yellow and white kernels,  fresh, raw",+raw
+0.9,keep,raw,36,fdc_foundation,747447,"Broccoli, raw",+raw
+0.9,keep,raw,16,fdc_foundation,2346391,"Lettuce, leaf, green, raw",+raw
+0.9,keep,raw,33,fdc_foundation,746769,"Lettuce, cos or romaine, raw",+raw
+0.9,keep,raw,6,sr28,16052,"Broadbeans (fava beans), mature seeds, raw",+raw
+0.9,keep,raw,1,sr28,11199,"Yardlong bean, raw",+raw
+0.9,keep,raw,18,sr28,16014,"Beans, black, mature seeds, raw",+raw
+0.9,keep,raw,19,sr28,16080,"Mung beans, mature seeds, raw",+raw
+0.9,keep,raw,13,fdc_foundation,2515380,"Seeds, pumpkin seeds (pepitas), raw",+raw
+0.9,keep,raw,19,sr28,11641,"Squash, summer, all varieties, raw",+raw
+0.9,keep,raw,23,fdc_sr_legacy,168431,"Lettuce, red leaf, raw",+raw
+0.9,keep,raw,21,sr28,11507,"Sweet potato, raw, unprepared",+raw
+0.9,keep,raw,11,fdc_foundation,2346405,"Celery, raw",+raw
+0.9,keep,raw,7,sr28,11666,"Seaweed, spirulina, raw",+raw
+0.9,keep,raw,15,fdc_foundation,2710819,"Chia seeds, dry, raw",+raw
+0.9,keep,raw,23,fdc_sr_legacy,169249,"Lettuce, green leaf, raw",+raw
+0.9,keep,raw,23,sr28,11096,"Broccoli raab, raw",+raw
+0.9,keep,raw,23,sr28,20036,"Rice, brown, long-grain, raw",+raw
+0.9,keep,raw,19,sr28,20044,"Rice, white, long-grain, regular, raw, enriched",+raw
+0.9,keep,raw,6,sr28,11031,"Lima beans, immature seeds, raw",+raw
+0.9,keep,raw,20,fdc_sr_legacy,169291,"Squash, summer, zucchini, includes skin, raw",+raw
+0.9,keep,raw,21,fdc_sr_legacy,169975,"Cabbage, raw",+raw

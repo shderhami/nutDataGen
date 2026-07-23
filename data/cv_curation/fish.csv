@@ -1,0 +1,172 @@
+score,decision,prep,n_obs,source_dataset,source_food_id,description,reasons
+0.0,drop,other,16,fdc_sr_legacy,174556,"CAMPBELL'S CHUNKY, New England Clam Chowder",-brand -dish/prepared
+0.0,drop,other,28,fdc_sr_legacy,170299,"Fast foods, submarine sandwich, tuna on white bread with lettuce and tomato",-fastfood/babyfood/restaurant -dish/prepared
+0.0,drop,other,28,sr28,21214,"SUBWAY, tuna sub on white bread with lettuce and tomato",-brand -dish/prepared
+0.0,drop,other,30,fdc_sr_legacy,168080,"Restaurant, Chinese, shrimp and vegetables",-fastfood/babyfood/restaurant
+0.0,drop,other,19,fdc_sr_legacy,170330,"BURGER KING, Premium Fish Sandwich",-brand -dish/prepared
+0.0,drop,other,19,sr28,21258,"BURGER KING, Premium Fish Sandwich",-brand -dish/prepared
+0.0,drop,other,25,sr28,21106,"Fast foods, fish sandwich, with tartar sauce and cheese",-fastfood/babyfood/restaurant -dish/prepared -multi-ingredient
+0.0,drop,other,28,fdc_sr_legacy,170316,"SUBWAY, tuna sub on white bread with lettuce and tomato",-brand -dish/prepared
+0.0,drop,other,25,sr28,21105,"Fast foods, fish sandwich, with tartar sauce",-fastfood/babyfood/restaurant -dish/prepared -multi-ingredient
+0.0,drop,other,13,sr28,6545,CAMPBELL'S Homestyle New England Clam Chowder,-brand -dish/prepared
+0.0,drop,other,19,fdc_sr_legacy,170297,"Fast foods, fish sandwich, with tartar sauce and cheese",-fastfood/babyfood/restaurant -dish/prepared -multi-ingredient
+0.0,drop,other,16,sr28,6431,"CAMPBELL'S CHUNKY, New England Clam Chowder",-brand -dish/prepared
+0.0,drop,other,19,fdc_sr_legacy,170296,"Fast foods, fish sandwich, with tartar sauce",-fastfood/babyfood/restaurant -dish/prepared -multi-ingredient
+0.0,drop,other,30,sr28,36620,"Restaurant, Chinese, shrimp and vegetables",-fastfood/babyfood/restaurant
+0.0,drop,other,28,sr28,21126,"Fast foods, submarine sandwich, tuna on white bread with lettuce and tomato",-fastfood/babyfood/restaurant -dish/prepared
+0.05,drop,other,11,fdc_sr_legacy,173610,"Margarine-like spread, SMART BALANCE Omega Plus Spread (with plant sterols & fish oil)",-brand
+0.05,drop,other,3,sr28,15138,"Crustaceans, crab, alaska king, imitation, made from surimi",-imitation
+0.05,drop,other,23,fdc_sr_legacy,175056,"Crackers, saltines, low salt (includes oyster, soda, soup)",-dish/prepared
+0.05,drop,other,19,sr28,36606,"CRACKER BARREL, farm raised catfish platter",-dish/prepared
+0.05,drop,other,23,sr28,18425,"Crackers, saltines, low salt (includes oyster, soda, soup)",-dish/prepared
+0.05,drop,other,28,fdc_sr_legacy,172746,"Crackers, saltines (includes oyster, soda, soup)",-dish/prepared
+0.05,drop,other,11,sr28,15153,"Crustaceans, shrimp, mixed species, imitation, made from surimi",-imitation
+0.05,drop,other,28,sr28,18228,"Crackers, saltines (includes oyster, soda, soup)",-dish/prepared
+0.05,drop,other,26,fdc_sr_legacy,174098,"Crackers, flavored, fish-shaped",-dish/prepared
+0.05,drop,other,26,sr28,28331,"Crackers, flavored, fish-shaped",-dish/prepared
+0.05,drop,other,11,sr28,4677,"Margarine-like spread, SMART BALANCE Omega Plus Spread (with plant sterols & fish oil)",-brand
+0.05,drop,other,19,fdc_sr_legacy,168075,"CRACKER BARREL, farm raised catfish platter",-dish/prepared
+0.05,drop,other,10,sr28,15174,"Mollusks, scallop, mixed species, imitation, made from surimi",-imitation
+0.65,keep,other,13,fdc_foundation,2747673,"Tuna, ahi or yellowfin, frozen, wild caught",
+0.65,keep,other,14,fdc_foundation,2747670,"Snow crab, legs only, frozen",
+0.65,keep,other,8,sr28,35158,"Fish, whitefish, eggs (Alaska Native)",
+0.65,keep,other,14,fdc_foundation,2747657,"Lobster, tail only, frozen, wild caught",
+0.65,keep,other,11,fdc_foundation,2747656,"Halibut, frozen, wild caught",
+0.65,keep,other,31,sr28,15027,"Fish, fish sticks, frozen, prepared",
+0.65,keep,other,15,fdc_foundation,2684446,"Crustaceans, crab, blue swimming, lump, pasteurized, refrigerated",
+0.65,keep,other,28,sr28,36018,"APPLEBEE'S, fish, hand battered",
+0.65,keep,other,13,fdc_foundation,2747671,"Squid (calamari), frozen, tubes only",
+0.65,keep,other,11,fdc_foundation,2747668,"Sea bass, Chilean, frozen, wild caught",
+0.65,keep,other,28,fdc_sr_legacy,169017,"APPLEBEE'S, fish, hand battered",
+0.65,keep,other,12,fdc_foundation,2747654,"Cod, Pacific or Alaskan, frozen, wild caught",
+0.65,keep,other,31,fdc_sr_legacy,174195,"Fish, fish sticks, frozen, prepared",
+0.65,keep,other,8,fdc_sr_legacy,167643,"Fish, whitefish, eggs (Alaska Native)",
+0.65,keep,other,10,sr28,15109,"Fish, surimi",
+0.65,keep,other,13,fdc_foundation,2747669,"Snapper, frozen, wild caught",
+0.75,keep,other,19,sr28,21232,"McDONALD'S, FILET-O-FISH",+cut/part
+0.75,keep,other,19,fdc_sr_legacy,170319,"McDONALD'S, FILET-O-FISH",+cut/part
+0.9,keep,raw,11,sr28,15107,"Fish, sucker, white, raw",+raw
+0.9,keep,raw,16,sr28,15270,"Crustaceans, shrimp, raw (not previously frozen)",+raw
+0.9,keep,raw,8,sr28,15154,"Crustaceans, spiny lobster, mixed species, raw",+raw
+0.9,keep,raw,11,sr28,15043,"Fish, herring, Pacific, raw",+raw
+0.9,keep,raw,6,sr28,15049,"Fish, mackerel, king, raw",+raw
+0.9,keep,raw,18,sr28,15078,"Fish, salmon, chinook, raw",+raw
+0.9,keep,raw,5,sr28,15091,"Fish, sea bass, mixed species, raw",+raw
+0.9,keep,raw,6,sr28,15175,"Mollusks, squid, mixed species, raw",+raw
+0.9,keep,raw,4,sr28,15003,"Fish, bass, fresh water, mixed species, raw",+raw
+0.9,keep,raw,27,fdc_sr_legacy,173684,"Fish, rockfish, Pacific, mixed species, raw",+raw
+0.9,keep,raw,21,sr28,15115,"Fish, trout, rainbow, wild, raw",+raw
+0.9,keep,raw,25,sr28,15261,"Fish, tilapia, raw",+raw
+0.9,keep,raw,27,fdc_sr_legacy,167638,"Fish, halibut, raw, with skin (Alaska Native)",+raw
+0.9,keep,raw,13,sr28,15068,"Fish, pompano, florida, raw",+raw
+0.9,keep,raw,28,sr28,15019,"Fish, cod, Pacific, raw (may have been previously frozen)",+raw
+0.9,keep,raw,11,sr28,15031,"Fish, grouper, mixed species, raw",+raw
+0.9,keep,raw,6,sr28,15090,"Fish, scup, raw",+raw
+0.9,keep,raw,16,sr28,15266,"Fish, pollock, Alaska, raw (not previously frozen)",+raw
+0.9,keep,raw,23,fdc_foundation,333374,"Fish, haddock, raw",+raw
+0.9,keep,raw,5,sr28,15023,"Fish, mahimahi, raw",+raw
+0.9,keep,raw,24,fdc_foundation,333476,"Fish, pollock, raw",+raw
+0.9,keep,raw,19,fdc_foundation,2684444,"Fish, cod, Atlantic, wild caught, raw",+raw
+0.9,keep,raw,11,sr28,15093,"Fish, seatrout, mixed species, raw",+raw
+0.9,keep,raw,22,sr28,15039,"Fish, herring, Atlantic, raw",+raw
+0.9,keep,raw,19,sr28,15081,"Fish, salmon, coho, wild, raw",+raw
+0.9,keep,raw,6,sr28,15103,"Fish, spot, raw",+raw
+0.9,keep,raw,13,sr28,15123,"Fish, tuna, fresh, skipjack, raw",+raw
+0.9,keep,raw,15,sr28,15143,"Crustaceans, crab, dungeness, raw",+raw
+0.9,keep,raw,27,fdc_sr_legacy,174200,"Fish, halibut, Atlantic and Pacific, raw",+raw
+0.9,keep,raw,18,fdc_foundation,2684442,"Fish, tilapia, farm raised, raw",+raw
+0.9,keep,raw,19,fdc_foundation,2684440,"Fish, salmon, sockeye, wild caught, raw",+raw
+0.9,keep,raw,24,fdc_sr_legacy,175181,"Fish, trout, brook, raw, New York State",+raw
+0.9,keep,raw,10,sr28,15171,"Mollusks, oyster, Pacific, raw",+raw
+0.9,keep,raw,29,fdc_sr_legacy,174210,"Crustaceans, shrimp, mixed species, raw (may contain additives to retain moisture)",+raw
+0.9,keep,raw,11,sr28,15099,"Fish, smelt, rainbow, raw",+raw
+0.9,keep,raw,11,sr28,15045,"Fish, lingcod, raw",+raw
+0.9,keep,raw,41,fdc_foundation,2768188,"Alaska Pollock, raw",+raw
+0.9,keep,raw,6,sr28,15114,"Fish, trout, mixed species, raw",+raw
+0.9,keep,raw,21,sr28,15238,"Fish, salmon, coho, farmed, raw",+raw
+0.9,keep,raw,17,sr28,15062,"Fish, pike, northern, raw",+raw
+0.9,keep,raw,13,sr28,15097,"Fish, sheepshead, raw",+raw
+0.9,keep,raw,26,fdc_sr_legacy,173691,"Fish, salmon, sockeye, raw",+raw
+0.9,keep,raw,8,fdc_sr_legacy,168047,"Fish, salmon, king (chinook), raw (Alaska Native)",+raw
+0.9,keep,raw,8,sr28,15007,"Fish, butterfish, raw",+raw
+0.9,keep,raw,17,sr28,15268,"Fish, cod, Pacific, raw (not previously frozen)",+raw
+0.9,keep,raw,27,sr28,15083,"Fish, salmon, pink, raw",+raw
+0.9,keep,raw,5,sr28,15025,"Fish, eel, mixed species, raw",+raw
+0.9,keep,raw,27,fdc_sr_legacy,175130,"Fish, pollock, Alaska, raw (may contain additives to retain moisture)",+raw
+0.9,keep,raw,27,sr28,15070,"Fish, rockfish, Pacific, mixed species, raw",+raw
+0.9,keep,raw,10,sr28,15108,"Fish, sunfish, pumpkin seed, raw",+raw
+0.9,keep,raw,27,fdc_sr_legacy,173703,"Fish, swordfish, raw",+raw
+0.9,keep,raw,26,sr28,15236,"Fish, salmon, Atlantic, farmed, raw",+raw
+0.9,keep,raw,24,sr28,15274,"Fish, trout, brook, raw, New York State",+raw
+0.9,keep,raw,28,fdc_sr_legacy,174214,"Mollusks, clam, mixed species, raw",+raw
+0.9,keep,raw,1,sr28,15167,"Mollusks, oyster, eastern, wild, raw",+raw
+0.9,keep,raw,27,sr28,15057,"Fish, ocean perch, Atlantic, raw",+raw
+0.9,keep,raw,28,fdc_sr_legacy,174196,"Fish, flatfish (flounder and sole species), raw",+raw
+0.9,keep,raw,26,sr28,15033,"Fish, haddock, raw",+raw
+0.9,keep,raw,27,sr28,15127,"Fish, tuna, fresh, yellowfin, raw",+raw
+0.9,keep,raw,6,sr28,15038,"Fish, halibut, Greenland, raw",+raw
+0.9,keep,raw,25,fdc_sr_legacy,174220,"Mollusks, scallop, mixed species, raw",+raw
+0.9,keep,raw,16,sr28,15022,"Fish, cusk, raw",+raw
+0.9,keep,raw,27,sr28,15036,"Fish, halibut, Atlantic and Pacific, raw",+raw
+0.9,keep,raw,8,sr28,15104,"Fish, sturgeon, mixed species, raw",+raw
+0.9,keep,raw,29,sr28,15149,"Crustaceans, shrimp, mixed species, raw (may have been previously frozen)",+raw
+0.9,keep,raw,27,sr28,15085,"Fish, salmon, sockeye, raw",+raw
+0.9,keep,raw,27,fdc_sr_legacy,175138,"Fish, salmon, pink, raw",+raw
+0.9,keep,raw,13,sr28,15117,"Fish, tuna, fresh, bluefin, raw",+raw
+0.9,keep,raw,3,sr28,15005,"Fish, bluefish, raw",+raw
+0.9,keep,raw,14,sr28,15136,"Crustaceans, crab, alaska king, raw",+raw
+0.9,keep,raw,8,sr28,15144,"Crustaceans, crab, queen, raw",+raw
+0.9,keep,raw,19,sr28,15015,"Fish, cod, Atlantic, raw",+raw
+0.9,keep,raw,6,sr28,15013,"Fish, cisco, raw",+raw
+0.9,keep,raw,16,fdc_sr_legacy,173725,"Fish, pollock, Alaska, raw",+raw
+0.9,keep,raw,1,fdc_sr_legacy,171955,"Fish, cod, Atlantic, raw",+raw
+0.9,keep,raw,27,fdc_sr_legacy,175159,"Fish, tuna, fresh, yellowfin, raw",+raw
+0.9,keep,raw,13,sr28,15074,"Fish, sablefish, raw",+raw
+0.9,keep,raw,27,fdc_sr_legacy,175165,"Fish, catfish, channel, farmed, raw",+raw
+0.9,keep,raw,13,sr28,15064,"Fish, pike, walleye, raw",+raw
+0.9,keep,raw,27,sr28,15066,"Fish, pollock, Alaska, raw (may have been previously frozen)",+raw
+0.9,keep,raw,21,sr28,15073,"Fish, roughy, orange, raw",+raw
+0.9,keep,raw,6,sr28,15095,"Fish, shark, mixed species, raw",+raw
+0.9,keep,raw,21,sr28,15245,"Mollusks, oyster, eastern, farmed, raw",+raw
+0.9,keep,raw,19,sr28,15055,"Fish, mullet, striped, raw",+raw
+0.9,keep,raw,27,sr28,15110,"Fish, swordfish, raw",+raw
+0.9,keep,raw,18,fdc_sr_legacy,173688,"Fish, salmon, chinook, raw",+raw
+0.9,keep,raw,8,sr28,15079,"Fish, salmon, chum, raw",+raw
+0.9,keep,raw,10,sr28,15132,"Fish, whiting, mixed species, raw",+raw
+0.9,keep,raw,28,fdc_sr_legacy,174191,"Fish, cod, Pacific, raw (may have been previously frozen)",+raw
+0.9,keep,raw,6,sr28,15060,"Fish, perch, mixed species, raw",+raw
+0.9,keep,raw,7,sr28,15004,"Fish, bass, striped, raw",+raw
+0.9,keep,raw,12,sr28,15164,"Mollusks, mussel, blue, raw",+raw
+0.9,keep,raw,9,sr28,15134,"Fish, wolffish, Atlantic, raw",+raw
+0.9,keep,raw,28,sr28,15028,"Fish, flatfish (flounder and sole species), raw",+raw
+0.9,keep,raw,5,sr28,15001,"Fish, anchovy, european, raw",+raw
+0.9,keep,raw,17,fdc_foundation,2684445,"Fish, catfish, farm raised, raw",+raw
+0.9,keep,raw,26,fdc_sr_legacy,175125,"Fish, ocean perch, Atlantic, raw",+raw
+0.9,keep,raw,6,sr28,15059,"Fish, pout, ocean, raw",+raw
+0.9,keep,raw,27,fdc_sr_legacy,173717,"Fish, trout, rainbow, farmed, raw",+raw
+0.9,keep,raw,6,sr28,15130,"Fish, whitefish, mixed species, raw",+raw
+0.9,keep,raw,26,fdc_sr_legacy,171964,"Fish, haddock, raw",+raw
+0.9,keep,raw,12,sr28,15044,"Fish, ling, raw",+raw
+0.9,keep,raw,12,sr28,15076,"Fish, salmon, Atlantic, wild, raw",+raw
+0.9,keep,raw,13,sr28,15051,"Fish, mackerel, spanish, raw",+raw
+0.9,keep,raw,18,sr28,15046,"Fish, mackerel, Atlantic, raw",+raw
+0.9,keep,raw,18,sr28,15008,"Fish, carp, raw",+raw
+0.9,keep,raw,14,sr28,15065,"Fish, pollock, Atlantic, raw",+raw
+0.9,keep,raw,19,fdc_foundation,2684441,"Fish, salmon, Atlantic, farm raised, raw",+raw
+0.9,keep,raw,16,fdc_foundation,2684443,"Crustaceans, shrimp, farm raised, raw",+raw
+0.9,keep,raw,9,sr28,15006,"Fish, burbot, raw",+raw
+0.9,keep,raw,28,sr28,15157,"Mollusks, clam, mixed species, raw",+raw
+0.9,keep,raw,16,fdc_sr_legacy,175179,"Crustaceans, shrimp, raw",+raw
+0.9,keep,raw,20,sr28,15010,"Fish, catfish, channel, wild, raw",+raw
+0.9,keep,raw,28,sr28,15234,"Fish, catfish, channel, farmed, raw",+raw
+0.9,keep,raw,13,sr28,15024,"Fish, drum, freshwater, raw",+raw
+0.9,keep,raw,4,sr28,15101,"Fish, snapper, mixed species, raw",+raw
+0.9,keep,raw,6,sr28,15020,"Fish, croaker, Atlantic, raw",+raw
+0.9,keep,raw,2,sr28,15053,"Fish, milkfish, raw",+raw
+0.9,keep,raw,25,sr28,15172,"Mollusks, scallop, mixed species, raw",+raw
+0.9,keep,raw,5,sr28,15135,"Fish, yellowtail, mixed species, raw",+raw
+0.9,keep,raw,28,sr28,15240,"Fish, trout, rainbow, farmed, raw",+raw
+0.9,keep,raw,10,sr28,15050,"Fish, mackerel, Pacific and jack, mixed species, raw",+raw
+0.9,keep,raw,16,sr28,15139,"Crustaceans, crab, blue, raw",+raw
+0.9,keep,raw,27,sr28,35149,"Fish, halibut, raw, with skin (Alaska Native)",+raw
+0.9,keep,raw,6,sr28,15094,"Fish, shad, american, raw",+raw

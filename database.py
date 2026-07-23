@@ -349,9 +349,10 @@ def calculate_statistics(
         result["confidence_interval_lower"] = round(value - margin, 4)
         result["confidence_interval_upper"] = round(value + margin, 4)
 
-        if value != 0:
-            cv = (se_to_use / value) * 100
-            result["coefficient_of_variation"] = round(cv, 2)
+        # coefficient_of_variation is NO LONGER written here. It was a relative
+        # standard error (SE/value*100, a percent) — the wrong quantity. The CV
+        # pipeline (resolve_cv / cv_assign) now owns this column and writes the
+        # correct POPULATION CV as a fraction. Left as None (see result init).
 
     if min_value is not None and max_value is not None and max_value > min_value:
         range_val = max_value - min_value

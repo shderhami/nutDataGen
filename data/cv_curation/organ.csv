@@ -1,0 +1,44 @@
+score,decision,prep,n_obs,source_dataset,source_food_id,description,reasons
+0.25,drop,other,8,sr28,7041,"Liver sausage, liverwurst, pork",+cut/part -processed-meat
+0.25,drop,other,13,sr28,7014,"Braunschweiger (a liver sausage), pork",+cut/part -processed-meat
+0.75,keep,other,21,sr28,7040,"Liver cheese, pork",+cut/part
+0.9,keep,raw,22,sr28,17195,"Lamb, variety meats and by-products, kidneys, raw",+raw
+0.9,keep,raw,12,sr28,10096,"Pork, fresh, variety meats and by-products, brain, raw",+raw
+0.9,keep,raw,1,fdc_sr_legacy,169449,"Beef, variety meats and by-products, kidneys, raw",+raw
+0.9,keep,raw,9,sr28,17205,"Lamb, variety meats and by-products, lungs, raw",+raw
+0.9,keep,raw,6,sr28,17207,"Veal, variety meats and by-products, lungs, raw",+raw
+0.9,keep,raw,13,sr28,10112,"Pork, fresh, variety meats and by-products, lungs, raw",+raw
+0.9,keep,raw,15,sr28,17197,"Veal, variety meats and by-products, kidneys, raw",+raw
+0.9,keep,raw,1,sr28,13323,"Beef, variety meats and by-products, kidneys, raw",+raw
+0.9,keep,raw,8,sr28,13328,"Beef, variety meats and by-products, lungs, raw",+raw
+0.9,keep,raw,8,sr28,17188,"Veal, variety meats and by-products, brain, raw",+raw
+0.9,keep,raw,20,sr28,10106,"Pork, fresh, variety meats and by-products, kidneys, raw",+raw
+0.9,keep,raw,11,sr28,17185,"Lamb, variety meats and by-products, brain, raw",+raw
+1.0,keep,raw,17,sr28,17220,"Lamb, variety meats and by-products, tongue, raw",+raw +cut/part
+1.0,keep,raw,17,sr28,5025,"Chicken, heart, all classes, raw",+raw +cut/part
+1.0,keep,raw,10,sr28,5150,"Goose, liver, raw",+raw +cut/part
+1.0,keep,raw,24,sr28,10110,"Pork, fresh, variety meats and by-products, liver, raw",+raw +cut/part
+1.0,keep,raw,23,sr28,10103,"Pork, fresh, variety meats and by-products, heart, raw",+raw +cut/part
+1.0,keep,raw,9,sr28,13339,"Beef, variety meats and by-products, tongue, raw",+raw +cut/part
+1.0,keep,raw,25,fdc_sr_legacy,172534,"Veal, variety meats and by-products, liver, raw",+raw +cut/part
+1.0,keep,raw,7,sr28,17199,"Lamb, variety meats and by-products, liver, raw",+raw +cut/part
+1.0,keep,raw,22,fdc_sr_legacy,171085,"Turkey, gizzard, all classes, raw",+raw +cut/part
+1.0,keep,raw,25,sr28,17202,"Veal, variety meats and by-products, liver, raw",+raw +cut/part
+1.0,keep,raw,25,fdc_sr_legacy,169451,"Beef, variety meats and by-products, liver, raw",+raw +cut/part
+1.0,keep,raw,26,sr28,13325,"Beef, variety meats and by-products, liver, raw",+raw +cut/part
+1.0,keep,raw,22,sr28,5173,"Turkey, gizzard, all classes, raw",+raw +cut/part
+1.0,keep,raw,23,fdc_sr_legacy,171484,"Turkey, all classes, heart, raw",+raw +cut/part
+1.0,keep,raw,25,fdc_sr_legacy,171486,"Turkey, all classes, liver, raw",+raw +cut/part
+1.0,keep,raw,6,sr28,13333,"Beef, variety meats and by-products, spleen, raw",+raw +cut/part
+1.0,keep,raw,24,sr28,5027,"Chicken, liver, all classes, raw",+raw +cut/part
+1.0,keep,raw,6,sr28,17216,"Veal, variety meats and by-products, spleen, raw",+raw +cut/part
+1.0,keep,raw,12,sr28,5143,"Duck, domesticated, liver, raw",+raw +cut/part
+1.0,keep,raw,24,fdc_sr_legacy,171060,"Chicken, liver, all classes, raw",+raw +cut/part
+1.0,keep,raw,6,sr28,17222,"Veal, variety meats and by-products, tongue, raw",+raw +cut/part
+1.0,keep,raw,11,sr28,10121,"Pork, fresh, variety meats and by-products, tongue, raw",+raw +cut/part
+1.0,keep,raw,9,sr28,17214,"Lamb, variety meats and by-products, spleen, raw",+raw +cut/part
+1.0,keep,raw,17,sr28,17191,"Lamb, variety meats and by-products, heart, raw",+raw +cut/part
+1.0,keep,raw,25,sr28,5177,"Turkey, liver, all classes, raw",+raw +cut/part
+1.0,keep,raw,23,sr28,5175,"Turkey, heart, all classes, raw",+raw +cut/part
+1.0,keep,raw,11,sr28,10117,"Pork, fresh, variety meats and by-products, spleen, raw",+raw +cut/part
+1.0,keep,raw,9,sr28,17193,"Veal, variety meats and by-products, heart, raw",+raw +cut/part

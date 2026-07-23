@@ -1,0 +1,139 @@
+score,decision,prep,n_obs,source_dataset,source_food_id,description,reasons
+0.0,drop,other,9,sr28,1067,"Cream substitute, liquid, with hydrogenated vegetable oil and soy protein",-imitation -multi-ingredient
+0.05,drop,other,26,sr28,25014,"Snacks, popcorn, microwave, regular (butter) flavor, made with partially hydrogenated oil",-dish/prepared
+0.05,drop,other,2,sr28,19705,"Puddings, banana, dry mix, instant, with added oil",-dish/prepared
+0.05,drop,other,4,sr28,19710,"Puddings, vanilla, dry mix, regular, with added oil",-dish/prepared
+0.05,drop,other,19,sr28,19807,"Snacks, popcorn, oil-popped, white popcorn, salt added",-dish/prepared
+0.05,drop,other,11,sr28,1068,"Cream substitute, liquid, with lauric acid oil and sodium caseinate",-imitation
+0.05,drop,other,5,sr28,4673,"Margarine-like spread, SMART BALANCE Regular Buttery Spread with flax oil",-brand
+0.05,drop,other,26,fdc_sr_legacy,174785,"Snacks, popcorn, microwave, regular (butter) flavor, made with partially hydrogenated oil",-dish/prepared
+0.05,drop,other,2,sr28,19706,"Puddings, banana, dry mix, regular, with added oil",-dish/prepared
+0.05,drop,other,1,fdc_sr_legacy,171010,"Salad dressing, mayonnaise, soybean and safflower oil, with salt",-dish/prepared
+0.05,drop,other,20,sr28,19035,"Snacks, popcorn, oil-popped, microwave, regular flavor, no trans fat",-dish/prepared
+0.05,drop,other,18,fdc_sr_legacy,167549,"Snacks, popcorn, oil-popped, microwave, regular flavor, no trans fat",-dish/prepared
+0.05,drop,other,3,sr28,4026,"Salad dressing, mayonnaise, soybean and safflower oil, with salt",-dish/prepared
+0.05,drop,other,5,fdc_sr_legacy,172371,"Margarine-like spread, SMART BALANCE Regular Buttery Spread with flax oil",-brand
+0.4,review,other,25,sr28,32021,"Spanish rice mix, dry mix, prepared (with canola/vegetable oil blend or diced tomatoes and margarine)",-multi-ingredient
+0.4,review,other,25,fdc_sr_legacy,169777,"Spanish rice mix, dry mix, prepared (with canola/vegetable oil blend or diced tomatoes and margarine)",-multi-ingredient
+0.65,keep,other,23,sr28,35142,"Frybread, made with lard (Navajo)",
+0.65,keep,other,5,sr28,4575,"Fat, turkey",
+0.65,keep,other,13,fdc_sr_legacy,171443,"Mayonnaise, reduced fat, with olive oil",
+0.65,keep,other,10,sr28,4631,"Margarine-like, vegetable oil spread, fat-free, tub",
+0.65,keep,other,12,fdc_sr_legacy,173588,"Margarine, margarine-type vegetable oil spread, 70% fat, soybean and partially hydrogenated soybean, stick",
+0.65,keep,other,4,sr28,4044,"Oil, soybean, salad or cooking",
+0.65,keep,other,1,fdc_sr_legacy,171029,"Oil, corn, industrial and retail, all purpose salad or cooking",
+0.65,keep,other,1,fdc_sr_legacy,171410,"Oil, peanut, salad or cooking",
+0.65,keep,other,2,sr28,4546,"Shortening bread, soybean (hydrogenated) and cottonseed",
+0.65,keep,other,2,sr28,42289,"Oil, corn and canola",
+0.65,keep,other,23,sr28,25026,"Popcorn, microwave, regular (butter) flavor, made with palm oil",
+0.65,keep,other,2,fdc_sr_legacy,171017,"Oil, sunflower, linoleic (less than 60%)",
+0.65,keep,other,1,sr28,4534,"Oil, babassu",
+0.65,keep,other,2,fdc_sr_legacy,172328,"Oil, sunflower, linoleic, (partially hydrogenated)",
+0.65,keep,other,12,sr28,35057,"Oil, bearded seal (Oogruk) (Alaska Native)",
+0.65,keep,other,5,fdc_foundation,1750351,"Oil, olive, extra light",
+0.65,keep,other,13,sr28,4708,"Mayonnaise, reduced fat, with olive oil",
+0.65,keep,other,3,sr28,4501,"Oil, cocoa butter",
+0.65,keep,other,2,fdc_foundation,748278,"Oil, canola",
+0.65,keep,other,2,sr28,4002,Lard,
+0.65,keep,other,1,sr28,4614,"Margarine-like, vegetable oil spread, 60% fat, stick/tub/bottle, with salt",
+0.65,keep,other,4,sr28,4576,"Fat, goose",
+0.65,keep,other,2,fdc_sr_legacy,169867,"Oil, corn and canola",
+0.65,keep,other,22,sr28,35185,"Frybread, made with lard (Apache)",
+0.65,keep,other,1,sr28,4529,"Oil, almond",
+0.65,keep,other,2,sr28,4517,"Oil, grapeseed",
+0.65,keep,other,1,fdc_sr_legacy,171015,"Oil, palm",
+0.65,keep,other,10,fdc_sr_legacy,172353,"Margarine-like, vegetable oil spread, fat-free, tub",
+0.65,keep,other,9,fdc_sr_legacy,172348,"Margarine-like, vegetable oil spread, 60% fat, stick, with salt",
+0.65,keep,other,14,sr28,4629,"Margarine, margarine-type vegetable oil spread, 70% fat, soybean and partially hydrogenated soybean, stick",
+0.65,keep,other,9,fdc_sr_legacy,173582,"Margarine-like, vegetable oil spread, 60% fat, tub, with salt",
+0.65,keep,other,1,sr28,4536,"Oil, sheanut",
+0.65,keep,other,7,fdc_sr_legacy,171413,"Oil, olive, salad or cooking",
+0.65,keep,other,1,sr28,4530,"Oil, apricot kernel",
+0.65,keep,other,10,sr28,4694,"Margarine-like, vegetable oil spread, 60% fat, tub, with salt, with added vitamin D",
+0.65,keep,other,2,sr28,4544,"Shortening, household, lard and vegetable oil",
+0.65,keep,other,4,sr28,4545,"Oil, sunflower, linoleic, (partially hydrogenated)",
+0.65,keep,other,3,sr28,4037,"Oil, rice bran",
+0.65,keep,other,2,fdc_sr_legacy,172338,"Oil, sunflower, high oleic (70% and over)",
+0.65,keep,other,9,fdc_sr_legacy,171431,"Margarine, margarine-like vegetable oil spread, 67-70% fat, tub",
+0.65,keep,other,23,fdc_sr_legacy,173141,"Popcorn, microwave, regular (butter) flavor, made with palm oil",
+0.65,keep,other,2,sr28,4584,"Oil, sunflower, high oleic (70% and over)",
+0.65,keep,other,16,sr28,4690,"Margarine-like, vegetable oil spread, approximately 37% fat, unspecified oils, with salt, with added vitamin D",
+0.65,keep,other,1,fdc_sr_legacy,171024,"Oil, cottonseed, salad or cooking",
+0.65,keep,other,8,fdc_sr_legacy,171412,"Oil, coconut",
+0.65,keep,other,2,fdc_foundation,748323,"Oil, corn",
+0.65,keep,other,6,sr28,4693,"Margarine-like, vegetable oil spread, 60% fat, stick, with salt, with added vitamin D",
+0.65,keep,other,22,fdc_sr_legacy,167655,"Frybread, made with lard (Apache)",
+0.65,keep,other,3,sr28,4031,"Shortening, household, soybean (partially hydrogenated)-cottonseed (partially hydrogenated)",
+0.65,keep,other,4,sr28,4502,"Oil, cottonseed, salad or cooking",
+0.65,keep,other,1,sr28,4532,"Oil, hazelnut",
+0.65,keep,other,10,fdc_sr_legacy,171038,"Margarine-like, vegetable oil spread, 60% fat, tub, with salt, with added vitamin D",
+0.65,keep,other,2,fdc_foundation,748366,"Oil, soybean",
+0.65,keep,other,3,sr28,4042,"Oil, peanut, salad or cooking",
+0.65,keep,other,23,fdc_sr_legacy,167635,"Frybread, made with lard (Navajo)",
+0.65,keep,other,4,sr28,4574,"Fat, duck",
+0.65,keep,other,5,fdc_foundation,1750348,"Oil, peanut",
+0.65,keep,other,3,fdc_sr_legacy,171433,"Oil, cooking and salad, ENOVA, 80% diglycerides",
+0.65,keep,other,2,sr28,4510,"Oil, safflower, salad or cooking, linoleic, (over 70%)",
+0.65,keep,other,1,fdc_sr_legacy,171421,"Oil, cocoa butter",
+0.65,keep,other,6,fdc_sr_legacy,171437,"Margarine-like, vegetable oil spread, 60% fat, stick, with salt, with added vitamin D",
+0.65,keep,other,9,sr28,4047,"Oil, coconut",
+0.65,keep,other,16,sr28,4128,"Margarine-like, vegetable oil spread, unspecified oils, approximately 37% fat, with salt",
+0.65,keep,other,5,sr28,4615,"Shortening, vegetable, household, composite",
+0.65,keep,other,2,sr28,4528,"Oil, walnut",
+0.65,keep,other,3,sr28,4055,"Oil, palm",
+0.65,keep,other,1,fdc_sr_legacy,173565,"Oil, soybean, salad or cooking, (partially hydrogenated) and cottonseed",
+0.65,keep,other,2,sr28,4554,"Shortening industrial, soybean (hydrogenated) and cottonseed",
+0.65,keep,other,2,sr28,4520,"Fat, mutton tallow",
+0.65,keep,other,1,fdc_sr_legacy,171014,"Oil, wheat germ",
+0.65,keep,other,1,fdc_sr_legacy,171012,"Oil, soybean, salad or cooking, (partially hydrogenated)",
+0.65,keep,other,1,sr28,4516,"Oil, teaseed",
+0.65,keep,other,1,fdc_sr_legacy,171011,"Shortening, household, soybean (partially hydrogenated)-cottonseed (partially hydrogenated)",
+0.65,keep,other,16,fdc_sr_legacy,171434,"Margarine-like, vegetable oil spread, approximately 37% fat, unspecified oils, with salt, with added vitamin D",
+0.65,keep,other,5,fdc_foundation,1750349,"Oil, sunflower",
+0.65,keep,other,2,sr28,4515,"Oil, tomatoseed",
+0.65,keep,other,1,fdc_sr_legacy,173583,"Margarine-like, vegetable oil spread, 60% fat, stick/tub/bottle, with salt",
+0.65,keep,other,5,fdc_foundation,1750350,"Oil, safflower",
+0.65,keep,other,1,fdc_sr_legacy,171016,"Oil, sesame, salad or cooking",
+0.65,keep,other,4,fdc_sr_legacy,172336,"Oil, canola",
+0.65,keep,other,2,sr28,4034,"Oil, soybean, salad or cooking, (partially hydrogenated)",
+0.65,keep,other,5,sr28,4542,"Fat, chicken",
+0.65,keep,other,1,fdc_sr_legacy,171422,"Vegetable oil, palm kernel",
+0.65,keep,other,4,sr28,4582,"Oil, canola",
+0.65,keep,other,5,fdc_sr_legacy,173584,"Shortening, vegetable, household, composite",
+0.65,keep,other,1,fdc_foundation,748608,"Oil, olive, extra virgin",
+0.65,keep,other,9,sr28,4613,"Margarine-like, vegetable oil spread, 60% fat, tub, with salt",
+0.65,keep,other,8,sr28,4683,"Margarine, margarine-like vegetable oil spread, 67-70% fat, tub",
+0.65,keep,other,4,sr28,4058,"Oil, sesame, salad or cooking",
+0.65,keep,other,4,fdc_sr_legacy,171411,"Oil, soybean, salad or cooking",
+0.65,keep,other,3,sr28,4685,"Oil, cooking and salad, ENOVA, 80% diglycerides",
+0.65,keep,other,6,fdc_foundation,330458,"Oil, coconut",
+0.65,keep,other,1,sr28,4548,"Shortening cake mix, soybean (hydrogenated) and cottonseed (hydrogenated)",
+0.65,keep,other,2,sr28,4001,"Fat, beef tallow",
+0.65,keep,other,1,sr28,4556,"Shortening frying (heavy duty), palm (hydrogenated)",
+0.65,keep,other,3,sr28,4506,"Oil, sunflower, linoleic, (approx. 65%)",
+0.65,keep,other,4,sr28,4060,"Oil, sunflower, linoleic (less than 60%)",
+0.65,keep,other,1,fdc_sr_legacy,171026,"Oil, safflower, salad or cooking, linoleic, (over 70%)",
+0.65,keep,other,1,fdc_sr_legacy,173576,"Oil, oat",
+0.65,keep,other,2,sr28,4543,"Oil, soybean, salad or cooking, (partially hydrogenated) and cottonseed",
+0.65,keep,other,2,sr28,4038,"Oil, wheat germ",
+0.65,keep,other,2,sr28,4518,"Oil, corn, industrial and retail, all purpose salad or cooking",
+0.65,keep,other,9,sr28,4612,"Margarine-like, vegetable oil spread, 60% fat, stick, with salt",
+0.65,keep,other,1,sr28,4549,"Shortening industrial, lard and vegetable oil",
+0.65,keep,other,12,fdc_sr_legacy,167611,"Oil, bearded seal (Oogruk) (Alaska Native)",
+0.65,keep,other,10,sr28,1060,"Milk, filled, fluid, with lauric acid oil",
+0.65,keep,other,8,sr28,4053,"Oil, olive, salad or cooking",
+0.65,keep,other,2,fdc_sr_legacy,171025,"Oil, sunflower, linoleic, (approx. 65%)",
+0.65,keep,other,1,fdc_sr_legacy,171013,"Oil, rice bran",
+0.9,keep,raw,11,fdc_sr_legacy,174882,"Veal, external fat only, raw",+raw
+0.9,keep,raw,20,sr28,17005,"Lamb, domestic, composite of trimmed retail cuts, separable fat, trimmed to 1/4"" fat, choice, raw",+raw
+0.9,keep,raw,11,sr28,17431,"Veal, external fat only, raw",+raw
+0.9,keep,raw,12,sr28,17066,"Lamb, New Zealand, imported, frozen, composite of trimmed retail cuts, separable fat, raw",+raw
+0.9,keep,raw,9,fdc_sr_legacy,174884,"Veal, seam fat only, raw",+raw
+0.9,keep,raw,21,sr28,17284,"Lamb, Australian, imported, fresh, separable fat, raw",+raw
+0.9,keep,raw,18,sr28,13019,"Beef, retail cuts, separable fat, raw",+raw
+0.9,keep,raw,19,sr28,5047,"Chicken, broilers or fryers, separable fat, raw",+raw
+0.9,keep,raw,3,sr28,13335,"Beef, variety meats and by-products, suet, raw",+raw
+0.9,keep,raw,9,sr28,17433,"Veal, seam fat only, raw",+raw
+0.9,keep,raw,4,sr28,17092,"Veal, composite of trimmed retail cuts, separable fat, raw",+raw
+1.0,keep,raw,1,fdc_sr_legacy,168381,"Pork, fresh, loin, blade (chops or roasts), boneless, separable lean and fat only, raw",+raw +cut/part
+1.0,keep,raw,1,sr28,10989,"Pork, fresh, loin, blade (chops or roasts), boneless, separable lean and fat only, raw",+raw +cut/part

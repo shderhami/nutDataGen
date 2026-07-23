@@ -1,0 +1,754 @@
+score,decision,prep,n_obs,source_dataset,source_food_id,description,reasons
+0.0,drop,other,9,sr28,3003,"Babyfood, meat, beef, junior",-fastfood/babyfood/restaurant
+0.0,drop,other,18,fdc_sr_legacy,172251,"Babyfood, meat, turkey, junior",-fastfood/babyfood/restaurant
+0.0,drop,other,24,fdc_sr_legacy,170791,"ARBY'S, roast beef sandwich, classic",-brand -dish/prepared
+0.0,drop,other,1,fdc_sr_legacy,172244,"Babyfood, meat, beef, junior",-fastfood/babyfood/restaurant
+0.0,drop,other,26,fdc_sr_legacy,173268,"Fast foods, biscuit, with crispy chicken fillet",+cut/part -fastfood/babyfood/restaurant -dish/prepared
+0.0,drop,other,1,fdc_sr_legacy,172248,"Babyfood, meat, chicken, junior",-fastfood/babyfood/restaurant
+0.0,drop,other,27,fdc_sr_legacy,170711,"SUBWAY, turkey breast sub on white bread with lettuce and tomato",+cut/part -brand -dish/prepared
+0.0,drop,other,27,sr28,21155,"Fast foods, submarine sandwich, turkey breast on white bread with lettuce and tomato",+cut/part -fastfood/babyfood/restaurant -dish/prepared
+0.0,drop,other,28,fdc_sr_legacy,170713,"SUBWAY, roast beef sub on white bread with lettuce and tomato",-brand -dish/prepared
+0.0,drop,other,12,sr28,3010,"Babyfood, meat, lamb, strained",-fastfood/babyfood/restaurant
+0.0,drop,other,28,sr28,21210,"SUBWAY, roast beef sub on white bread with lettuce and tomato",-brand -dish/prepared
+0.0,drop,other,10,sr28,3013,"Babyfood, meat, chicken, junior",-fastfood/babyfood/restaurant
+0.0,drop,other,27,fdc_sr_legacy,170706,"Fast foods, submarine sandwich, turkey breast on white bread with lettuce and tomato",+cut/part -fastfood/babyfood/restaurant -dish/prepared
+0.0,drop,other,9,sr28,3014,"Babyfood, meat, chicken sticks, junior",-fastfood/babyfood/restaurant
+0.0,drop,other,1,fdc_sr_legacy,173483,"Babyfood, meat, chicken, strained",-fastfood/babyfood/restaurant
+0.0,drop,other,4,sr28,3017,"Babyfood, meat, turkey sticks, junior",-fastfood/babyfood/restaurant
+0.0,drop,other,25,fdc_sr_legacy,170295,"Fast foods, chicken fillet sandwich, plain with pickles",+cut/part -fastfood/babyfood/restaurant -dish/prepared
+0.0,drop,other,25,sr28,21121,"Fast foods, roast beef sandwich, plain",-fastfood/babyfood/restaurant -dish/prepared
+0.0,drop,other,11,sr28,3012,"Babyfood, meat, chicken, strained",-fastfood/babyfood/restaurant
+0.0,drop,other,25,sr28,21527,"ARBY'S, roast beef sandwich, classic",-brand -dish/prepared
+0.0,drop,other,12,fdc_sr_legacy,173481,"Babyfood, meat, lamb, strained",-fastfood/babyfood/restaurant
+0.0,drop,other,28,sr28,21125,"Fast foods, submarine sandwich, roast beef on white bread with lettuce and tomato",-fastfood/babyfood/restaurant -dish/prepared
+0.0,drop,other,27,sr28,21207,"SUBWAY, turkey breast sub on white bread with lettuce and tomato",+cut/part -brand -dish/prepared
+0.0,drop,other,29,sr28,21153,"Fast foods, submarine sandwich, turkey, roast beef and ham on white bread with lettuce and tomato",-fastfood/babyfood/restaurant -dish/prepared
+0.0,drop,other,28,fdc_sr_legacy,170298,"Fast foods, submarine sandwich, roast beef on white bread with lettuce and tomato",-fastfood/babyfood/restaurant -dish/prepared
+0.0,drop,other,19,sr28,3002,"Babyfood, meat, beef, strained",-fastfood/babyfood/restaurant
+0.0,drop,other,4,sr28,3005,"Babyfood, meat, veal, strained",-fastfood/babyfood/restaurant
+0.0,drop,other,10,sr28,3011,"Babyfood, meat, lamb, junior",-fastfood/babyfood/restaurant
+0.0,drop,other,29,fdc_sr_legacy,170308,"Fast foods, submarine sandwich, turkey, roast beef and ham on white bread with lettuce and tomato",-fastfood/babyfood/restaurant -dish/prepared
+0.0,drop,other,19,fdc_sr_legacy,173479,"Babyfood, meat, beef, strained",-fastfood/babyfood/restaurant
+0.0,drop,other,18,fdc_sr_legacy,172250,"Babyfood, meat, turkey, strained",-fastfood/babyfood/restaurant
+0.0,drop,other,18,sr28,3016,"Babyfood, meat, turkey, junior",-fastfood/babyfood/restaurant
+0.0,drop,other,18,sr28,21230,"Fast Foods, crispy chicken filet sandwich, with lettuce and mayonnaise",+cut/part -fastfood/babyfood/restaurant -dish/prepared
+0.0,drop,other,18,fdc_sr_legacy,170318,"Fast Foods, crispy chicken filet sandwich, with lettuce and mayonnaise",+cut/part -fastfood/babyfood/restaurant -dish/prepared
+0.0,drop,other,12,sr28,3007,"Babyfood, meat, pork, strained",-fastfood/babyfood/restaurant
+0.0,drop,other,18,sr28,3015,"Babyfood, meat, turkey, strained",-fastfood/babyfood/restaurant
+0.0,drop,other,25,sr28,21102,"Fast foods, chicken fillet sandwich, plain with pickles",+cut/part -fastfood/babyfood/restaurant -dish/prepared
+0.0,drop,other,1,fdc_sr_legacy,173482,"Babyfood, meat, lamb, junior",-fastfood/babyfood/restaurant
+0.0,drop,other,26,sr28,21010,"Fast foods, biscuit, with crispy chicken fillet",+cut/part -fastfood/babyfood/restaurant -dish/prepared
+0.0,drop,other,24,fdc_sr_legacy,170695,"Fast foods, roast beef sandwich, plain",-fastfood/babyfood/restaurant -dish/prepared
+0.0,drop,other,4,fdc_sr_legacy,172245,"Babyfood, meat, veal, strained",-fastfood/babyfood/restaurant
+0.15,drop,other,13,sr28,10853,"HORMEL ALWAYS TENDER, Pork Tenderloin, Peppercorn-Flavored",+cut/part -brand
+0.15,drop,other,13,sr28,10856,"HORMEL ALWAYS TENDER, Boneless Pork Loin, Fresh Pork",+cut/part -brand
+0.15,drop,other,13,sr28,10854,"HORMEL ALWAYS TENDER, Pork Loin Filets, Lemon Garlic-Flavored",+cut/part -brand
+0.15,drop,other,13,sr28,10852,"HORMEL ALWAYS TENDER, Pork Tenderloin, Teriyaki-Flavored",+cut/part -brand
+0.15,drop,other,14,sr28,7209,"OSCAR MAYER, Chicken Breast (honey glazed)",+cut/part -brand
+0.4,review,raw,5,sr28,23094,"Beef, chuck for stew, separable lean and fat, select, raw",+raw +cut/part -dish/prepared
+0.4,review,raw,1,fdc_sr_legacy,171206,"Beef, chuck for stew, separable lean and fat, all grades, raw",+raw +cut/part -dish/prepared
+0.4,review,raw,1,fdc_sr_legacy,170810,"Beef, chuck for stew, separable lean and fat, choice, raw",+raw +cut/part -dish/prepared
+0.4,review,raw,14,sr28,5131,"Chicken, stewing, dark meat, meat only, raw",+raw +cut/part -dish/prepared
+0.4,review,raw,19,sr28,17140,"Veal, cubed for stew (leg and shoulder), separable lean only, raw",+raw +cut/part -dish/prepared
+0.4,review,raw,18,sr28,17059,"Lamb, domestic, cubed for stew or kabob (leg and shoulder), separable lean only, trimmed to 1/4"" fat, raw",+raw +cut/part -dish/prepared
+0.4,review,raw,17,fdc_sr_legacy,173859,"Sausage, pork, chorizo, link or ground, raw",+raw -processed-meat
+0.4,review,raw,9,sr28,5129,"Chicken, stewing, light meat, meat only, raw",+raw +cut/part -dish/prepared
+0.4,review,raw,7,sr28,23093,"Beef, chuck for stew, separable lean and fat, all grades, raw",+raw +cut/part -dish/prepared
+0.4,review,raw,1,fdc_sr_legacy,170809,"Beef, chuck for stew, separable lean and fat, select, raw",+raw +cut/part -dish/prepared
+0.4,review,raw,7,sr28,23095,"Beef, chuck for stew, separable lean and fat, choice, raw",+raw +cut/part -dish/prepared
+0.65,keep,other,11,sr28,5285,"Turkey, diced, light and dark meat, seasoned",
+0.65,keep,other,23,sr28,5356,"Chicken, broiler, rotisserie, BBQ, skin",
+0.65,keep,other,10,fdc_foundation,2759003,"Lunchmeat, roast beef, sliced, prepackaged",
+0.65,keep,other,28,fdc_sr_legacy,174570,"Roast beef, deli style, prepackaged, sliced",
+0.65,keep,other,28,sr28,7043,"Roast beef, deli style, prepackaged, sliced",
+0.65,keep,other,23,fdc_sr_legacy,171524,"Chicken, broiler, rotisserie, BBQ, skin",
+0.75,keep,other,27,fdc_sr_legacy,171115,"Chicken, wing, frozen, glazed, barbecue flavored, heated (conventional oven)",+cut/part
+0.75,keep,other,8,sr28,5319,"Chicken, broiler, rotisserie, BBQ, drumstick, meat only",+cut/part
+0.75,keep,other,26,sr28,5312,"Chicken, wing, frozen, glazed, barbecue flavored",+cut/part
+0.75,keep,other,28,sr28,7961,"Chicken breast, deli, rotisserie seasoned, sliced, prepackaged",+cut/part
+0.75,keep,other,27,sr28,5313,"Chicken, wing, frozen, glazed, barbecue flavored, heated (microwave)",+cut/part
+0.75,keep,other,10,fdc_foundation,2759004,"Lunchmeat, chicken breast, sliced",+cut/part
+0.75,keep,other,8,fdc_sr_legacy,171114,"Chicken, broiler, rotisserie, BBQ, drumstick, meat only",+cut/part
+0.75,keep,other,8,fdc_sr_legacy,171118,"Chicken, broiler, rotisserie, BBQ, thigh, meat only",+cut/part
+0.75,keep,other,7,sr28,5000,"Chicken, broiler, rotisserie, BBQ, breast meat only",+cut/part
+0.75,keep,other,28,fdc_sr_legacy,173874,"Chicken breast, deli, rotisserie seasoned, sliced, prepackaged",+cut/part
+0.75,keep,other,5,fdc_sr_legacy,172945,"Oscar Mayer, Chicken Breast (honey glazed)",+cut/part
+0.75,keep,other,24,fdc_sr_legacy,172941,"Turkey breast, sliced, prepackaged",+cut/part
+0.75,keep,other,8,sr28,5334,"Chicken, broiler, rotisserie, BBQ, thigh, meat only",+cut/part
+0.75,keep,other,26,fdc_sr_legacy,171111,"Chicken, wing, frozen, glazed, barbecue flavored",+cut/part
+0.75,keep,other,7,fdc_sr_legacy,171445,"Chicken, broiler, rotisserie, BBQ, breast, meat only",+cut/part
+0.75,keep,other,27,sr28,5320,"Chicken, wing, frozen, glazed, barbecue flavored, heated (conventional oven)",+cut/part
+0.75,keep,other,22,sr28,7081,"Turkey breast, sliced, prepackaged",+cut/part
+0.75,keep,other,27,fdc_sr_legacy,171508,"Chicken, wing, frozen, glazed, barbecue flavored, heated (microwave)",+cut/part
+0.9,keep,raw,25,sr28,5332,"Chicken, ground, raw",+raw
+0.9,keep,raw,13,sr28,17172,"Game meat, moose, raw",+raw
+0.9,keep,raw,26,sr28,23572,"Beef, ground, 80% lean meat / 20% fat, raw",+raw
+0.9,keep,raw,26,sr28,23577,"Beef, ground, 75% lean meat / 25% fat, raw",+raw
+0.9,keep,raw,26,fdc_sr_legacy,171490,"Turkey, whole, light meat, raw",+raw
+0.9,keep,raw,14,sr28,17162,"Game meat, caribou, raw",+raw
+0.9,keep,raw,3,sr28,5139,"Duck, domesticated, meat and skin, raw",+raw
+0.9,keep,raw,26,sr28,23472,"Beef, ground, 93% lean meat / 7% fat, raw",+raw
+0.9,keep,raw,1,fdc_sr_legacy,174700,"Beef, ribeye cap steak, boneless, separable lean only, trimmed to 0"" fat, select, raw",+raw
+0.9,keep,raw,16,sr28,5084,"Chicken, broilers or fryers, neck, meat and skin, raw",+raw
+0.9,keep,raw,9,sr28,23270,"Beef, ribeye cap steak, boneless, separable lean only, trimmed to 0"" fat, choice, raw",+raw
+0.9,keep,raw,1,fdc_sr_legacy,168658,"Beef, brisket, flat half, boneless, separable lean only, trimmed to 0"" fat, select, raw",+raw
+0.9,keep,raw,18,sr28,17160,"Game meat, buffalo, water, raw",+raw
+0.9,keep,raw,15,sr28,5029,"Chicken, broilers or fryers, light meat, meat and skin, raw",+raw
+0.9,keep,raw,5,sr28,23271,"Beef, ribeye cap steak, boneless, separable lean only, trimmed to 0"" fat, select, raw",+raw
+0.9,keep,raw,4,sr28,17149,"Bison, ground, grass-fed, raw",+raw
+0.9,keep,raw,1,fdc_sr_legacy,170819,"Beef, shoulder pot roast or steak, boneless, separable lean and fat, trimmed to 0"" fat, select, raw",+raw
+0.9,keep,raw,23,sr28,5665,"Ground turkey, 93% lean, 7% fat, raw",+raw
+0.9,keep,raw,4,sr28,23596,"Beef, brisket, flat half, separable lean only, trimmed to 1/8"" fat, all grades, raw",+raw
+0.9,keep,raw,1,fdc_sr_legacy,169536,"Beef, shoulder top blade steak, boneless, separable lean and fat, trimmed to 0"" fat, select, raw",+raw
+0.9,keep,raw,17,fdc_sr_legacy,168372,"Pork, ground, 84% lean / 16% fat, raw",+raw
+0.9,keep,raw,26,sr28,5185,"Turkey from whole, light meat, raw",+raw
+0.9,keep,raw,4,sr28,23659,"Beef, brisket, flat half, separable lean and fat, trimmed to 1/8"" fat, select, raw",+raw
+0.9,keep,raw,6,sr28,17180,"Game meat, rabbit, wild, raw",+raw
+0.9,keep,raw,25,fdc_sr_legacy,171116,"Chicken, ground, raw",+raw
+0.9,keep,raw,21,fdc_sr_legacy,172873,"Turkey, skin, from retail parts, from dark meat, raw",+raw
+0.9,keep,raw,26,sr28,23567,"Beef, ground, 85% lean meat / 15% fat, raw",+raw
+0.9,keep,raw,1,fdc_sr_legacy,173057,"Beef, ribeye cap steak, boneless, separable lean only, trimmed to 0"" fat, all grades, raw",+raw
+0.9,keep,raw,6,sr28,13647,"Beef, shoulder pot roast or steak, boneless, separable lean only, trimmed to 0"" fat, all grades, raw",+raw
+0.9,keep,raw,6,sr28,5157,"Quail, meat and skin, raw",+raw
+0.9,keep,raw,6,sr28,13519,"Beef, shoulder top blade steak, boneless, separable lean only, trimmed to 0"" fat, all grades, raw",+raw
+0.9,keep,raw,1,fdc_sr_legacy,168657,"Beef, brisket, flat half, boneless, separable lean only, trimmed to 0"" fat, choice, raw",+raw
+0.9,keep,raw,17,sr28,17142,"Veal, ground, raw",+raw
+0.9,keep,raw,1,fdc_sr_legacy,168743,"Beef, brisket, flat half, boneless, separable lean and fat, trimmed to 0"" fat, choice, raw",+raw
+0.9,keep,raw,21,sr28,13648,"Beef, shoulder pot roast or steak, boneless, separable lean only, trimmed to 0"" fat, choice, raw",+raw
+0.9,keep,raw,26,sr28,23557,"Beef, ground, 95% lean meat / 5% fat, raw",+raw
+0.9,keep,raw,5,sr28,13523,"Beef, shoulder top blade steak, boneless, separable lean only, trimmed to 0"" fat, select, raw",+raw
+0.9,keep,raw,19,sr28,5621,"Emu, ground, raw",+raw
+0.9,keep,raw,17,fdc_sr_legacy,175290,"Veal, ground, raw",+raw
+0.9,keep,raw,29,fdc_sr_legacy,171505,"Turkey, Ground, raw",+raw
+0.9,keep,raw,1,fdc_sr_legacy,173349,"Beef, shoulder pot roast or steak, boneless, separable lean and fat, trimmed to 0"" fat, all grades, raw",+raw
+0.9,keep,raw,14,sr28,17156,"Game meat, bison, separable lean only, raw",+raw
+0.9,keep,raw,22,sr28,13904,"Beef, brisket, flat half, boneless, separable lean and fat, trimmed to 0"" fat, all grades, raw",+raw
+0.9,keep,raw,23,sr28,5668,"Ground turkey, 85% lean, 15% fat, raw",+raw
+0.9,keep,raw,15,sr28,17144,"Game meat, antelope, raw",+raw
+0.9,keep,raw,16,sr28,17164,"Game meat, deer, raw",+raw
+0.9,keep,raw,1,fdc_sr_legacy,168693,"Beef, shoulder top blade steak, boneless, separable lean and fat, trimmed to 0"" fat, all grades, raw",+raw
+0.9,keep,raw,16,sr28,10973,"Pork, ground, 96% lean / 4% fat, raw",+raw
+0.9,keep,raw,1,fdc_sr_legacy,169570,"Beef, brisket, flat half, boneless, separable lean and fat, trimmed to 0"" fat, select, raw",+raw
+0.9,keep,raw,19,fdc_sr_legacy,174421,"Game meat , bison, ground, raw",+raw
+0.9,keep,raw,15,sr28,5048,"Chicken, broilers or fryers, back, meat and skin, raw",+raw
+0.9,keep,raw,1,sr28,17158,"Game meat, boar, wild, raw",+raw
+0.9,keep,raw,1,fdc_sr_legacy,169477,"Beef, shoulder top blade steak, boneless, separable lean only, trimmed to 0"" fat, all grades, raw",+raw
+0.9,keep,raw,10,sr28,5295,"Turkey roast, boneless, frozen, seasoned, light and dark meat, raw",+raw
+0.9,keep,raw,4,sr28,13805,"Beef, brisket, flat half, separable lean and fat, trimmed to 1/8"" fat, all grades, raw",+raw
+0.9,keep,raw,21,sr28,23111,"Beef, shoulder pot roast or steak, boneless, separable lean and fat, trimmed to 0"" fat, choice, raw",+raw
+0.9,keep,raw,4,sr28,17174,"Game meat, muskrat, raw",+raw
+0.9,keep,raw,23,fdc_sr_legacy,172850,"Turkey, ground, 93% lean, 7% fat, raw",+raw
+0.9,keep,raw,4,sr28,23613,"Beef, brisket, flat half, separable lean only, trimmed to 1/8"" fat, choice, raw",+raw
+0.9,keep,raw,4,sr28,23632,"Beef, brisket, flat half, separable lean only, trimmed to 1/8"" fat, select, raw",+raw
+0.9,keep,raw,6,sr28,13863,"Beef, shoulder top blade steak, boneless, separable lean and fat, trimmed to 0"" fat, all grades, raw",+raw
+0.9,keep,raw,9,sr28,23269,"Beef, ribeye cap steak, boneless, separable lean only, trimmed to 0"" fat, all grades, raw",+raw
+0.9,keep,raw,19,fdc_sr_legacy,172602,"Game meat, deer, ground, raw",+raw
+0.9,keep,raw,26,sr28,23477,"Beef, ground, 97% lean meat / 3% fat, raw",+raw
+0.9,keep,raw,12,fdc_foundation,2514744,"Beef, ground, 80% lean meat / 20% fat, raw",+raw
+0.9,keep,raw,21,sr28,13975,"Beef, brisket, flat half, boneless, separable lean and fat, trimmed to 0"" fat, choice, raw",+raw
+0.9,keep,raw,1,fdc_sr_legacy,168714,"Beef, brisket, flat half, boneless, separable lean and fat, trimmed to 0"" fat, all grades, raw",+raw
+0.9,keep,raw,24,sr28,17268,"Game meat, bison, ribeye, separable lean only, trimmed to 0"" fat, raw",+raw
+0.9,keep,raw,19,sr28,17343,"Game meat, deer, ground, raw",+raw
+0.9,keep,raw,13,fdc_foundation,2514746,"Chicken, ground, with additives, raw",+raw
+0.9,keep,raw,6,sr28,13520,"Beef, shoulder top blade steak, boneless, separable lean only, trimmed to 0"" fat, choice, raw",+raw
+0.9,keep,raw,5,sr28,13903,"Beef, shoulder top blade steak, boneless, separable lean and fat, trimmed to 0"" fat, select, raw",+raw
+0.9,keep,raw,4,fdc_sr_legacy,175293,"Bison, ground, grass-fed, raw",+raw
+0.9,keep,raw,19,fdc_sr_legacy,174425,"Game meat, elk, ground, raw",+raw
+0.9,keep,raw,1,fdc_sr_legacy,168707,"Beef, shoulder top blade steak, boneless, separable lean and fat, trimmed to 0"" fat, choice, raw",+raw
+0.9,keep,raw,22,sr28,13047,"Beef, grass-fed, ground, raw",+raw
+0.9,keep,raw,12,fdc_foundation,2514745,"Pork, ground, raw",+raw
+0.9,keep,raw,23,sr28,5662,"Ground turkey, fat free, raw",+raw
+0.9,keep,raw,5,sr28,13597,"Beef, brisket, flat half, boneless, separable lean only, trimmed to 0"" fat, select, raw",+raw
+0.9,keep,raw,19,sr28,5641,"Ostrich, ground, raw",+raw
+0.9,keep,raw,20,sr28,13649,"Beef, shoulder pot roast or steak, boneless, separable lean only, trimmed to 0"" fat, select, raw",+raw
+0.9,keep,raw,14,sr28,17170,"Game meat, horse, raw",+raw
+0.9,keep,raw,19,sr28,17338,"Game meat, elk, ground, raw",+raw
+0.9,keep,raw,1,fdc_sr_legacy,169480,"Beef, shoulder pot roast or steak, boneless, separable lean only, trimmed to 0"" fat, all grades, raw",+raw
+0.9,keep,raw,1,fdc_sr_legacy,169482,"Beef, shoulder pot roast or steak, boneless, separable lean only, trimmed to 0"" fat, select, raw",+raw
+0.9,keep,raw,23,sr28,17269,"Game meat, bison, shoulder clod, separable lean only, trimmed to 0"" fat, raw",+raw
+0.9,keep,raw,5,sr28,13983,"Beef, brisket, flat half, boneless, separable lean and fat, trimmed to 0"" fat, select, raw",+raw
+0.9,keep,raw,15,sr28,5034,"Chicken, broilers or fryers, dark meat, meat and skin, raw",+raw
+0.9,keep,raw,12,fdc_foundation,2727571,"Bison, ground, raw",+raw
+0.9,keep,raw,19,sr28,17330,"Game meat , bison, ground, raw",+raw
+0.9,keep,raw,1,fdc_sr_legacy,170818,"Beef, shoulder pot roast or steak, boneless, separable lean and fat, trimmed to 0"" fat, choice, raw",+raw
+0.9,keep,raw,5,sr28,23112,"Beef, shoulder pot roast or steak, boneless, separable lean and fat, trimmed to 0"" fat, select, raw",+raw
+0.9,keep,raw,11,sr28,10219,"Pork, fresh, ground, raw",+raw
+0.9,keep,raw,1,fdc_sr_legacy,174699,"Beef, ribeye cap steak, boneless, separable lean only, trimmed to 0"" fat, choice, raw",+raw
+0.9,keep,raw,13,fdc_foundation,2514747,"Turkey, ground, 93% lean/ 7% fat, raw",+raw
+0.9,keep,raw,26,sr28,23562,"Beef, ground, 90% lean meat / 10% fat, raw",+raw
+0.9,keep,raw,19,fdc_sr_legacy,172832,"Emu, ground, raw",+raw
+0.9,keep,raw,21,sr28,23000,"Beef, shoulder pot roast or steak, boneless, separable lean and fat, trimmed to 0"" fat, all grades, raw",+raw
+0.9,keep,raw,1,fdc_sr_legacy,168656,"Beef, brisket, flat half, boneless separable lean only, trimmed to 0"" fat, all grades, raw",+raw
+0.9,keep,raw,18,sr28,10972,"Pork, ground, 84% lean / 16% fat, raw",+raw
+0.9,keep,raw,2,sr28,17150,"Game meat, beaver, raw",+raw
+0.9,keep,raw,29,sr28,5305,"Ground turkey, raw",+raw
+0.9,keep,raw,23,fdc_sr_legacy,172847,"Turkey, ground, fat free, raw",+raw
+0.9,keep,raw,12,sr28,17166,"Game meat, elk, raw",+raw
+0.9,keep,raw,22,sr28,13595,"Beef, brisket, flat half, boneless separable lean only, trimmed to 0"" fat, all grades, raw",+raw
+0.9,keep,raw,21,sr28,5714,"Turkey, skin, from retail parts, from dark meat, raw",+raw
+0.9,keep,raw,12,sr28,17177,"Game meat, rabbit, domesticated, composite of cuts, raw",+raw
+0.9,keep,raw,22,fdc_sr_legacy,168608,"Beef, grass-fed, ground, raw",+raw
+0.9,keep,raw,12,fdc_foundation,2646172,"Beef, ribeye, steak, boneless, choice, raw",+raw
+0.9,keep,raw,13,sr28,5146,"Goose, domesticated, meat and skin, raw",+raw
+0.9,keep,raw,12,fdc_foundation,2727570,"Lamb, ground, raw",+raw
+0.9,keep,raw,6,sr28,13889,"Beef, shoulder top blade steak, boneless, separable lean and fat, trimmed to 0"" fat, choice, raw",+raw
+0.9,keep,raw,21,sr28,13596,"Beef, brisket, flat half, boneless, separable lean only, trimmed to 0"" fat, choice, raw",+raw
+0.9,keep,raw,1,fdc_sr_legacy,169478,"Beef, shoulder top blade steak, boneless, separable lean only, trimmed to 0"" fat, choice, raw",+raw
+0.9,keep,raw,1,fdc_sr_legacy,169481,"Beef, shoulder pot roast or steak, boneless, separable lean only, trimmed to 0"" fat, choice, raw",+raw
+0.9,keep,raw,12,fdc_foundation,2514743,"Beef, ground, 90% lean meat / 10% fat, raw",+raw
+0.9,keep,raw,26,sr28,13498,"Beef, ground, 70% lean meat / 30% fat, raw",+raw
+0.9,keep,raw,4,sr28,17183,"Game meat, squirrel, raw",+raw
+0.9,keep,raw,4,sr28,23658,"Beef, brisket, flat half, separable lean and fat, trimmed to 1/8"" fat, choice, raw",+raw
+0.9,keep,raw,1,fdc_sr_legacy,168655,"Beef, shoulder top blade steak, boneless, separable lean only, trimmed to 0"" fat, select, raw",+raw
+0.9,keep,raw,23,fdc_sr_legacy,174493,"Turkey, ground, 85% lean, 15% fat, raw",+raw
+0.9,keep,raw,15,sr28,5006,"Chicken, broilers or fryers, meat and skin, raw",+raw
+0.9,keep,raw,15,sr28,17152,"Game meat, beefalo, composite of cuts, raw",+raw
+0.9,keep,raw,19,fdc_sr_legacy,174481,"Ostrich, ground, raw",+raw
+1.0,keep,raw,1,fdc_sr_legacy,172159,"Beef, plate steak, boneless, inside skirt, separable lean and fat, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,5,sr28,23079,"Beef, chuck eye steak, boneless, separable lean only, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,171221,"Beef, chuck, mock tender steak, boneless, separable lean and fat, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,1,sr28,23167,"Beef, plate steak, boneless, inside skirt, separable lean only, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,13898,"Beef, round, top round, steak, separable lean and fat, trimmed to 1/8"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,19,fdc_sr_legacy,172598,"Game meat, bison, chuck, shoulder clod, separable lean only, raw",+raw +cut/part
+1.0,keep,raw,12,fdc_foundation,2727573,"Beef, tenderloin steak, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,170835,"Beef, chuck eye steak, boneless, separable lean and fat, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,172151,"Beef, rib eye steak/roast, bone-in, lip-on, separable lean and fat, trimmed to 1/8"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,4,fdc_sr_legacy,172653,"Lamb, Australian, imported, fresh, leg, bottom, boneless, separable lean only, trimmed to 1/8"" fat, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,171743,"Beef, round, top round steak, boneless, separable lean and fat, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,173384,"Beef, rib, back ribs, bone-in, separable lean only, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,17446,"Lamb, Australian, imported, fresh, leg, trotter off, bone-in, separable lean only, trimmed to 1/8"" fat, raw",+raw +cut/part
+1.0,keep,raw,7,sr28,13359,"Beef, chuck, under blade center steak, boneless, Denver Cut, separable lean only, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,11,sr28,13235,"Beef, short loin, t-bone steak, bone-in, separable lean only, trimmed to 1/8"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,8,sr28,23263,"Beef, ribeye  petite roast/filet, boneless, separable lean only, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,20,sr28,23041,"Beef, chuck, shoulder clod, top blade, steak, separable lean and fat, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,171194,"Beef, chuck eye Country-Style ribs, boneless, separable lean only, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,20,sr28,23063,"Beef, round, outside round, bottom round, steak, separable lean and fat, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,170824,"Beef, chuck, mock tender steak, boneless, separable lean and fat, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,173049,"Beef, top loin petite roast/filet, boneless, separable lean only, trimmed to 1/8"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,5,sr28,23338,"Beef, loin, tenderloin roast, boneless, separable lean and fat, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,173378,"Beef, plate steak, boneless, outside skirt, separable lean only, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,5,sr28,23384,"Beef, loin, top loin steak, boneless, lip-on, separable lean only, trimmed to 1/8"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,18,fdc_sr_legacy,173357,"Beef, chuck, shoulder clod, shoulder top and center steaks, separable lean and fat, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,12,fdc_foundation,2727574,"Beef, top sirloin steak, raw",+raw +cut/part
+1.0,keep,raw,23,fdc_sr_legacy,169194,"Pork, fresh, loin, blade (chops or roasts), boneless, separable lean only, raw",+raw +cut/part
+1.0,keep,raw,4,fdc_sr_legacy,173356,"Beef, chuck, shoulder clod, shoulder tender, medallion, separable lean and fat, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,171758,"Beef, round, top round steak, boneless, separable lean only, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,6,sr28,23138,"Beef, chuck eye Country-Style ribs, boneless, separable lean and fat, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,168719,"Beef, loin, top loin, separable lean and fat, trimmed to 1/8"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,23583,"Beef, tenderloin, steak, separable lean only, trimmed to 1/8"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,5,sr28,23073,"Beef, chuck eye Country-Style ribs, boneless, separable lean only, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,6,sr28,23236,"Beef, rib, back ribs, bone-in, separable lean and fat, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,6,sr28,13972,"Beef, chuck eye roast, boneless, America's Beef Roast, separable lean only, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,171763,"Beef, round, eye of round steak, boneless, separable lean only, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,173389,"Beef, rib eye steak/roast, bone-in, lip-on, separable lean and fat, trimmed to 1/8"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,23617,"Beef, round, top round, steak, separable lean only, trimmed to 1/8"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,18,sr28,23045,"Beef, round, knuckle, tip center, steak, separable lean and fat, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,24,fdc_sr_legacy,167901,"Pork, fresh, loin, sirloin (chops or roasts), boneless, separable lean only, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,13894,"Beef, round, top round, steak, separable lean and fat, trimmed to 1/8"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,174697,"Beef, ribeye  petite roast/filet, boneless, separable lean only, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,5,sr28,23226,"Beef, plate steak, boneless, outside skirt, separable lean and fat, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,13,fdc_foundation,2646175,"Beef, flank, steak, boneless, choice, raw",+raw +cut/part
+1.0,keep,raw,5,sr28,23265,"Beef, ribeye  petite roast/filet, boneless, separable lean only, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,12,fdc_foundation,334898,"Beef, round, eye of round roast, boneless, separable lean only, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,5,sr28,23124,"Beef, chuck, mock tender steak, boneless, separable lean and fat, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,168742,"Beef, chuck eye roast, boneless, America's Beef Roast, separable lean only, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,1,sr28,23177,"Beef, rib eye steak, boneless, lip off, separable lean only, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,5,sr28,23335,"Beef, round, eye of round steak, boneless, separable lean and fat, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,24,sr28,17267,"Game meat, bison, top sirloin, separable lean only, trimmed to 0"" fat, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,171765,"Beef, loin, tenderloin roast, boneless, separable lean only, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,173406,"Beef, rib, back ribs, bone-in, separable lean and fat, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,19,sr28,23612,"Beef, chuck, arm pot roast, separable lean only, trimmed to 1/8"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,23657,"Beef, flank, steak, separable lean only, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,4,fdc_sr_legacy,173363,"Beef, round, knuckle, tip center, steak, separable lean and fat, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,12,sr28,23361,"Beef, round, eye of round roast, boneless, separable lean only, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,5,sr28,23326,"Beef, round, top round steak, boneless, separable lean and fat, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,18,sr28,23637,"Beef, round, bottom round, roast, separable lean only, trimmed to 1/8"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,18,sr28,17017,"Lamb, domestic, leg, shank half, separable lean only, trimmed to 1/4"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,23,sr28,10094,"Pork, fresh, loin, center loin (chops), boneless, separable lean only, raw",+raw +cut/part
+1.0,keep,raw,24,fdc_sr_legacy,168371,"Pork, Leg sirloin tip roast, boneless, separable lean and fat, raw",+raw +cut/part
+1.0,keep,raw,1,sr28,23153,"Beef, rib eye steak/roast, boneless, lip-on, separable lean only, trimmed to 1/8"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,22,sr28,5039,"Chicken, broilers or fryers, light meat, meat only, raw",+raw +cut/part
+1.0,keep,raw,16,fdc_sr_legacy,172645,"Veal, shank, separable lean only, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,23609,"Beef, round, top round, steak, separable lean only, trimmed to 1/8"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,174010,"Beef, loin, top loin steak, boneless, lip-on, separable lean only, trimmed to 1/8"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,174691,"Beef, top loin petite roast/filet, boneless, separable lean only, trimmed to 1/8"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,27,sr28,5062,"Chicken, broiler or fryers, breast, skinless, boneless, meat only, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,23597,"Beef, round, eye of round, roast, separable lean only, trimmed to 1/8"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,170804,"Beef, chuck eye steak, boneless, separable lean only, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,23051,"Beef, round, outside round, bottom round, steak, separable lean and fat, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,6,sr28,23128,"Beef, chuck, short ribs, boneless, separable lean and fat, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,23616,"Beef, round, eye of round, roast, separable lean only, trimmed to 1/8"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,11,sr28,23001,"Beef, short loin, porterhouse steak, separable lean and fat, trimmed to 1/8"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,17296,"Lamb, Australian, imported, fresh, leg, shank half, separable lean only, trimmed to 1/8"" fat, raw",+raw +cut/part
+1.0,keep,raw,12,sr28,23225,"Beef, plate steak, boneless, outside skirt, separable lean and fat, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,171764,"Beef, round, eye of round steak, boneless, separable lean only, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,5,sr28,23356,"Beef, round, top round steak, boneless, separable lean only, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,13856,"Beef, rib, small end (ribs 10-12), separable lean and fat, trimmed to 1/8"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,172162,"Beef, plate steak, boneless, outside skirt, separable lean and fat, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,11,sr28,13478,"Beef, short loin, t-bone steak, bone-in, separable lean only, trimmed to 1/8"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,8,sr28,23244,"Beef, loin, top sirloin cap steak, boneless, separable lean only, trimmed to 1/8"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,13,sr28,23370,"Beef, loin, top loin steak, boneless, lip off, separable lean only, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,12,sr28,23330,"Beef, round, eye of round roast, boneless, separable lean and fat, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,170205,"Beef, chuck, under blade center steak, boneless, Denver Cut, separable lean only, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,5,sr28,23232,"Beef, rib eye steak, boneless, lip off, separable lean and fat, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,172158,"Beef, plate steak, boneless, inside skirt, separable lean and fat, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,9,sr28,23264,"Beef, ribeye  petite roast/filet, boneless, separable lean only, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,21,sr28,23201,"Beef, rib eye steak/roast, boneless, lip-on, separable lean and fat, trimmed to 1/8"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,21,sr28,5187,"Turkey from whole, dark meat, meat only, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,171767,"Beef, loin, tenderloin steak, boneless, separable lean only, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,24,fdc_sr_legacy,168234,"Pork, fresh, loin, blade (chops or roasts), bone-in, separable lean only, raw",+raw +cut/part
+1.0,keep,raw,12,sr28,23360,"Beef, round, eye of round roast, boneless, separable lean only, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,5,sr28,23344,"Beef, loin, tenderloin steak, boneless, separable lean and fat, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,25,fdc_sr_legacy,173627,"Chicken, broilers or fryers, dark meat, thigh, meat only, raw",+raw +cut/part
+1.0,keep,raw,11,sr28,13231,"Beef, short loin, porterhouse steak, separable lean only, trimmed to 1/8"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,19,fdc_sr_legacy,173369,"Beef, round, knuckle, tip center, steak, separable lean and fat, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,24,sr28,10018,"Pork, fresh, leg (ham), shank half, separable lean only, raw",+raw +cut/part
+1.0,keep,raw,4,fdc_sr_legacy,172130,"Beef, round, outside round, bottom round, steak, separable lean and fat, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,17271,"Veal, breast, whole, boneless, separable lean and fat, raw",+raw +cut/part
+1.0,keep,raw,24,fdc_sr_legacy,168376,"Pork loin, fresh, backribs, bone-in, raw, lean only",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,169540,"Beef, loin, top loin, separable lean and fat, trimmed to 1/8"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,173062,"Beef, loin, top sirloin cap steak, boneless, separable lean and fat, trimmed to 1/8"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,12,sr28,23364,"Beef, round, eye of round steak, boneless, separable lean only, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,8,sr28,23245,"Beef, loin, top sirloin cap steak, boneless, separable lean only, trimmed to 1/8"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,12,fdc_foundation,746762,"Beef, short loin, porterhouse steak, separable lean only, trimmed to 1/8"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,17444,"Lamb, Australian, imported, fresh, leg, bottom, boneless, separable lean only, trimmed to 1/8"" fat, raw",+raw +cut/part
+1.0,keep,raw,18,sr28,17013,"Lamb, domestic, leg, whole (shank and sirloin), separable lean only, trimmed to 1/4"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,3,sr28,13149,"Beef, rib, shortribs, separable lean only, choice, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,173403,"Beef, rib eye steak, boneless, lip off, separable lean and fat, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,23656,"Beef, flank, steak, separable lean only, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,5,sr28,23371,"Beef, loin, top loin steak, boneless, lip off, separable lean only, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,17443,"Lamb, Australian, imported, fresh, tenderloin, boneless, separable lean only, trimmed to 1/8"" fat, raw",+raw +cut/part
+1.0,keep,raw,10,sr28,23005,"Beef, short loin, t-bone steak, separable lean and fat, trimmed to 1/8"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,13877,"Beef, round, eye of round, roast, separable lean and fat, trimmed to 1/8"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,13,fdc_foundation,2646169,"Pork, loin, tenderloin, boneless, raw",+raw +cut/part
+1.0,keep,raw,12,sr28,23217,"Beef, plate steak, boneless, inside skirt, separable lean and fat, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,171746,"Beef, round, eye of round roast, boneless, separable lean and fat, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,21,sr28,23059,"Beef, chuck, shoulder clod, top blade, steak, separable lean and fat, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,23653,"Beef, round, tip round, roast, separable lean only, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,173408,"Beef, loin, top sirloin petite roast/filet, boneless, separable lean only, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,174001,"Beef, loin, tenderloin roast, boneless, separable lean only, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,173380,"Beef, rib eye steak, boneless, lip off, separable lean only, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,22,sr28,23102,"Beef, chuck, under blade pot roast or steak, boneless, separable lean and fat, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,1,sr28,23169,"Beef, plate steak, boneless, outside skirt, separable lean only, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,14,sr28,10207,"Pork, fresh, loin, country-style ribs, separable lean only, raw",+raw +cut/part
+1.0,keep,raw,8,sr28,23254,"Beef, top loin petite roast/filet, boneless, separable lean only, trimmed to 1/8"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,6,sr28,13788,"Beef, chuck eye roast, boneless, America's Beef Roast, separable lean and fat, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,5,sr28,23332,"Beef, round, eye of round roast, boneless, separable lean and fat, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,5,sr28,23341,"Beef, loin, top loin steak, boneless, lip off, separable lean and fat, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,11,sr28,23327,"Beef, round, top round roast, boneless, separable lean and fat, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,171214,"Beef, chuck, under blade center steak, boneless, Denver Cut, separable lean and fat, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,173996,"Beef, round, top round roast, boneless, separable lean only, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,6,sr28,5141,"Duck, domesticated, meat only, raw",+raw +cut/part
+1.0,keep,raw,11,sr28,23395,"Beef, loin, top loin steak, boneless, lip-on, separable lean and fat, trimmed to 1/8"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,173066,"Beef, top loin petite roast/filet, boneless, separable lean and fat, trimmed to 1/8"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,171775,"Beef, loin, top loin steak, boneless, lip-on, separable lean and fat, trimmed to 1/8"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,6,sr28,23066,"Beef, chuck, short ribs, boneless, separable lean only, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,22,sr28,5712,"Turkey, retail parts, wing, meat only, raw",+raw +cut/part
+1.0,keep,raw,11,sr28,23369,"Beef, loin, top loin steak, boneless, lip off, separable lean only, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,24,fdc_sr_legacy,172875,"Turkey, retail parts, drumstick, meat only, raw",+raw +cut/part
+1.0,keep,raw,18,sr28,23618,"Beef, round, bottom round, roast, separable lean only, trimmed to 1/8"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,1,sr28,23150,"Beef, rib eye steak/roast, bone-in, lip-on, separable lean only, trimmed to 1/8"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,23582,"Beef, rib, small end (ribs 10-12), separable lean only, trimmed to 1/8"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,172116,"Beef, short loin, porterhouse steak, separable lean and fat, trimmed to 1/8"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,20,fdc_sr_legacy,173371,"Beef, round, outside round, bottom round, steak, separable lean and fat, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,171751,"Beef, loin, top loin steak, boneless, lip off, separable lean and fat, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,23648,"Beef, bottom sirloin, tri-tip roast, separable lean only, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,12,sr28,23367,"Beef, loin, tenderloin roast, boneless, separable lean only, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,173986,"Beef, round, eye of round steak, boneless, separable lean and fat, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,172163,"Beef, plate steak, boneless, outside skirt, separable lean and fat, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,172174,"Beef, loin, top sirloin cap steak, boneless, separable lean only, trimmed to 1/8"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,6,sr28,23072,"Beef, chuck eye Country-Style ribs, boneless, separable lean only, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,24,fdc_sr_legacy,169187,"Pork, Shoulder breast, boneless, separable lean and fat, raw",+raw +cut/part
+1.0,keep,raw,7,sr28,23282,"Beef, loin, top sirloin cap steak, boneless, separable lean and fat, trimmed to 1/8"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,19,sr28,23607,"Beef, short loin, top loin steak, separable lean only, trimmed to 1/8"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,13,sr28,23340,"Beef, loin, top loin steak, boneless, lip off, separable lean and fat, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,12,sr28,13905,"Beef, short loin, porterhouse steak, separable lean and fat, trimmed to 1/8"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,5,sr28,23130,"Beef, chuck, short ribs, boneless, separable lean and fat, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,13881,"Beef, round, eye of round, roast, separable lean and fat, trimmed to 1/8"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,170808,"Beef, chuck, mock tender steak, boneless, separable lean only, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,12,sr28,23373,"Beef, loin, tenderloin steak, boneless, separable lean only, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,1,sr28,23185,"Beef, rib, back ribs, bone-in, separable lean only, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,1,sr28,23183,"Beef, rib, back ribs, bone-in, separable lean only, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,19,sr28,17099,"Veal, leg (top round), separable lean only, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,170826,"Beef, chuck, short ribs, boneless, separable lean and fat, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,11,sr28,13907,"Beef, short loin, t-bone steak, separable lean and fat, trimmed to 1/8"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,7,sr28,23290,"Beef, top loin petite roast/filet, boneless, separable lean and fat, trimmed to 1/8"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,13931,"Beef, top sirloin, steak, separable lean and fat, trimmed to 1/8"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,26,sr28,5738,"Turkey, drumstick, from whole bird, meat only, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,23625,"Beef, top sirloin, steak, separable lean only, trimmed to 1/8"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,23599,"Beef, rib, small end (ribs 10-12), separable lean only, trimmed to 1/8"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,170783,"Beef, chuck, short ribs, boneless, separable lean only, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,23584,"Beef, top sirloin, steak, separable lean only, trimmed to 1/8"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,23283,"Beef, loin, top sirloin cap steak, boneless, separable lean and fat, trimmed to 1/8"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,20,fdc_foundation,746759,"Beef, loin, top loin steak, boneless, lip-on, separable lean only, trimmed to 1/8"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,11,sr28,13464,"Beef, short loin, porterhouse steak, separable lean only, trimmed to 1/8"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,5,sr28,13811,"Beef, chuck, arm pot roast, separable lean and fat, trimmed to 1/8"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,5,sr28,23255,"Beef, top loin petite roast/filet, boneless, separable lean only, trimmed to 1/8"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,13874,"Beef, round, bottom round, steak, separable lean and fat, trimmed to 1/8"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,23036,"Beef, chuck, shoulder clod, shoulder tender, medallion, separable lean and fat, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,171761,"Beef, round, eye of round roast, boneless, separable lean only, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,12,fdc_foundation,2646174,"Beef, chuck, roast, boneless, choice, raw",+raw +cut/part
+1.0,keep,raw,21,sr28,5215,"Turkey, back from whole bird, meat only, raw",+raw +cut/part
+1.0,keep,raw,24,sr28,5159,"Quail, breast, meat only, raw",+raw +cut/part
+1.0,keep,raw,25,sr28,5111,"Canada Goose, breast meat, skinless, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,13970,"Beef, flank, steak, separable lean and fat, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,12,sr28,23363,"Beef, round, eye of round steak, boneless, separable lean only, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,22,sr28,13293,"Beef, chuck, under blade pot roast or steak, boneless, separable lean only, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,18,sr28,23585,"Beef, short loin, top loin, steak, separable lean only, trimmed to 1/8"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,168653,"Beef, chuck, under blade center steak, boneless, Denver Cut, separable lean only, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,171220,"Beef, chuck, mock tender steak, boneless, separable lean and fat, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,5,sr28,23231,"Beef, rib eye steak, boneless, lip off, separable lean and fat, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,13891,"Beef, round, top round, steak, separable lean and fat, trimmed to 1/8"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,4,fdc_sr_legacy,173365,"Beef, chuck, shoulder clod, shoulder tender, medallion, separable lean and fat, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,173982,"Beef, round, top round roast, boneless, separable lean and fat, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,16,fdc_sr_legacy,172643,"Veal, leg, top round, cap off, cutlet, boneless, raw",+raw +cut/part
+1.0,keep,raw,20,fdc_sr_legacy,173367,"Beef, round, knuckle, tip side, steak, separable lean and fat, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,7,sr28,23291,"Beef, top loin petite roast/filet, boneless, separable lean and fat, trimmed to 1/8"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,17,sr28,10010,"Pork, fresh, leg (ham), whole, separable lean only, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,169538,"Beef, short loin, top loin, steak, separable lean and fat, trimmed to 1/8"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,171769,"Beef, loin, tenderloin steak, boneless, separable lean only, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,20,sr28,23049,"Beef, round, outside round, bottom round, steak, separable lean and fat, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,12,sr28,23218,"Beef, plate steak, boneless, inside skirt, separable lean and fat, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,171762,"Beef, round, eye of round steak, boneless, separable lean only, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,5,sr28,23387,"Beef, loin, top loin steak, boneless, lip-on, separable lean and fat, trimmed to 1/8"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,5,sr28,23194,"Beef, rib eye steak/roast, bone-in, lip-on, separable lean and fat, trimmed to 1/8"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,7,sr28,23109,"Beef, chuck, under blade center steak, boneless, Denver Cut, separable lean and fat, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,14,fdc_sr_legacy,167829,"Pork, fresh, loin, center loin (chops), bone-in, separable lean only, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,173998,"Beef, round, eye of round roast, boneless, separable lean only, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,5,sr28,23067,"Beef, chuck, short ribs, boneless, separable lean only, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,174009,"Beef, loin, top loin steak, boneless, lip-on, separable lean only, trimmed to 1/8"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,23646,"Beef, bottom sirloin, tri-tip roast, separable lean only, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,7,sr28,23281,"Beef, loin, top sirloin cap steak, boneless, separable lean and fat, trimmed to 1/8"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,25,sr28,5096,"Chicken, broilers or fryers, dark meat, thigh, meat only, raw",+raw +cut/part
+1.0,keep,raw,1,sr28,23175,"Beef, rib eye steak, boneless, lip off, separable lean only, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,6,sr28,23089,"Beef, chuck, mock tender steak, boneless, separable lean only, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,19,sr28,23034,"Beef, chuck, shoulder clod, shoulder tender, medallion, separable lean and fat, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,25,fdc_sr_legacy,169186,"Pork, Leg Cap Steak, boneless, separable lean and fat, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,13487,"Beef, round, tip round, roast, separable lean and fat, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,4,fdc_sr_legacy,172123,"Beef, chuck, shoulder clod, shoulder top and center steaks, separable lean and fat, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,12,sr28,23333,"Beef, round, eye of round steak, boneless, separable lean and fat, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,25,fdc_sr_legacy,174518,"Turkey, retail parts, thigh, meat only, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,172173,"Beef, loin, top sirloin cap steak, boneless, separable lean only, trimmed to 1/8"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,23624,"Beef, tenderloin, steak, separable lean only, trimmed to 1/8"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,14,sr28,10048,"Pork, fresh, loin, center rib (chops or roasts), bone-in, separable lean only, raw",+raw +cut/part
+1.0,keep,raw,5,sr28,23230,"Beef, rib eye steak, boneless, lip off, separable lean and fat, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,172147,"Beef, rib, back ribs, bone-in, separable lean only, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,1,sr28,23163,"Beef, plate steak, boneless, inside skirt, separable lean only, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,23,sr28,5053,"Chicken, broilers or fryers, back, meat only, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,173402,"Beef, rib eye steak, boneless, lip off, separable lean and fat, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,20,sr28,13909,"Beef, short loin, top loin, steak, separable lean and fat, trimmed to 1/8"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,14,fdc_sr_legacy,167833,"Pork, fresh, loin, center rib (chops or roasts), bone-in, separable lean only, raw",+raw +cut/part
+1.0,keep,raw,22,fdc_sr_legacy,174517,"Turkey, retail parts, wing, meat only, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,23650,"Beef, bottom sirloin, tri-tip roast, separable lean only, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,21,sr28,23192,"Beef, rib eye steak/roast, bone-in, lip-on, separable lean and fat, trimmed to 1/8"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,12,sr28,23355,"Beef, round, top round steak, boneless, separable lean only, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,6,sr28,23074,"Beef, chuck eye Country-Style ribs, boneless, separable lean only, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,24,sr28,10963,"Pork, Leg sirloin tip roast, boneless, separable lean and fat, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,171760,"Beef, round, top round roast, boneless, separable lean only, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,13917,"Beef, tenderloin, steak, separable lean and fat, trimmed to 1/8"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,6,sr28,13786,"Beef, chuck eye roast, boneless, America's Beef Roast, separable lean and fat, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,173980,"Beef, round, top round steak, boneless, separable lean and fat, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,5,sr28,23104,"Beef, chuck, under blade pot roast or steak, boneless, separable lean and fat, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,171766,"Beef, loin, top loin steak, boneless, lip off, separable lean only, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,23652,"Beef, round, tip round, roast, separable lean only, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,174707,"Beef, loin, top sirloin cap steak, boneless, separable lean and fat, trimmed to 1/8"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,173376,"Beef, plate steak, boneless, outside skirt, separable lean only, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,13934,"Beef, top sirloin, steak, separable lean and fat, trimmed to 1/8"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,23635,"Beef, round, eye of round, roast, separable lean only, trimmed to 1/8"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,17,sr28,17304,"Lamb, Australian, imported, fresh, leg, sirloin chops, boneless, separable lean only, trimmed to 1/8"" fat, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,174692,"Beef, top loin petite roast/filet, boneless, separable lean only, trimmed to 1/8"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,25,fdc_sr_legacy,173634,"Canada Goose, breast meat only, skinless, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,168662,"Beef, chuck eye roast, boneless, America's Beef Roast, separable lean and fat, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,23047,"Beef, round, knuckle, tip center, steak, separable lean and fat, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,170803,"Beef, chuck eye steak, boneless, separable lean only, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,12,sr28,23366,"Beef, loin, tenderloin roast, boneless, separable lean only, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,173404,"Beef, rib eye steak, boneless, lip off, separable lean and fat, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,6,sr28,23087,"Beef, chuck, mock tender steak, boneless, separable lean only, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,23,sr28,5710,"Turkey, retail parts, breast, meat only, raw",+raw +cut/part
+1.0,keep,raw,26,sr28,5227,"Turkey, wing, from whole bird, meat only, raw",+raw +cut/part
+1.0,keep,raw,25,sr28,10957,"Pork, Leg Cap Steak, boneless, separable lean and fat, raw",+raw +cut/part
+1.0,keep,raw,20,fdc_sr_legacy,172125,"Beef, chuck, shoulder clod, top blade, steak, separable lean and fat, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,13482,"Beef, short loin, t-bone steak, bone-in, separable lean only, trimmed to 1/8"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,12,sr28,23342,"Beef, loin, tenderloin steak, boneless, separable lean and fat, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,12,sr28,23372,"Beef, loin, tenderloin steak, boneless, separable lean only, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,24,sr28,5716,"Turkey, retail parts, drumstick, meat only, raw",+raw +cut/part
+1.0,keep,raw,21,sr28,5740,"Turkey, thigh, from whole bird, meat only, raw",+raw +cut/part
+1.0,keep,raw,14,sr28,10040,"Pork, fresh, loin, center loin (chops), bone-in, separable lean only, raw",+raw +cut/part
+1.0,keep,raw,12,sr28,23337,"Beef, loin, tenderloin roast, boneless, separable lean and fat, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,23032,"Beef, round, knuckle, tip side, steak, separable lean and fat , trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,172141,"Beef, plate steak, boneless, outside skirt, separable lean only, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,5,sr28,23145,"Beef, chuck eye steak, boneless, separable lean and fat, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,169446,"Beef, chuck, under blade pot roast or steak, boneless, separable lean only, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,5,sr28,23374,"Beef, loin, tenderloin steak, boneless, separable lean only, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,22,sr28,5043,"Chicken, broilers or fryers, dark meat, meat only, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,17316,"Lamb, Australian, imported, fresh, rib chop/rack roast, frenched, bone-in, separable lean only, trimmed to 1/8"" fat, raw",+raw +cut/part
+1.0,keep,raw,5,sr28,13913,"Beef, loin, top loin, separable lean and fat, trimmed to 1/8"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,1,sr28,23152,"Beef, rib eye steak/roast, bone-in, lip-on, separable lean only, trimmed to 1/8"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,12,sr28,23334,"Beef, round, eye of round steak, boneless separable lean and fat, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,11,sr28,23388,"Beef, loin, top loin steak, boneless, lip-on, separable lean and fat, trimmed to 1/8"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,12,fdc_foundation,2727566,"Chicken, drumstick, meat and skin, raw",+raw +cut/part
+1.0,keep,raw,18,sr28,23037,"Beef, chuck, shoulder clod, shoulder top and center steaks, separable lean and fat, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,18,fdc_sr_legacy,173361,"Beef, round, knuckle, tip center, steak, separable lean and fat, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,13468,"Beef, short loin, porterhouse steak, separable lean only, trimmed to 1/8"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,13,sr28,5179,"Turkey from whole, neck, meat only, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,170832,"Beef, chuck eye Country-Style ribs, boneless, separable lean and fat, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,11,sr28,23339,"Beef, loin, top loin steak, boneless, lip off, separable lean and fat, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,24,sr28,10032,"Pork, fresh, loin, blade (chops or roasts), bone-in, separable lean only, raw",+raw +cut/part
+1.0,keep,raw,21,sr28,23193,"Beef, rib eye steak/roast, bone-in, lip-on, separable lean and fat, trimmed to 1/8"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,13850,"Beef, rib, small end (ribs 10-12), separable lean and fat, trimmed to 1/8"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,6,sr28,23143,"Beef, chuck eye steak, boneless, separable lean and fat, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,173382,"Beef, rib eye steak, boneless, lip off, separable lean only, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,12,sr28,23328,"Beef, round, top round roast, boneless, separable lean and fat, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,12,fdc_foundation,2646171,"Chicken, thigh, boneless, skinless, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,171757,"Beef, round, top round steak, boneless, separable lean only, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,20,fdc_sr_legacy,173354,"Beef, round, knuckle, tip side, steak, separable lean and fat, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,12,fdc_foundation,2727572,"Beef, short loin (NY strip steak), raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,170603,"Beef, chuck, under blade pot roast or steak, boneless, separable lean only, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,11,sr28,23324,"Beef, round, top round steak, boneless, separable lean and fat, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,4,fdc_sr_legacy,173359,"Beef, chuck, shoulder clod, top blade, steak, separable lean and fat, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,13813,"Beef, chuck, arm pot roast, separable lean and fat, trimmed to 1/8"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,20,fdc_foundation,334849,"Beef, loin, top loin steak, boneless, lip-on, separable lean only, trimmed to 1/8"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,171750,"Beef, loin, top loin steak, boneless, lip off, separable lean and fat, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,21,fdc_sr_legacy,171090,"Turkey, whole, dark meat, meat only, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,173053,"Beef, loin, top sirloin petite roast/filet, boneless, separable lean only, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,18,sr28,17026,"Lamb, domestic, loin, separable lean only, trimmed to 1/4"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,15,sr28,5145,"Duck, wild, breast, meat only, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,170839,"Beef, rib eye steak/roast, boneless, lip-on, separable lean only, trimmed to 1/8"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,170831,"Beef, chuck eye Country-Style ribs, boneless, separable lean and fat, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,174711,"Beef, top loin petite roast/filet, boneless, separable lean and fat, trimmed to 1/8"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,17,fdc_sr_legacy,173826,"Veal, loin, separable lean only, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,170796,"Beef, chuck, short ribs, boneless, separable lean only, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,5,sr28,23359,"Beef, round, top round roast, boneless, separable lean only, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,22,sr28,5105,"Chicken, broilers or fryers, wing, meat only, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,171193,"Beef, chuck, short ribs, boneless, separable lean only, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,168661,"Beef, chuck eye roast, boneless, America's Beef Roast, separable lean and fat, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,23043,"Beef, chuck, shoulder clod, top blade, steak, separable lean and fat, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,25,sr28,5071,"Chicken, broilers or fryers, dark meat, drumstick, meat only, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,174002,"Beef, loin, top loin steak, boneless, lip off, separable lean only, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,12,sr28,23343,"Beef, loin, tenderloin steak, boneless, separable lean and fat, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,172143,"Beef, rib eye steak, boneless, lip off, separable lean only, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,12,fdc_foundation,2646168,"Pork, loin, boneless, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,173988,"Beef, loin, tenderloin steak, boneless, separable lean and fat, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,173984,"Beef, round, eye of round steak, boneless, separable lean and fat, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,171748,"Beef, loin, tenderloin roast, boneless, separable lean and fat, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,12,fdc_foundation,746760,"Beef, round, eye of round roast, boneless, separable lean only, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,23601,"Beef, tenderloin, steak, separable lean only, trimmed to 1/8"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,6,sr28,13356,"Beef, chuck, under blade center steak, boneless, Denver Cut, separable lean only, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,27,fdc_sr_legacy,171077,"Chicken, broiler or fryers, breast, skinless, boneless, meat only, raw",+raw +cut/part
+1.0,keep,raw,14,fdc_sr_legacy,167837,"Pork, fresh, loin, sirloin (chops or roasts), bone-in, separable lean only, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,169565,"Beef, chuck eye roast, boneless, America's Beef Roast, separable lean only, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,25,sr28,5100,"Chicken, broilers or fryers, wing, meat and skin, raw",+raw +cut/part
+1.0,keep,raw,4,fdc_sr_legacy,174416,"Lamb, Australian, imported, fresh, rib chop/rack roast, frenched, bone-in, separable lean only, trimmed to 1/8"" fat, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,23623,"Beef, rib, small end (ribs 10-12), separable lean only, trimmed to 1/8"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,23039,"Beef, chuck, shoulder clod, shoulder top and center steaks, separable lean and fat, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,5,sr28,13871,"Beef, round, bottom round, steak, separable lean and fat, trimmed to 1/8"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,24,sr28,10214,"Pork, fresh, loin, sirloin (chops or roasts), boneless, separable lean only, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,13065,"Beef, flank, steak, separable lean and fat, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,11,sr28,23354,"Beef, round, top round steak, boneless, separable lean only, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,23292,"Beef, top loin petite roast/filet, boneless, separable lean and fat, trimmed to 1/8"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,173374,"Beef, plate steak, boneless, inside skirt, separable lean only, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,6,sr28,23068,"Beef, chuck, short ribs, boneless, separable lean only, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,171759,"Beef, round, top round steak, boneless, separable lean only, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,169566,"Beef, chuck eye roast, boneless, America's Beef Roast, separable lean only, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,5,sr28,13974,"Beef, chuck eye roast, boneless, America's Beef Roast, separable lean only, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,170827,"Beef, chuck, short ribs, boneless, separable lean and fat, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,172152,"Beef, rib eye steak/roast, bone-in, lip-on, separable lean and fat, trimmed to 1/8"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,1,sr28,23171,"Beef, plate steak, boneless, outside skirt, separable lean only, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,169445,"Beef, chuck, under blade pot roast or steak, boneless, separable lean only, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,23,fdc_sr_legacy,174515,"Turkey, retail parts, breast, meat only, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,13920,"Beef, tenderloin, steak, separable lean and fat, trimmed to 1/8"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,13,fdc_sr_legacy,171086,"Turkey, whole, neck, meat only, raw",+raw +cut/part
+1.0,keep,raw,6,sr28,23129,"Beef, chuck, short ribs, boneless, separable lean and fat, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,174003,"Beef, loin, top loin steak, boneless, lip off, separable lean only, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,24,sr28,10060,"Pork, fresh, loin, tenderloin, separable lean only, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,173350,"Beef, short loin, porterhouse steak, separable lean and fat, trimmed to 1/8"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,171752,"Beef, loin, top loin steak, boneless, lip off, separable lean and fat, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,17278,"Veal, shank (fore and hind), separable lean only, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,174696,"Beef, ribeye  petite roast/filet, boneless, separable lean only, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,13,sr28,13227,"Beef, shank crosscuts, separable lean only, trimmed to 1/4"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,170814,"Beef, chuck, under blade pot roast or steak, boneless, separable lean and fat, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,173400,"Beef, plate steak, boneless, outside skirt, separable lean and fat, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,173999,"Beef, round, eye of round roast, boneless, separable lean only, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,170815,"Beef, chuck, under blade pot roast or steak, boneless, separable lean and fat, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,16,sr28,17426,"Veal, leg, top round, cap off, cutlet, boneless, raw",+raw +cut/part
+1.0,keep,raw,5,sr28,23238,"Beef, rib, back ribs, bone-in, separable lean and fat, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,168715,"Beef, short loin, porterhouse steak, separable lean and fat, trimmed to 1/8"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,24,sr28,17312,"Lamb, Australian, imported, fresh, loin, separable lean only, trimmed to 1/8"" fat, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,173409,"Beef, loin, top sirloin cap steak, boneless, separable lean only, trimmed to 1/8"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,173393,"Beef, rib eye steak/roast, boneless, lip-on, separable lean and fat, trimmed to 1/8"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,21,fdc_sr_legacy,172132,"Beef, chuck, shoulder clod, shoulder top and center steaks, separable lean and fat, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,22,sr28,13294,"Beef, chuck, under blade pot roast or steak, boneless, separable lean only, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,171234,"Beef, rib eye steak/roast, bone-in, lip-on, separable lean only, trimmed to 1/8"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,171235,"Beef, rib eye steak/roast, bone-in, lip-on, separable lean only, trimmed to 1/8"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,168660,"Beef, chuck eye roast, boneless, America's Beef Roast, separable lean and fat, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,23,fdc_sr_legacy,168263,"Pork, fresh, loin, center loin (chops), boneless, separable lean only, raw",+raw +cut/part
+1.0,keep,raw,14,fdc_sr_legacy,168315,"Pork, fresh, loin, top loin (roasts), boneless, separable lean only, raw",+raw +cut/part
+1.0,keep,raw,24,sr28,10014,"Pork, fresh, leg (ham), rump half, separable lean only, raw",+raw +cut/part
+1.0,keep,raw,20,fdc_sr_legacy,172128,"Beef, round, outside round, bottom round, steak, separable lean and fat, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,172169,"Beef, rib, back ribs, bone-in, separable lean and fat, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,13,sr28,23385,"Beef, loin, top loin steak, boneless, lip-on, separable lean only, trimmed to 1/8"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,22,sr28,23103,"Beef, chuck, under blade pot roast or steak, boneless, separable lean and fat, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,172139,"Beef, plate steak, boneless, inside skirt, separable lean only, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,174000,"Beef, loin, tenderloin roast, boneless, separable lean only, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,23,sr28,10982,"Pork, fresh, loin, blade (chops or roasts), boneless, separable lean only, raw",+raw +cut/part
+1.0,keep,raw,26,sr28,5219,"Turkey, breast, from whole bird, meat only, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,23053,"Beef, chuck, shoulder clod, shoulder tender, medallion, separable lean and fat, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,173983,"Beef, round, top round roast, boneless, separable lean and fat, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,170802,"Beef, chuck eye steak, boneless, separable lean only, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,23651,"Beef, round, tip round, roast, separable lean only, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,5,sr28,23246,"Beef, loin, top sirloin cap steak, boneless, separable lean only, trimmed to 1/8"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,171202,"Beef, chuck, mock tender steak, boneless, separable lean only, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,23636,"Beef, round, top round, steak, separable lean only, trimmed to 1/8"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,13,sr28,5119,"Chicken, roasting, dark meat, meat only, raw",+raw +cut/part
+1.0,keep,raw,12,fdc_foundation,334963,"Beef, round, top round roast, boneless, separable lean only, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,19,sr28,17334,"Game meat, bison, chuck, shoulder clod, separable lean only, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,5158,"Quail, meat only, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,171213,"Beef, chuck, under blade center steak, boneless, Denver Cut, separable lean and fat, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,6,sr28,23237,"Beef, rib, back ribs, bone-in, separable lean and fat, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,170608,"Beef, chuck, under blade center steak, boneless, Denver Cut, separable lean only, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,17300,"Lamb, Australian, imported, fresh, leg, sirloin half, boneless, separable lean only, trimmed to 1/8"" fat, raw",+raw +cut/part
+1.0,keep,raw,21,fdc_sr_legacy,171096,"Turkey, whole, back, meat only, raw",+raw +cut/part
+1.0,keep,raw,12,fdc_foundation,746761,"Beef, round, top round roast, boneless, separable lean only, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,171749,"Beef, loin, tenderloin roast, boneless, separable lean and fat, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,24,sr28,10066,"Pork, fresh, loin, top loin (chops), boneless, separable lean only, raw",+raw +cut/part
+1.0,keep,raw,9,sr28,23261,"Beef, loin, top sirloin petite roast/filet, boneless, separable lean only, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,5,sr28,23368,"Beef, loin, tenderloin roast, boneless, separable lean only, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,13923,"Beef, tenderloin, steak, separable lean and fat, trimmed to 1/8"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,172160,"Beef, plate steak, boneless, inside skirt, separable lean and fat, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,170834,"Beef, chuck eye steak, boneless, separable lean and fat, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,20,sr28,10199,"Pork, fresh, loin, center rib (chops or roasts), boneless, separable lean only, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,174706,"Beef, loin, top sirloin cap steak, boneless, separable lean and fat, trimmed to 1/8"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,17,sr28,17107,"Veal, loin, separable lean only, raw",+raw +cut/part
+1.0,keep,raw,21,sr28,23202,"Beef, rib eye steak/roast, boneless, lip-on, separable lean and fat, trimmed to 1/8"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,26,fdc_sr_legacy,171497,"Turkey, whole, wing, meat only, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,13879,"Beef, round, eye of round, roast, separable lean and fat, trimmed to 1/8"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,6,sr28,23078,"Beef, chuck eye steak, boneless, separable lean only, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,11,sr28,5117,"Chicken, roasting, light meat, meat only, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,17441,"Lamb, Australian, imported, fresh, leg, hindshank, heel on, bone-in, separable lean only, trimmed to 1/8"" fat, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,170828,"Beef, chuck, short ribs, boneless, separable lean and fat, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,13971,"Beef, flank, steak, separable lean and fat, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,6,sr28,23137,"Beef, chuck eye Country-Style ribs, boneless, separable lean and fat, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,21,fdc_sr_legacy,171531,"Turkey, thigh, from whole bird, meat only, raw",+raw +cut/part
+1.0,keep,raw,6,sr28,23122,"Beef, chuck, mock tender steak, boneless, separable lean and fat, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,19,sr28,17032,"Lamb, domestic, rib, separable lean only, trimmed to 1/4"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,1,sr28,13911,"Beef, loin, top loin, separable lean and fat, trimmed to 1/8"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,171745,"Beef, round, eye of round roast, boneless, separable lean and fat, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,12,sr28,23331,"Beef, round, eye of round roast, boneless, separable lean and fat, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,23007,"Beef, short loin, t-bone steak, separable lean and fat, trimmed to 1/8"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,5,sr28,23219,"Beef, plate steak, boneless, inside skirt, separable lean and fat, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,170813,"Beef, chuck, under blade pot roast or steak, boneless, separable lean and fat, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,173067,"Beef, top loin petite roast/filet, boneless, separable lean and fat, trimmed to 1/8"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,173981,"Beef, round, top round steak, boneless, separable lean and fat, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,173394,"Beef, rib eye steak/roast, boneless, lip-on, separable lean and fat, trimmed to 1/8"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,174011,"Beef, loin, top loin steak, boneless, lip-on, separable lean only, trimmed to 1/8"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,170841,"Beef, rib eye steak/roast, boneless, lip-on, separable lean only, trimmed to 1/8"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,5,sr28,23088,"Beef, chuck, mock tender steak, boneless, separable lean only, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,13929,"Beef, top sirloin, steak, separable lean and fat, trimmed to 1/8"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,173985,"Beef, round, eye of round steak, boneless separable lean and fat, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,173405,"Beef, rib, back ribs, bone-in, separable lean and fat, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,8,sr28,23240,"Beef, loin, top sirloin petite roast/filet, boneless, separable lean only, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,17,sr28,5057,"Chicken, broilers or fryers, breast, meat and skin, raw",+raw +cut/part
+1.0,keep,raw,5,sr28,23365,"Beef, round, eye of round steak, boneless, separable lean only, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,14,sr28,10056,"Pork, fresh, loin, sirloin (chops or roasts), bone-in, separable lean only, raw",+raw +cut/part
+1.0,keep,raw,19,sr28,17113,"Veal, rib, separable lean only, raw",+raw +cut/part
+1.0,keep,raw,12,sr28,23325,"Beef, round, top round steak, boneless, separable lean and fat, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,170840,"Beef, rib eye steak/roast, boneless, lip-on, separable lean only, trimmed to 1/8"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,20,sr28,23030,"Beef, round, knuckle, tip side, steak, separable lean and fat, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,15,sr28,5011,"Chicken, broilers or fryers, meat only, raw",+raw +cut/part
+1.0,keep,raw,14,sr28,10225,"Pork, fresh, loin, top loin (roasts), boneless, separable lean only, raw",+raw +cut/part
+1.0,keep,raw,26,fdc_sr_legacy,171136,"Turkey, drumstick, from whole bird, meat only, raw",+raw +cut/part
+1.0,keep,raw,11,sr28,23357,"Beef, round, top round roast, boneless, separable lean only, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,7,sr28,23108,"Beef, chuck, under blade center steak, boneless, Denver Cut, separable lean and fat, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,5,sr28,23110,"Beef, chuck, under blade center steak, boneless, Denver Cut, separable lean and fat, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,13954,"Beef, bottom sirloin, tri-tip roast, separable lean and fat, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,24,sr28,10958,"Pork, Shoulder breast, boneless, separable lean and fat, raw",+raw +cut/part
+1.0,keep,raw,19,sr28,23594,"Beef, round, bottom round, roast, separable lean only, trimmed to 1/8"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,6,sr28,23123,"Beef, chuck, mock tender steak, boneless, separable lean and fat, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,24,fdc_sr_legacy,168249,"Pork, fresh, loin, tenderloin, separable lean only, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,173072,"Beef, loin, top loin steak, boneless, lip-on, separable lean and fat, trimmed to 1/8"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,26,fdc_sr_legacy,171098,"Turkey, whole, breast, meat only, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,171774,"Beef, loin, top loin steak, boneless, lip-on, separable lean and fat, trimmed to 1/8"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,25,fdc_sr_legacy,173614,"Chicken, broilers or fryers, dark meat, drumstick, meat only, raw",+raw +cut/part
+1.0,keep,raw,21,sr28,23057,"Beef, chuck, shoulder clod, shoulder top and center steaks, separable lean and fat, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,25,fdc_sr_legacy,172390,"Chicken, broilers or fryers, wing, meat and skin, raw",+raw +cut/part
+1.0,keep,raw,19,sr28,17137,"Veal, sirloin, separable lean only, raw",+raw +cut/part
+1.0,keep,raw,12,sr28,23336,"Beef, loin, tenderloin roast, boneless, separable lean and fat, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,172137,"Beef, plate steak, boneless, inside skirt, separable lean only, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,24,fdc_sr_legacy,168251,"Pork, fresh, loin, top loin (chops), boneless, separable lean only, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,13486,"Beef, round, tip round, roast, separable lean and fat, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,24,sr28,10980,"Pork loin, fresh, backribs, bone-in, raw, lean only",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,170807,"Beef, chuck, mock tender steak, boneless, separable lean only, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,14,fdc_sr_legacy,168305,"Pork, fresh, loin, country-style ribs, separable lean only, raw",+raw +cut/part
+1.0,keep,raw,23,sr28,5088,"Chicken, broilers or fryers, neck, meat only, raw",+raw +cut/part
+1.0,keep,raw,1,sr28,23179,"Beef, rib eye steak, boneless, lip off, separable lean only, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,5,sr28,23003,"Beef, short loin, porterhouse steak, separable lean and fat, trimmed to 1/8"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,173990,"Beef, loin, tenderloin steak, boneless, separable lean and fat, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,19,sr28,17337,"Game meat, bison, top round, separable lean only, 1"" steak, raw",+raw +cut/part
+1.0,keep,raw,5,sr28,13791,"Beef, chuck eye roast, boneless, America's Beef Roast, separable lean and fat, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,171768,"Beef, loin, tenderloin steak, boneless, separable lean only, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,6,sr28,23144,"Beef, chuck eye steak, boneless, separable lean and fat, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,24,fdc_sr_legacy,168228,"Pork, fresh, leg (ham), shank half, separable lean only, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,13956,"Beef, bottom sirloin, tri-tip roast, separable lean and fat, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,5,sr28,23329,"Beef, round, top round roast, boneless, separable lean and fat, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,170833,"Beef, chuck eye Country-Style ribs, boneless, separable lean and fat, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,5,sr28,13499,"Beef, chuck, under blade center steak, boneless, Denver Cut, separable lean only, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,12,fdc_foundation,335109,"Beef, short loin, porterhouse steak, separable lean only, trimmed to 1/8"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,23611,"Beef, top sirloin, steak, separable lean only, trimmed to 1/8"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,25,sr28,5717,"Turkey, retail parts, thigh, meat only, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,171747,"Beef, round, eye of round roast, boneless, separable lean and fat, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,173997,"Beef, round, top round roast, boneless, separable lean only, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,20,sr28,23055,"Beef, round, knuckle, tip side, steak, separable lean and fat, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,12,fdc_foundation,2727569,"Chicken, breast, meat and skin, raw",+raw +cut/part
+1.0,keep,raw,12,sr28,23358,"Beef, round, top round roast, boneless, separable lean only, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,11,sr28,23224,"Beef, plate steak, boneless, outside skirt, separable lean and fat, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,21,sr28,13809,"Beef, chuck, arm pot roast, separable lean and fat, trimmed to 1/8"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,171195,"Beef, chuck eye Country-Style ribs, boneless, separable lean only, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,19,sr28,23061,"Beef, round, knuckle, tip center, steak, separable lean and fat, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,5,sr28,13349,"Beef, chuck, under blade pot roast or steak, boneless, separable lean only, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,13068,"Beef, flank, steak, separable lean only, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,1,sr28,23154,"Beef, rib eye steak/roast, boneless, lip-on, separable lean only, trimmed to 1/8"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,4,fdc_sr_legacy,172120,"Beef, round, knuckle, tip side, steak, separable lean and fat , trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,170817,"Beef, chuck, under blade center steak, boneless, Denver Cut, separable lean and fat, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,1,sr28,23165,"Beef, plate steak, boneless, inside skirt, separable lean only, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,19,fdc_sr_legacy,172601,"Game meat, bison, top round, separable lean only, 1"" steak, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,174695,"Beef, loin, top sirloin petite roast/filet, boneless, separable lean only, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,17,sr28,13868,"Beef, round, bottom round, steak, separable lean and fat, trimmed to 1/8"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,6,sr28,23080,"Beef, chuck eye steak, boneless, separable lean only, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,19,sr28,23627,"Beef, short loin, top loin, steak, separable lean only, trimmed to 1/8"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,4,fdc_sr_legacy,172655,"Lamb, Australian, imported, fresh, leg, trotter off, bone-in, separable lean only, trimmed to 1/8"" fat, raw",+raw +cut/part
+1.0,keep,raw,19,fdc_sr_legacy,172122,"Beef, chuck, shoulder clod, shoulder tender, medallion, separable lean and fat, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,13,fdc_foundation,2646173,"Beef, round, top round, boneless, choice, raw",+raw +cut/part
+1.0,keep,raw,24,fdc_sr_legacy,167816,"Pork, fresh, leg (ham), rump half, separable lean only, raw (Includes foods for USDA's Food Distribution Program)",+raw +cut/part
+1.0,keep,raw,5,sr28,23362,"Beef, round, eye of round roast, boneless, separable lean only, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,170800,"Beef, chuck eye Country-Style ribs, boneless, separable lean only, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,3,sr28,5148,"Goose, domesticated, meat only, raw",+raw +cut/part
+1.0,keep,raw,17,sr28,17308,"Lamb, Australian, imported, fresh, leg, center slice, bone-in, separable lean only, trimmed to 1/8"" fat, raw",+raw +cut/part
+1.0,keep,raw,12,fdc_foundation,2727567,"Chicken, thigh, meat and skin, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,13958,"Beef, bottom sirloin, tri-tip roast, separable lean and fat, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,4,fdc_sr_legacy,174887,"Lamb, Australian, imported, fresh, leg, hindshank, heel on, bone-in, separable lean only, trimmed to 1/8"" fat, raw",+raw +cut/part
+1.0,keep,raw,5,sr28,23213,"Beef, rib eye steak/roast, boneless, lip-on, separable lean and fat, trimmed to 1/8"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,170838,"Beef, rib eye steak/roast, bone-in, lip-on, separable lean only, trimmed to 1/8"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,171744,"Beef, round, top round roast, boneless, separable lean and fat, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,4,fdc_sr_legacy,172652,"Lamb, Australian, imported, fresh, tenderloin, boneless, separable lean only, trimmed to 1/8"" fat, raw",+raw +cut/part
+1.0,keep,raw,18,sr28,17021,"Lamb, domestic, leg, sirloin half, separable lean only, trimmed to 1/4"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,21,fdc_sr_legacy,172134,"Beef, chuck, shoulder clod, top blade, steak, separable lean and fat, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,13853,"Beef, rib, small end (ribs 10-12), separable lean and fat, trimmed to 1/8"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,11,sr28,23386,"Beef, loin, top loin steak, boneless, lip-on, separable lean only, trimmed to 1/8"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,173989,"Beef, loin, tenderloin steak, boneless, separable lean and fat, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,1,sr28,23155,"Beef, rib eye steak/roast, boneless, lip-on, separable lean only, trimmed to 1/8"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,172156,"Beef, rib eye steak/roast, boneless, lip-on, separable lean and fat, trimmed to 1/8"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,171231,"Beef, chuck eye steak, boneless, separable lean and fat, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,1,sr28,23151,"Beef, rib eye steak/roast, bone-in, lip-on, separable lean only, trimmed to 1/8"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,5,sr28,23262,"Beef, loin, top sirloin petite roast/filet, boneless, separable lean only, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,6,sr28,13973,"Beef, chuck eye roast, boneless, America's Beef Roast, separable lean only, trimmed to 0"" fat, choice, raw",+raw +cut/part
+1.0,keep,raw,5,sr28,23139,"Beef, chuck eye Country-Style ribs, boneless, separable lean and fat, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,173987,"Beef, loin, tenderloin roast, boneless, separable lean and fat, trimmed to 0"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,16,sr28,17428,"Veal, shank, separable lean only, raw",+raw +cut/part
+1.0,keep,raw,12,fdc_foundation,2727568,"Chicken, wing, meat and skin, raw",+raw +cut/part
+1.0,keep,raw,1,sr28,23173,"Beef, plate steak, boneless, outside skirt, separable lean only, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,1,fdc_sr_legacy,174698,"Beef, ribeye  petite roast/filet, boneless, separable lean only, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,19,sr28,23631,"Beef, chuck, arm pot roast, separable lean only, trimmed to 1/8"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,19,sr28,23603,"Beef, chuck, arm pot roast, separable lean only, trimmed to 1/8"" fat, all grades, raw",+raw +cut/part
+1.0,keep,raw,4,sr28,13488,"Beef, round, tip round, roast, separable lean and fat, trimmed to 0"" fat, select, raw",+raw +cut/part
+1.0,keep,raw,12,fdc_foundation,2646170,"Chicken, breast, boneless, skinless, raw",+raw +cut/part
+1.0,keep,raw,8,sr28,23253,"Beef, top loin petite roast/filet, boneless, separable lean only, trimmed to 1/8"" fat, all grades, raw",+raw +cut/part

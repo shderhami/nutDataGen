@@ -40,3 +40,6 @@ templates/*.csv
 
 # Database backups / dumps (generated artifacts, not source)
 backups/
+
+# USDA bulk snapshots (large; pinned locally, SHAs recorded in cv_pipeline_run)
+data/usda_bulk/

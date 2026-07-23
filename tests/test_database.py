@@ -389,8 +389,9 @@ class TestCreateNutrientRecord:
             num_samples=16
         )
 
-        assert record["coefficient_of_variation"] is not None
-        assert record["coefficient_of_variation"] > 0
+        # coefficient_of_variation is now owned by the CV pipeline (resolve_cv /
+        # cv_assign), not create_nutrient_record — the insert path leaves it None.
+        assert record["coefficient_of_variation"] is None
 
     def test_calculates_range_uncertainty(self):
         """Test create_nutrient_record calculates range-based uncertainty."""
@@ -455,7 +456,7 @@ class TestCalculateStatistics:
         result = calculate_statistics(20.0, 2.0, 10, None, None)
 
         # CV = 2.0 / 20.0 * 100 = 10.0
-        assert result["coefficient_of_variation"] == 10.0
+        assert result["coefficient_of_variation"] is None  # now owned by the CV pipeline
 
     def test_calculates_range_uncertainty(self):
         """Test calculates range-based uncertainty."""
@@ -475,8 +476,8 @@ class TestCalculateStatistics:
         # CI should be calculated from estimated SE
         assert result["confidence_interval_lower"] is not None
         assert result["confidence_interval_upper"] is not None
-        # CV should also be calculated
-        assert result["coefficient_of_variation"] is not None
+        # CV is no longer computed here (owned by the CV pipeline)
+        assert result["coefficient_of_variation"] is None
         # Range uncertainty should still be calculated
         assert result["range_uncertainty"] is not None
 

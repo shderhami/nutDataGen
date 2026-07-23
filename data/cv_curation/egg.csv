@@ -1,0 +1,81 @@
+score,decision,prep,n_obs,source_dataset,source_food_id,description,reasons
+0.0,drop,other,24,fdc_sr_legacy,172076,"BURGER KING, CROISSAN'WICH with Egg and Cheese",-brand -dish/prepared -multi-ingredient
+0.0,drop,other,2,sr28,21003,"Fast foods, biscuit, with egg and bacon",-fastfood/babyfood/restaurant -dish/prepared -multi-ingredient
+0.0,drop,other,1,sr28,21012,"Fast foods, croissant, with egg, cheese, and bacon",-fastfood/babyfood/restaurant -dish/prepared -multi-ingredient
+0.0,drop,other,5,sr28,3197,"Babyfood, cereal, with egg yolks, strained",-fastfood/babyfood/restaurant -dish/prepared -multi-ingredient
+0.0,drop,other,28,sr28,21383,"BURGER KING, CROISSAN'WICH with Sausage, Egg and Cheese",-brand -dish/prepared -multi-ingredient
+0.0,drop,other,27,fdc_sr_legacy,173322,"Fast foods, bagel, with egg, sausage patty, cheese, and condiments",-fastfood/babyfood/restaurant -dish/prepared -multi-ingredient
+0.0,drop,other,2,sr28,3198,"Babyfood, cereal, with egg yolks, junior",-fastfood/babyfood/restaurant -dish/prepared -multi-ingredient
+0.0,drop,other,28,fdc_sr_legacy,173315,"BURGER KING, CROISSAN'WICH with Sausage, Egg and Cheese",-brand -dish/prepared -multi-ingredient
+0.0,drop,other,27,sr28,21519,"Fast foods, breakfast burrito, with egg, cheese, and sausage",-fastfood/babyfood/restaurant -dish/prepared -multi-ingredient
+0.0,drop,other,6,sr28,3201,"Babyfood, cereal, egg yolks and bacon, junior",-fastfood/babyfood/restaurant -dish/prepared
+0.0,drop,other,23,fdc_sr_legacy,167667,"Restaurant, Chinese, egg rolls, assorted",-fastfood/babyfood/restaurant
+0.0,drop,other,19,sr28,21018,"Fast foods, egg, scrambled",-fastfood/babyfood/restaurant -dish/prepared
+0.0,drop,other,27,sr28,21014,"Fast foods, croissant, with egg, cheese, and sausage",-fastfood/babyfood/restaurant -dish/prepared -multi-ingredient
+0.0,drop,other,21,fdc_sr_legacy,174807,"Soup, egg drop, Chinese restaurant",-fastfood/babyfood/restaurant -dish/prepared
+0.0,drop,other,30,fdc_sr_legacy,172033,"Fast foods, english muffin, with egg, cheese, and canadian bacon",-fastfood/babyfood/restaurant -dish/prepared -multi-ingredient
+0.0,drop,other,2,sr28,21013,"Fast foods, croissant, with egg, cheese, and ham",-fastfood/babyfood/restaurant -dish/prepared -multi-ingredient
+0.0,drop,other,27,fdc_sr_legacy,173271,"Fast foods, croissant, with egg, cheese, and sausage",-fastfood/babyfood/restaurant -dish/prepared -multi-ingredient
+0.0,drop,other,28,sr28,1210,"Egg Mix, USDA Commodity",-fastfood/babyfood/restaurant
+0.0,drop,other,30,sr28,21021,"Fast foods, english muffin, with egg, cheese, and canadian bacon",-fastfood/babyfood/restaurant -dish/prepared -multi-ingredient
+0.0,drop,other,24,sr28,32036,"JIMMY DEAN, Sausage, Egg, and Cheese Breakfast Biscuit, frozen, unprepared",-brand -dish/prepared
+0.0,drop,other,23,sr28,36601,"Restaurant, Chinese, egg rolls, assorted",-fastfood/babyfood/restaurant
+0.0,drop,other,28,fdc_sr_legacy,173323,"Fast foods, bagel, with breakfast steak, egg, cheese, and condiments",-fastfood/babyfood/restaurant -dish/prepared -multi-ingredient
+0.0,drop,other,29,fdc_sr_legacy,172028,"Fast Foods, biscuit, with egg and sausage",-fastfood/babyfood/restaurant -dish/prepared -multi-ingredient
+0.0,drop,other,2,sr28,3199,"Babyfood, cereal, with eggs, strained",-fastfood/babyfood/restaurant -dish/prepared
+0.0,drop,other,29,sr28,21005,"Fast Foods, biscuit, with egg and sausage",-fastfood/babyfood/restaurant -dish/prepared -multi-ingredient
+0.0,drop,other,27,fdc_sr_legacy,170787,"Fast foods, breakfast burrito, with egg, cheese, and sausage",-fastfood/babyfood/restaurant -dish/prepared -multi-ingredient
+0.0,drop,other,29,fdc_sr_legacy,172029,"Fast foods, biscuit, with egg, cheese, and bacon",-fastfood/babyfood/restaurant -dish/prepared -multi-ingredient
+0.0,drop,other,21,sr28,27000,"Soup, egg drop, Chinese restaurant",-fastfood/babyfood/restaurant -dish/prepared
+0.0,drop,other,27,sr28,21410,"Fast foods, bagel, with egg, sausage patty, cheese, and condiments",-fastfood/babyfood/restaurant -dish/prepared -multi-ingredient
+0.0,drop,other,29,sr28,21007,"Fast foods, biscuit, with egg, cheese, and bacon",-fastfood/babyfood/restaurant -dish/prepared -multi-ingredient
+0.0,drop,other,24,sr28,21385,"BURGER KING, CROISSAN'WICH with Egg and Cheese",-brand -dish/prepared -multi-ingredient
+0.0,drop,other,28,sr28,21022,"Fast foods, english muffin, with egg, cheese, and sausage",-fastfood/babyfood/restaurant -dish/prepared -multi-ingredient
+0.0,drop,other,24,fdc_sr_legacy,169784,"JIMMY DEAN, Sausage, Egg, and Cheese Breakfast Biscuit, frozen, unprepared",-brand -dish/prepared
+0.0,drop,other,28,sr28,21411,"Fast foods, bagel, with breakfast steak, egg, cheese, and condiments",-fastfood/babyfood/restaurant -dish/prepared -multi-ingredient
+0.0,drop,other,28,fdc_sr_legacy,172034,"Fast foods, english muffin, with egg, cheese, and sausage",-fastfood/babyfood/restaurant -dish/prepared -multi-ingredient
+0.05,drop,other,25,fdc_sr_legacy,174287,"Veggie burgers or soyburgers, unprepared",-dish/prepared
+0.05,drop,other,8,sr28,18344,"Rolls, dinner, egg",-dish/prepared
+0.05,drop,other,18,sr28,20111,"Noodles, egg, spinach, enriched, dry",-dish/prepared
+0.05,drop,other,25,sr28,32032,"Sausage, egg and cheese breakfast biscuit",-dish/prepared
+0.05,drop,other,11,sr28,18400,"Crackers, matzo, egg and onion",-dish/prepared
+0.05,drop,other,26,sr28,20109,"Noodles, egg, dry, enriched",-dish/prepared
+0.05,drop,other,25,sr28,16147,"Veggie burgers or soyburgers, unprepared",-dish/prepared
+0.05,drop,other,25,fdc_sr_legacy,169781,"Sausage, egg and cheese breakfast biscuit",-dish/prepared
+0.05,drop,other,8,sr28,19169,"Egg custards, dry mix",-dish/prepared
+0.05,drop,other,19,sr28,18317,"Pie, egg custard, commercially prepared",-dish/prepared
+0.05,drop,other,26,fdc_sr_legacy,169731,"Noodles, egg, dry, enriched",-dish/prepared
+0.05,drop,other,12,sr28,18003,"Bagels, egg",-dish/prepared
+0.05,drop,other,21,fdc_sr_legacy,169755,"Noodles, egg, dry, unenriched",-dish/prepared
+0.05,drop,other,22,sr28,20409,"Noodles, egg, dry, unenriched",-dish/prepared
+0.4,review,other,27,fdc_sr_legacy,173343,Potato salad with egg,-multi-ingredient
+0.4,review,other,27,sr28,22971,Potato salad with egg,-multi-ingredient
+0.65,keep,other,28,fdc_sr_legacy,174909,"Bread, cornbread, dry mix, prepared with 2% milk, 80% margarine, and eggs",
+0.65,keep,other,19,fdc_sr_legacy,173307,"McDONALD'S, Egg McMUFFIN",
+0.65,keep,other,19,sr28,21357,"McDONALD'S, Egg McMUFFIN",
+0.65,keep,other,26,fdc_sr_legacy,172105,"Egg rolls, vegetable, frozen, prepared",
+0.65,keep,other,15,fdc_foundation,747997,"Eggs, Grade A, Large, egg white",
+0.65,keep,other,31,fdc_foundation,748967,"Eggs, Grade A, Large, egg whole",
+0.65,keep,other,8,sr28,1057,Eggnog,
+0.65,keep,other,26,sr28,22955,"Egg rolls, vegetable, frozen, prepared",
+0.65,keep,other,28,sr28,18023,"Bread, cornbread, dry mix, prepared with 2% milk, 80% margarine, and eggs",
+0.75,keep,other,18,fdc_foundation,748236,"Eggs, Grade A, Large, egg yolk",+cut/part
+0.9,keep,raw,4,sr28,1140,"Egg, quail, whole, fresh, raw",+raw
+0.9,keep,raw,29,fdc_sr_legacy,171287,"Egg, whole, raw, fresh",+raw
+0.9,keep,raw,16,sr28,1124,"Egg, white, raw, fresh",+raw
+0.9,keep,raw,7,sr28,1141,"Egg, turkey, whole, fresh, raw",+raw
+0.9,keep,raw,11,fdc_foundation,323604,"Egg, whole, raw, frozen, pasteurized",+raw
+0.9,keep,raw,27,sr28,1171,"Egg, whole, raw, frozen, pasteurized",+raw
+0.9,keep,raw,30,sr28,1123,"Egg, whole, raw, fresh",+raw
+0.9,keep,raw,9,fdc_foundation,323697,"Egg, white, raw, frozen, pasteurized",+raw
+0.9,keep,raw,4,sr28,1139,"Egg, goose, whole, fresh, raw",+raw
+0.9,keep,raw,27,fdc_sr_legacy,172202,"Egg, whole, raw, frozen, pasteurized (Includes foods for USDA's Food Distribution Program)",+raw
+0.9,keep,raw,14,sr28,1138,"Egg, duck, whole, fresh, raw",+raw
+0.9,keep,raw,15,fdc_sr_legacy,172183,"Egg, white, raw, fresh",+raw
+0.9,keep,raw,17,sr28,1172,"Egg, white, raw, frozen, pasteurized",+raw
+0.9,keep,raw,17,fdc_sr_legacy,172203,"Egg, white, raw, frozen, pasteurized",+raw
+1.0,keep,raw,19,sr28,1125,"Egg, yolk, raw, fresh",+raw +cut/part
+1.0,keep,raw,27,sr28,1126,"Egg, yolk, raw, frozen, pasteurized",+raw +cut/part
+1.0,keep,raw,18,fdc_sr_legacy,172184,"Egg, yolk, raw, fresh",+raw +cut/part
+1.0,keep,raw,27,fdc_sr_legacy,173421,"Egg, yolk, raw, frozen, pasteurized",+raw +cut/part
+1.0,keep,raw,12,fdc_foundation,329596,"Egg, yolk, raw, frozen, pasteurized",+raw +cut/part
