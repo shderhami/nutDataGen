@@ -13,13 +13,22 @@ import hashlib
 import re
 from pathlib import Path
 
-PIPELINE_VERSION = "cv-v3"   # v3: + muscle poultry/red sub-pools (v2 = prep-filter + curation)
+PIPELINE_VERSION = "cv-v4"   # v4: + cross-source CV>1 (SD>mean) plausibility guard
+# v3: + muscle poultry/red sub-pools (v2 = prep-filter + curation)
 
 # ── Pinned numeric parameters ────────────────────────────────────────────────
 K_MIN_FOODS = 5            # min backing foods for an evidence-based class pool
 N0_SHRINKAGE = 8           # fixed-weight shrinkage constant  w = n/(n+N0)
 CV_CAP = 1.5               # hard upper cap on any stored CV (fraction)
 CV_FLOOR = 0.02            # generic lower floor (fraction) to avoid degenerate ~0 CVs
+# Cross-source plausibility guard: a CROSS-SOURCED measured CV (bulk SR28/FDC
+# observation, matched by food — a different sample than the cell's value) above
+# this bound means SD > mean, which is implausible as a within-ingredient BATCH CV
+# and a tell that the source sample mixes distinct products (e.g. Vit-D-enriched vs
+# conventional eggs). Such a candidate is REJECTED so the ladder falls to the
+# same-source own-range CV or the class pool. The cell's OWN-range dispersion
+# (same source as the value) is never guarded.
+CROSS_SOURCE_CV_MAX = 1.0
 
 # c4 / small-n: applies to Tier-1 sample SD only, and may only RAISE a CV.
 # near-detection over-inflated CVs are separately clipped to CV_CAP (may LOWER).

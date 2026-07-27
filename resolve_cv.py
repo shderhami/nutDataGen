@@ -165,6 +165,17 @@ def resolve_cv(*, nutrient_id: int, nutrient_nbr: Optional[int], ingredient_clas
     #    Tier-1 'sr28_se'. The row's own min/max/n gives an independent range CV
     #    used both as a fallback measured candidate and for twin calibration.
     own_range_cv = cv_stats.cv_from_range(value, own_min, own_max, own_n)
+    # Cross-source plausibility guard. sr28_se_cv is a BULK observation CV (matched by
+    # food from cv_observations) — a DIFFERENT sample than the value, whose own-record
+    # dispersion is the separate own_range_cv. A cross-sourced CV > 1.0 means SD > mean:
+    # implausible as a within-ingredient BATCH CV and a tell the source sample mixes
+    # distinct products (e.g. Vit-D-enriched vs conventional eggs). Reject it so the
+    # ladder falls to the same-source own-range CV (if any) or the class pool. The
+    # same-source own_range_cv is never guarded, so this fires only on cross-sourced CVs.
+    cross_source_demoted = None
+    if sr28_se_cv is not None and sr28_se_cv > cv_config.CROSS_SOURCE_CV_MAX:
+        cross_source_demoted = round(sr28_se_cv, 6)
+        sr28_se_cv = sr28_n = None
     measured_cv = measured_n = measured_tier = measured_method = m_inputs = None
     calib_flag = None
     if sr28_se_cv is not None:
@@ -187,6 +198,8 @@ def resolve_cv(*, nutrient_id: int, nutrient_nbr: Optional[int], ingredient_clas
     elif own_range_cv is not None:
         measured_cv, measured_n, measured_tier, measured_method = own_range_cv, own_n, "fdc_range", "wan_range"
         m_inputs = {"min": own_min, "max": own_max, "n": own_n}
+        if cross_source_demoted is not None:   # kept the same-source range; noted for audit
+            m_inputs["cross_source_demoted_cv"] = cross_source_demoted
 
     # 3. Category (Tiers 4-5) — always resolves. class_keys puts a muscle poultry/red
     #    sub-pool ahead of the combined muscle pool.
@@ -204,7 +217,12 @@ def resolve_cv(*, nutrient_id: int, nutrient_nbr: Optional[int], ingredient_clas
             conf, eff = "low", cv_config.EFFECTIVE_N_PRIOR
         return {**base, "cv_tier": cat_tier, "cv_method": "pool" if cat_tier == "class_pool" else "prior",
                 "cv_backing_n": cat_n, "cv_effective_n": eff, "cv_confidence_tier": conf,
-                "cv_class_key": cat_key}
+                "cv_class_key": cat_key,
+                # Provenance: a cross-sourced measured CV was rejected (SD>mean) and this
+                # cell fell to the pool — recorded in cv_method_inputs (cv_calibration_flag
+                # is a boolean column, owned by the SE-vs-range twin flag; leave it None).
+                "cv_method_inputs": ({"cross_source_demoted_cv": cross_source_demoted}
+                                     if cross_source_demoted else None)}
 
     # 4. Shrink the measured cell toward the measured pool (log scale); skip downward for Bucket-A.
     class_cv = _shrink_target(class_keys, nutrient_nbr, nutrient_class, lookups)
