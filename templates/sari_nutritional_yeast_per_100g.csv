@@ -1,0 +1,53 @@
+FEDIAF Nutrient Name,Unit,Value,Source,ai_confidence,comment
+Crude Protein,g,50,Sari Foods label,High,Label-derived: 8g/16g serving x 6.25
+Arginine,g,2.51,FDC 175043 x 1.238,High,Scaled for Sari protein density (50g vs FDC 40.4g)
+Histidine,g,1.13,FDC 175043 x 1.238,High,
+Isoleucine,g,2.34,FDC 175043 x 1.238,High,
+Leucine,g,3.62,FDC 175043 x 1.238,High,
+Lysine,g,4.06,FDC 175043 x 1.238,High,AI underestimated by 20 percent
+Methionine,g,0.73,FDC 175043 x 1.238,High,
+Cystine,g,0.62,FDC 175043 x 1.238,High,
+Phenylalanine,g,2.17,FDC 175043 x 1.238,High,
+Tyrosine,g,1.4,FDC 175043 x 1.238,High,
+Threonine,g,2.47,FDC 175043 x 1.238,High,
+Tryptophan,g,0.67,FDC 175043 x 1.238,High,
+Valine,g,2.86,FDC 175043 x 1.238,High,
+Taurine,mg,0,Biological,High,Fungi cannot synthesize taurine
+Total Fat,g,6.25,Sari Foods label,High,Label-derived: 1g/16g serving x 6.25
+Linoleic acid,g,0.014,FDC 175043 x 0.821,High,CORRECTED from AI 0.32; S. cerevisiae lacks Delta-12 desaturase
+Arachidonic acid,g,0,Biological,High,Not synthesized by yeast
+Alpha-linolenic acid,g,0,Biological,High,CORRECTED from AI 0.01; no Delta-15 desaturase
+EPA,g,0,Biological,High,
+DHA,g,0,Biological,High,
+"Fatty acids, total polyunsaturated",g,0.014,FDC 175043 x 0.821,High,CORRECTED from AI 0.54; ~40x overestimate
+DPA 22:5 n-3,g,0,Biological,High,
+Calcium,mg,62.5,Sari Foods label,High,Label-derived: 10mg/16g x 6.25
+Phosphorus,mg,500,Sari Foods label,High,Label-derived: 80mg/16g x 6.25
+Potassium,mg,2000,Sari Foods label,High,Label-derived: 320mg/16g x 6.25
+Sodium,mg,187.5,Sari Foods label,High,CORRECTED from AI 30; label-derived 30mg/16g x 6.25
+Chloride,mg,80,AI estimate,Low,FLAG - no USDA reference; speculative
+Magnesium,mg,54,FDC 175043,High,AI was correct; ignore my first-pass 120mg correction
+Iron,mg,11.88,Sari Foods label,High,Label-derived: 1.9mg/16g x 6.25
+Copper,mg,0.44,FDC 175043,High,CORRECTED from AI 0.60
+Manganese,mg,0.31,FDC 175043,High,CORRECTED from AI 0.53
+Zinc,mg,13.13,Sari Foods label,High,Label-derived: 2.1mg/16g x 6.25
+Iodine,ug,0.5,AI estimate,Low,FLAG - no USDA reference; molasses-grown yeast typically <5 ug/100g
+Selenium,ug,7.9,FDC 175043,Medium,FLAG - batch variability high; do not rely as Se source
+Vitamin A,IU,0,Biological,High,No preformed vitamin A in yeast
+Vitamin D,IU,0,Biological (not UV-treated),High,CORRECTED from AI 34; ergosterol converts to D2 only under UV-B
+Vitamin E,IU,0,Biological,High,CORRECTED from AI 0.30; yeast has ergosterol not tocopherol
+Vitamin K,ug,0.4,FDC 175043,High,
+Thiamin,mg,11,FDC 175043,High,Sari label = 12.0; FDC = 11.0; both consistent
+Riboflavin,mg,4,FDC 175043,High,AI spot-on
+Niacin,mg,40.2,FDC 175043,High,
+Pantothenic acid,mg,13.5,FDC 175043,High,CORRECTED from AI 21
+Pyridoxine,mg,1.5,FDC 175043,Medium,FLAG - Sari label claims 12mg which is implausible for non-fortified; use FDC as conservative floor
+Folic acid,ug,2340,FDC 175043,High,FEDIAF Vitamin B9 = total B9 activity (natural folate + synthetic folic acid) per AOAC 944.12; CORRECTED from AI 3120
+Cobalamin,ug,0,Biological,High,CORRECTED from AI 0.10; S. cerevisiae produces only inactive pseudo-B12
+Biotin,ug,50,Literature range,Medium,AI 100 ug is on the high end; 30-60 ug typical for unfortified
+Choline,mg,32,FDC 175043,High,CORRECTED from AI 290; ~9x overestimate
+Energy,kcal,375,Sari Foods label,High,FDC 175043 = 325 kcal; use FEDIAF 4-step ME calculation
+Water,g,5,Sari Foods label,High,
+Ash,g,5.65,FDC 175043,High,CORRECTED from AI 7.00
+Crude Fiber,g,4,AI estimate,Medium,Total dietary fiber = 25g/100g; crude fiber (Weende) ~ 2-5g
+Carbohydrate,g,31.25,Sari Foods label,High,Label-derived: 5g/16g x 6.25

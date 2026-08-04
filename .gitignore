@@ -32,9 +32,6 @@ htmlcov/
 ~$*.docx
 ~$*.xlsx
 
-# Generated supplement templates (contain user data)
-templates/*.csv
-
 # Data files (optional - uncomment if you don't want to track)
 # data/*.csv
 
