@@ -118,6 +118,9 @@ class TestPromptFoodInfo:
         assert result["supplement_info"] is None
         assert result["protein_species"] == "chicken"
         assert result["display_name"] == "Test Food"
+        # Formulator flags are Supplement-only: not prompted, default False.
+        assert result["is_nutritional_additive"] is False
+        assert result["is_corrector"] is False
         assert "food_id" not in result
 
     @patch('builtins.input')
@@ -199,6 +202,8 @@ class TestPromptFoodInfo:
             "Trace mineral powder",     # supplement_info (prompted because source=online)
             "",                         # protein_species (skip)
             "",                         # display_name (default)
+            "",                         # is_nutritional_additive (default yes)
+            "n",                        # is_corrector (multi-nutrient product)
         ]
 
         result = prompt_food_info()
@@ -207,6 +212,39 @@ class TestPromptFoodInfo:
         assert result["foundation_fdc_id"] is None
         assert result["source"] == "online"
         assert result["supplement_info"] == "Trace mineral powder"
+        assert result["is_nutritional_additive"] is True
+        assert result["is_corrector"] is False
+
+    @patch('builtins.input')
+    def test_fish_oil_flags_default_to_false(self, mock_input):
+        """Fish Oil is prompted for the formulator flags, but defaults to neither."""
+        mock_input.side_effect = [
+            "Salmon oil",      # food_name
+            "6",               # category (Fish Oil)
+            "",                # sr_fdc_id (skip)
+            "",                # foundation_fdc_id (skip)
+            "",                # cooking_method (default none)
+            "ml",              # base_unit
+            "",                # portion_qty (default 100)
+            "1.0",             # grams_per_unit
+            "",                # me_kcal_per_unit (skip)
+            "9.99",            # price_per_unit
+            "",                # currency (default USD)
+            "online",          # source
+            "",                # amazon_url (skip)
+            "",                # chewy_url (skip)
+            "",                # supplement_info (skip; prompted because source=online)
+            "",                # protein_species (skip)
+            "",                # display_name (default)
+            "",                # is_nutritional_additive (default no for Fish Oil)
+            "",                # is_corrector (default no for Fish Oil)
+        ]
+
+        result = prompt_food_info()
+
+        assert result["category"] == "Fish Oil"
+        assert result["is_nutritional_additive"] is False
+        assert result["is_corrector"] is False
 
     @patch('builtins.input')
     def test_defaults_for_base_unit_and_portion(self, mock_input):

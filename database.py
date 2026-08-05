@@ -99,6 +99,31 @@ VALID_PROTEIN_SPECIES = (
     "lamb", "pork", "duck", "rabbit", "mussel",
 )
 
+# category -> ingredient_class, mirroring the backfill in alembic revision
+# d15315a70fd8. ingredient_class drives the CV pipeline's pool lookup, so a row
+# left NULL falls to 'other' (no pool) and every cell lands on the Tier-5 prior.
+CATEGORY_TO_INGREDIENT_CLASS = {
+    "Muscle Meat": "muscle",
+    "Organ Meat": "organ",
+    "Fish & Seafood": "fish",
+    "Egg": "egg",
+    "Dairy": "dairy",
+    "Fish Oil": "fat_oil",
+    "Plant Matter": "plant",
+    "Supplement": "supplement",
+    "Base": "base",
+}
+
+# Categories where is_corrector is meaningful — the CV ladder only consults the flag
+# for these (mirrors cv_config.SUPPLEMENT_CATEGORIES; keep the two in sync). Setting it
+# on any other category would be silently ignored by resolve_cv.
+CORRECTOR_CATEGORIES = ("Supplement", "Fish Oil")
+
+
+def ingredient_class_for(category: str) -> str:
+    """CV-pipeline ingredient_class for a category."""
+    return CATEGORY_TO_INGREDIENT_CLASS.get(category, "other")
+
 
 def add_ingredient(
     food_name: str,
@@ -118,8 +143,16 @@ def add_ingredient(
     supplement_info: Optional[str] = None,
     protein_species: Optional[str] = None,
     display_name: Optional[str] = None,
+    is_nutritional_additive: bool = False,
+    is_corrector: bool = False,
 ) -> int:
-    """Insert a new ingredient and return the auto-generated food_id."""
+    """Insert a new ingredient and return the auto-generated food_id.
+
+    ingredient_class is derived from category (CV-pipeline pool key).
+    is_nutritional_additive / is_corrector are read by the formulator: the former
+    drives its legal-max limits, the latter selects the delivered-spec CV in
+    cv_assign. They are meaningful only for CORRECTOR_CATEGORIES rows.
+    """
     if category not in VALID_CATEGORIES:
         raise ValueError(
             f"Invalid category '{category}'. "
@@ -150,6 +183,11 @@ def add_ingredient(
             "supplement_info can only be set when source is one of: "
             f"{', '.join(SUPPLEMENT_INFO_SOURCES)}"
         )
+    if is_corrector and category not in CORRECTOR_CATEGORIES:
+        raise ValueError(
+            f"is_corrector is only valid for category in "
+            f"{', '.join(CORRECTOR_CATEGORIES)}, not '{category}'"
+        )
     db = get_db()
     with db.cursor() as cur:
         cur.execute(
@@ -159,16 +197,18 @@ def add_ingredient(
                  grams_per_unit, me_kcal_per_unit, sr_legacy_fdc_id,
                  foundation_fdc_id, cooking_method, price_per_unit, currency,
                  source, amazon_url, chewy_url, supplement_info,
-                 protein_species, display_name)
+                 protein_species, display_name, ingredient_class,
+                 is_nutritional_additive, is_corrector)
             VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,
-                    %s, %s, %s, %s, %s, %s)
+                    %s, %s, %s, %s, %s, %s, %s, %s, %s)
             RETURNING food_id
             """,
             (food_name, category, base_unit, portion_qty, grams_per_unit,
              me_kcal_per_unit, sr_legacy_fdc_id, foundation_fdc_id,
              cooking_method, price_per_unit, currency,
              source, amazon_url, chewy_url, supplement_info,
-             protein_species, display_name),
+             protein_species, display_name, ingredient_class_for(category),
+             is_nutritional_additive, is_corrector),
         )
         row = cur.fetchone()
         if row is None:
@@ -227,10 +267,39 @@ def get_all_food_ids() -> list[int]:
         return [int(row["food_id"]) for row in cur.fetchall()]
 
 
+class IngredientInUseError(RuntimeError):
+    """Raised when an ingredient cannot be deleted because a recipe references it."""
+
+
 def delete_food(food_id: int) -> int:
-    """Delete an ingredient and all its nutrients. Returns nutrient rows deleted."""
+    """Delete an ingredient and all its nutrients. Returns nutrient rows deleted.
+
+    The formulator's recipe_ingredients / ingredient_prices tables FK into
+    ingredients, so a referenced food cannot be removed. Check first and raise a
+    named error rather than letting the FK violation surface as a raw psycopg2
+    error mid-transaction.
+    """
     db = get_db()
     with db.cursor() as cur:
+        # recipe_ingredients is formulator-owned and absent from a nutDataGen-only
+        # database, so probe before referencing it (a missing table would otherwise
+        # abort the statement at plan time).
+        refs = []
+        for table, column in (("recipe_ingredients", "food_id"),
+                              ("ingredient_prices", "ingredient_id")):
+            cur.execute("SELECT to_regclass(%s) AS t", (table,))
+            row = cur.fetchone()
+            if row is None or row["t"] is None:
+                continue
+            cur.execute(f"SELECT count(*) AS n FROM {table} WHERE {column} = %s", (food_id,))
+            row = cur.fetchone()
+            if row and int(row["n"]):
+                refs.append(f"{row['n']} {table} row(s)")
+        if refs:
+            raise IngredientInUseError(
+                f"Cannot delete food_id={food_id}: referenced by {', '.join(refs)}. "
+                "Remove those references first."
+            )
         cur.execute(
             "DELETE FROM ingredient_nutrients WHERE food_id = %s", (food_id,)
         )

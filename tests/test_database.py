@@ -23,6 +23,7 @@ from database import (
     get_ingredient,
     get_all_food_ids,
     delete_food,
+    IngredientInUseError,
     update_nutrient,
     validate_nutrient_completeness,
     create_nutrient_record,
@@ -151,6 +152,56 @@ class TestAddIngredient:
         )
         assert result == 10001
 
+    def test_derives_ingredient_class_from_category(self, mock_db):
+        """ingredient_class is derived and written (NULL would break the CV pools)."""
+        mock_db.fetchone.return_value = {"food_id": 10001}
+        add_ingredient(
+            "Beef liver", category="Organ Meat", base_unit="g",
+            portion_qty=100.0, grams_per_unit=1.0,
+        )
+        sql, params = mock_db.execute.call_args[0]
+        assert "ingredient_class" in sql
+        assert "organ" in params
+
+    def test_writes_formulator_flags(self, mock_db):
+        """is_nutritional_additive / is_corrector reach the INSERT."""
+        mock_db.fetchone.return_value = {"food_id": 10001}
+        add_ingredient(
+            "Taurine powder", category="Supplement", base_unit="g",
+            portion_qty=100.0, grams_per_unit=1.0,
+            is_nutritional_additive=True, is_corrector=True,
+        )
+        sql, params = mock_db.execute.call_args[0]
+        assert "is_nutritional_additive" in sql and "is_corrector" in sql
+        assert params[-2:] == (True, True)
+
+    def test_defaults_formulator_flags_to_false(self, mock_db):
+        """Omitted flags default to False, matching the DB defaults."""
+        mock_db.fetchone.return_value = {"food_id": 10001}
+        add_ingredient(
+            "Chicken thigh", category="Muscle Meat", base_unit="g",
+            portion_qty=100.0, grams_per_unit=1.0,
+        )
+        _, params = mock_db.execute.call_args[0]
+        assert params[-2:] == (False, False)
+
+    def test_rejects_corrector_on_non_supplement(self, mock_db):
+        """is_corrector is meaningless outside the supplement categories."""
+        with pytest.raises(ValueError, match="is_corrector"):
+            add_ingredient(
+                "Chicken thigh", category="Muscle Meat", base_unit="g",
+                portion_qty=100.0, grams_per_unit=1.0, is_corrector=True,
+            )
+
+    def test_accepts_corrector_on_fish_oil(self, mock_db):
+        """Fish Oil is in the CV ladder's supplement set, so the flag is allowed."""
+        mock_db.fetchone.return_value = {"food_id": 10001}
+        result = add_ingredient(
+            "Algae oil dha", category="Fish Oil", base_unit="g",
+            portion_qty=100.0, grams_per_unit=1.0, is_corrector=True,
+        )
+        assert result == 10001
+
 
 class TestAddFoodNutrients:
     """Tests for add_food_nutrients function."""
@@ -227,9 +278,29 @@ class TestDeleteFood:
 
     def test_returns_nutrient_count(self, mock_db):
         """Test delete_food returns count of deleted nutrient rows."""
+        # Per referencing table: a to_regclass probe, then a reference count.
+        mock_db.fetchone.side_effect = [
+            {"t": "recipe_ingredients"}, {"n": 0},
+            {"t": "ingredient_prices"}, {"n": 0},
+        ]
         mock_db.rowcount = 5
         result = delete_food(1001)
         assert result == 5
+
+    def test_skips_absent_reference_table(self, mock_db):
+        """A formulator table absent from a nutDataGen-only DB is skipped."""
+        mock_db.fetchone.side_effect = [{"t": None}, {"t": None}]
+        mock_db.rowcount = 3
+        assert delete_food(1001) == 3
+
+    def test_refuses_when_referenced_by_recipe(self, mock_db):
+        """delete_food raises instead of hitting the recipe_ingredients FK."""
+        mock_db.fetchone.side_effect = [
+            {"t": "recipe_ingredients"}, {"n": 2},
+            {"t": "ingredient_prices"}, {"n": 0},
+        ]
+        with pytest.raises(IngredientInUseError, match="recipe_ingredients"):
+            delete_food(1001)
 
 
 class TestUpdateNutrient:

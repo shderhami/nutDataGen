@@ -42,6 +42,10 @@ VALID_PROTEIN_SPECIES = (
     "lamb", "pork", "duck", "rabbit", "mussel",
 )
 
+# Categories for which the formulator flags are meaningful
+# (mirrors database.CORRECTOR_CATEGORIES / cv_config.SUPPLEMENT_CATEGORIES).
+CORRECTOR_CATEGORIES = ("Supplement", "Fish Oil")
+
 
 def prompt_food_info() -> dict:
     """
@@ -71,7 +75,12 @@ def prompt_food_info() -> dict:
             "supplement_info": str or None,
             "protein_species": str or None,
             "display_name": str,
+            "is_nutritional_additive": bool,
+            "is_corrector": bool,
         }
+
+    The two flags are prompted for Supplement category only and are False
+    otherwise (they are formulator-side semantics; see database.add_ingredient).
     """
     print("-" * 40)
     print("Enter Food Information")
@@ -224,6 +233,26 @@ def prompt_food_info() -> dict:
     ).strip()
     display_name = dn_input if dn_input else food_name.title()
 
+    # Formulator flags — the CV ladder and the legal-max limits only consult these for
+    # supplement-ish categories, so don't ask otherwise. Defaults follow the existing
+    # data: a Supplement is usually both; a Fish Oil is usually neither.
+    is_nutritional_additive = False
+    is_corrector = False
+    if category in CORRECTOR_CATEGORIES:
+        default = category == "Supplement"
+        print()
+        print(f"Formulator flags ({category}):")
+        is_nutritional_additive = prompt_confirmation(
+            "  Nutritional additive? (drives the formulator's legal-max limits)",
+            default=default,
+        )
+        is_corrector = prompt_confirmation(
+            "  Single-nutrient corrector? (gets the delivered-spec CV; answer no for "
+            "Ca:P-ratio or multi-nutrient products such as calcium carbonate, "
+            "bone meal, premix, nutritional yeast)",
+            default=default,
+        )
+
     return {
         "food_name": food_name,
         "category": category,
@@ -242,6 +271,8 @@ def prompt_food_info() -> dict:
         "supplement_info": supplement_info,
         "protein_species": protein_species,
         "display_name": display_name,
+        "is_nutritional_additive": is_nutritional_additive,
+        "is_corrector": is_corrector,
     }
 
 
@@ -441,19 +472,23 @@ def prompt_sr_only_nutrient(nutrient: dict, ai_suggestion: Optional[str] = None)
             print("  Invalid choice. Please enter 1 or 2.")
 
 
-def prompt_confirmation(message: str) -> bool:
+def prompt_confirmation(message: str, default: bool = True) -> bool:
     """
     Generic yes/no confirmation prompt.
 
     Args:
         message: The confirmation message to display
+        default: Value returned on empty input (shown capitalised in the prompt)
 
     Returns:
         True if user confirms, False otherwise
     """
+    label = "[Y/n]" if default else "[y/N]"
     while True:
-        response = input(f"{message} [Y/n]: ").strip().lower()
-        if response in ("", "y", "yes"):
+        response = input(f"{message} {label}: ").strip().lower()
+        if response == "":
+            return default
+        if response in ("y", "yes"):
             return True
         elif response in ("n", "no"):
             return False

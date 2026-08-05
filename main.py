@@ -363,7 +363,8 @@ def process_single_food(food_id: int, food_info: dict) -> list[dict]:
                     ai_recommendation=ai_fields.get("ai_recommendation"),
                     ai_justification=ai_fields.get("ai_justification"),
                     ai_source=ai_fields.get("ai_source"),
-                    ai_confidence=ai_fields.get("ai_confidence")
+                    ai_confidence=ai_fields.get("ai_confidence"),
+                    ai_model=ai_fields.get("ai_model")
                 ))
 
         # Process SR-only nutrients
@@ -405,7 +406,8 @@ def process_single_food(food_id: int, food_info: dict) -> list[dict]:
                     ai_recommendation=ai_fields.get("ai_recommendation"),
                     ai_justification=ai_fields.get("ai_justification"),
                     ai_source=ai_fields.get("ai_source"),
-                    ai_confidence=ai_fields.get("ai_confidence")
+                    ai_confidence=ai_fields.get("ai_confidence"),
+                    ai_model=ai_fields.get("ai_model")
                 ))
 
         # Process Foundation-only nutrients
@@ -450,7 +452,8 @@ def process_single_food(food_id: int, food_info: dict) -> list[dict]:
                     ai_recommendation=ai_fields.get("ai_recommendation"),
                     ai_justification=ai_fields.get("ai_justification"),
                     ai_source=ai_fields.get("ai_source"),
-                    ai_confidence=ai_fields.get("ai_confidence")
+                    ai_confidence=ai_fields.get("ai_confidence"),
+                    ai_model=ai_fields.get("ai_model")
                 ))
 
     # Scenario 2: Only SR Legacy data available
@@ -926,6 +929,8 @@ def main():
                 supplement_info=food_info.get("supplement_info"),
                 protein_species=food_info.get("protein_species"),
                 display_name=food_info.get("display_name"),
+                is_nutritional_additive=food_info.get("is_nutritional_additive", False),
+                is_corrector=food_info.get("is_corrector", False),
             )
             display_success(f"Created ingredient '{food_name}' with ID {food_id}")
 

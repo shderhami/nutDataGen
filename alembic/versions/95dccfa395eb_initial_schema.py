@@ -5,8 +5,14 @@ Revises:
 Create Date: 2026-02-10
 
 Drop and recreate ingredients + ingredient_nutrients with correct column order.
-Leaves other tables (fediaf_requirements, cooking_retention_factors,
-unit_conversions) untouched.
+Leaves every other table in the shared database untouched (as of writing:
+cooking_retention_factors, nutrient_limits, standard_life_stage_map and the
+recipe_* tables, all owned by the formulator repo; fediaf_requirements and
+unit_conversions existed then and have since been dropped by the formulator).
+
+WARNING: the DROP ... CASCADE below severs the formulator's FKs into
+ingredients (recipe_ingredients, ingredient_prices). Never re-run this against
+the shared database.
 """
 from typing import Sequence, Union
 
