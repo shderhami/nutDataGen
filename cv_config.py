@@ -13,7 +13,8 @@ import hashlib
 import re
 from pathlib import Path
 
-PIPELINE_VERSION = "cv-v4"   # v4: + cross-source CV>1 (SD>mean) plausibility guard
+PIPELINE_VERSION = "cv-v5"   # v5: + corrector-supplement delivered-spec CV (Tier 0)
+# v4: + cross-source CV>1 (SD>mean) plausibility guard
 # v3: + muscle poultry/red sub-pools (v2 = prep-filter + curation)
 
 # ── Pinned numeric parameters ────────────────────────────────────────────────
@@ -57,6 +58,33 @@ EFFECTIVE_N_SUPPLEMENT = 2
 # Delivered-supplement CV floors (fractions)
 SUPPLEMENT_DELIVERED_FLOOR = 0.08
 SUPPLEMENT_DELIVERED_FLOOR_LABILE = 0.15
+
+# ── Corrector supplements (ingredients.is_corrector) — delivered SPEC CV ──────
+# A corrector is a single-nutrient manufactured supplement whose whole purpose is to
+# deliver a label-spec dose of one nutrient. The pooled/floor CVs above describe
+# WHOLE-FOOD dispersion, which materially overstates a manufactured product: because a
+# corrector delivers the bulk of the nutrient it corrects, an inflated CV dominates the
+# consumer's k*sigma safety buffer and parks the corrector well above what its real
+# variability justifies (e.g. Vitamin E floated to 51 IU when ~41 was warranted).
+#
+# So a corrector cell gets an OWN (measured-column) delivered-spec CV, which wins the
+# consumer's COALESCE(coefficient_of_variation, category_cv). The category column still
+# carries the delivered floor above, so NULLing the own column falls back safely.
+#
+# Evidence: USDA/NIH Dietary Supplement Ingredient Database (DSID) national MVM
+# analysis; USP label-claim tolerances (minerals <=10% below label, iodine/selenium
+# widened to +60%); vitamin-E premix stability (analytical +-~20%, 5-30% overage, ester
+# ~95% retention after heat); taurine >=98.5-99% purity, RSD <10%.
+#
+# This mirrors the formulator repo's scripts/patch_corrector_cvs.py so a full re-run of
+# this pipeline no longer reverts that patch. Keep the two in sync.
+CORRECTOR_CV_STABLE = 0.03   # stable minerals, choline, taurine (delivered-floor overfill)
+CORRECTOR_CV_HIGH = 0.08     # documented high variability / oxidation-labile actives
+CORRECTOR_HIGH_CV_NUTRIENT_IDS = {
+    1109,   # Vitamin E — oxidation losses, premix stability
+    1100,   # Iodine    — USP tolerance widened to +60%
+    1103,   # Selenium  — USP tolerance widened to +60%
+}
 
 # Gate thresholds
 MAX_PRIOR_ONLY_FRAC = 0.60
@@ -251,6 +279,13 @@ def muscle_subclass(species_or_desc: str | None) -> str | None:
 def nutrient_class(nutrient_id: int) -> str:
     """Nutrient class for a FDC nutrient_id (defaults to low_cv_proximate)."""
     return NUTRIENT_CLASS.get(nutrient_id, "low_cv_proximate")
+
+
+def corrector_cv(nutrient_id: int) -> float:
+    """Delivered-spec CV for a nutrient supplied by a corrector supplement."""
+    if nutrient_id in CORRECTOR_HIGH_CV_NUTRIENT_IDS:
+        return CORRECTOR_CV_HIGH
+    return CORRECTOR_CV_STABLE
 
 
 def bucket(nutrient_id: int) -> str:

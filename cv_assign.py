@@ -2,7 +2,7 @@
 """Resolve CVs for the target (ingredient, nutrient) cells and write them to the
 live ingredient_nutrients columns — gated behind the QA report.
 
-  measured CV (Tiers 1-3) -> coefficient_of_variation
+  measured CV (Tiers 1-3, or a corrector's delivered spec) -> coefficient_of_variation
   category  CV (Tiers 4-6) -> category_cv
   + cv_* provenance.  Consumer = COALESCE(coefficient_of_variation, category_cv).
 
@@ -86,7 +86,7 @@ def resolve_all(food_id_filter: int | None = None) -> list[dict]:
     with db.cursor() as cur:
         q = ("SELECT n.food_id, n.nutrient_id, n.value, n.min_value, n.max_value, n.num_samples, "
              "n.source, i.category, i.ingredient_class, i.sr_legacy_fdc_id, "
-             "i.protein_species, i.food_name "
+             "i.protein_species, i.food_name, i.is_corrector "
              "FROM ingredient_nutrients n JOIN ingredients i ON n.food_id=i.food_id "
              "WHERE n.nutrient_id IN %s")
         params: list = [target_ids]
@@ -121,6 +121,7 @@ def resolve_all(food_id_filter: int | None = None) -> list[dict]:
         res = resolve_cv(
             nutrient_id=nid, nutrient_nbr=nbr, ingredient_class=ic,
             nutrient_class=nclass, category=c["category"], value=_f(c["value"]), subclass=subclass,
+            is_corrector=bool(c["is_corrector"]),
             own_min=_f(c["min_value"]), own_max=_f(c["max_value"]), own_n=c["num_samples"],
             sr28_se_cv=sr_cv, sr28_n=sr_n, sr28_method=sr_method, source=c["source"],
             component_cv=comp_cv, component_n=comp_n, lookups=lookups,

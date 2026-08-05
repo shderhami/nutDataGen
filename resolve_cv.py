@@ -8,10 +8,14 @@ CVs (consumer falls back to the flat 0.25) until `cv_assign.py --food-id <id>
 mechanism; the DB is never left with the wrong (legacy percent) CV.
 
 resolve_cv() returns a dict of the two CV columns + provenance:
-  measured_cv  -> ingredient_nutrients.coefficient_of_variation (own measured CV, Tiers 1-3, or None)
+  measured_cv  -> ingredient_nutrients.coefficient_of_variation (own measured CV, Tiers 1-3,
+                  or a corrector's delivered-spec CV, or None)
   category_cv  -> ingredient_nutrients.category_cv (pooled/prior/supplement, Tiers 4-6)
 plus cv_tier / cv_method / cv_backing_n / cv_effective_n / cv_confidence_tier /
 cv_class_key / cv_method_inputs / cv_calibration_flag.
+
+cv_tier vocabulary: none | corrector | supplement | sr28_se | fdc_range | component |
+class_pool | nutrient_prior.
 
 All CVs are FRACTIONS in (0, CV_CAP].  Consumer = COALESCE(measured, category).
 """
@@ -136,7 +140,7 @@ def _shrink_target(class_keys: list[str], nutrient_nbr: int, nutrient_class: str
 
 def resolve_cv(*, nutrient_id: int, nutrient_nbr: Optional[int], ingredient_class: str,
                nutrient_class: str, category: str, value: Optional[float],
-               subclass: Optional[str] = None,
+               subclass: Optional[str] = None, is_corrector: bool = False,
                own_min: Optional[float] = None, own_max: Optional[float] = None,
                own_n: Optional[int] = None,
                sr28_se_cv: Optional[float] = None, sr28_n: Optional[int] = None,
@@ -152,13 +156,25 @@ def resolve_cv(*, nutrient_id: int, nutrient_nbr: Optional[int], ingredient_clas
         return {**base, "cv_tier": "none"}
 
     # 1. Supplement / Fish-Oil pre-emption -> Tier-6 delivered floor (category column).
+    #    A CORRECTOR additionally gets an own delivered-SPEC CV in the measured column:
+    #    the whole-food floor overstates a manufactured single-nutrient product and would
+    #    inflate the consumer's buffer (see cv_config.CORRECTOR_CV_*). The floor stays in
+    #    category_cv so NULLing the own column falls back to the old behaviour.
     if category in cv_config.SUPPLEMENT_CATEGORIES:
         floor = (cv_config.SUPPLEMENT_DELIVERED_FLOOR_LABILE
                  if nutrient_id in cv_config.LABILE_ACTIVE_NUTRIENT_IDS
                  else cv_config.SUPPLEMENT_DELIVERED_FLOOR)
-        return {**base, "category_cv": round(floor, cv_config.ROUND_DECIMALS),
-                "cv_tier": "supplement", "cv_method": "delivered_floor",
-                "cv_effective_n": cv_config.EFFECTIVE_N_SUPPLEMENT, "cv_confidence_tier": "medium"}
+        out = {**base, "category_cv": round(floor, cv_config.ROUND_DECIMALS),
+               "cv_tier": "supplement", "cv_method": "delivered_floor",
+               "cv_effective_n": cv_config.EFFECTIVE_N_SUPPLEMENT, "cv_confidence_tier": "medium"}
+        if is_corrector:
+            spec = cv_config.corrector_cv(nutrient_id)
+            out.update({
+                "measured_cv": round(spec, cv_config.ROUND_DECIMALS),
+                "cv_tier": "corrector", "cv_method": "delivered_spec",
+                "cv_method_inputs": {"cv_spec": spec, "category_floor": floor},
+            })
+        return out
 
     # 2. Measured candidates (Tiers 1-3), best first. Method-aware: an SR28 row may
     #    be SE-derived (se_sqrt_n) OR range-derived (wan_range); only the former is
@@ -260,6 +276,10 @@ if __name__ == "__main__":
              category="Muscle Meat", value=20.0, own_min=3.0, own_max=47.0, own_n=11),  # own-range Se
         dict(nutrient_id=1234, nutrient_nbr=529, ingredient_class="supplement", nutrient_class="amino_acid",
              category="Supplement", value=1000.0),                                 # taurine supplement (labile)
+        dict(nutrient_id=1234, nutrient_nbr=529, ingredient_class="supplement", nutrient_class="amino_acid",
+             category="Supplement", value=1000.0, is_corrector=True),              # taurine CORRECTOR
+        dict(nutrient_id=1109, nutrient_nbr=323, ingredient_class="supplement", nutrient_class="fat_sol_vit",
+             category="Supplement", value=14.9, is_corrector=True),                # Vit E corrector (high-CV)
         dict(nutrient_id=1106, nutrient_nbr=320, ingredient_class="plant", nutrient_class="fat_sol_vit",
              category="Plant Matter", value=10.0),                                 # Vit A, no measurement -> category
         dict(nutrient_id=1051, nutrient_nbr=255, ingredient_class="base", nutrient_class="low_cv_proximate",
