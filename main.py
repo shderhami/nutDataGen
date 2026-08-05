@@ -32,6 +32,7 @@ from database import (
     create_nutrient_record,
     delete_food,
 )
+from cv_autoassign import assign_cv_for_food
 from user_interaction import (
     display_welcome,
     display_comparison_report,
@@ -971,6 +972,17 @@ def main():
             if prompt_confirmation("Save to database?"):
                 added = add_food_nutrients(records)
                 display_success(f"Saved {added} nutrient records for '{food_name}' (ID: {food_id})")
+                # Auto-assign CVs so the new ingredient isn't left at NULL (best-effort:
+                # a gate block / missing datasets warns but never undoes the save).
+                cv_ok, cv_msg = assign_cv_for_food(food_id)
+                if cv_ok:
+                    display_success(f"CVs assigned: {cv_msg}")
+                else:
+                    display_error(f"CVs NOT assigned ({cv_msg}).")
+                    display_info(
+                        f"Run when ready: python cv_assign.py --food-id {food_id} "
+                        "--commit --signed-off-by NAME"
+                    )
             else:
                 display_info("Not saved. Removing ingredient entry.")
                 delete_food(food_id)

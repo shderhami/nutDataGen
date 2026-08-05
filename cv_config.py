@@ -9,11 +9,13 @@ ALL CVs are dimensionless FRACTIONS in (0, CV_CAP].  17% CV -> 0.17, never 17.0.
 """
 from __future__ import annotations
 
+import ast
 import hashlib
 import re
 from pathlib import Path
 
-PIPELINE_VERSION = "cv-v5"   # v5: + corrector-supplement delivered-spec CV (Tier 0)
+PIPELINE_VERSION = "cv-v6"   # v6: AST-normalized version hashing + auto-assign on add (no CV value change from v5)
+# v5: + corrector-supplement delivered-spec CV (Tier 0)
 # v4: + cross-source CV>1 (SD>mean) plausibility guard
 # v3: + muscle poultry/red sub-pools (v2 = prep-filter + curation)
 
@@ -297,6 +299,30 @@ def bucket(nutrient_id: int) -> str:
     return "B"
 
 
+def normalized_source(path: str | Path) -> str:
+    """`path`'s source normalized for hashing: parsed to an AST with comments and
+    docstrings removed and line/column positions dropped (ast.dump with
+    include_attributes=False). Cosmetic edits — comments, docstrings, blank lines,
+    reformatting — therefore do NOT change the digest; only code and literal-value
+    changes do. This pins the version gate to the pipeline's LOGIC rather than its
+    exact bytes, so a comment tweak no longer forces a PIPELINE_VERSION bump.
+
+    Note: ast.dump's format is Python-version specific, so a stored hash is only
+    comparable within the interpreter environment that produced it (the repo's pinned
+    venv) — which is exactly how the gate is used.
+    """
+    tree = ast.parse(Path(path).read_text(encoding="utf-8"))
+    for node in ast.walk(tree):
+        if isinstance(node, (ast.Module, ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)):
+            body = node.body
+            if (body and isinstance(body[0], ast.Expr)
+                    and isinstance(getattr(body[0], "value", None), ast.Constant)
+                    and isinstance(body[0].value.value, str)):
+                node.body = body[1:]      # drop the docstring
+    return ast.dump(tree, include_attributes=False)
+
+
 def config_sha256() -> str:
-    """SHA256 over this config file's raw bytes (pins the version gate)."""
-    return hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
+    """SHA256 over this config module's normalized AST (see normalized_source): pins
+    the version gate to the config's logic/values, ignoring comments & formatting."""
+    return hashlib.sha256(normalized_source(__file__).encode("utf-8")).hexdigest()

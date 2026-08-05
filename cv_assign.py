@@ -40,11 +40,13 @@ _PIPELINE_FILES = [
 
 
 def code_sha256() -> str:
+    # Normalized AST (comments/docstrings/layout excluded) so cosmetic edits to a
+    # pipeline file don't change the hash — mirrors cv_config.config_sha256.
     h = hashlib.sha256()
     for name in sorted(_PIPELINE_FILES):
         p = Path(__file__).parent / name
         if p.exists():
-            h.update(p.read_bytes())
+            h.update(cv_config.normalized_source(p).encode("utf-8"))
     return h.hexdigest()
 
 
@@ -137,10 +139,12 @@ _UPD_COLS = ["coefficient_of_variation", "category_cv", "cv_tier", "cv_method", 
              "cv_method_inputs", "cv_config_sha256", "cv_pipeline_version"]
 
 
-def commit(resolutions: list[dict], signer: str, full: bool) -> None:
+def commit(resolutions: list[dict], signer: str, full: bool, record_run: bool = True) -> None:
     """Reconcile + write in ONE transaction. Gate is re-verified and CV bounds are
     asserted here so no write can occur without a fresh PASS. `full`=True runs the
-    orphan-NULL reconcile pass."""
+    orphan-NULL reconcile pass. `record_run`=False skips the cv_pipeline_run upsert —
+    used by the per-ingredient auto-assign path so an incremental add does not move the
+    version's sign-off/timestamp (the deliberate full commit owns the run record)."""
     pv = cv_config.PIPELINE_VERSION
     csha, code = cv_config.config_sha256(), code_sha256()
     dshas = dataset_shas()
@@ -210,15 +214,16 @@ def commit(resolutions: list[dict], signer: str, full: bool) -> None:
                     f"expected exactly 1 row for food_id={r['food_id']} "
                     f"nutrient_id={r['nutrient_id']}, got {cur.rowcount}")
 
-        cur.execute(
-            "INSERT INTO cv_pipeline_run (pipeline_version, config_sha256, code_sha256, "
-            "dataset_shas, gate_passed, signed_off_by, signed_at) "
-            "VALUES (%s,%s,%s,%s,%s,%s,now()) "
-            "ON CONFLICT (pipeline_version) DO UPDATE SET config_sha256=EXCLUDED.config_sha256, "
-            "code_sha256=EXCLUDED.code_sha256, dataset_shas=EXCLUDED.dataset_shas, "
-            "gate_passed=EXCLUDED.gate_passed, signed_off_by=EXCLUDED.signed_off_by, signed_at=now()",
-            (pv, csha, code, psycopg2.extras.Json(dshas), gate_ok, signer),
-        )
+        if record_run:
+            cur.execute(
+                "INSERT INTO cv_pipeline_run (pipeline_version, config_sha256, code_sha256, "
+                "dataset_shas, gate_passed, signed_off_by, signed_at) "
+                "VALUES (%s,%s,%s,%s,%s,%s,now()) "
+                "ON CONFLICT (pipeline_version) DO UPDATE SET config_sha256=EXCLUDED.config_sha256, "
+                "code_sha256=EXCLUDED.code_sha256, dataset_shas=EXCLUDED.dataset_shas, "
+                "gate_passed=EXCLUDED.gate_passed, signed_off_by=EXCLUDED.signed_off_by, signed_at=now()",
+                (pv, csha, code, psycopg2.extras.Json(dshas), gate_ok, signer),
+            )
         conn.commit()
     except Exception:
         conn.rollback()
