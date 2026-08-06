@@ -306,6 +306,61 @@ class TestFormatAiSuggestion:
         assert "[MED]" in formatted
         assert "Foundation" in formatted
 
+    def test_formats_literature_zero_value(self):
+        """A recommended value of 0 is a real answer and must be shown.
+
+        Zero is the expected answer whenever the unpopulated-zero rule demotes a
+        nutrient that really is absent; truthiness testing hid it from reviewers.
+        """
+        result = AIValidationResult(
+            nutrient_id=1272,
+            nutrient_name="DHA",
+            prompt_type="missing",
+            recommendation="literature",
+            recommended_value=0.0,
+            justification="Land-animal fat contains no marine-origin DHA.",
+            literature_source="CoFID; CIQUAL",
+            confidence="high"
+        )
+
+        formatted = format_ai_suggestion(result)
+
+        assert "(0.0)" in formatted
+
+    def test_formats_estimate_zero_value(self):
+        """The same zero-vs-missing distinction applies to estimates."""
+        result = AIValidationResult(
+            nutrient_id=1079,
+            nutrient_name="Crude Fiber",
+            prompt_type="missing",
+            recommendation="estimate",
+            recommended_value=0.0,
+            justification="Muscle meat contains no dietary fiber.",
+            literature_source="CoFID",
+            confidence="high"
+        )
+
+        formatted = format_ai_suggestion(result)
+
+        assert "(0.0)" in formatted
+
+    def test_omits_value_when_absent(self):
+        """A genuinely absent recommended value still renders without a number."""
+        result = AIValidationResult(
+            nutrient_id=1272,
+            nutrient_name="DHA",
+            prompt_type="missing",
+            recommendation="literature",
+            recommended_value=None,
+            justification="Could not determine.",
+            literature_source="",
+            confidence="low"
+        )
+
+        formatted = format_ai_suggestion(result)
+
+        assert "(" not in formatted.split(":")[1]
+
     def test_formats_estimate_with_value(self):
         """Test formatting estimate with recommended value."""
         result = AIValidationResult(
@@ -365,24 +420,23 @@ This is based on scientific literature.'''
         result = _extract_json_from_response(response)
         assert result["recommendation"] == "sr_legacy"
 
-    def test_extracts_json_embedded_in_text(self):
-        """Test extracting JSON embedded in explanatory text."""
+    def test_json_embedded_in_prose_is_a_parse_failure(self):
+        """The brace-slicing heuristic is gone (plan 2.3): structured outputs
+        make the live response pure JSON, and slicing first-{ to last-}
+        mis-parsed prose braces. Prose-wrapped JSON now fails parsing."""
         response = '''Looking at scientific literature and databases, I found:
 
 {"recommendation": "foundation", "recommended_value": 25.5, "justification": "Foundation data is more recent.", "literature_source": "USDA Foundation", "confidence": "high"}
 
 This recommendation is based on multiple sources.'''
-        result = _extract_json_from_response(response)
-        assert result["recommendation"] == "foundation"
-        assert result["recommended_value"] == 25.5
-        assert result["confidence"] == "high"
+        with pytest.raises(json.JSONDecodeError):
+            _extract_json_from_response(response)
 
-    def test_extracts_json_with_nested_objects(self):
-        """Test extracting JSON with nested objects."""
+    def test_nested_json_in_prose_is_a_parse_failure(self):
+        """Same as above for the nested-object case the heuristic covered."""
         response = 'Text before {"outer": {"inner": "value"}, "recommendation": "sr_legacy"} text after'
-        result = _extract_json_from_response(response)
-        assert result["recommendation"] == "sr_legacy"
-        assert result["outer"]["inner"] == "value"
+        with pytest.raises(json.JSONDecodeError):
+            _extract_json_from_response(response)
 
     def test_raises_error_for_no_json(self):
         """Test raises JSONDecodeError when no JSON found."""
@@ -411,23 +465,22 @@ class TestCallClaudeApi:
         parsed = json.loads(response)
         assert "recommendation" in parsed
 
-    @patch.dict(os.environ, {"AI_VALIDATION_MOCK": "false"})
-    @patch("ai_validation.MOCK_MODE", False)
-    def test_raises_error_without_api_key(self):
-        """Test raises error when API key is missing."""
-        # Remove API key from environment
-        with patch.dict(os.environ, {"ANTHROPIC_API_KEY": ""}, clear=False):
-            # Import the module fresh to get MOCK_MODE=False
-            import importlib
-            import ai_validation
-            importlib.reload(ai_validation)
+    def test_raises_error_without_api_key(self, monkeypatch):
+        """Test raises error when API key is missing.
 
-            # Skip if mock mode is still enabled
-            if ai_validation.MOCK_MODE:
-                pytest.skip("Mock mode is enabled")
+        Deliberately does NOT importlib.reload(ai_validation): a reload
+        rebinds every class in the module, so exception classes imported by
+        other test modules become stale and isinstance / pytest.raises stop
+        matching depending on test order. Patch the module attributes instead.
+        """
+        import ai_validation
 
-            with pytest.raises((ValueError, RuntimeError, ImportError)):
-                ai_validation.call_claude_api("Test prompt")
+        monkeypatch.setattr(ai_validation, "MOCK_MODE", False)
+        monkeypatch.setattr(ai_validation, "_LIVE_CALLS_GRANTED", True)
+        monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
+
+        with pytest.raises((ValueError, RuntimeError, ImportError)):
+            ai_validation.call_claude_api("Test prompt")
 
 
 class TestMockModeEnvironment:
@@ -539,7 +592,10 @@ class TestCreateSkippedResult:
         assert result.nutrient_name == "Protein"
         assert result.prompt_type == "skipped"
         assert result.recommendation == "foundation"
-        assert result.confidence == "high"
+        # Not "high" (plan 4.2): this nutrient was never sent to the AI, and
+        # stamping "high" made ai_confidence='high' ambiguous between "the
+        # model was confident" and "we never asked".
+        assert result.confidence == "skipped"
         assert "match" in result.justification.lower()
 
 

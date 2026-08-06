@@ -50,6 +50,11 @@ from user_interaction import (
 from ai_validation import (
     validate_nutrients_concurrent,
     format_ai_suggestion,
+    detect_mass_failure,
+    describe_auto_accept_disagreement,
+    model_provenance,
+    live_ai_calls_allowed,
+    permit_live_ai_calls,
 )
 from supplement_template import (
     generate_template,
@@ -193,6 +198,66 @@ def build_nutrient_record(
     )
 
 
+def _cleanup_incomplete_ingredient(food_id: Optional[int]) -> None:
+    """
+    Remove an ingredient row created before its nutrients were saved.
+
+    Best-effort: a failure here must not mask the error that triggered cleanup,
+    and delete_food refuses when the formulator already references the row.
+    """
+    if food_id is None:
+        return
+    display_info(f"Cleaning up incomplete ingredient (ID: {food_id})...")
+    try:
+        delete_food(food_id)
+    except Exception as exc:  # noqa: BLE001 - never mask the original failure
+        display_error(
+            f"Could not remove incomplete ingredient {food_id}: {exc}. "
+            "Remove it manually before re-adding this food."
+        )
+
+
+def _api_nutrient_metadata(nutrient: dict) -> dict:
+    """
+    Full six-field metadata block from a fetched USDA nutrient row.
+
+    The AI prompts render all six fields; dropping min/median/max here (as the
+    single-source pseudo-comparisons once did) silently blinds the validator
+    in exactly the scenario the lamb-shoulder failure exercised.
+    """
+    return {
+        "num_samples": nutrient.get("num_samples"),
+        "min_value": nutrient.get("min_value"),
+        "max_value": nutrient.get("max_value"),
+        "median_value": nutrient.get("median_value"),
+        "year_acquired": nutrient.get("year_acquired"),
+        "derivation_description": nutrient.get("derivation_description"),
+    }
+
+
+def report_unpopulated_zeros(dataset_label: str, data: dict) -> None:
+    """
+    Tell the reviewer which nutrients USDA published as an unpopulated zero.
+
+    The zero is kept as USDA published it — an audit found such zeros are usually
+    genuine, so substituting a literature value would do more harm than good. But
+    USDA recorded no measurement behind them, so the reviewer is told which ones
+    they are and can override any that look wrong at the prompt.
+    """
+    ids = data.get("unpopulated_zeros") or []
+    if not ids:
+        return
+    names = []
+    for nid in ids:
+        info = get_nutrient_by_id(nid)
+        names.append(info["nutrient_name"] if info else str(nid))
+    display_info(
+        f"{dataset_label}: {len(names)} nutrient(s) published as 0 with no data points "
+        f"and no derivation (USDA never measured them) — review before accepting: "
+        f"{', '.join(sorted(names))}"
+    )
+
+
 def process_single_food(food_id: int, food_info: dict) -> list[dict]:
     """
     Process one food item through complete workflow.
@@ -219,6 +284,7 @@ def process_single_food(food_id: int, food_info: dict) -> list[dict]:
             sr_data = fetch_sr_legacy(sr_fdc_id)
             sr_nutrient_count = sum(1 for n in sr_data["nutrients"].values() if n["value"] is not None)
             display_success(f"Retrieved {sr_nutrient_count} of {len(get_usda_nutrient_ids())} FEDIAF-required nutrients")
+            report_unpopulated_zeros("SR Legacy", sr_data)
         except USDAAPIError as e:
             display_error(f"Failed to fetch SR Legacy data: {e}")
             display_info("Continuing without SR Legacy data...")
@@ -230,6 +296,7 @@ def process_single_food(food_id: int, food_info: dict) -> list[dict]:
             foundation_data = fetch_foundation(foundation_fdc_id)
             found_nutrient_count = sum(1 for n in foundation_data["nutrients"].values() if n["value"] is not None)
             display_success(f"Retrieved {found_nutrient_count} of {len(get_usda_nutrient_ids())} FEDIAF-required nutrients")
+            report_unpopulated_zeros("Foundation", foundation_data)
         except USDAAPIError as e:
             display_error(f"Failed to fetch Foundation data: {e}")
             display_info("Continuing with SR Legacy data only...")
@@ -265,9 +332,18 @@ def process_single_food(food_id: int, food_info: dict) -> list[dict]:
             sr_data=sr_data,
             foundation_data=foundation_data,
             missing_nutrients=missing_nutrients,
-            verbose=True
+            verbose=True,
+            food_info=food_info
         )
         display_success(f"AI validation complete for {len(ai_results)} nutrients")
+
+        # Mass-failure gate: a wholesale validation failure (credits, outage)
+        # must abort the food, not walk the operator through a review loop
+        # whose every suggestion is an error message.
+        mass_failure = detect_mass_failure(ai_results)
+        if mass_failure:
+            display_error(f"AI validation mass failure — aborting this food: {mass_failure}")
+            return []
 
         # Helper to get AI result for a nutrient
         def get_ai_fields(nid):
@@ -279,7 +355,9 @@ def process_single_food(food_id: int, food_info: dict) -> list[dict]:
                     "ai_justification": ai_result.justification,
                     "ai_source": ai_result.literature_source,
                     "ai_confidence": ai_result.confidence,
-                    "ai_model": AI_MODEL,
+                    # Model ID + prompt version hash, so a stored justification
+                    # can be traced to the prompt that produced it.
+                    "ai_model": model_provenance(),
                 }
             return {}
 
@@ -290,6 +368,14 @@ def process_single_food(food_id: int, food_info: dict) -> list[dict]:
             value = match["foundation_value"]
             foundation_meta = match.get("foundation_metadata", {})
             ai_fields = get_ai_fields(nid)
+            # This path never prompts, so an AI/DB contradiction would
+            # otherwise be stored with no review trail.
+            comment = f"Auto-accepted (< 5% difference with SR Legacy: {match['sr_value']})"
+            disagreement = describe_auto_accept_disagreement(
+                ai_results.get(nid), "foundation"
+            )
+            if disagreement:
+                comment = f"{comment}. {disagreement}"
             records.append(build_nutrient_record(
                 food_name=food_name,
                 food_id=food_id,
@@ -299,7 +385,7 @@ def process_single_food(food_id: int, food_info: dict) -> list[dict]:
                 unit=match.get("unit", nutrient_info["unit"] if nutrient_info else ""),
                 value=value,
                 source="foundation",
-                comment=f"Auto-accepted (< 5% difference with SR Legacy: {match['sr_value']})",
+                comment=comment,
                 # USDA metadata from Foundation (selected source)
                 num_samples=foundation_meta.get("num_samples"),
                 min_value=foundation_meta.get("min_value"),
@@ -432,6 +518,13 @@ def process_single_food(food_id: int, food_info: dict) -> list[dict]:
                 if ai_suggestion:
                     print(f"    AI Analysis: {ai_suggestion}")
 
+                # Written without prompting: record any AI disagreement rather
+                # than leaving the contradiction implicit in the columns.
+                comment = "Foundation only (not in SR Legacy)"
+                disagreement = describe_auto_accept_disagreement(ai_result, "foundation")
+                if disagreement:
+                    comment = f"{comment}. {disagreement}"
+
                 records.append(build_nutrient_record(
                     food_name=food_name,
                     food_id=food_id,
@@ -441,7 +534,7 @@ def process_single_food(food_id: int, food_info: dict) -> list[dict]:
                     unit=nutrient.get("unit", nutrient_info["unit"] if nutrient_info else ""),
                     value=value,
                     source="foundation",
-                    comment="Foundation only (not in SR Legacy)",
+                    comment=comment,
                     # USDA metadata from Foundation
                     num_samples=foundation_meta.get("num_samples"),
                     min_value=foundation_meta.get("min_value"),
@@ -493,11 +586,7 @@ def process_single_food(food_id: int, food_info: dict) -> list[dict]:
                     "nutrient_name": nutrient["name"],
                     "sr_value": nutrient["value"],
                     "unit": nutrient["unit"],
-                    "sr_metadata": {
-                        "num_samples": nutrient.get("num_samples"),
-                        "year_acquired": nutrient.get("year_acquired"),
-                        "derivation_description": nutrient.get("derivation_description"),
-                    }
+                    "sr_metadata": _api_nutrient_metadata(nutrient)
                 }
                 for nid, nutrient in sr_data["nutrients"].items()
                 if nutrient["value"] is not None
@@ -517,9 +606,18 @@ def process_single_food(food_id: int, food_info: dict) -> list[dict]:
             sr_data=sr_data,
             foundation_data=None,
             missing_nutrients=missing_nutrients,
-            verbose=True
+            verbose=True,
+            food_info=food_info
         )
         display_success(f"AI validation complete for {len(ai_results)} nutrients")
+
+        # Mass-failure gate: a wholesale validation failure (credits, outage)
+        # must abort the food, not walk the operator through a review loop
+        # whose every suggestion is an error message.
+        mass_failure = detect_mass_failure(ai_results)
+        if mass_failure:
+            display_error(f"AI validation mass failure — aborting this food: {mass_failure}")
+            return []
 
         # Helper to get AI result for a nutrient
         def get_ai_fields(nid):
@@ -531,7 +629,9 @@ def process_single_food(food_id: int, food_info: dict) -> list[dict]:
                     "ai_justification": ai_result.justification,
                     "ai_source": ai_result.literature_source,
                     "ai_confidence": ai_result.confidence,
-                    "ai_model": AI_MODEL,
+                    # Model ID + prompt version hash, so a stored justification
+                    # can be traced to the prompt that produced it.
+                    "ai_model": model_provenance(),
                 }
             return {}
 
@@ -559,11 +659,7 @@ def process_single_food(food_id: int, food_info: dict) -> list[dict]:
                 "nutrient_name": nutrient["name"],
                 "sr_value": value,
                 "unit": nutrient["unit"],
-                "sr_metadata": {
-                    "num_samples": nutrient.get("num_samples"),
-                    "year_acquired": nutrient.get("year_acquired"),
-                    "derivation_description": nutrient.get("derivation_description"),
-                }
+                "sr_metadata": _api_nutrient_metadata(nutrient)
             }
 
             # Prompt user to accept or provide different value
@@ -573,14 +669,7 @@ def process_single_food(food_id: int, food_info: dict) -> list[dict]:
 
             # Use SR metadata if user accepted SR value, otherwise no metadata for manual entries
             if decision["chosen_source"] == "sr_legacy":
-                meta = {
-                    "num_samples": nutrient.get("num_samples"),
-                    "min_value": nutrient.get("min_value"),
-                    "max_value": nutrient.get("max_value"),
-                    "median_value": nutrient.get("median_value"),
-                    "year_acquired": nutrient.get("year_acquired"),
-                    "derivation_description": nutrient.get("derivation_description"),
-                }
+                meta = _api_nutrient_metadata(nutrient)
             else:
                 meta = {}
 
@@ -645,11 +734,7 @@ def process_single_food(food_id: int, food_info: dict) -> list[dict]:
                     "nutrient_name": nutrient["name"],
                     "foundation_value": nutrient["value"],
                     "unit": nutrient["unit"],
-                    "foundation_metadata": {
-                        "num_samples": nutrient.get("num_samples"),
-                        "year_acquired": nutrient.get("year_acquired"),
-                        "derivation_description": nutrient.get("derivation_description"),
-                    }
+                    "foundation_metadata": _api_nutrient_metadata(nutrient)
                 }
                 for nid, nutrient in foundation_data["nutrients"].items()
                 if nutrient["value"] is not None
@@ -668,9 +753,18 @@ def process_single_food(food_id: int, food_info: dict) -> list[dict]:
             sr_data={"nutrients": {}},  # Empty SR data
             foundation_data=foundation_data,
             missing_nutrients=missing_nutrients,
-            verbose=True
+            verbose=True,
+            food_info=food_info
         )
         display_success(f"AI validation complete for {len(ai_results)} nutrients")
+
+        # Mass-failure gate: a wholesale validation failure (credits, outage)
+        # must abort the food, not walk the operator through a review loop
+        # whose every suggestion is an error message.
+        mass_failure = detect_mass_failure(ai_results)
+        if mass_failure:
+            display_error(f"AI validation mass failure — aborting this food: {mass_failure}")
+            return []
 
         # Helper to get AI result for a nutrient
         def get_ai_fields(nid):
@@ -682,7 +776,9 @@ def process_single_food(food_id: int, food_info: dict) -> list[dict]:
                     "ai_justification": ai_result.justification,
                     "ai_source": ai_result.literature_source,
                     "ai_confidence": ai_result.confidence,
-                    "ai_model": AI_MODEL,
+                    # Model ID + prompt version hash, so a stored justification
+                    # can be traced to the prompt that produced it.
+                    "ai_model": model_provenance(),
                 }
             return {}
 
@@ -697,15 +793,16 @@ def process_single_food(food_id: int, food_info: dict) -> list[dict]:
         for nid, nutrient in foundation_nutrients_with_values:
             nutrient_info = get_nutrient_by_id(nid)
             value = nutrient["value"]
-            foundation_meta = {
-                "num_samples": nutrient.get("num_samples"),
-                "min_value": nutrient.get("min_value"),
-                "max_value": nutrient.get("max_value"),
-                "median_value": nutrient.get("median_value"),
-                "year_acquired": nutrient.get("year_acquired"),
-                "derivation_description": nutrient.get("derivation_description"),
-            }
+            foundation_meta = _api_nutrient_metadata(nutrient)
             ai_fields = get_ai_fields(nid)
+
+            # Auto-accepted without prompting — record any AI disagreement.
+            comment = "Foundation only (SR Legacy not available)"
+            disagreement = describe_auto_accept_disagreement(
+                ai_results.get(nid), "foundation"
+            )
+            if disagreement:
+                comment = f"{comment}. {disagreement}"
 
             records.append(build_nutrient_record(
                 food_name=food_name,
@@ -716,7 +813,7 @@ def process_single_food(food_id: int, food_info: dict) -> list[dict]:
                 unit=nutrient["unit"] or (nutrient_info["unit"] if nutrient_info else ""),
                 value=value,
                 source="foundation",
-                comment="Foundation only (SR Legacy not available)",
+                comment=comment,
                 # USDA metadata from Foundation
                 num_samples=foundation_meta.get("num_samples"),
                 min_value=foundation_meta.get("min_value"),
@@ -762,9 +859,18 @@ def process_single_food(food_id: int, food_info: dict) -> list[dict]:
             sr_data={"nutrients": {}},
             foundation_data=None,
             missing_nutrients=missing_nutrients,
-            verbose=True
+            verbose=True,
+            food_info=food_info
         )
         display_success(f"AI validation complete for {len(ai_results)} nutrients")
+
+        # Mass-failure gate: a wholesale validation failure (credits, outage)
+        # must abort the food, not walk the operator through a review loop
+        # whose every suggestion is an error message.
+        mass_failure = detect_mass_failure(ai_results)
+        if mass_failure:
+            display_error(f"AI validation mass failure — aborting this food: {mass_failure}")
+            return []
 
     # Handle nutrients missing from USDA
     if missing_nutrients:
@@ -775,11 +881,10 @@ def process_single_food(food_id: int, food_info: dict) -> list[dict]:
         for i, nutrient in enumerate(missing_nutrients, 1):
             display_progress(i, len(missing_nutrients), nutrient["nutrient_name"])
 
-            # Get AI suggestion for missing nutrient
-            # Try nutrient_id first, then fall back to nutrient_name as key
+            # Get AI suggestion for missing nutrient. Results are keyed by
+            # nutrient_id only — the validator drops no-ID results loudly.
             nutrient_id = nutrient.get("nutrient_id")
-            nutrient_name = nutrient["nutrient_name"]
-            ai_result = ai_results.get(nutrient_id) if nutrient_id else ai_results.get(nutrient_name)
+            ai_result = ai_results.get(nutrient_id) if nutrient_id is not None else None
             ai_suggestion = format_ai_suggestion(ai_result) if ai_result else None
 
             decision = prompt_missing_nutrient(nutrient, ai_suggestion)
@@ -792,7 +897,7 @@ def process_single_food(food_id: int, food_info: dict) -> list[dict]:
                     "ai_justification": ai_result.justification,
                     "ai_source": ai_result.literature_source,
                     "ai_confidence": ai_result.confidence,
-                    "ai_model": AI_MODEL,
+                    "ai_model": model_provenance(),
                 }
 
             records.append(build_nutrient_record(
@@ -887,6 +992,32 @@ def main():
     from config import AI_MOCK_MODE
     if AI_MOCK_MODE:
         print("[MOCK MODE] AI validation is using mock responses (AI_MOCK_MODE=true)\n")
+    elif not live_ai_calls_allowed():
+        # Billed calls are blocked by default. Ask once per run rather than
+        # letting the pipeline spend money on the operator's behalf.
+        nutrient_count = len(get_all_nutrients())
+        display_info(
+            f"AI validation calls the Anthropic API — about {nutrient_count} billed "
+            f"requests per ingredient, using model {AI_MODEL}."
+        )
+        if prompt_confirmation("Allow billed AI validation calls for this run?"):
+            permit_live_ai_calls("operator confirmed at startup")
+        else:
+            # Don't proceed into an ingredient add that cannot complete: the
+            # validators raise LiveAPICallBlocked, which would abort mid-run and
+            # leave the ingredient row created before validation orphaned.
+            display_info(
+                "Billed calls declined. AI validation cannot run, so the ingredient "
+                "add would fail partway through."
+            )
+            display_info("Re-run with AI_MOCK_MODE=true for an offline dry run.")
+            close_db()
+            return
+
+    # Bound before the try: the exception handlers below reference food_id, so a
+    # failure ahead of the first loop iteration (e.g. initialize_database) must
+    # not hit UnboundLocalError inside the handler.
+    food_id: Optional[int] = None
 
     try:
         # Initialize database connection
@@ -971,16 +1102,21 @@ def main():
             # Confirm save
             if prompt_confirmation("Save to database?"):
                 added = add_food_nutrients(records)
-                display_success(f"Saved {added} nutrient records for '{food_name}' (ID: {food_id})")
+                # The row is committed from here on: stop tracking it for cleanup,
+                # or a failure in anything below (CV assignment, prompts) would
+                # hand a fully-saved ingredient to delete_food.
+                saved_food_id = food_id
+                food_id = None
+                display_success(f"Saved {added} nutrient records for '{food_name}' (ID: {saved_food_id})")
                 # Auto-assign CVs so the new ingredient isn't left at NULL (best-effort:
                 # a gate block / missing datasets warns but never undoes the save).
-                cv_ok, cv_msg = assign_cv_for_food(food_id)
+                cv_ok, cv_msg = assign_cv_for_food(saved_food_id)
                 if cv_ok:
                     display_success(f"CVs assigned: {cv_msg}")
                 else:
                     display_error(f"CVs NOT assigned ({cv_msg}).")
                     display_info(
-                        f"Run when ready: python cv_assign.py --food-id {food_id} "
+                        f"Run when ready: python cv_assign.py --food-id {saved_food_id} "
                         "--commit --signed-off-by NAME"
                     )
             else:
@@ -997,10 +1133,15 @@ def main():
 
     except KeyboardInterrupt:
         print("\n\nInterrupted by user.")
-        # Clean up orphaned ingredient if we created one but didn't save nutrients
-        if food_id is not None:
-            display_info(f"Cleaning up incomplete ingredient (ID: {food_id})...")
-            delete_food(food_id)
+        _cleanup_incomplete_ingredient(food_id)
+    except Exception as exc:
+        # add_ingredient runs before nutrient processing, so any failure between
+        # the two leaves a row with zero nutrients. Previously only Ctrl-C was
+        # handled, so an API error, a DB blip, or a permission refusal each left
+        # an orphan behind. Clean up, then re-raise — the error is still real.
+        display_error(f"Unexpected error: {exc}")
+        _cleanup_incomplete_ingredient(food_id)
+        raise
     finally:
         close_db()
 

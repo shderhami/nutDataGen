@@ -35,38 +35,76 @@ NUTRIENT_NUMBER_TO_ID: dict[str, int] = {
 }
 
 
-# Derivation code to full description mapping
-# Based on USDA FoodData Central derivation codes
+# Derivation code to full description mapping.
+# Generated from data/USDA data/FoodData_Central_sr_legacy_food_csv_2018-04/
+# food_nutrient_derivation.csv (64 codes) — regenerate from that CSV
+# rather than hand-editing; the previous hand-written table had inverted
+# meanings (e.g. NC) and invented codes.
 DERIVATION_CODES = {
     "A": "Analytical",
-    "AR": "Analytical, Assumed Zero",
-    "AS": "Analytical, Aggregated from Sample",
-    "C": "Calculated",
-    "CA": "Calculated by Addition",
-    "CC": "Calculated from Composition",
-    "CD": "Calculated from Difference",
-    "CF": "Calculated from Formula",
-    "CI": "Calculated from Imputation",
-    "CM": "Calculated from Manufacturer Data",
-    "CP": "Calculated from Percent Daily Value",
-    "CR": "Calculated from Recipe",
-    "CS": "Calculated from Similar",
-    "E": "Estimated",
-    "EC": "Estimated from Composition",
-    "ER": "Estimated from Recipe",
-    "ES": "Estimated from Similar",
-    "I": "Imputed",
-    "M": "Manufacturer's Data",
-    "MA": "Manufacturer's Analytical",
-    "MC": "Manufacturer's Calculated",
-    "NC": "Not Calculated",
-    "NR": "Not Reported",
-    "NS": "Not Specified",
-    "R": "Assumed or Rounded",
-    "S": "Summed",
-    "T": "Taken from Another Source",
-    "U": "Unknown",
-    "Z": "Assumed Zero",
+    "AI": "Analytical data; from the literature or  government;  incomplete documentation",
+    "AR": "Analytical data; derived by linear regression",
+    "AS": "Summed",
+    "BD": "Based on same food; Drained solids from solids and liquids or vice versa (canned fruits and vegetables)",
+    "BFAN": "Based on another form of the food or similar food; Concentration adjustment; Ash; Retention factors not used",
+    "BFCN": "Based on another form of the food or similar food; Concentration adjustment; Carbohydrate; Retention factors not used",
+    "BFFN": "Based on another form of the food or similar food; Concentration adjustment; Fat; Retention factors not used",
+    "BFFY": "Based on another form of the food or similar food; Concentration adjustment; Fat; Retention factors used",
+    "BFNN": "Based on another form of the food or similar food; Concentration adjustment; Non-fat solids; Retention factors not used",
+    "BFNY": "Based on another form of the food or similar food; Concentration adjustment; Non-fat solids; Retentions factors used",
+    "BFPN": "Based on another form of the food or similar food; Concentration adjustment; Protein; Retention factors not used",
+    "BFPY": "Based on another form of the food or similar food; Concentration adjustment; Protein; Retention factors used",
+    "BFSN": "Based on another form of the food or similar food; Concentration adjustment; Solids; Retention factors not used",
+    "BFSY": "Based on another form of the food or similar food; Concentration adjustment; Solids; Retention factors used",
+    "BFYN": "Based on another form of the food or similar food; Concentration adjustment; Yield; Retention factors not used",
+    "BFYY": "Based on another form of the food or similar food; Concentration adjustment; Yield; Retention factors used",
+    "BFZN": "Based on another form of the food or similar food; Concentration adjustment; No adjustment; Retention factors not used",
+    "BFZY": "Based on another form of the food or similar food; Concentration adjustment; No adjustment; Retention factors used",
+    "BNA": "Based on another form of the same food or similar food: constituents normalized to total; vitamin A",
+    "CAAN": "Calculated from different food; From average values for food category; Ash; Retention factors not used",
+    "CAFN": "Calculated from different food; From average values for food category; Fat; Retention factors not used",
+    "CASN": "Calculated from different food; From average values for food category; Solids; Retention factors not used",
+    "CAZN": "Calculated from different food; From average values for food category; No adjustment; Retention factors not used",
+    "DA": "Concentration adjustment using factor; derived from analytical data",
+    "DI": "Concentration adjustment using factor; derived from imputed data",
+    "FLA": "Estimated formulation based on ingredient list; Linear program used to estimate ingredients; Analytical data",
+    "FLC": "Estimated formulation based on ingredient list; Linear program used to estimate ingredients; Claim on label/serving",
+    "FLM": "Estimated formulation based on ingredient list; Linear program used to estimate ingredients; Manuf. Calc. data/100",
+    "JA": "Aggregated data involving combinations of data with only source codes 1 and 12 and/or 13",
+    "JO": "Aggregated data involving combinations of data with different source codes when at least one code is not 1, 6, 12, or 13",
+    "LC": "Label claim (back calculated from label by NDL staff; Calculated from label claim/serving (g or %RDI)",
+    "LCCD": "Calculated from a daily value percentage per serving size measure",
+    "LCCS": "Calculated from value per serving size measure",
+    "LCGA": "Given by information provider as an approximate value per 100 unit measure",
+    "LCGE": "Given by information provider as an exact value per 100 unit measure",
+    "LCGL": "Given by information provider as a less than value per 100 unit measure",
+    "LCSA": "Calculated from an approximate value per serving size measure",
+    "LCSE": "Calculated from an exact value per serving size measure",
+    "LCSG": "Calculated from a greater than value per serving size measure",
+    "LCSL": "Calculated from a less than value per serving size measure",
+    "MA": "Manufacturer supplied(industry or trade association), Analytical data, incomplete documentation",
+    "MC": "Manufacturer supplied; Calculated by manufacturer or unknown if analytical or calculated",
+    "ML": "Manufacturer supplied; Value upon which manufacturer based label claim for fortified/enriched nutrient",
+    "NC": "Calculated",
+    "NP": "Nutrient that is based on other nutrient/s; calculated by difference or summed (with or without activity factors) Ex. Proximate component other than CHO by difference. Vitamin A calculated from components when one of the component values is not source code 1 or 7",
+    "NR": "Nutrient that is based on other nutrient/s; value used directly, ex. Nut.#204 from Nut.#298",
+    "O": "Other procedure used from imputing",
+    "PAE": "Based on physical composition; Derived from analytical data; Estimated physical composition",
+    "PAK": "Based on physical composition; Derived from analytical data; Known physical composition",
+    "PIE": "Based on physical composition; Derived from imputed data; Estimated physical composition",
+    "PIK": "Based on physical composition; Derived from imputed data; Known physical composition",
+    "RA": "Recipe; Approximate ingredient proportions (ex. combination of several recipes)",
+    "RC": "Recipe; Cookbook",
+    "RF": "Recipe; Formulary of standard products (formulary or standards of identity)",
+    "RK": "Recipe; Known formulation (dissection data or proprietary formulation)",
+    "RKA": "Recipe; Known formulation; No adjustments applied, combination of source codes 1, 12, and/or 6.",
+    "RKI": "Recipe;Known formulation;No adjustments applied, combination of source codes which includes codes other than 1,12,or 6",
+    "RP": "Recipe; Per package directions (ex. refrigerated dough, toast, cake mix)",
+    "RPA": "Recipe; Per package directions; No adjustments applied, combination of source codes 1, 12, and/or 6.",
+    "RPI": "Recipe;Per package directions;No adjustments applied, combination of source codes which incl codes other than 1,12,or 6",
+    "S": "Product standard, such as enrichment level specified in CFR or AMS commodity standard",
+    "T": "Taken from another source--other tables of food composition",
+    "Z": "Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)",
 }
 
 
@@ -94,6 +132,91 @@ def get_derivation_description(derivation_data: Optional[dict]) -> str:
         return DERIVATION_CODES[code]
 
     return code if code else ""
+
+
+def get_derivation_fields(food_nutrient: dict) -> dict:
+    """
+    Derivation evidence for a nutrient row, from either API payload shape.
+
+    The /food/{id} full format nests it under "foodNutrientDerivation", while
+    /foods/search and the abridged format flatten it to top-level derivationCode
+    and derivationDescription. Reading only the nested key on a flattened payload
+    makes every derivation look absent, which would demote USDA's explicit
+    "Assumed Zero" values as though they were never measured.
+    """
+    nested = food_nutrient.get("foodNutrientDerivation")
+    if nested:
+        return nested
+
+    code = food_nutrient.get("derivationCode")
+    description = food_nutrient.get("derivationDescription")
+    if code or description:
+        return {"code": code or "", "description": description or ""}
+
+    return {}
+
+
+def missing_nutrient_entry(unpopulated_zero: bool = False) -> dict:
+    """
+    The canonical "nutrient not available" entry.
+
+    Note: standard_error and footnote are omitted - USDA API does not provide them.
+    """
+    return {
+        "name": None,
+        "value": None,
+        "unit": None,
+        "num_samples": None,
+        "min_value": None,
+        "max_value": None,
+        "median_value": None,
+        "year_acquired": None,
+        "derivation_description": None,
+        "unpopulated_zero": unpopulated_zero,
+    }
+
+
+def is_unpopulated_zero(
+    amount: object,
+    data_points: Optional[int],
+    derivation_data: Optional[dict],
+) -> bool:
+    """
+    Detect a USDA row that carries no measurement rather than a real zero.
+
+    USDA emits a row for every nutrient in a food's profile, so one that was never
+    analysed still shows up with amount 0. Those rows have no data points and no
+    derivation code at all, whereas a zero USDA stands behind carries evidence: an
+    explicit "Z" (Assumed Zero), a calculated derivation, or a data point count.
+
+    This is a PROVENANCE signal only — callers keep the zero and surface the flag
+    to the reviewer. It is NOT evidence the value is wrong: against Foundation
+    re-analyses, bare zeros turn out to be genuinely ~0 about 86% of the time,
+    slightly more often than "Z"-coded zeros. Treating them as missing and sending
+    them to a literature search was measured to be net harmful and was reverted.
+
+    Example: FDC 174326 (lamb shoulder, lean, raw) publishes EPA, DHA and DPA as
+    0 with no data points and no derivation, while carbohydrate and fiber carry
+    derivation "Z" — only the former three are unpopulated.
+    """
+    if amount is None:
+        return False
+    try:
+        if float(amount) != 0.0:
+            return False
+    except (TypeError, ValueError):
+        return False
+
+    # Any non-zero count means an actual analysis backs the zero.
+    if data_points:
+        return False
+
+    if derivation_data and (
+        derivation_data.get("code") or derivation_data.get("description")
+    ):
+        return False
+
+    return True
 
 
 def fetch_food_data(fdc_id: int, api_key: Optional[str] = None) -> dict:
@@ -176,34 +299,32 @@ def extract_nutrients(food_data: dict, nutrient_ids: list[int]) -> dict:
 
         Note: standard_error and footnote are NOT provided by USDA API.
 
-        Missing nutrients have value = None
+        Missing nutrients have value = None.
+
+        Nutrients USDA published as an unpopulated zero (see is_unpopulated_zero)
+        KEEP their zero and are flagged unpopulated_zero = True. The flag is
+        advisory: it tells the reviewer USDA never measured the value, without
+        substituting a judgement about what the value should be.
     """
     result = {}
 
     # Initialize all requested nutrients as missing with full metadata structure
-    # Note: standard_error and footnote removed - USDA API does not provide these fields
     for nid in nutrient_ids:
-        result[nid] = {
-            "name": None,
-            "value": None,
-            "unit": None,
-            "num_samples": None,
-            "min_value": None,
-            "max_value": None,
-            "median_value": None,
-            "year_acquired": None,
-            "derivation_description": None
-        }
+        result[nid] = missing_nutrient_entry()
 
     # Get nutrients from the response
     food_nutrients = food_data.get("foodNutrients", [])
 
-    # Abridged format uses flat structure with "number" field instead of nested "nutrient.id"
+    # Abridged format uses flat structure with "number" field instead of nested "nutrient.id".
+    # It carries no dataPoints but does carry flattened derivation fields, so the
+    # unpopulated-zero flag is computed here too and the same food is flagged the same
+    # way whichever format the API served.
     if food_data.get("_abridged"):
         for fn in food_nutrients:
             number = str(fn.get("number", ""))
             nid = NUTRIENT_NUMBER_TO_ID.get(number)
             if nid and nid in nutrient_ids:
+                derivation = get_derivation_fields(fn)
                 result[nid] = {
                     "name": fn.get("name"),
                     "value": fn.get("amount"),
@@ -214,6 +335,9 @@ def extract_nutrients(food_data: dict, nutrient_ids: list[int]) -> dict:
                     "median_value": None,
                     "year_acquired": None,
                     "derivation_description": fn.get("derivationDescription", ""),
+                    "unpopulated_zero": is_unpopulated_zero(
+                        fn.get("amount"), None, derivation
+                    ),
                 }
         return result
 
@@ -225,8 +349,13 @@ def extract_nutrients(food_data: dict, nutrient_ids: list[int]) -> dict:
             nid = nutrient.get("id")
             if nid in nutrient_ids:
                 # Get derivation description
-                derivation = fn.get("foodNutrientDerivation", {})
+                derivation = get_derivation_fields(fn)
                 derivation_desc = get_derivation_description(derivation)
+
+                data_points = fn.get("dataPoints") or fn.get("numberOfDataPoints")
+                unpopulated = is_unpopulated_zero(
+                    fn.get("amount"), data_points, derivation
+                )
 
                 # Extract year - check minYearAcquired first (Foundation), then nutrientAnalysisDetails
                 # Note: SR Legacy API doesn't provide per-nutrient dates (only website shows them)
@@ -252,16 +381,22 @@ def extract_nutrients(food_data: dict, nutrient_ids: list[int]) -> dict:
                     # median is only available in Foundation, not SR Legacy
                     "median_value": fn.get("median"),
                     "year_acquired": year_acquired,
-                    "derivation_description": derivation_desc
+                    "derivation_description": derivation_desc,
+                    "unpopulated_zero": unpopulated
                 }
 
         elif "nutrientId" in fn:
             # Alternative structure (some API response formats)
             nid = fn.get("nutrientId")
             if nid in nutrient_ids:
-                # Get derivation description
-                derivation = fn.get("foodNutrientDerivation", {})
+                # Get derivation description — this payload shape flattens it
+                derivation = get_derivation_fields(fn)
                 derivation_desc = get_derivation_description(derivation)
+
+                data_points = fn.get("dataPoints") or fn.get("numberOfDataPoints")
+                unpopulated = is_unpopulated_zero(
+                    fn.get("value"), data_points, derivation
+                )
 
                 # Extract year - SR Legacy API doesn't provide per-nutrient dates
                 year_acquired = None
@@ -282,10 +417,16 @@ def extract_nutrients(food_data: dict, nutrient_ids: list[int]) -> dict:
                     # median may not be available in SR Legacy
                     "median_value": fn.get("median"),
                     "year_acquired": year_acquired,
-                    "derivation_description": derivation_desc
+                    "derivation_description": derivation_desc,
+                    "unpopulated_zero": unpopulated
                 }
 
     return result
+
+
+def get_unpopulated_zero_ids(nutrients: dict) -> list[int]:
+    """Nutrient IDs USDA published as an unpopulated zero (value kept, flagged)."""
+    return [nid for nid, n in nutrients.items() if n.get("unpopulated_zero")]
 
 
 def fetch_sr_legacy(fdc_id: int, api_key: Optional[str] = None) -> dict:
@@ -304,7 +445,8 @@ def fetch_sr_legacy(fdc_id: int, api_key: Optional[str] = None) -> dict:
             "data_type": str,
             "publication_date": str,
             "portion_size": str (always "100g" for USDA data),
-            "nutrients": {nutrient_id: {name, value, unit, ...}, ...}
+            "nutrients": {nutrient_id: {name, value, unit, ...}, ...},
+            "unpopulated_zeros": [nutrient_id, ...]  # kept at 0; USDA never measured them
         }
     """
     food_data = fetch_food_data(fdc_id, api_key)
@@ -317,7 +459,8 @@ def fetch_sr_legacy(fdc_id: int, api_key: Optional[str] = None) -> dict:
         "data_type": food_data.get("dataType", ""),
         "publication_date": food_data.get("publicationDate", ""),
         "portion_size": "100g",  # USDA data is always per 100g
-        "nutrients": nutrients
+        "nutrients": nutrients,
+        "unpopulated_zeros": get_unpopulated_zero_ids(nutrients)
     }
 
 
@@ -337,7 +480,8 @@ def fetch_foundation(fdc_id: int, api_key: Optional[str] = None) -> dict:
             "data_type": str,
             "publication_date": str,
             "portion_size": str (always "100g" for USDA data),
-            "nutrients": {nutrient_id: {name, value, unit, ...}, ...}
+            "nutrients": {nutrient_id: {name, value, unit, ...}, ...},
+            "unpopulated_zeros": [nutrient_id, ...]  # kept at 0; USDA never measured them
         }
     """
     food_data = fetch_food_data(fdc_id, api_key)
@@ -350,7 +494,8 @@ def fetch_foundation(fdc_id: int, api_key: Optional[str] = None) -> dict:
         "data_type": food_data.get("dataType", ""),
         "publication_date": food_data.get("publicationDate", ""),
         "portion_size": "100g",  # USDA data is always per 100g
-        "nutrients": nutrients
+        "nutrients": nutrients,
+        "unpopulated_zeros": get_unpopulated_zero_ids(nutrients)
     }
 
 
