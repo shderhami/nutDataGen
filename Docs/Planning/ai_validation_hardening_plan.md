@@ -254,6 +254,61 @@ All five phases landed, each audited before moving on. Suite 381 → 487 tests.
 
 ---
 
+## 9. Phase 6 — Reference datasets and cohort matching (proposed, 2026-08-06)
+
+Both items come from the **lamb shoulder (10046) live run**, where every value was reviewed against NRC 2006 and UK CoFID by hand *after* the pipeline had finished. That manual cross-check found things the pipeline could not, so it belongs in the pipeline.
+
+### 6.1 Add NRC 2006 and UK CoFID as reference datasets
+
+*Problem:* `peer_median.py` consults only the USDA bulk CSVs. For the four nutrients USDA does not track — **chloride, iodine, biotin, taurine** — the prompt therefore carries no local evidence at all, and the reviewer is left with the model's unverifiable recollection. In the 10046 run those four were the only nutrients decided without a peer block.
+
+*Evidence this matters (all from the 10046 review):*
+- **Chloride** — absent from USDA, NRC (Table 13-6 cell empty) and FAO. UK CoFID 18-475 gives **74 mg/100 g** from a named analytical survey (LGC, 1990s), and its sodium (70) matches our accepted sodium exactly, making the value directly transferable.
+- **Biotin** — NRC has **no** biotin value for lamb. CoFID gives **2.0 µg/100 g**. This is the nutrient where a fabricated NRC citation was written to the database (see 6.1a).
+- **Iodine** — absent from USDA and NRC. CoFID gives 3–6 µg depending on cut.
+- **Taurine** — absent from all three; **Spitze et al. 2003** (now at `Docs/Spitze_2003_...pdf`) gives lamb leg raw **473 mg/kg = 47.3 mg/100 g**, n=11.
+- **Folate** — the cross-check *resolved* a contested decision: USDA 23 µg and NRC 18 µg cluster against CoFID 6 µg, confirming a US-vs-UK assay-method split rather than an error, and retrospectively justifying rejecting the AI's 3.0.
+- **Niacin** — CoFID lists preformed niacin (5.4) *and* niacin equivalents (9.3) as separate columns, confirming the units-class error behind the AI's 6.0 suggestion.
+
+*Change:* extend `peer_median.py` (or a sibling `reference_data.py`) to read NRC 2006 Tables 13-1/13-5/13-6/13-7 and the CoFID workbook, and attach their values to the prompt alongside the USDA peer median. Both are already on disk (`Docs/NRC2006.epub`, `data/McCance_Widdowsons_..._2021..xlsx`).
+
+*Non-obvious requirements, learned the hard way:*
+- **NRC table parsing is offset by one.** The header's first cell (`Feed Name Description`) spans **two** data cells, so `data[i+1]` aligns with `header[i]`. A naive `zip()` silently mis-labels every column — that is exactly how folate 0.18 mg/kg was read as biotin. Any parser must assert plausibility (e.g. niacin in meat cannot be 0.18 mg/kg) rather than trust positional alignment.
+- **NRC samples are fatty.** Lamb Ground is 23.4% fat vs a lean cut's 6.76%. Values must be scaled — protein-scaling (CP 16.60 → 19.55) reproduced our amino acids to within 2% across all twelve, so it is a validated method.
+- **CoFID entries differ by trim.** `18-475 "lean only, raw, average"` and `18-170 "shoulder, raw, lean and fat"` disagree ~2× on iodine. Pick by composition match, not by name similarity.
+- **CoFID is a compilation**, not a study; the lamb minerals trace to a 1990s UK retail survey. Cite the underlying source and vintage, not just "CoFID 2021". Licence is OGL v3.0 — attribution required, commercial use permitted.
+
+*Acceptance:* the four USDA-untracked nutrients carry a local reference value in the prompt; a re-run of 10046 reproduces chloride 74, biotin 2.0, taurine 47.3 without web search.
+
+#### 6.1a Guard against fabricated citations
+
+*Problem:* during the 10046 run a citation asserting `NRC 2006 Table 13-7: lamb ground biotin 0.18 mg/kg` was **written to the database**. NRC has no biotin value for lamb; 0.18 was folate, misread from a mis-aligned table. It was caught only by the manual cross-check, after the save.
+
+*Change:* whatever ingests NRC/CoFID must expose the *source cell* it read, so a citation can be regenerated from data rather than composed prose. Consider recording a machine-checkable reference (dataset + table + row key) in the comment alongside the human sentence.
+
+### 6.2 Make peer cohorts tissue- and cut-aware
+
+*Problem:* `peer_median._matching_fdc_ids` filters on **species** and **raw/cooked state** only. It does not exclude organ meats, and it does not distinguish anatomical cut. For minerals that vary with bone proximity or fibre type, the pooled median is the wrong comparator — and it moved the answer in **both** directions during the 10046 review.
+
+*Evidence:*
+| Nutrient | Pooled cohort | Refined cohort | Effect on the decision |
+|---|---|---|---|
+| **Calcium** | 8.0 mg (all raw lamb, n=66, incl. mechanically-separated at 162) | Shoulder cuts 12–16 mg (US choice, 32 data points each) | Pooled median made SR's 15 look like a +88% outlier; cut-matched, it is the **median of its own group**. Kept SR. |
+| **Selenium** | 7.0 µg (n=47, incl. kidney 126.9 / liver 82.4) | Muscle-only **5.45** (n=42), shoulder 5.3 (n=3) | Organs inflated the pooled figure; stripping them **strengthened** the case against SR's 22.2. Overrode to 5.5. |
+| **Folate** | 23.0 µg (n=19, incl. liver 230) | Muscle-only 23.0 (n=13, range 21–24) | Robust either way — but the tight muscle cluster is what made rejecting the AI's 3.0 defensible. |
+
+*Change:* add tissue-class exclusion (variety meats / by-products / mechanically separated) and an optional cut-class filter, with `MIN_COHORT_SIZE` fallback when a refined cohort is too thin. Return the cohort definition actually used so the prompt and the reviewer can see it.
+
+*Caution:* refinement trades sample size for specificity — the shoulder-only selenium cohort was n=3, all single-data-point NZ imports. The existing thin-cohort warning must apply to refined cohorts too, and the fallback must be visible, not silent.
+
+*Acceptance:* calcium for 10046 reports a shoulder-matched cohort; selenium reports a muscle-only cohort; both surface `sample_size` and the effective filter in the prompt.
+
+### Why this is Phase 6 and not earlier
+
+Phases 1–5 fix what the validator *does with* the evidence it has. Phase 6 changes *what evidence exists*. It is independent of the model-upgrade decision and of §6 Q4's cost ceiling, since both datasets are local files — no API cost, no latency.
+
+---
+
 ## 7. Non-goals
 
 - Changing the unpopulated-zero rule. It is advisory-only as of 2026-08-05 and out of scope here.
