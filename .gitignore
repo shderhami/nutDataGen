@@ -38,3 +38,8 @@ backups/
 # Duplicate of the FDC exports already tracked in data/usda_bulk/ (69MB).
 # See data/README.md for how to re-download if you want this copy back.
 data/USDA data/
+
+# Stale database exports (regenerate from PostgreSQL, don't commit snapshots)
+data/nutrition_database*.csv
+data/ingredients.csv
+data/ingredient_nutrients.csv

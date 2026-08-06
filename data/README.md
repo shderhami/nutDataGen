@@ -18,6 +18,7 @@ Everything the pipeline reads from disk, where it came from, and how to restore 
 |---|---|
 | `USDA data/` | 69 MB duplicate of the FDC exports already in `usda_bulk/`. Restore instructions below if you want it back. |
 | `../backups/` | PostgreSQL dumps written automatically by `cv_assign.py`. Regenerated on every commit run. |
+| `nutrition_database*.csv`, `ingredients.csv`, `ingredient_nutrients.csv` | Stale exports of the live database (Feb 2026 snapshots, superseded). Regenerate from PostgreSQL rather than committing snapshots. |
 
 ---
 
