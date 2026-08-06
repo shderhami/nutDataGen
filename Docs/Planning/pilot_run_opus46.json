@@ -1,0 +1,462 @@
+{
+  "generated_at": "2026-08-06T13:36:57.217278+00:00",
+  "provenance": "claude-opus-4-6+p:18286b5e9908",
+  "design": {
+    "n_cases": 20,
+    "n_foods_effective_clusters": 9,
+    "cases_per_food": 2.2,
+    "foods": [
+      "beef top round raw",
+      "butternut squash raw",
+      "chicken breast with skin raw",
+      "chicken egg raw",
+      "chicken egg white raw",
+      "chicken egg yolk raw",
+      "salmon atlantic farm raised raw",
+      "tilapia farm raised raw",
+      "white rice long grain unenriched"
+    ],
+    "clustering_warning": "20 cases nested in 9 foods. Nutrients within a food share species, provenance and sample, so the effective sample size is nearer the food count. Any p-value is indicative, not confirmatory."
+  },
+  "precheck_confidence_spread": {
+    "measurable": true,
+    "counts": {
+      "medium": 10,
+      "high": 10
+    },
+    "dominant_share": 0.5,
+    "levels_with_n_ge_5": [
+      "high",
+      "medium"
+    ],
+    "reason": "usable spread across confidence levels"
+  },
+  "precheck_sample_divergence": {
+    "informative": false,
+    "n_probed": 8,
+    "samples_per_case": 3,
+    "cases_where_recommendation_varied": 0,
+    "cases_where_value_varied": 0,
+    "reason": "repeated samples were identical; self-consistency would add cost and no signal \u2014 drop the selfcons and both arms",
+    "probes": [
+      {
+        "food": "beef top round raw",
+        "nutrient_id": 1271,
+        "recommendations": [
+          "sr_legacy",
+          "sr_legacy",
+          "sr_legacy"
+        ],
+        "values": [
+          null,
+          null,
+          null
+        ],
+        "confidences": [
+          "medium",
+          "medium",
+          "medium"
+        ],
+        "recommendation_varied": false,
+        "value_spread": null
+      },
+      {
+        "food": "butternut squash raw",
+        "nutrient_id": 1004,
+        "recommendations": [
+          "sr_legacy",
+          "sr_legacy",
+          "sr_legacy"
+        ],
+        "values": [
+          null,
+          null,
+          null
+        ],
+        "confidences": [
+          "medium",
+          "medium",
+          "medium"
+        ],
+        "recommendation_varied": false,
+        "value_spread": null
+      },
+      {
+        "food": "chicken breast with skin raw",
+        "nutrient_id": 1004,
+        "recommendations": [
+          "sr_legacy",
+          "sr_legacy",
+          "sr_legacy"
+        ],
+        "values": [
+          null,
+          null,
+          null
+        ],
+        "confidences": [
+          "high",
+          "high",
+          "high"
+        ],
+        "recommendation_varied": false,
+        "value_spread": null
+      },
+      {
+        "food": "chicken egg raw",
+        "nutrient_id": 1007,
+        "recommendations": [
+          "sr_legacy",
+          "sr_legacy",
+          "sr_legacy"
+        ],
+        "values": [
+          null,
+          null,
+          null
+        ],
+        "confidences": [
+          "high",
+          "high",
+          "high"
+        ],
+        "recommendation_varied": false,
+        "value_spread": null
+      },
+      {
+        "food": "chicken egg white raw",
+        "nutrient_id": 1004,
+        "recommendations": [
+          "sr_legacy",
+          "sr_legacy",
+          "sr_legacy"
+        ],
+        "values": [
+          null,
+          null,
+          null
+        ],
+        "confidences": [
+          "medium",
+          "medium",
+          "medium"
+        ],
+        "recommendation_varied": false,
+        "value_spread": null
+      },
+      {
+        "food": "chicken egg yolk raw",
+        "nutrient_id": 1004,
+        "recommendations": [
+          "sr_legacy",
+          "sr_legacy",
+          "sr_legacy"
+        ],
+        "values": [
+          null,
+          null,
+          null
+        ],
+        "confidences": [
+          "high",
+          "high",
+          "high"
+        ],
+        "recommendation_varied": false,
+        "value_spread": null
+      },
+      {
+        "food": "salmon atlantic farm raised raw",
+        "nutrient_id": 1007,
+        "recommendations": [
+          "sr_legacy",
+          "sr_legacy",
+          "sr_legacy"
+        ],
+        "values": [
+          null,
+          null,
+          null
+        ],
+        "confidences": [
+          "high",
+          "high",
+          "high"
+        ],
+        "recommendation_varied": false,
+        "value_spread": null
+      },
+      {
+        "food": "tilapia farm raised raw",
+        "nutrient_id": 1004,
+        "recommendations": [
+          "sr_legacy",
+          "sr_legacy",
+          "sr_legacy"
+        ],
+        "values": [
+          null,
+          null,
+          null
+        ],
+        "confidences": [
+          "high",
+          "high",
+          "medium"
+        ],
+        "recommendation_varied": false,
+        "value_spread": null
+      }
+    ]
+  },
+  "baseline_summary": {
+    "provenance": "claude-opus-4-6+p:18286b5e9908",
+    "tolerance": 0.1,
+    "total_scored": 20,
+    "overall_accuracy": 0.25,
+    "by_confidence": {
+      "medium": {
+        "n": 10,
+        "accuracy": 0.1,
+        "median_relative_error": 0.382
+      },
+      "high": {
+        "n": 10,
+        "accuracy": 0.4,
+        "median_relative_error": 0.1667
+      }
+    },
+    "confidence_is_calibrated": true,
+    "note": "Foundation is a re-analysis, not truth; read these numbers as relative across confidence levels and prompt versions."
+  },
+  "verdict": {
+    "next_steps": [
+      "Calibration is measurable: proceed with per-confidence analysis.",
+      "Self-consistency is inert (samples identical): drop the 'selfcons' and 'both' arms and run 'none' vs 'search' only \u2014 halving the cost."
+    ]
+  },
+  "raw": {
+    "none": [
+      {
+        "nutrient_id": 1271,
+        "description": "beef top round raw",
+        "sr_value": 0.036,
+        "foundation_value": 0.038,
+        "predicted_value": 0.036,
+        "recommendation": "sr_legacy",
+        "confidence": "medium",
+        "correct": true,
+        "relative_error": 0.05263157894736847
+      },
+      {
+        "nutrient_id": 1280,
+        "description": "beef top round raw",
+        "sr_value": 0.009,
+        "foundation_value": 0.008,
+        "predicted_value": 0.009,
+        "recommendation": "sr_legacy",
+        "confidence": "medium",
+        "correct": false,
+        "relative_error": 0.12499999999999989
+      },
+      {
+        "nutrient_id": 1004,
+        "description": "butternut squash raw",
+        "sr_value": 0.1,
+        "foundation_value": 0.1675,
+        "predicted_value": 0.1,
+        "recommendation": "sr_legacy",
+        "confidence": "medium",
+        "correct": false,
+        "relative_error": 0.40298507462686567
+      },
+      {
+        "nutrient_id": 1087,
+        "description": "butternut squash raw",
+        "sr_value": 48.0,
+        "foundation_value": 21.74,
+        "predicted_value": 48.0,
+        "recommendation": "literature",
+        "confidence": "medium",
+        "correct": false,
+        "relative_error": 1.2079116835326589
+      },
+      {
+        "nutrient_id": 1089,
+        "description": "butternut squash raw",
+        "sr_value": 0.7,
+        "foundation_value": 0.2129,
+        "predicted_value": 0.7,
+        "recommendation": "sr_legacy",
+        "confidence": "medium",
+        "correct": false,
+        "relative_error": 2.287928604978863
+      },
+      {
+        "nutrient_id": 1004,
+        "description": "chicken breast with skin raw",
+        "sr_value": 9.25,
+        "foundation_value": 4.777,
+        "predicted_value": 9.25,
+        "recommendation": "sr_legacy",
+        "confidence": "high",
+        "correct": false,
+        "relative_error": 0.9363617333054217
+      },
+      {
+        "nutrient_id": 1051,
+        "description": "chicken breast with skin raw",
+        "sr_value": 69.46,
+        "foundation_value": 73.2,
+        "predicted_value": 69.46,
+        "recommendation": "sr_legacy",
+        "confidence": "high",
+        "correct": true,
+        "relative_error": 0.05109289617486351
+      },
+      {
+        "nutrient_id": 1087,
+        "description": "chicken breast with skin raw",
+        "sr_value": 11.0,
+        "foundation_value": 6.898,
+        "predicted_value": 11.0,
+        "recommendation": "sr_legacy",
+        "confidence": "medium",
+        "correct": false,
+        "relative_error": 0.5946651203247318
+      },
+      {
+        "nutrient_id": 1007,
+        "description": "chicken egg raw",
+        "sr_value": 1.06,
+        "foundation_value": 0.85,
+        "predicted_value": 1.06,
+        "recommendation": "sr_legacy",
+        "confidence": "high",
+        "correct": false,
+        "relative_error": 0.24705882352941186
+      },
+      {
+        "nutrient_id": 1087,
+        "description": "chicken egg raw",
+        "sr_value": 56.0,
+        "foundation_value": 48.0,
+        "predicted_value": 56.0,
+        "recommendation": "sr_legacy",
+        "confidence": "high",
+        "correct": false,
+        "relative_error": 0.16666666666666666
+      },
+      {
+        "nutrient_id": 1004,
+        "description": "chicken egg white raw",
+        "sr_value": 0.17,
+        "foundation_value": 0.0,
+        "predicted_value": 0.17,
+        "recommendation": "sr_legacy",
+        "confidence": "high",
+        "correct": false,
+        "relative_error": Infinity
+      },
+      {
+        "nutrient_id": 1103,
+        "description": "chicken egg white raw",
+        "sr_value": 20.0,
+        "foundation_value": 17.9,
+        "predicted_value": 20.0,
+        "recommendation": "sr_legacy",
+        "confidence": "medium",
+        "correct": false,
+        "relative_error": 0.11731843575419003
+      },
+      {
+        "nutrient_id": 1004,
+        "description": "chicken egg yolk raw",
+        "sr_value": 26.54,
+        "foundation_value": 28.8,
+        "predicted_value": 26.54,
+        "recommendation": "sr_legacy",
+        "confidence": "high",
+        "correct": true,
+        "relative_error": 0.07847222222222228
+      },
+      {
+        "nutrient_id": 1007,
+        "description": "chicken egg yolk raw",
+        "sr_value": 1.71,
+        "foundation_value": 1.89,
+        "predicted_value": 1.71,
+        "recommendation": "sr_legacy",
+        "confidence": "high",
+        "correct": true,
+        "relative_error": 0.0952380952380952
+      },
+      {
+        "nutrient_id": 1007,
+        "description": "salmon atlantic farm raised raw",
+        "sr_value": 1.13,
+        "foundation_value": 1.224,
+        "predicted_value": 1.13,
+        "recommendation": "sr_legacy",
+        "confidence": "high",
+        "correct": true,
+        "relative_error": 0.0767973856209151
+      },
+      {
+        "nutrient_id": 1089,
+        "description": "salmon atlantic farm raised raw",
+        "sr_value": 0.34,
+        "foundation_value": 0.2588,
+        "predicted_value": 0.34,
+        "recommendation": "sr_legacy",
+        "confidence": "high",
+        "correct": false,
+        "relative_error": 0.3137557959814531
+      },
+      {
+        "nutrient_id": 1004,
+        "description": "tilapia farm raised raw",
+        "sr_value": 1.7,
+        "foundation_value": 2.479,
+        "predicted_value": 1.7,
+        "recommendation": "sr_legacy",
+        "confidence": "medium",
+        "correct": false,
+        "relative_error": 0.31423961274707546
+      },
+      {
+        "nutrient_id": 1007,
+        "description": "tilapia farm raised raw",
+        "sr_value": 0.93,
+        "foundation_value": 1.154,
+        "predicted_value": 0.93,
+        "recommendation": "sr_legacy",
+        "confidence": "high",
+        "correct": false,
+        "relative_error": 0.19410745233968793
+      },
+      {
+        "nutrient_id": 1004,
+        "description": "white rice long grain unenriched",
+        "sr_value": 0.66,
+        "foundation_value": 1.033,
+        "predicted_value": 0.66,
+        "recommendation": "sr_legacy",
+        "confidence": "medium",
+        "correct": false,
+        "relative_error": 0.36108422071636004
+      },
+      {
+        "nutrient_id": 1007,
+        "description": "white rice long grain unenriched",
+        "sr_value": 0.64,
+        "foundation_value": 0.425,
+        "predicted_value": 0.64,
+        "recommendation": "sr_legacy",
+        "confidence": "medium",
+        "correct": false,
+        "relative_error": 0.5058823529411766
+      }
+    ]
+  }
+}

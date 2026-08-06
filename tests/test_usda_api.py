@@ -24,6 +24,10 @@ from usda_api import (
     get_food_description,
     search_foods,
     get_derivation_description,
+    get_derivation_fields,
+    missing_nutrient_entry,
+    is_unpopulated_zero,
+    get_unpopulated_zero_ids,
     DERIVATION_CODES,
 )
 
@@ -314,6 +318,228 @@ class TestExtractNutrients:
         assert result[1008]["max_value"] is None
 
 
+# Mirrors the shape of FDC 174326 (lamb shoulder, lean, raw): EPA/DHA/DPA are
+# published as 0 with no data points and no derivation, carbohydrate carries an
+# explicit "Assumed Zero" derivation, and Vitamin A a calculated one.
+MOCK_UNPOPULATED_ZERO_RESPONSE = {
+    "fdcId": 174326,
+    "description": "Lamb, shoulder, separable lean only, raw",
+    "dataType": "SR Legacy",
+    "foodNutrients": [
+        {
+            "nutrient": {"id": 1003, "name": "Protein", "unitName": "G"},
+            "amount": 19.55,
+            "dataPoints": 32,
+        },
+        {   # never analysed -> must be demoted to missing
+            "nutrient": {"id": 1278, "name": "PUFA 20:5 n-3 (EPA)", "unitName": "G"},
+            "amount": 0.0,
+            "dataPoints": 0,
+        },
+        {   # never analysed -> must be demoted to missing
+            "nutrient": {"id": 1272, "name": "PUFA 22:6 n-3 (DHA)", "unitName": "G"},
+            "amount": 0.0,
+            "dataPoints": 0,
+        },
+        {   # USDA asserts the zero -> must be kept
+            "nutrient": {"id": 1005, "name": "Carbohydrate, by difference", "unitName": "G"},
+            "amount": 0.0,
+            "dataPoints": 0,
+            "foodNutrientDerivation": {"code": "Z", "description": "Assumed zero"},
+        },
+        {   # USDA calculated the zero -> must be kept
+            "nutrient": {"id": 1106, "name": "Vitamin A, RAE", "unitName": "UG"},
+            "amount": 0.0,
+            "dataPoints": 0,
+            "foodNutrientDerivation": {"code": "NC", "description": "Calculated"},
+        },
+        {   # non-zero without data points (calculated amino acid) -> must be kept
+            "nutrient": {"id": 1220, "name": "Arginine", "unitName": "G"},
+            "amount": 1.161,
+            "dataPoints": 0,
+        },
+    ],
+}
+
+
+class TestIsUnpopulatedZero:
+    """Tests for the unpopulated-zero predicate."""
+
+    def test_bare_zero_is_unpopulated(self):
+        """Zero with no data points and no derivation is a placeholder."""
+        assert is_unpopulated_zero(0.0, 0, {}) is True
+
+    def test_none_data_points_is_unpopulated(self):
+        """A missing dataPoints field counts the same as zero."""
+        assert is_unpopulated_zero(0.0, None, None) is True
+
+    def test_assumed_zero_derivation_is_kept(self):
+        """An explicit 'Z' derivation means USDA asserts the zero."""
+        assert is_unpopulated_zero(0.0, 0, {"code": "Z"}) is False
+
+    def test_calculated_derivation_is_kept(self):
+        """A calculated zero is still an affirmative USDA value."""
+        assert is_unpopulated_zero(0.0, 0, {"code": "NC"}) is False
+
+    def test_description_only_derivation_is_kept(self):
+        """Derivation evidence may arrive as a description without a code."""
+        assert is_unpopulated_zero(0.0, 0, {"description": "Assumed zero"}) is False
+
+    def test_measured_zero_is_kept(self):
+        """A zero backed by data points was actually analysed."""
+        assert is_unpopulated_zero(0.0, 12, {}) is False
+
+    def test_non_zero_is_kept(self):
+        """Only zeros can be placeholders; calculated values stay."""
+        assert is_unpopulated_zero(1.161, 0, {}) is False
+
+    def test_absent_amount_is_not_flagged(self):
+        """A nutrient with no amount is already missing, not a placeholder."""
+        assert is_unpopulated_zero(None, 0, {}) is False
+
+    def test_non_numeric_amount_is_not_flagged(self):
+        """A malformed amount must not be misread as a zero."""
+        assert is_unpopulated_zero("n/a", 0, {}) is False
+
+
+class TestExtractNutrientsUnpopulatedZeros:
+    """extract_nutrients flags unpopulated zeros without changing their value."""
+
+    def test_unpopulated_zero_is_flagged_but_kept(self):
+        """EPA/DHA published as bare zeros keep the 0 and are flagged for review."""
+        result = extract_nutrients(MOCK_UNPOPULATED_ZERO_RESPONSE, [1278, 1272])
+
+        assert result[1278]["value"] == 0.0
+        assert result[1272]["value"] == 0.0
+        assert result[1278]["unpopulated_zero"] is True
+        assert result[1272]["unpopulated_zero"] is True
+
+    def test_assumed_zero_is_preserved(self):
+        """Carbohydrate's asserted zero stays a real value."""
+        result = extract_nutrients(MOCK_UNPOPULATED_ZERO_RESPONSE, [1005])
+
+        assert result[1005]["value"] == 0.0
+        assert result[1005]["unpopulated_zero"] is False
+
+    def test_calculated_zero_is_preserved(self):
+        """Vitamin A's calculated zero stays a real value."""
+        result = extract_nutrients(MOCK_UNPOPULATED_ZERO_RESPONSE, [1106])
+
+        assert result[1106]["value"] == 0.0
+        assert result[1106]["unpopulated_zero"] is False
+
+    def test_calculated_non_zero_is_preserved(self):
+        """Amino acids carry no data points but are not zeros."""
+        result = extract_nutrients(MOCK_UNPOPULATED_ZERO_RESPONSE, [1220])
+
+        assert result[1220]["value"] == 1.161
+        assert result[1220]["unpopulated_zero"] is False
+
+    def test_measured_nutrient_is_preserved(self):
+        """A normal analysed nutrient is untouched."""
+        result = extract_nutrients(MOCK_UNPOPULATED_ZERO_RESPONSE, [1003])
+
+        assert result[1003]["value"] == 19.55
+        assert result[1003]["unpopulated_zero"] is False
+
+    def test_get_unpopulated_zero_ids(self):
+        """Helper collects exactly the demoted nutrients."""
+        result = extract_nutrients(
+            MOCK_UNPOPULATED_ZERO_RESPONSE, [1003, 1005, 1106, 1220, 1272, 1278]
+        )
+
+        assert sorted(get_unpopulated_zero_ids(result)) == [1272, 1278]
+
+    @patch('usda_api.fetch_food_data')
+    def test_fetch_sr_legacy_reports_unpopulated_zeros(self, mock_fetch):
+        """fetch_sr_legacy surfaces the flagged nutrient ids to callers."""
+        mock_fetch.return_value = MOCK_UNPOPULATED_ZERO_RESPONSE
+
+        result = fetch_sr_legacy(174326, api_key="test_key")
+
+        assert sorted(result["unpopulated_zeros"]) == [1272, 1278]
+        assert result["nutrients"][1278]["value"] == 0.0
+        assert result["nutrients"][1003]["value"] == 19.55
+
+
+class TestGetDerivationFields:
+    """Derivation evidence must be found in either payload shape."""
+
+    def test_reads_nested_shape(self):
+        """The /food/{id} full format nests derivation."""
+        fn = {"foodNutrientDerivation": {"code": "Z", "description": "Assumed zero"}}
+        assert get_derivation_fields(fn)["code"] == "Z"
+
+    def test_reads_flattened_shape(self):
+        """/foods/search and abridged flatten derivation to top level."""
+        fn = {"derivationCode": "Z", "derivationDescription": "Assumed zero"}
+
+        result = get_derivation_fields(fn)
+
+        assert result["code"] == "Z"
+        assert result["description"] == "Assumed zero"
+
+    def test_absent_derivation_is_empty(self):
+        """A row with no derivation at all yields no evidence."""
+        assert get_derivation_fields({"amount": 0.0}) == {}
+
+
+class TestExtractNutrientsFlattenedShape:
+    """The nutrientId payload shape flattens derivation; zeros must survive it."""
+
+    FLAT = {
+        "foodNutrients": [
+            {"nutrientId": 1005, "nutrientName": "Carbohydrate", "unitName": "G",
+             "value": 0.0, "dataPoints": 0,
+             "derivationCode": "Z", "derivationDescription": "Assumed zero"},
+            {"nutrientId": 1278, "nutrientName": "EPA", "unitName": "G",
+             "value": 0.0, "dataPoints": 0},
+        ]
+    }
+
+    def test_flattened_assumed_zero_is_preserved(self):
+        """A 'Z' in the flattened shape must not be read as absent derivation."""
+        result = extract_nutrients(self.FLAT, [1005])
+
+        assert result[1005]["value"] == 0.0
+        assert result[1005]["unpopulated_zero"] is False
+
+    def test_flattened_bare_zero_is_flagged(self):
+        """A genuinely bare zero in the flattened shape is flagged, not removed."""
+        result = extract_nutrients(self.FLAT, [1278])
+
+        assert result[1278]["value"] == 0.0
+        assert result[1278]["unpopulated_zero"] is True
+
+
+class TestExtractNutrientsDuplicateRows:
+    """Later rows overwrite earlier ones; value and flag must stay consistent."""
+
+    def test_duplicate_row_keeps_value_and_flag_consistent(self):
+        """The flag must describe the value actually retained."""
+        payload = {"foodNutrients": [
+            {"nutrient": {"id": 1106, "name": "Vitamin A", "unitName": "UG"},
+             "amount": 2.61, "dataPoints": 6,
+             "foodNutrientDerivation": {"code": "NC", "description": "Calculated"}},
+            {"nutrient": {"id": 1106, "name": "Vitamin A", "unitName": "UG"},
+             "amount": 0.0, "dataPoints": 0},
+        ]}
+
+        result = extract_nutrients(payload, [1106])
+
+        # The last row wins; its bare zero is flagged and its value retained.
+        assert result[1106]["value"] == 0.0
+        assert result[1106]["unpopulated_zero"] is True
+
+    def test_missing_entry_helper_shape(self):
+        """The helper is the single definition of an absent nutrient."""
+        entry = missing_nutrient_entry(unpopulated_zero=True)
+
+        assert entry["value"] is None
+        assert entry["name"] is None
+        assert entry["unpopulated_zero"] is True
+
+
 class TestExtractNutrientsAbridged:
     """Tests for extract_nutrients with abridged format responses."""
 
@@ -428,7 +654,7 @@ class TestGetDerivationDescription:
 
     def test_falls_back_to_code_lookup(self):
         """Test falls back to code lookup when no description."""
-        derivation = {"code": "C"}
+        derivation = {"code": "NC"}
         result = get_derivation_description(derivation)
         assert result == "Calculated"
 
@@ -453,18 +679,41 @@ class TestDerivationCodes:
     """Tests for DERIVATION_CODES constant."""
 
     def test_contains_common_codes(self):
-        """Test DERIVATION_CODES contains common codes."""
+        """Common real codes are present (the old table asserted invented ones)."""
         assert "A" in DERIVATION_CODES
-        assert "C" in DERIVATION_CODES
-        assert "E" in DERIVATION_CODES
+        assert "NC" in DERIVATION_CODES
+        assert "Z" in DERIVATION_CODES
 
     def test_analytical_is_correct(self):
         """Test Analytical derivation is correct."""
         assert DERIVATION_CODES["A"] == "Analytical"
 
     def test_calculated_is_correct(self):
-        """Test Calculated derivation is correct."""
-        assert DERIVATION_CODES["C"] == "Calculated"
+        """NC is USDA's 'Calculated' — the old table inverted it to 'Not Calculated'."""
+        assert DERIVATION_CODES["NC"] == "Calculated"
+
+    def test_ar_is_linear_regression_not_assumed_zero(self):
+        """AR meant 'Analytical, Assumed Zero' in the old table — wrong."""
+        assert DERIVATION_CODES["AR"] == "Analytical data; derived by linear regression"
+
+    def test_table_matches_usda_csv_exactly(self):
+        """The table is generated from USDA's own derivation CSV — keep it that way.
+
+        The bulk datasets are gitignored, so skip when they aren't present.
+        """
+        import csv
+
+        import cv_config
+
+        csv_path = cv_config.FDC_SRL_DIR / "food_nutrient_derivation.csv"
+        if not csv_path.exists():
+            pytest.skip(f"USDA bulk dataset not present at {csv_path}")
+
+        expected = {
+            row["code"]: row["description"].strip()
+            for row in csv.DictReader(open(csv_path))
+        }
+        assert DERIVATION_CODES == expected
 
 
 class TestFetchSrLegacy:
