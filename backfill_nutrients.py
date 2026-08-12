@@ -47,8 +47,9 @@ def backup_database(backup_dir: Path) -> Path:
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     backup_path = backup_dir / f"{DATABASE_NAME}_{timestamp}.sql"
 
-    # Use libpq's pg_dump to match server version
-    pg_dump_bin = "/opt/homebrew/Cellar/libpq/17.6/bin/pg_dump"
+    # postgresql@18's client dumps any server ≤ 18 (local 17/18, Railway 18);
+    # /opt/homebrew/opt/... is the stable keg path, unlike versioned Cellar paths
+    pg_dump_bin = "/opt/homebrew/opt/postgresql@18/bin/pg_dump"
     cmd = [
         pg_dump_bin,
         "-h", "localhost",
