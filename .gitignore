@@ -43,3 +43,7 @@ data/USDA data/
 data/nutrition_database*.csv
 data/ingredients.csv
 data/ingredient_nutrients.csv
+
+# CVB Feed Table 2023 — © Stichting CVB, no redistribution permitted.
+# Restore URL in data/README.md ("Not tracked" table).
+data/cvb_nl/
