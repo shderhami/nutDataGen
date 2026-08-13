@@ -291,7 +291,8 @@ RULES:
 4. {_PROVENANCE_RULE}
 
 PRIORITY SOURCES:
-- National DBs: Japanese MEXT, UK CoFID, Australian AFCD, Canadian CNF, German BLS, Danish DTU, Dutch NEVO, French CIQUAL
+- National DBs: Japanese MEXT, UK CoFID, Australian AFCD, German BLS, Danish DTU, Dutch NEVO, French CIQUAL
+- Do NOT cite the Canadian CNF: its food profiles are borrowed from USDA SR (<=SR27), so it is not independent of the source being evaluated
 - International: FAO/INFOODS, EuroFIR
 - Journals (2015+): J Food Comp Anal, Food Chemistry, J Agric Food Chem, Br J Nutr
 - Pet nutrition: NRC 2006, J Anim Physiol Anim Nutr
@@ -336,7 +337,8 @@ RULES:
 4. {_PROVENANCE_RULE}
 
 PRIORITY SOURCES:
-- National DBs: Japanese MEXT, UK CoFID, Australian AFCD, Canadian CNF, German BLS, Danish DTU, Dutch NEVO, French CIQUAL
+- National DBs: Japanese MEXT, UK CoFID, Australian AFCD, German BLS, Danish DTU, Dutch NEVO, French CIQUAL
+- Do NOT cite the Canadian CNF: its food profiles are borrowed from USDA SR (<=SR27), so it is not independent of the source being evaluated
 - International: FAO/INFOODS, EuroFIR
 - Journals (2015+): J Food Comp Anal, Food Chemistry, J Agric Food Chem, Br J Nutr
 - Pet nutrition: NRC 2006, J Anim Physiol Anim Nutr
@@ -388,7 +390,8 @@ RULES:
 3. {_PROVENANCE_RULE}
 
 PRIORITY SOURCES:
-- National DBs: Japanese MEXT, UK CoFID, Australian AFCD, Canadian CNF, German BLS, Danish DTU, Dutch NEVO, French CIQUAL
+- National DBs: Japanese MEXT, UK CoFID, Australian AFCD, German BLS, Danish DTU, Dutch NEVO, French CIQUAL
+- Do NOT cite the Canadian CNF: its food profiles are borrowed from USDA SR (<=SR27), so it is not independent of the source being evaluated
 - International: FAO/INFOODS, EuroFIR
 - Journals (2015+): J Food Comp Anal, Food Chemistry, J Agric Food Chem, Br J Nutr
 - Pet nutrition: NRC 2006, J Anim Physiol Anim Nutr
@@ -430,7 +433,8 @@ RULES:
 3. If the nutrient is genuinely absent from this food (not merely unmeasured), use recommendation "confirmed_zero" with recommended_value 0. Reserve "insufficient_data" for values that are genuinely undeterminable.
 
 PRIORITY SOURCES:
-- National DBs: Japanese MEXT, UK CoFID, Australian AFCD, Canadian CNF, German BLS, Danish DTU, Dutch NEVO, French CIQUAL
+- National DBs: Japanese MEXT, UK CoFID, Australian AFCD, German BLS, Danish DTU, Dutch NEVO, French CIQUAL
+- Do NOT cite the Canadian CNF: its food profiles are borrowed from USDA SR (<=SR27), so it is not independent of the source being evaluated
 - International: FAO/INFOODS, EuroFIR
 - Journals (2015+): J Food Comp Anal, Food Chemistry, J Agric Food Chem, Br J Nutr
 - Pet nutrition: NRC 2006, J Anim Physiol Anim Nutr

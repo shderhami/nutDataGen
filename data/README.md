@@ -108,7 +108,8 @@ the underlying survey and its vintage, not "CoFID 2021".
 
 Downloaded to give the in-session AI-validation agent local, independent
 evidence for the databases the prompts in `ai_validation.py` already cite
-(MEXT, AFCD, BLS, Danish DTU, CIQUAL). All verified on download: correct file
+(MEXT, AFCD, BLS, Danish DTU, CIQUAL). **Usage guide — which source to check
+for which nutrient, plus file-reading quirks: `../Docs/reference_sources_guide.md`.** All verified on download: correct file
 type, expected sheets/columns, and presence of target foods (raw livers,
 hearts, Atlantic salmon, blue mussel, eggs). SHA-256 prefixes recorded below.
 
