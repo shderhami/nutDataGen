@@ -14,8 +14,8 @@ resolve_cv() returns a dict of the two CV columns + provenance:
 plus cv_tier / cv_method / cv_backing_n / cv_effective_n / cv_confidence_tier /
 cv_class_key / cv_method_inputs / cv_calibration_flag.
 
-cv_tier vocabulary: none | corrector | supplement | sr28_se | fdc_range | component |
-class_pool | nutrient_prior.
+cv_tier vocabulary: none | corrector | supplement | literature_range | sr28_se |
+fdc_range | component | class_pool | nutrient_prior.
 
 All CVs are FRACTIONS in (0, CV_CAP].  Consumer = COALESCE(measured, category).
 """
@@ -194,7 +194,23 @@ def resolve_cv(*, nutrient_id: int, nutrient_nbr: Optional[int], ingredient_clas
         sr28_se_cv = sr28_n = None
     measured_cv = measured_n = measured_tier = measured_method = m_inputs = None
     calib_flag = None
-    if sr28_se_cv is not None:
+    # 2a. Literature-sourced value with its own coherent {min, max, n}: the row's
+    #     stats ARE the same-source evidence (the validation workflow stores value
+    #     and stats from one citation together), while sr28/component candidates
+    #     describe the superseded USDA estimate of a different sample. Bracket
+    #     guard: a mean always lies within its own range, so stats that fail it
+    #     are stale leftovers from an overridden value and must not drive a CV.
+    if (source == "literature" and own_range_cv is not None
+            and own_min is not None and own_max is not None
+            and own_min <= value <= own_max):
+        measured_cv, measured_n = own_range_cv, own_n
+        measured_tier, measured_method = "literature_range", "wan_range"
+        m_inputs = {"min": own_min, "max": own_max, "n": own_n}
+        if sr28_se_cv is not None:
+            m_inputs["superseded_bulk_cv"] = round(sr28_se_cv, 6)
+        if component_cv is not None:
+            m_inputs["superseded_component_cv"] = round(component_cv, 6)
+    elif sr28_se_cv is not None:
         is_se = (sr28_method == "se_sqrt_n")
         measured_cv, measured_n = sr28_se_cv, sr28_n
         measured_tier = "sr28_se" if is_se else "fdc_range"

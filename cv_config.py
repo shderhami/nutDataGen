@@ -14,7 +14,7 @@ import hashlib
 import re
 from pathlib import Path
 
-PIPELINE_VERSION = "cv-v6"   # v6: AST-normalized version hashing + auto-assign on add (no CV value change from v5)
+PIPELINE_VERSION = "cv-v7"   # v7: literature_range measured tier — a literature-sourced row whose own {min,max,n} bracket the value resolves its CV from that range, preempting USDA sr28/component candidates (DB validation initiative)
 # v5: + corrector-supplement delivered-spec CV (Tier 0)
 # v4: + cross-source CV>1 (SD>mean) plausibility guard
 # v3: + muscle poultry/red sub-pools (v2 = prep-filter + curation)
