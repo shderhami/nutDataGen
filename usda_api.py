@@ -273,6 +273,75 @@ def fetch_food_data(fdc_id: int, api_key: Optional[str] = None) -> dict:
         raise USDAAPIError(f"Request failed: {str(e)}")
 
 
+VITAMIN_A_RAE_ID = 1106
+RETINOL_ID = 1105
+RETINOL_NUMBER = "319"      # FDC nutrient number for Retinol (abridged payloads)
+
+
+def _retinol_note(desc: str) -> str:
+    """Provenance marker for a Vitamin A value taken from the Retinol row."""
+    note = "RAE from Retinol (1105); cats derive vitamin A from retinol only"
+    return f"{desc}; {note}" if desc else note
+
+
+def _retinol_fallback(result: dict, food_nutrients: list, abridged: bool) -> None:
+    """Fill Vitamin A RAE (1106) from Retinol (1105) when the payload has no RAE row.
+
+    Foundation Foods often publish Retinol without a Vitamin A RAE row (e.g. FDC
+    2684441 farmed salmon: retinol 2.15 analytical, no 1106), which made vitamin A
+    look SR-only and silently dropped the modern measurement — caught during the
+    2026-08-17 DB validation. For this cat-specific database RAE := retinol (cats
+    cannot convert carotenoids; matches the plant-vitamin-A-is-zero convention).
+    A published RAE row — including a zero — always wins; the fallback fires only
+    when 1106 is entirely absent from the payload.
+    """
+    entry = result.get(VITAMIN_A_RAE_ID)
+    if entry is None or entry.get("value") is not None:
+        return
+    for fn in food_nutrients:
+        if abridged:
+            if str(fn.get("number", "")) != RETINOL_NUMBER:
+                continue
+            derivation = get_derivation_fields(fn)
+            value = fn.get("amount")
+            result[VITAMIN_A_RAE_ID] = {
+                "name": fn.get("name"),
+                "value": value,
+                "unit": fn.get("unitName"),
+                "num_samples": None,
+                "min_value": None,
+                "max_value": None,
+                "median_value": None,
+                "year_acquired": None,
+                "derivation_description": _retinol_note(fn.get("derivationDescription", "")),
+                "unpopulated_zero": is_unpopulated_zero(value, None, derivation),
+            }
+            return
+        nid = fn["nutrient"].get("id") if "nutrient" in fn else fn.get("nutrientId")
+        if nid != RETINOL_ID:
+            continue
+        if "nutrient" in fn:
+            name, unit, value = fn["nutrient"].get("name"), fn["nutrient"].get("unitName"), fn.get("amount")
+        else:
+            name, unit, value = fn.get("nutrientName"), fn.get("unitName"), fn.get("value")
+        derivation = get_derivation_fields(fn)
+        data_points = fn.get("dataPoints") or fn.get("numberOfDataPoints")
+        year = str(fn.get("minYearAcquired")) if fn.get("minYearAcquired") else None
+        result[VITAMIN_A_RAE_ID] = {
+            "name": name,
+            "value": value,
+            "unit": unit,
+            "num_samples": data_points,
+            "min_value": fn.get("min"),
+            "max_value": fn.get("max"),
+            "median_value": fn.get("median"),
+            "year_acquired": year,
+            "derivation_description": _retinol_note(get_derivation_description(derivation)),
+            "unpopulated_zero": is_unpopulated_zero(value, data_points, derivation),
+        }
+        return
+
+
 def extract_nutrients(food_data: dict, nutrient_ids: list[int]) -> dict:
     """
     Extract specific nutrients from API response with full metadata.
@@ -339,6 +408,7 @@ def extract_nutrients(food_data: dict, nutrient_ids: list[int]) -> dict:
                         fn.get("amount"), None, derivation
                     ),
                 }
+        _retinol_fallback(result, food_nutrients, abridged=True)
         return result
 
     for fn in food_nutrients:
@@ -421,6 +491,7 @@ def extract_nutrients(food_data: dict, nutrient_ids: list[int]) -> dict:
                     "unpopulated_zero": unpopulated
                 }
 
+    _retinol_fallback(result, food_nutrients, abridged=False)
     return result
 
 

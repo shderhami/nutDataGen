@@ -857,3 +857,49 @@ class TestLiveAPI:
         """Test that invalid FDC ID raises error."""
         with pytest.raises(USDAAPIError):
             fetch_food_data(999999999)
+
+
+class TestRetinolFallback:
+    """Vitamin A RAE (1106) falls back to Retinol (1105) when RAE is absent.
+
+    Foundation Foods often publish retinol without an RAE row (FDC 2684441
+    salmon), which made vitamin A look SR-only. RAE := retinol for cats.
+    """
+
+    _RETINOL_FULL = {
+        "nutrient": {"id": 1105, "name": "Retinol", "unitName": "µg"},
+        "amount": 2.15, "dataPoints": 8, "min": 1.09, "max": 3.0, "median": 2.0,
+        "minYearAcquired": 2023,
+        "foodNutrientDerivation": {"code": "A", "description": "Analytical"},
+    }
+
+    def test_foundation_retinol_only_fills_rae(self):
+        result = extract_nutrients({"foodNutrients": [self._RETINOL_FULL]}, [1106])
+        entry = result[1106]
+        assert entry["value"] == 2.15
+        assert entry["num_samples"] == 8
+        assert entry["min_value"] == 1.09 and entry["max_value"] == 3.0
+        assert "RAE from Retinol (1105)" in entry["derivation_description"]
+        assert entry["unpopulated_zero"] is False
+
+    def test_published_rae_row_wins_even_when_zero(self):
+        rae = {"nutrient": {"id": 1106, "name": "Vitamin A, RAE", "unitName": "µg"},
+               "amount": 0.0, "dataPoints": 3,
+               "foodNutrientDerivation": {"code": "A", "description": "Analytical"}}
+        result = extract_nutrients({"foodNutrients": [rae, self._RETINOL_FULL]}, [1106])
+        assert result[1106]["value"] == 0.0
+        assert "Retinol" not in (result[1106]["derivation_description"] or "")
+
+    def test_abridged_payload_number_319(self):
+        payload = {"_abridged": True, "foodNutrients": [
+            {"number": "319", "name": "Retinol", "unitName": "µg", "amount": 5.2,
+             "derivationCode": "A", "derivationDescription": "Analytical"}]}
+        result = extract_nutrients(payload, [1106])
+        assert result[1106]["value"] == 5.2
+        assert "RAE from Retinol (1105)" in result[1106]["derivation_description"]
+
+    def test_backfill_request_without_1106_is_untouched(self):
+        """backfill_nutrients requests only [1293, 1280]; no 1106 key may appear."""
+        result = extract_nutrients({"foodNutrients": [self._RETINOL_FULL]}, [1293, 1280])
+        assert 1106 not in result
+        assert set(result) == {1293, 1280}
