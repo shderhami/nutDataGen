@@ -1,0 +1,154 @@
+food_id,nutrient_id,source,source_food_id,source_food,param,value,n,min,max,cv_wan,source_refs
+10002,1003,FCDB 6.1,712,"Liver, broiler or fryer, raw",Protein,19.1054054054054,36,17.9,21.3,0.042083,"1127, 1840, 1312"
+10002,1004,FCDB 6.1,712,"Liver, broiler or fryer, raw",Fat,4.19642857142857,28,3.5,5.6,0.124377,"1818, 1840"
+10002,1007,FCDB 6.1,712,"Liver, broiler or fryer, raw",Ash,1.36666666666667,36,1.22,1.8,0.100358,"1127, 1840"
+10002,1051,FCDB 6.1,712,"Liver, broiler or fryer, raw",Water,74.9333333333333,36,73.0,77.3,0.01357,"1127, 1840"
+10002,1089,FCDB 6.1,712,"Liver, broiler or fryer, raw",Iron,9.14761904761905,42,4.51,13.2,0.218325,"1043, 1127, 1840"
+10002,1101,FCDB 6.1,712,"Liver, broiler or fryer, raw",Manganese,0.255,4,0.236,0.298,0.115876,1938
+10002,1103,FCDB 6.1,712,"Liver, broiler or fryer, raw",Selenium,50.4905882352941,85,31.5,76.6,0.182995,"1886, 1888, 1907, 1909"
+10002,1106,FCDB 6.1,712,"Liver, broiler or fryer, raw",Retinol,9371.42857142857,42,5100.0,14200.0,0.223166,"1076, 1127, 1840"
+10002,1166,FCDB 6.1,712,"Liver, broiler or fryer, raw",Riboflavin (Vitamin B2),3.4,4,3.04,3.74,0.09812,1022
+10002,1175,FCDB 6.1,712,"Liver, broiler or fryer, raw",Vitamin B6,0.8,4,0.665,1.07,0.241271,1025
+10009,1089,FCDB 6.1,387,"Mussel, raw",Iron,7.7,5,1.0,12.7,0.643978,1368
+10009,1091,FCDB 6.1,387,"Mussel, raw",Phosphorus,145.0,4,102.0,170.0,0.223502,1367
+10009,1095,FCDB 6.1,387,"Mussel, raw",Zinc,3.4,4,2.0,4.5,0.35043,1368
+10009,1098,FCDB 6.1,387,"Mussel, raw",Copper,0.22,6,0.02,0.36,0.602962,1368
+10009,1103,FCDB 6.1,387,"Mussel, raw",Selenium,46.0,11,29.7,65.1,0.241513,1812
+10010,1003,FCDB 6.1,1662,"Eggs, chicken, battery hens, raw",Protein,11.98828125,16,10.5,12.6875,0.051579,2071
+10010,1004,FCDB 6.1,1662,"Eggs, chicken, battery hens, raw",Fat,9.403125,16,8.2,9.9,0.051105,2071
+10010,1007,FCDB 6.1,1662,"Eggs, chicken, battery hens, raw",Ash,1.041875,16,0.99,1.09,0.027131,2071
+10010,1051,FCDB 6.1,1662,"Eggs, chicken, battery hens, raw",Water,76.45,16,75.8,77.5,0.006286,2071
+10010,1087,FCDB 6.1,1662,"Eggs, chicken, battery hens, raw",Calcium,50.375,16,46.0,61.0,0.084171,2071
+10010,1088,FCDB 6.1,1662,"Eggs, chicken, battery hens, raw",Chloride,193.8125,16,186.0,213.0,0.039379,2071
+10010,1089,FCDB 6.1,1662,"Eggs, chicken, battery hens, raw",Iron,1.781875,16,1.59,2.43,0.133256,2071
+10010,1090,FCDB 6.1,1662,"Eggs, chicken, battery hens, raw",Magnesium,11.5,16,11.0,12.0,0.02458,2071
+10010,1091,FCDB 6.1,1662,"Eggs, chicken, battery hens, raw",Phosphorus,174.625,16,163.0,215.0,0.084175,2071
+10010,1092,FCDB 6.1,1662,"Eggs, chicken, battery hens, raw",Potassium,132.1875,16,122.0,141.0,0.04063,2071
+10010,1093,FCDB 6.1,1662,"Eggs, chicken, battery hens, raw",Sodium,137.375,16,130.0,151.0,0.043211,2071
+10010,1095,FCDB 6.1,1662,"Eggs, chicken, battery hens, raw",Zinc,1.245,16,1.13,1.49,0.081737,2071
+10010,1098,FCDB 6.1,1662,"Eggs, chicken, battery hens, raw",Copper,0.0595,16,0.053,0.073,0.095016,2071
+10010,1100,FCDB 6.1,1662,"Eggs, chicken, battery hens, raw",Iodine,25.875,16,19.0,41.0,0.240341,2071
+10010,1101,FCDB 6.1,1662,"Eggs, chicken, battery hens, raw",Manganese,0.0391875,16,0.031,0.055,0.173121,2071
+10010,1103,FCDB 6.1,1662,"Eggs, chicken, battery hens, raw",Selenium,19.875,16,11.0,28.0,0.241784,2071
+10010,1106,FCDB 6.1,1662,"Eggs, chicken, battery hens, raw",Retinol,198.4375,16,168.0,221.0,0.075498,2071
+10010,1109,FCDB 6.1,1662,"Eggs, chicken, battery hens, raw",alpha-Tocopherol,3.36875,16,2.4,5.3,0.24334,2071
+10010,1110,FCDB 6.1,1662,"Eggs, chicken, battery hens, raw",Vitamin D3,1.316,5,1.2,1.51,0.099835,2071
+10010,1165,FCDB 6.1,1662,"Eggs, chicken, battery hens, raw",Thiamin (Vitamin B1),0.076375,16,0.062,0.087,0.092528,2071
+10010,1166,FCDB 6.1,1662,"Eggs, chicken, battery hens, raw",Riboflavin (Vitamin B2),0.42375,16,0.37,0.46,0.060037,2071
+10010,1167,FCDB 6.1,1662,"Eggs, chicken, battery hens, raw",Niacin,0.08,9,0.07,0.1,0.125489,2071
+10010,1170,FCDB 6.1,1662,"Eggs, chicken, battery hens, raw",Pantothenic acid,1.71625,16,1.21,2.42,0.199292,2071
+10010,1175,FCDB 6.1,1662,"Eggs, chicken, battery hens, raw",Vitamin B6,0.11025,16,0.093,0.124,0.079482,2071
+10010,1176,FCDB 6.1,1662,"Eggs, chicken, battery hens, raw",Biotin,23.55,16,22.5,24.2,0.020405,2071
+10010,1178,FCDB 6.1,1662,"Eggs, chicken, battery hens, raw",Vitamin B12,1.14,16,0.65,1.76,0.275235,2071
+10013,1003,FCDB 6.1,742,"Liver, ox, raw",Protein,20.3,48,17.5,22.3,0.053073,"1070, 1840"
+10013,1004,FCDB 6.1,742,"Liver, ox, raw",Fat,3.03823529411765,51,1.4,5.0,0.263202,"1818, 1070, 1840"
+10013,1007,FCDB 6.1,742,"Liver, ox, raw",Ash,1.355,48,1.29,1.8,0.084482,"1070, 1840"
+10013,1051,FCDB 6.1,742,"Liver, ox, raw",Water,71.95,48,68.2,74.5,0.019654,"1070, 1840"
+10013,1087,FCDB 6.1,742,"Liver, ox, raw",Calcium,4.15,6,3.44,4.88,0.135378,1015
+10013,1089,FCDB 6.1,742,"Liver, ox, raw",Iron,6.05,48,3.2,13.3,0.374712,"1070, 1840"
+10013,1090,FCDB 6.1,742,"Liver, ox, raw",Magnesium,21.0,4,18.0,23.0,0.113473,1348
+10013,1091,FCDB 6.1,742,"Liver, ox, raw",Phosphorus,348.0,6,315.0,368.0,0.05942,1015
+10013,1101,FCDB 6.1,742,"Liver, ox, raw",Manganese,0.38,4,0.32,0.46,0.175584,1348
+10013,1103,FCDB 6.1,742,"Liver, ox, raw",Selenium,37.4,14,14.0,71.7,0.451752,1888
+10013,1106,FCDB 6.1,742,"Liver, ox, raw",Retinol,15500.0,24,3100.0,36000.0,0.545117,1840
+10013,1167,FCDB 6.1,742,"Liver, ox, raw",Niacin,17.0,10,15.0,19.0,0.076066,1018
+10013,1175,FCDB 6.1,742,"Liver, ox, raw",Vitamin B6,1.0,4,0.992,1.1,0.051471,1025
+10014,1003,FCDB 6.1,1658,"Salmon, atlantic, aquaculture, raw",Protein,15.8479166666667,24,12.3036458333333,18.4911458333333,0.100269,"2068, 2131"
+10014,1004,FCDB 6.1,1658,"Salmon, atlantic, aquaculture, raw",Fat,18.325,12,11.9,24.1,0.203591,2131
+10014,1007,FCDB 6.1,1658,"Salmon, atlantic, aquaculture, raw",Ash,1.14125,24,0.81,2.1,0.290292,"2068, 2131"
+10014,1051,FCDB 6.1,1658,"Salmon, atlantic, aquaculture, raw",Water,64.6858333333333,24,59.11,69.1,0.039663,"2068, 2131"
+10014,1087,FCDB 6.1,1658,"Salmon, atlantic, aquaculture, raw",Calcium,8.68333333333333,12,6.1,11.0,0.172564,2131
+10014,1089,FCDB 6.1,1658,"Salmon, atlantic, aquaculture, raw",Iron,0.222,14,0.16,0.35,0.250609,"2068, 2131"
+10014,1090,FCDB 6.1,1658,"Salmon, atlantic, aquaculture, raw",Magnesium,25.5571428571429,14,23.0,28.0,0.057287,"2068, 2131"
+10014,1091,FCDB 6.1,1658,"Salmon, atlantic, aquaculture, raw",Phosphorus,218.785714285714,14,190.0,240.0,0.066919,"2068, 2131"
+10014,1092,FCDB 6.1,1658,"Salmon, atlantic, aquaculture, raw",Potassium,361.571428571429,14,300.0,420.0,0.097181,"2068, 2131"
+10014,1093,FCDB 6.1,1658,"Salmon, atlantic, aquaculture, raw",Sodium,46.7857142857143,14,33.0,80.0,0.294158,"2068, 2131"
+10014,1095,FCDB 6.1,1658,"Salmon, atlantic, aquaculture, raw",Zinc,0.317142857142857,14,0.27,0.4,0.120028,"2068, 2131"
+10014,1098,FCDB 6.1,1658,"Salmon, atlantic, aquaculture, raw",Copper,0.0378571428571429,14,0.02,0.06,0.309391,"2068, 2131"
+10014,1100,FCDB 6.1,1658,"Salmon, atlantic, aquaculture, raw",Iodine,2.73571428571429,14,5.6,7.7,0.224773,"2068, 2131"
+10014,1101,FCDB 6.1,1658,"Salmon, atlantic, aquaculture, raw",Manganese,0.00228571428571429,14,0.007,0.015,1.024858,"2068, 2131"
+10014,1103,FCDB 6.1,1658,"Salmon, atlantic, aquaculture, raw",Selenium,16.6,14,3.5,26.0,0.39689,"2068, 2131"
+10014,1110,FCDB 6.1,1658,"Salmon, atlantic, aquaculture, raw",Vitamin D3,6.07,14,2.3,7.3,0.2412,"2068, 2131"
+10018,1003,FCDB 6.1,215,"Eggs, chicken, egg white, raw",Protein,10.171875,16,9.0,11.0625,0.057316,2071
+10018,1007,FCDB 6.1,215,"Eggs, chicken, egg white, raw",Ash,0.72,16,0.67,0.77,0.03926,2071
+10018,1051,FCDB 6.1,215,"Eggs, chicken, egg white, raw",Water,88.25625,16,87.4,89.3,0.006085,2071
+10018,1087,FCDB 6.1,215,"Eggs, chicken, egg white, raw",Calcium,6.625,16,5.0,11.0,0.256006,2071
+10018,1088,FCDB 6.1,215,"Eggs, chicken, egg white, raw",Chloride,195.5625,16,183.0,218.0,0.05059,2071
+10018,1090,FCDB 6.1,215,"Eggs, chicken, egg white, raw",Magnesium,11.375,16,10.0,12.0,0.049701,2071
+10018,1091,FCDB 6.1,215,"Eggs, chicken, egg white, raw",Phosphorus,13.5,16,10.0,17.0,0.146571,2071
+10018,1092,FCDB 6.1,215,"Eggs, chicken, egg white, raw",Potassium,146.6875,16,132.0,161.0,0.055884,2071
+10018,1093,FCDB 6.1,215,"Eggs, chicken, egg white, raw",Sodium,177.25,16,167.0,197.0,0.047843,2071
+10018,1098,FCDB 6.1,215,"Eggs, chicken, egg white, raw",Copper,0.0213125,16,0.016,0.033,0.225476,2071
+10018,1100,FCDB 6.1,215,"Eggs, chicken, egg white, raw",Iodine,2.7375,16,1.7,4.3,0.268475,2071
+10018,1103,FCDB 6.1,215,"Eggs, chicken, egg white, raw",Selenium,8.675,16,3.0,12.9,0.32259,2071
+10018,1165,FCDB 6.1,215,"Eggs, chicken, egg white, raw",Thiamin (Vitamin B1),0.0066875,16,0.006,0.007,0.042269,2071
+10018,1166,FCDB 6.1,215,"Eggs, chicken, egg white, raw",Riboflavin (Vitamin B2),0.348125,16,0.28,0.38,0.081199,2071
+10018,1167,FCDB 6.1,215,"Eggs, chicken, egg white, raw",Niacin,0.104444444444444,9,0.09,0.13,0.128159,2071
+10018,1170,FCDB 6.1,215,"Eggs, chicken, egg white, raw",Pantothenic acid,0.175,16,0.12,0.25,0.209986,2071
+10018,1175,FCDB 6.1,215,"Eggs, chicken, egg white, raw",Vitamin B6,0.0032,5,0.002,0.006,0.529768,2071
+10018,1176,FCDB 6.1,215,"Eggs, chicken, egg white, raw",Biotin,11.74375,16,10.7,12.6,0.045733,2071
+10018,1177,FCDB 6.1,215,"Eggs, chicken, egg white, raw",Folate,7.0,4,2.6,11.8,0.626368,1374
+10019,1007,FCDB 6.1,1745,"Butternut squash, raw",Ash,0.8325,8,0.7,0.95,0.104693,2127
+10019,1051,FCDB 6.1,1745,"Butternut squash, raw",Water,90.22625,8,88.34,91.54,0.012365,2127
+10019,1087,FCDB 6.1,1745,"Butternut squash, raw",Calcium,44.625,8,27.0,61.0,0.26562,2127
+10019,1089,FCDB 6.1,1745,"Butternut squash, raw",Iron,0.18375,8,0.15,0.27,0.227674,2127
+10019,1090,FCDB 6.1,1745,"Butternut squash, raw",Magnesium,14.4875,8,9.9,18.0,0.194918,2127
+10019,1091,FCDB 6.1,1745,"Butternut squash, raw",Phosphorus,22.75,8,16.0,32.0,0.245188,2127
+10019,1092,FCDB 6.1,1745,"Butternut squash, raw",Potassium,368.75,8,290.0,480.0,0.179631,2127
+10019,1095,FCDB 6.1,1745,"Butternut squash, raw",Zinc,0.14125,8,0.07,0.19,0.296178,2127
+10019,1098,FCDB 6.1,1745,"Butternut squash, raw",Copper,0.05875,8,0.04,0.08,0.237363,2127
+10019,1101,FCDB 6.1,1745,"Butternut squash, raw",Manganese,0.045,8,0.02,0.12,0.774725,2127
+10019,1109,FCDB 6.1,1745,"Butternut squash, raw",alpha-Tocopherol,0.6485,8,0.421,0.776,0.190844,2127
+10019,1165,FCDB 6.1,1745,"Butternut squash, raw",Thiamin (Vitamin B1),0.03225,8,0.022,0.046,0.259443,2127
+10019,1166,FCDB 6.1,1745,"Butternut squash, raw",Riboflavin (Vitamin B2),0.0287875,8,0.0238,0.0336,0.118681,2127
+10019,1167,FCDB 6.1,1745,"Butternut squash, raw",Niacin,0.441,8,0.224,0.785,0.443491,2127
+10019,1170,FCDB 6.1,1745,"Butternut squash, raw",Pantothenic acid,0.258625,8,0.196,0.43,0.315432,2127
+10019,1175,FCDB 6.1,1745,"Butternut squash, raw",Vitamin B6,0.0778875,8,0.0617,0.0941,0.145023,2127
+10019,1176,FCDB 6.1,1745,"Butternut squash, raw",Biotin,1.75375,8,1.15,2.39,0.246498,2127
+10019,1177,FCDB 6.1,1745,"Butternut squash, raw",Folate,30.2625,8,23.9,43.0,0.220033,2127
+10021,1101,FCDB 6.1,940,"Beef, topside ""cap on"", raw",Manganese,0.011,32,0.006,0.016,0.219935,1348
+10031,1003,FCDB 6.1,1230,"Egg, chicken, yolk, raw",Protein,15.62109375,16,11.4375,16.25,0.087085,2071
+10031,1004,FCDB 6.1,1230,"Egg, chicken, yolk, raw",Fat,28.383,20,24.6,30.05,0.05139,"1818, 2071"
+10031,1007,FCDB 6.1,1230,"Egg, chicken, yolk, raw",Ash,1.686875,16,1.57,1.74,0.028487,2071
+10031,1051,FCDB 6.1,1230,"Egg, chicken, yolk, raw",Water,52.86875,16,51.4,55.4,0.021387,2071
+10031,1087,FCDB 6.1,1230,"Egg, chicken, yolk, raw",Calcium,137.75,16,127.0,172.0,0.092343,2071
+10031,1088,FCDB 6.1,1230,"Egg, chicken, yolk, raw",Chloride,189.4375,16,169.0,209.0,0.059687,2071
+10031,1089,FCDB 6.1,1230,"Egg, chicken, yolk, raw",Iron,5.330625,16,4.72,7.28,0.135752,2071
+10031,1090,FCDB 6.1,1230,"Egg, chicken, yolk, raw",Magnesium,11.875,16,11.0,14.0,0.071412,2071
+10031,1091,FCDB 6.1,1230,"Egg, chicken, yolk, raw",Phosphorus,498.875,16,457.0,621.0,0.092926,2071
+10031,1092,FCDB 6.1,1230,"Egg, chicken, yolk, raw",Potassium,103.0625,16,97.0,124.0,0.074054,2071
+10031,1093,FCDB 6.1,1230,"Egg, chicken, yolk, raw",Sodium,57.75,16,52.0,70.0,0.088106,2071
+10031,1095,FCDB 6.1,1230,"Egg, chicken, yolk, raw",Zinc,3.735625,16,3.38,4.48,0.083237,2071
+10031,1098,FCDB 6.1,1230,"Egg, chicken, yolk, raw",Copper,0.138125,16,0.13,0.18,0.102325,2071
+10031,1100,FCDB 6.1,1230,"Egg, chicken, yolk, raw",Iodine,71.9375,16,52.0,116.0,0.251484,2071
+10031,1101,FCDB 6.1,1230,"Egg, chicken, yolk, raw",Manganese,0.116875,16,0.09,0.16,0.169302,2071
+10031,1103,FCDB 6.1,1230,"Egg, chicken, yolk, raw",Selenium,42.375,16,28.0,58.0,0.200123,2071
+10031,1106,FCDB 6.1,1230,"Egg, chicken, yolk, raw",Retinol,595.4375,16,504.0,663.0,0.075482,2071
+10031,1109,FCDB 6.1,1230,"Egg, chicken, yolk, raw",alpha-Tocopherol,10.10625,16,7.1,15.9,0.246137,2071
+10031,1110,FCDB 6.1,1230,"Egg, chicken, yolk, raw",Vitamin D3,3.948,5,3.6,4.52,0.098761,2071
+10031,1165,FCDB 6.1,1230,"Egg, chicken, yolk, raw",Thiamin (Vitamin B1),0.216875,16,0.17,0.25,0.104272,2071
+10031,1166,FCDB 6.1,1230,"Egg, chicken, yolk, raw",Riboflavin (Vitamin B2),0.575,16,0.43,0.66,0.113069,2071
+10031,1167,FCDB 6.1,1230,"Egg, chicken, yolk, raw",Niacin,0.0344444444444445,9,0.03,0.04,0.097153,2071
+10031,1170,FCDB 6.1,1230,"Egg, chicken, yolk, raw",Pantothenic acid,4.796875,16,3.33,6.74,0.200947,2071
+10031,1175,FCDB 6.1,1230,"Egg, chicken, yolk, raw",Vitamin B6,0.32875,16,0.28,0.37,0.077386,2071
+10031,1176,FCDB 6.1,1230,"Egg, chicken, yolk, raw",Biotin,47.13125,16,44.6,48.6,0.02399,2071
+10031,1177,FCDB 6.1,1230,"Egg, chicken, yolk, raw",Folate,51.0,4,29.0,71.0,0.392482,1374
+10031,1178,FCDB 6.1,1230,"Egg, chicken, yolk, raw",Vitamin B12,3.4175,16,1.94,5.27,0.275436,2071
+10035,1003,FCDB 6.1,1019,"Beef, chuck, raw",Protein,18.8333333333333,6,17.6041666666667,20.2291666666667,0.05438,2176
+10035,1087,FCDB 6.1,1019,"Beef, chuck, raw",Calcium,5.27,6,3.96,7.79,0.283545,1015
+10035,1091,FCDB 6.1,1019,"Beef, chuck, raw",Phosphorus,175.0,6,163.0,184.0,0.046818,1015
+10035,1101,FCDB 6.1,1019,"Beef, chuck, raw",Manganese,0.011,32,0.006,0.016,0.219935,1348
+10037,1003,FCDB 6.1,739,"Pork, loin, lean, raw",Protein,22.34,42,20.4542857142857,23.6542857142857,0.03292,"1832, 1336"
+10037,1004,FCDB 6.1,739,"Pork, loin, lean, raw",Fat,1.9,18,0.6,4.0,0.491142,1832
+10037,1051,FCDB 6.1,739,"Pork, loin, lean, raw",Water,74.7,18,73.0,76.7,0.013594,1832
+10037,1089,FCDB 6.1,739,"Pork, loin, lean, raw",Iron,0.71,4,0.64,0.79,0.100687,1032
+10037,1091,FCDB 6.1,739,"Pork, loin, lean, raw",Phosphorus,195.0,4,190.0,200.0,0.02444,1032
+10037,1165,FCDB 6.1,739,"Pork, loin, lean, raw",Thiamin (Vitamin B1),0.81,4,0.63,1.02,0.229467,1032
+10037,1166,FCDB 6.1,739,"Pork, loin, lean, raw",Riboflavin (Vitamin B2),0.195,4,0.19,0.2,0.02444,1032
+10037,1176,FCDB 6.1,739,"Pork, loin, lean, raw",Biotin,2.6,4,1.4,4.8,0.623226,1071
+10037,1177,FCDB 6.1,739,"Pork, loin, lean, raw",Folate,2.1,4,0.8,4.6,0.862391,1071
+10038,1003,FCDB 6.1,789,"Pork, hand, lean, raw",Protein,19.6285714285714,42,18.6,21.2,0.030442,"1832, 1336"
+10038,1004,FCDB 6.1,789,"Pork, hand, lean, raw",Fat,5.3,18,3.1,7.4,0.222676,1832
+10038,1051,FCDB 6.1,789,"Pork, hand, lean, raw",Water,74.0,18,72.0,76.1,0.015207,1832
+10038,1176,FCDB 6.1,789,"Pork, hand, lean, raw",Biotin,2.6,4,1.4,4.8,0.623226,1071
+10038,1177,FCDB 6.1,789,"Pork, hand, lean, raw",Folate,2.1,4,0.8,4.6,0.862391,1071

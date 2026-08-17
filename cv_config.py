@@ -14,7 +14,18 @@ import hashlib
 import re
 from pathlib import Path
 
-PIPELINE_VERSION = "cv-v7"   # v7: literature_range measured tier — a literature-sourced row whose own {min,max,n} bracket the value resolves its CV from that range, preempting USDA sr28/component candidates (DB validation initiative)
+PIPELINE_VERSION = "cv-v8"   # v8: international same-food CV pooling at discounted effective n (+ v7 literature_range tier)
+
+# cv-v8 — International CV pooling calibration.
+# A matched foreign observation is credited at n_eff = 1/(1/n + 2*INTL_CV_SIGMA2)
+# same-population samples (ceiling 1/(2*sigma^2) ~ 2.6). Sigma^2 is the measured
+# between-population variance of ln(CV), estimated DerSimonian-Laird-style from
+# the auto-joined pairs of data/cv_curation/intl_cv_observations.csv vs USDA bulk
+# stats (2026-08-17: 71 pairs across 12 foods, bias +0.10, sigma2 0.243 -> 0.24).
+# Recalibrate via `python cv_intl.py` as observations grow;
+# tests/test_intl_sigma_calibration.py fails when this constant drifts materially
+# from the recomputed value (then: update it + bump PIPELINE_VERSION, re-commit).
+INTL_CV_SIGMA2 = 0.24
 # v5: + corrector-supplement delivered-spec CV (Tier 0)
 # v4: + cross-source CV>1 (SD>mean) plausibility guard
 # v3: + muscle poultry/red sub-pools (v2 = prep-filter + curation)

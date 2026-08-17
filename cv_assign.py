@@ -31,11 +31,13 @@ import cv_config
 import cv_sources
 from build_nutrient_crosswalk import build_crosswalk
 from db_connection import get_db, close_db
+import cv_intl
 from resolve_cv import load_cv_class, resolve_cv
 
 _PIPELINE_FILES = [
     "cv_config.py", "cv_stats.py", "cv_sources.py", "build_nutrient_crosswalk.py",
     "cv_extract.py", "cv_pool.py", "resolve_cv.py", "cv_assign.py", "cv_report.py",
+    "cv_intl.py",
 ]
 
 
@@ -55,7 +57,8 @@ def dataset_shas() -> dict:
     for label, p in [("sr28", cv_config.SR28_NUT_DATA),
                      ("fdc_srl", cv_config.FDC_SRL_DIR / "food_nutrient.csv"),
                      ("fdc_fdn", cv_config.FDC_FDN_DIR / "food_nutrient.csv"),
-                     ("nutrient_csv", cv_config.AUTHORITATIVE_NUTRIENT_CSV)]:
+                     ("nutrient_csv", cv_config.AUTHORITATIVE_NUTRIENT_CSV),
+                     ("intl_cv", cv_intl.INTL_CSV)]:
         try:
             out[label] = hashlib.sha256(Path(p).read_bytes()).hexdigest()
         except FileNotFoundError:
@@ -64,6 +67,7 @@ def dataset_shas() -> dict:
 
 
 def resolve_all(food_id_filter: int | None = None) -> list[dict]:
+    intl_obs = cv_intl.read_observations()
     cw = build_crosswalk()
     id_to = {nid: (v["nutrient_nbr"], v["nutrient_class"])
              for nid, v in cw.items() if v["is_target"] and v["nutrient_nbr"] is not None}
@@ -120,13 +124,16 @@ def resolve_all(food_id_filter: int | None = None) -> list[dict]:
         if ic == "muscle":
             subclass = (cv_config.muscle_subclass(c["protein_species"])
                         or cv_config.muscle_subclass(c["food_name"]))
+        intl = intl_obs.get((c["food_id"], nid))
         res = resolve_cv(
             nutrient_id=nid, nutrient_nbr=nbr, ingredient_class=ic,
             nutrient_class=nclass, category=c["category"], value=_f(c["value"]), subclass=subclass,
             is_corrector=bool(c["is_corrector"]),
             own_min=_f(c["min_value"]), own_max=_f(c["max_value"]), own_n=c["num_samples"],
             sr28_se_cv=sr_cv, sr28_n=sr_n, sr28_method=sr_method, source=c["source"],
-            component_cv=comp_cv, component_n=comp_n, lookups=lookups,
+            component_cv=comp_cv, component_n=comp_n,
+            intl_cv=(intl["cv"] if intl else None), intl_n=(intl["n"] if intl else None),
+            intl_label=(intl["label"] if intl else None), lookups=lookups,
         )
         out.append({"food_id": c["food_id"], "nutrient_id": nid, "nutrient_nbr": nbr,
                     "nutrient_class": nclass, "ingredient_class": c["ingredient_class"],

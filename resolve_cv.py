@@ -146,6 +146,8 @@ def resolve_cv(*, nutrient_id: int, nutrient_nbr: Optional[int], ingredient_clas
                sr28_se_cv: Optional[float] = None, sr28_n: Optional[int] = None,
                sr28_method: Optional[str] = None, source: Optional[str] = None,
                component_cv: Optional[float] = None, component_n: Optional[int] = None,
+               intl_cv: Optional[float] = None, intl_n: Optional[int] = None,
+               intl_label: Optional[str] = None,
                lookups: dict) -> dict:
     base = {"measured_cv": None, "category_cv": None, "cv_tier": None, "cv_method": None,
             "cv_backing_n": None, "cv_effective_n": None, "cv_confidence_tier": None,
@@ -232,6 +234,25 @@ def resolve_cv(*, nutrient_id: int, nutrient_nbr: Optional[int], ingredient_clas
         m_inputs = {"min": own_min, "max": own_max, "n": own_n}
         if cross_source_demoted is not None:   # kept the same-source range; noted for audit
             m_inputs["cross_source_demoted_cv"] = cross_source_demoted
+
+    # 2b. International same-food pooling (cv-v8): blend the measured CV with a
+    #     matched foreign observation at its DISCOUNTED effective n
+    #     (n_eff = 1/(1/n + 2*sigma^2); sigma^2 is measured — cv_config.INTL_CV_SIGMA2).
+    #     literature_range cells are skipped: their own stats are often the very
+    #     same foreign source, and pooling would double-count one dataset.
+    if (intl_cv is not None and intl_n and measured_cv is not None and measured_cv > 0
+            and intl_cv > 0 and measured_tier in ("sr28_se", "fdc_range", "component")):
+        n_eff = 1.0 / (1.0 / intl_n + 2.0 * cv_config.INTL_CV_SIGMA2)
+        base_n = measured_n or 1
+        w_us = base_n / (base_n + n_eff)
+        pooled = math.exp(w_us * math.log(measured_cv) + (1.0 - w_us) * math.log(intl_cv))
+        m_inputs = dict(m_inputs or {})
+        m_inputs["intl"] = {"us_cv": round(measured_cv, 6), "cv": round(intl_cv, 6),
+                            "n": intl_n, "n_eff": round(n_eff, 2),
+                            "w_us": round(w_us, 3), "source": intl_label}
+        measured_cv = pooled
+        measured_n = base_n + max(1, round(n_eff))
+        measured_method = f"{measured_method}+intl"
 
     # 3. Category (Tiers 4-5) — always resolves. class_keys puts a muscle poultry/red
     #    sub-pool ahead of the combined muscle pool.
