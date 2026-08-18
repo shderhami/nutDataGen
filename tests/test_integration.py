@@ -280,10 +280,13 @@ class TestProcessSingleFood:
             "comment": "SR Legacy (only source)"
         }
 
-        # Mock missing nutrient prompt (now requires a value)
-        mock_missing.return_value = {
-            "nutrient_id": 1234,
-            "nutrient_name": "Taurine",
+        # Mock missing nutrient prompt (now requires a value). Echo the prompted
+        # nutrient's identity like the real prompt does — a constant nutrient_id
+        # would pair one nutrient's id with another's unit, a state the UI cannot
+        # produce and the FEDIAF unit conversion rejects.
+        mock_missing.side_effect = lambda nutrient, ai_suggestion=None: {
+            "nutrient_id": nutrient["nutrient_id"],
+            "nutrient_name": nutrient["nutrient_name"],
             "chosen_value": 170.0,
             "chosen_source": "literature",
             "comment": "Source: Spitze et al. 2003"
@@ -302,10 +305,12 @@ class TestProcessSingleFood:
         from usda_api import USDAAPIError
         mock_fetch_sr.side_effect = USDAAPIError("API Error")
 
-        # Mock missing nutrient prompts to provide values (all nutrients will be missing)
-        mock_missing.return_value = {
-            "nutrient_id": 1003,
-            "nutrient_name": "Protein",
+        # Mock missing nutrient prompts to provide values (all nutrients will be
+        # missing). Echoes the prompted nutrient's identity — see
+        # test_processes_sr_only for why a constant id is unfaithful.
+        mock_missing.side_effect = lambda nutrient, ai_suggestion=None: {
+            "nutrient_id": nutrient["nutrient_id"],
+            "nutrient_name": nutrient["nutrient_name"],
             "chosen_value": 20.0,
             "chosen_source": "literature",
             "comment": "Source: Test literature"

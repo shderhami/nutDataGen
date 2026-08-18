@@ -147,6 +147,14 @@ CV). Verify the interesting cells afterwards (`cv_tier`, `cv_backing_n`,
 
 ## Standing conventions
 
+- **FEDIAF platform units, one unit per nutrient** (DB normalized 2026-08-17):
+  vitamins A/D/E are stored in IU everywhere (A: µg retinol ×3.33 — RAE :=
+  retinol in this DB; E: mg ×1.49). `create_nutrient_record` converts payload
+  units at add time (`fediaf_nutrients.fediaf_unit_factor`, fail-loud on
+  unknown pairs); `tests/test_unit_uniformity.py` guards the invariant. The
+  factors mirror recipeFormulator's `config/nutrients.yaml`
+  `unit_conversions_nutrient` (kept as its safety net — do not remove them).
+  When hand-entering literature values for A/E, enter IU.
 - All CVs are fractions; pooling/shrinkage happens in log space.
 - `cv_*` columns are pipeline-owned — never hand-edit them; change inputs and
   re-run cv_assign.

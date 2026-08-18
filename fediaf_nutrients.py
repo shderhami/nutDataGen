@@ -554,3 +554,68 @@ def get_nutrients_by_category(category: str) -> list[dict]:
         for n in FEDIAF_NUTRIENTS
         if n["category"].lower() == category.lower()
     ]
+
+
+# =============================================================================
+# FEDIAF platform-unit conversion (implements the vitamin "convert to IU" notes)
+# =============================================================================
+# ingredient_nutrients stores every nutrient in its FEDIAF unit — one distinct
+# unit per nutrient_id (guarded by tests/test_unit_uniformity.py; existing rows
+# normalized 2026-08-17). USDA payloads deliver vitamins A/E as µg RAE / mg
+# alpha-tocopherol, so records must be converted at creation time rather than
+# stored in the payload unit.
+#
+# Factors (retinol basis for A — this DB defines RAE := retinol, since cats get
+# no vitamin A activity from carotenoids; plant rows are 0 either way) mirror
+# recipeFormulator's Unit Integrity Layer (config/nutrients.yaml
+# unit_conversions_nutrient) — keep the two in sync:
+#   Vitamin A (1106): 1 µg retinol = 3.33 IU
+#   Vitamin E (1109): 1 mg alpha-tocopherol = 1.49 IU
+#   Vitamin D (1110): 1 µg = 40 IU (defensive — the pipeline fetches USDA 1110,
+#                     which is already the IU variant)
+_IU_PER_PAYLOAD_UNIT: dict[int, dict[str, float]] = {
+    1106: {"µg": 3.33},
+    1109: {"mg": 1.49},
+    1110: {"µg": 40.0},
+}
+
+# Spelling variants seen in payloads, mapped to the canonical spelling used by
+# FEDIAF_NUTRIENTS entries and the conversion table above.
+_UNIT_SPELLINGS: dict[str, str] = {
+    "µg": "µg", "ug": "µg", "mcg": "µg",
+    "mg": "mg", "g": "g", "iu": "IU", "kcal": "kcal",
+}
+
+
+def canonical_unit(unit: Optional[str]) -> Optional[str]:
+    """Canonical spelling for a payload unit (case- and synonym-insensitive)."""
+    if unit is None:
+        return None
+    stripped = unit.strip()
+    return _UNIT_SPELLINGS.get(stripped.lower(), stripped)
+
+
+def fediaf_unit_factor(nutrient_id: Optional[int], unit: Optional[str]) -> tuple[str, float]:
+    """(FEDIAF unit, multiplicative factor) converting `unit` into it.
+
+    Factor is 1.0 when the payload unit already matches the declared FEDIAF
+    unit (spelling variants included), or when the unit is missing (the caller
+    falls back to the declared unit), or when the nutrient is untracked.
+    Raises ValueError for a tracked nutrient whose payload unit neither
+    matches nor has a conversion — silently storing an unconverted payload
+    unit is exactly what produced the pre-2026-08-17 mixed-unit rows.
+    """
+    info = get_nutrient_by_id(nutrient_id) if nutrient_id is not None else None
+    cu = canonical_unit(unit)
+    if info is None:
+        return (cu or ""), 1.0
+    declared: str = info["unit"]
+    if not cu or cu == declared:
+        return declared, 1.0
+    factor = _IU_PER_PAYLOAD_UNIT.get(nutrient_id or -1, {}).get(cu)
+    if factor is None:
+        raise ValueError(
+            f"No conversion from payload unit '{unit}' to FEDIAF unit "
+            f"'{declared}' for nutrient {nutrient_id} ({info['nutrient_name']})"
+        )
+    return declared, factor

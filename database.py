@@ -8,6 +8,7 @@ from datetime import date
 from typing import Optional, TypedDict
 
 from db_connection import get_db
+from fediaf_nutrients import canonical_unit, fediaf_unit_factor
 
 
 class NutrientRecord(TypedDict, total=False):
@@ -437,6 +438,12 @@ def calculate_statistics(
 # =============================================================================
 
 
+def _format_number(v: float) -> str:
+    """Trailing-zero-trimmed decimal rendering for unit-conversion comments."""
+    s = f"{v:.6f}".rstrip("0").rstrip(".")
+    return s or "0"
+
+
 def create_nutrient_record(
     food_name: str,
     food_id: int,
@@ -461,7 +468,30 @@ def create_nutrient_record(
     ai_confidence: Optional[str] = None,
     ai_model: Optional[str] = None,
 ) -> NutrientRecord:
-    """Create a nutrient record dict ready for database insertion."""
+    """Create a nutrient record dict ready for database insertion.
+
+    The record is stored in the nutrient's FEDIAF unit: a payload unit that
+    differs (USDA vitamin A µg RAE, vitamin E mg alpha-tocopherol) is converted
+    here, before statistics are derived, so value and every stats column share
+    one unit (min/max bracket rule) and each nutrient_id keeps a single unit
+    across ingredient_nutrients.
+    """
+    target_unit, factor = fediaf_unit_factor(nutrient_id, unit)
+    if factor != 1.0:
+        if value is not None:
+            converted = round(value * factor, 6)
+            note = (
+                f"Unit normalized: {_format_number(value)} {canonical_unit(unit)} -> "
+                f"{_format_number(converted)} {target_unit} "
+                f"(x{factor:g}, FEDIAF platform unit)"
+            )
+            comment = f"{comment}; {note}" if comment else note
+            value = converted
+        min_value = round(min_value * factor, 6) if min_value is not None else None
+        max_value = round(max_value * factor, 6) if max_value is not None else None
+        median_value = round(median_value * factor, 6) if median_value is not None else None
+    unit = target_unit
+
     stats = calculate_statistics(
         value=value,
         standard_error=None,
