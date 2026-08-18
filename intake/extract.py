@@ -35,14 +35,28 @@ def run(spec: IntakeSpec) -> Extraction:
         foundation=usda.get(spec.foundation_fdc_id, {}) if spec.foundation_fdc_id else {},
         sr=usda.get(spec.sr_fdc_id, {}) if spec.sr_fdc_id else {},
     )
+    # a spec-declared USDA id that yields nothing is a spec error, not an
+    # empty table (audit 2026-08-18: a typo silently flipped ~45 verdicts)
+    for label, fdc_id, table in (("foundation", spec.foundation_fdc_id, extraction.foundation),
+                                 ("sr_legacy", spec.sr_fdc_id, extraction.sr)):
+        if fdc_id and not table:
+            raise KeyError(
+                f"spec {label}_fdc_id {fdc_id} matched no rows in the pinned "
+                f"USDA bulk files — wrong id?")
     adapters = registry()
     for name, refs in spec.sources.items():
         adapter = adapters[name]
         for ref in refs:
             values = adapter.extract(ref.key, note=ref.note)
+            if not values:
+                # curated key resolved to a food but produced zero mapped
+                # values — silently dropping the source would falsify the
+                # spec's match documentation
+                raise KeyError(
+                    f"{adapter.LABEL} key {ref.key!r} produced no values — "
+                    f"check the spec entry")
             extraction.foreign.extend(values)
-            food = values[0].source_food if values else str(ref.key)
-            label = f"{adapter.LABEL}:{food}"
+            label = f"{adapter.LABEL}:{values[0].source_food}"
             extraction.source_notes[label] = ref.note
     for sv in literature_values(spec):
         extraction.foreign.append(sv)

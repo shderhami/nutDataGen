@@ -10,21 +10,16 @@ from __future__ import annotations
 
 from functools import lru_cache
 from pathlib import Path
-from typing import Optional
 
 from intake.model import Q_ANALYSED, SourceValue
+from intake.units import parse_float
 
 LABEL = "IodineDB"
 _XLSX = (Path(__file__).resolve().parents[2]
          / "data" / "usda_iodine" / "Iodine Database_Release 4_Per 100g.xlsx")
 IODINE_ID = 1100
 
-
-def _f(x) -> Optional[float]:
-    try:
-        return float(x)
-    except (TypeError, ValueError):
-        return None
+_f = parse_float
 
 
 @lru_cache(maxsize=1)
@@ -50,6 +45,8 @@ def extract(key: str, note: str = "") -> list[SourceValue]:
                 n=int(n) if n else None, vmin=_f(r[7]), vmax=_f(r[8]),
                 quality=Q_ANALYSED,
                 note=f"Iodine DB R4; SD={sd if sd is not None else 'n/a'}",
+                usda_lineage=True,  # USDA/FDA/ODS program: evidence, never
+                                    # independent confirmation of USDA
             )]
     raise KeyError(f"Iodine DB NDB number {key!r} not found")
 

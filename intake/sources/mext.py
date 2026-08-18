@@ -20,7 +20,14 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Optional
 
-from intake.model import Q_ANALYSED, Q_COMPUTED, Q_ESTIMATED, Q_TRACE, SourceValue
+from intake.model import (
+    FORM_TOTAL_K,
+    Q_ANALYSED,
+    Q_COMPUTED,
+    Q_ESTIMATED,
+    Q_TRACE,
+    SourceValue,
+)
 from intake.units import parse_per100g_unit, to_fediaf
 
 LABEL = "MEXT"
@@ -85,7 +92,7 @@ def _parse(raw) -> Optional[tuple[float, str]]:
         return None
 
 
-@lru_cache(maxsize=3)
+@lru_cache(maxsize=None)  # bounded by construction: a handful of volume sheets
 def _volume(path: Path, sheet: str) -> tuple[tuple, tuple, tuple, dict[str, tuple]]:
     """(names, tags, units, {item_no: row}) for one volume sheet."""
     from openpyxl import load_workbook
@@ -99,18 +106,22 @@ def _volume(path: Path, sheet: str) -> tuple[tuple, tuple, tuple, dict[str, tupl
     return names, tags, units, items
 
 
+def _norm_tag(tag) -> str:
+    return str(tag or "").replace("\n", "").strip()
+
+
 def _tag_columns(names: tuple, tags: tuple, tag_map: dict[str, int],
                  name_map: dict[str, int]) -> dict[int, tuple[int, str]]:
     """{column index: (nutrient_id, source column label)}."""
     cols: dict[int, tuple[int, str]] = {}
     for i, tag in enumerate(tags):
-        t = str(tag or "").replace("\n", "").strip()
+        t = _norm_tag(tag)
         if t in tag_map:
             cols[i] = (tag_map[t], t)
     for i, name in enumerate(names):
         n = " ".join(str(name or "").split())
         for prefix, nid in name_map.items():
-            if n.startswith(prefix) and not any(c == i for c in cols):
+            if n.startswith(prefix) and i not in cols:
                 cols[i] = (nid, prefix)
     return cols
 
@@ -138,6 +149,7 @@ def _extract_volume(path: Path, key: str, tag_map: dict[str, int],
         out.append(SourceValue(
             source=LABEL, source_food=food, nutrient_id=nid,
             value=to_fediaf(nid, value, unit), quality=quality, note=note,
+            form=FORM_TOTAL_K if col_label == "VITK" else "",
         ))
     return out
 
@@ -147,20 +159,19 @@ def _extract_thiamin(key: str) -> list[SourceValue]:
     row = items.get(str(key))
     if row is None:
         return []
-    for i, tag in enumerate(tags):
-        if str(tag or "").replace("\n", "").strip() == "THIAHCL":
-            parsed = _parse(row[i])
-            if parsed is None:
-                return []
-            value, quality = parsed
-            return [SourceValue(
-                source=LABEL, source_food=f"{key} {str(row[3])[:70]}",
-                nutrient_id=1165,
-                value=to_fediaf(1165, value * THIAMIN_FROM_HCL,
-                                parse_per100g_unit(str(units[i]))),
-                quality=quality,
-                note=f"THIAHCL {value:g} x{THIAMIN_FROM_HCL} (HCl->thiamin base)",
-            )]
+    for i, (nid, _label) in _tag_columns(names, tags, {"THIAHCL": 1165}, {}).items():
+        parsed = _parse(row[i])
+        if parsed is None:
+            return []
+        value, quality = parsed
+        return [SourceValue(
+            source=LABEL, source_food=f"{key} {str(row[3])[:70]}",
+            nutrient_id=nid,
+            value=to_fediaf(nid, value * THIAMIN_FROM_HCL,
+                            parse_per100g_unit(str(units[i]))),
+            quality=quality,
+            note=f"THIAHCL {value:g} x{THIAMIN_FROM_HCL} (HCl->thiamin base)",
+        )]
     return []
 
 

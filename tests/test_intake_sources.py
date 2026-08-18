@@ -97,7 +97,9 @@ class TestMEXT:
         assert "HCl" in sv.note
 
     def test_vitamin_k_total_and_retinol_iu(self, thigh):
-        assert _by_id(thigh, 1185).value == 23.0
+        from intake.model import FORM_TOTAL_K
+        k = _by_id(thigh, 1185)
+        assert k.value == 23.0 and k.form == FORM_TOTAL_K
         assert math.isclose(_by_id(thigh, 1106).value, 16 * 3.33)
 
     def test_energy_is_computed(self, thigh):
@@ -106,10 +108,18 @@ class TestMEXT:
 
 class TestCIQUAL:
     def test_leg_meat_k_forms_summed(self):
+        from intake.model import FORM_TOTAL_K
         from intake.sources import ciqual
         sv = _by_id(ciqual.extract(36024), 1185)
         assert math.isclose(sv.value, 2.53 + 34.3)
         assert "K2=34.3" in sv.note
+        assert sv.form == FORM_TOTAL_K
+
+    def test_k1_without_k2_not_marked_total(self):
+        from intake.model import FORM_TOTAL_K
+        from intake.sources import ciqual
+        sv = _by_id(ciqual.extract(36019), 1185)   # K1=2.9, K2 not reported
+        assert sv.form != FORM_TOTAL_K
 
     def test_censored_iodine_upper_bound(self):
         from intake.sources import ciqual
@@ -162,3 +172,4 @@ class TestIodineDB:
         sv = iodine_db.extract("05098")[0]
         assert (sv.value, sv.n, sv.vmin, sv.vmax) == (0.9, 35, 0.0, 9.5)
         assert sv.quality == Q_ANALYSED
+        assert sv.usda_lineage is True   # never independent confirmation

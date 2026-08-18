@@ -14,10 +14,12 @@ from pathlib import Path
 from typing import Optional
 
 from intake.model import (
+    FORM_TOTAL_K,
     Q_ANALYSED,
     Q_BORROWED,
     Q_COMPUTED,
     Q_ESTIMATED,
+    Q_TRACE,
     Q_UNKNOWN,
     SourceValue,
 )
@@ -62,7 +64,14 @@ def _origin_quality(origin: Optional[str]) -> str:
     text = str(origin or "").lower()
     if "analyse" in text:
         return Q_ANALYSED
-    if "berechn" in text or "kalkul" in text or "rezept" in text:
+    if "spuren" in text:
+        # trace: detection-limit information, not a measurement
+        return Q_TRACE
+    if ("logische" in text or "berechn" in text or "kalkul" in text
+            or "rezept" in text or "reskalierung" in text or "formel" in text):
+        # Logische Null/Annahme are definitional zeros/assumptions, never
+        # measurements (audit 2026-08-18: an unclassified Logische Null was
+        # counted as independent confirming evidence).
         return Q_COMPUTED
     if "schätz" in text:
         return Q_ESTIMATED
@@ -74,8 +83,8 @@ def _origin_quality(origin: Optional[str]) -> str:
 
 
 @lru_cache(maxsize=1)
-def _header() -> tuple[dict[str, tuple[int, str]], int]:
-    """({code: (value column, unit)}, ncols) from the header row."""
+def _header() -> dict[str, tuple[int, str]]:
+    """{code: (value column, unit)} from the header row."""
     from openpyxl import load_workbook
 
     wb = load_workbook(_XLSX, read_only=True, data_only=True)
@@ -87,9 +96,10 @@ def _header() -> tuple[dict[str, tuple[int, str]], int]:
         m = _HDR_RE.match(str(h or ""))
         if m:
             cols[m.group(1)] = (i, m.group(2).strip())
-    return cols, len(hdr)
+    return cols
 
 
+@lru_cache(maxsize=32)
 def _row(code: str) -> Optional[tuple]:
     from openpyxl import load_workbook
 
@@ -105,7 +115,7 @@ def _row(code: str) -> Optional[tuple]:
 
 
 def extract(key: str, note: str = "") -> list[SourceValue]:
-    cols, _ = _header()
+    cols = _header()
     row = _row(str(key))
     if row is None:
         raise KeyError(f"BLS code {key!r} not found")
@@ -132,6 +142,7 @@ def extract(key: str, note: str = "") -> list[SourceValue]:
             value=to_fediaf(nid, val, unit),
             quality=_origin_quality(origin),
             note=f"{code} [{origin}] {str(ref or '')[:80]}{extra}".strip(),
+            form=FORM_TOTAL_K if code == "VITK" else "",
         ))
     return out
 

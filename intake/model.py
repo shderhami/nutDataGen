@@ -25,7 +25,7 @@ REGION_SENSITIVE_IDS: frozenset[int] = frozenset(
 Q_ANALYSED = "analysed"      # the source measured it
 Q_BORROWED = "borrowed"      # the source copied it (USDA, M&W, Fineli, ...)
 Q_COMPILED = "compiled"      # compilation table without per-value origin (CoFID)
-Q_COMPUTED = "computed"      # calculated/recipe/formula value
+Q_COMPUTED = "computed"      # calculated/recipe/formula/definitional value
 Q_ESTIMATED = "estimated"    # source flags it estimated (MEXT parentheses)
 Q_CENSORED = "censored"      # below detection/quantification ("< X"): value = X upper bound
 Q_TRACE = "trace"            # source says trace: value stored as 0.0
@@ -33,7 +33,16 @@ Q_ECHO = "echo"              # screener verdict: this source's food copies USDA
 Q_UNKNOWN = "unknown"
 
 # Qualities that count as independent supporting evidence in the rule engine.
-INDEPENDENT_QUALITIES = frozenset({Q_ANALYSED, Q_COMPILED, Q_ESTIMATED, Q_TRACE, Q_UNKNOWN})
+# Trace and censored values are detection-limit information, not measurements —
+# they are reported alongside verdicts but never confirm or contest a value
+# (audit finding 2026-08-18: a trace manufactured false `review` verdicts and
+# suppressed the censored-bounds branch).
+INDEPENDENT_QUALITIES = frozenset({Q_ANALYSED, Q_COMPILED, Q_ESTIMATED, Q_UNKNOWN})
+
+# Vitamin K form tags (menaquinone doctrine): adapters declare what their K
+# column covers so the rule engine never has to sniff free-text notes.
+FORM_TOTAL_K = "total_k"     # K1 + menaquinones (MEXT VITK, BLS VITK, CIQUAL K1+K2)
+FORM_K1_ONLY = "k1_only"     # phylloquinone only (SR/FND 1185, CoFID)
 
 
 @dataclass(frozen=True)
@@ -54,6 +63,9 @@ class SourceValue:
     quality: str = Q_UNKNOWN
     note: str = ""                   # origin detail: derivation code, refs, form info
     year: Optional[str] = None
+    form: str = ""                   # nutrient-form tag (FORM_TOTAL_K, FORM_K1_ONLY, ...)
+    usda_lineage: bool = False       # source is USDA-affiliated: real evidence, but
+                                     # never *independent* confirmation of USDA
 
     @property
     def unit(self) -> str:

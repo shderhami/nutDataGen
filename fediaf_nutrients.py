@@ -583,7 +583,7 @@ _IU_PER_PAYLOAD_UNIT: dict[int, dict[str, float]] = {
 # FEDIAF_NUTRIENTS entries and the conversion table above.
 _UNIT_SPELLINGS: dict[str, str] = {
     "µg": "µg", "ug": "µg", "mcg": "µg",
-    "mg": "mg", "g": "g", "iu": "IU", "kcal": "kcal",
+    "mg": "mg", "g": "g", "iu": "IU", "kcal": "kcal", "kj": "kJ",
 }
 
 

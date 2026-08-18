@@ -162,4 +162,52 @@ tracked, §8), CVB (rendered feeds only), NEVO/CNF (not local / circular).
 | G-1 | Literature/book evidence channel (NRC 2006, Spitze, Seong, Donadelli, Biel) missing from the first implementation — sources the sweep used routinely had no path into the comparison | **Fixed**: `literature` block in the spec; entries flow through compare/report/decisions like any adapter value |
 | G-2 | Maiden spec carried no literature entries (taurine sat at `no_evidence` despite Spitze having chicken dark-meat data; NRC 13-1 not consulted) | **Fixed**: spec updated with curated Spitze + NRC entries |
 | G-3 | uFiSh adapter deferred | Open — add with the first fish ingredient intake |
-| G-4 | Audit findings | Tracked below as they are raised and fixed |
+| G-4 | **Implementation audit (2026-08-18, 8-angle review of the branch)** — 10 findings confirmed and fixed, plus cleanup | **Fixed** — see below |
+
+### G-4 audit outcome (all fixed on the branch, 640 tests pass)
+
+Correctness (each with a regression test):
+1. No operator-review gate — machine `proposed_decisions.json` was directly
+   commit-able with machine-written "Validated" comments → `--commit` now
+   refuses the proposed file, requires a top-level `reviewed_by` in the
+   decisions file AND `--signed-off-by` (cv_assign contract).
+2. `to_fediaf` silently skipped the IU factor for blank/None units (vit A
+   3.33×, vit D 40× low) → missing units now raise.
+3. Echo screener compared each nutrient against only the FIRST USDA table —
+   verbatim SR copies could escape when Foundation differed → compares
+   against both tables; marking is key-based, not object-identity.
+4. BLS `Logische Null`/`Reskalierung`/`Spuren` origins fell to `unknown` and
+   counted as independent evidence (a definitional zero "confirmed" fiber)
+   → classified computed/trace; trace no longer counts as independent.
+5. Analysed zeros were dropped from adopt/replace medians (iodine anchor
+   biased 2.25×; unanimous zeros produced a self-contradictory review) →
+   zeros stay in the evidence pool; replace fires only on a nonzero median.
+6. Trace values manufactured false `review` verdicts and suppressed the
+   censored-bounds branch → trace/censored are detection-limit info lines.
+7. Median-tie anchors were decided by float rounding (taurine 33.7-vs-169)
+   → deterministic tie-break (n, then quality, then lower value) with an
+   explicit "review must arbitrate" reason.
+8. `_backup` hardcoded DB coordinates while the insert used config → backup
+   now uses `config.DATABASE_*`, the pinned postgresql@18 pg_dump with PATH
+   fallback, repo-anchored backups dir.
+9. String-typed fdc ids / typo'd source keys silently produced empty
+   extractions → spec coerces ids; extraction fails loud on empty results.
+10. Food block validated only mid-commit after the backup; price/cooking
+    optional → full validation at gate time (VALID_* + kwarg check, nonzero
+    price, cooking_method declared, protein_species for meat categories).
+
+Also fixed from the cleanup angles: positional column maps now verified
+against dataset headers at load (CIQUAL/AFCD/CoFID tripwire); vitamin-K
+totals matched by a structured `form` field instead of note-text sniffing;
+USDA-lineage sources (Iodine DB) declared and excluded from independence;
+engine thresholds stamped into report + decisions artifacts; stats-carrying
+sources restricted (cv-v8 double-count guard); censored min=0 stats rejected
+at the write gate; completeness check uses len(FEDIAF_IDS); orphan cleanup
+no longer masks the original failure; USDA crosswalks consolidated into one
+table; FCDB loader split (46 MB / 11 s → filtered per-food cache) and BLS
+row cache added; assorted dead code removed.
+
+Accepted (documented, not changed): intake keeps its own bulk-CSV readers
+rather than reusing cv_sources (deliberately self-contained; divergence risk
+noted in code comments); FCDB "Vitamin D" (value match) vs cv_intl
+"Vitamin D3" (dispersion match) is a documented split, not a drift.

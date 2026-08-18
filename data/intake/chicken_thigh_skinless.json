@@ -8,6 +8,7 @@
     "grams_per_unit": 1.0,
     "sr_legacy_fdc_id": 173627,
     "foundation_fdc_id": 2646171,
+    "cooking_method": null,
     "price_per_unit": 0.0,
     "source": "grocery",
     "protein_species": "chicken",

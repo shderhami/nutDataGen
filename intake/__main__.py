@@ -29,7 +29,7 @@ def _cmd_search(args: argparse.Namespace) -> int:
 
 def _cmd_report(args: argparse.Namespace) -> int:
     from intake import extract
-    from intake.compare import compare_all
+    from intake.compare import compare_all, verdict_counts
     from intake.report import write_artifacts
     from intake.spec import load_spec
 
@@ -40,10 +40,7 @@ def _cmd_report(args: argparse.Namespace) -> int:
         spec, extraction, comparisons, echo_verdicts)
     print(f"report:    {report_path}")
     print(f"decisions: {decisions_path}")
-    counts: dict[str, int] = {}
-    for c in comparisons:
-        counts[c.verdict] = counts.get(c.verdict, 0) + 1
-    print(f"verdicts:  {counts}")
+    print(f"verdicts:  {verdict_counts(comparisons)}")
     return 0
 
 
@@ -52,8 +49,9 @@ def _cmd_write(args: argparse.Namespace) -> int:
     from intake.writer import apply, load_decisions
 
     spec = load_spec(args.spec)
-    decisions = load_decisions(args.decisions)
-    apply(spec, decisions, commit=args.commit)
+    decisions, meta = load_decisions(args.decisions)
+    apply(spec, decisions, commit=args.commit,
+          signed_off_by=args.signed_off_by, meta=meta)
     return 0
 
 
@@ -75,6 +73,8 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--spec", required=True)
     p.add_argument("--decisions", required=True)
     p.add_argument("--commit", action="store_true")
+    p.add_argument("--signed-off-by", dest="signed_off_by",
+                   help="required with --commit (cv_assign contract)")
     p.set_defaults(func=_cmd_write)
 
     args = parser.parse_args(argv)

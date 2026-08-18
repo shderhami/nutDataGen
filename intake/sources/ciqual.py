@@ -16,8 +16,15 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Optional
 
-from intake.model import Q_CENSORED, Q_COMPILED, Q_COMPUTED, Q_TRACE, SourceValue
-from intake.units import to_fediaf
+from intake.model import (
+    FORM_TOTAL_K,
+    Q_CENSORED,
+    Q_COMPILED,
+    Q_COMPUTED,
+    Q_TRACE,
+    SourceValue,
+)
+from intake.units import check_header_alignment, to_fediaf
 
 LABEL = "CIQUAL"
 _XLSX = Path(__file__).resolve().parents[2] / "data" / "ciqual_fr" / "Table_Ciqual_2025_FR.xlsx"
@@ -78,7 +85,13 @@ def _rows() -> dict[int, tuple]:
     wb = load_workbook(_XLSX, read_only=True, data_only=True)
     ws = wb["composition nutritionnelle"]
     it = ws.iter_rows(values_only=True)
-    next(it)
+    header = next(it)
+    check_header_alignment(
+        header,
+        {i: label for i, (_nid, _unit, label) in COL_MAP.items()}
+        | {_K1_COL: "Vitamine K1", _K2_COL: "Vitamine K2"},
+        LABEL,
+    )
     out = {}
     for r in it:
         if r[6] is not None:
@@ -116,6 +129,9 @@ def extract(key: int, note: str = "") -> list[SourceValue]:
             source=LABEL, source_food=food, nutrient_id=1185,
             value=to_fediaf(1185, total, "µg"), quality=quality,
             note="Vitamine K1+K2 total-K; " + ", ".join(forms),
+            # only a true K1+K2 sum counts as menaquinone-inclusive; a lone
+            # K1 with K2 unreported must not satisfy the form-defect rule
+            form=FORM_TOTAL_K if k2 is not None else "",
         ))
     return out
 

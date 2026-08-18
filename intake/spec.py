@@ -98,6 +98,10 @@ def load_spec(path: str | Path) -> IntakeSpec:
         raise ValueError(f"spec {path}: food block missing {missing}")
     if not raw["food"].get("sr_legacy_fdc_id") and not raw["food"].get("foundation_fdc_id"):
         raise ValueError(f"spec {path}: need at least one of sr_legacy_fdc_id/foundation_fdc_id")
+    for fdc_field in ("sr_legacy_fdc_id", "foundation_fdc_id"):
+        # a quoted id would silently miss the int-keyed bulk lookup
+        if raw["food"].get(fdc_field) is not None:
+            raw["food"][fdc_field] = int(raw["food"][fdc_field])
     sources: dict[str, list[SourceRef]] = {}
     for name, entry in raw["sources"].items():
         if name not in _MODULES:

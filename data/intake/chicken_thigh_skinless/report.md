@@ -3,6 +3,7 @@
 - generated: 2026-08-18  |  spec: `data/intake/chicken_thigh_skinless.json`
 - Foundation FDC: 2646171  |  SR Legacy FDC: 173627
 - category: Muscle Meat  |  per 100.0 g
+- engine: agreement ±20% (abs floors: g 0.01, mg 0.01, µg 1, IU 1, kcal 6); echo <0.5% at ≥5 matches and ≥40% of comparables
 - note: price_per_unit is a placeholder — set the real grocery price before write --commit
 - note: Fat frame spread is expected: FND 7.92 (2023 retail trim) vs SR 4.12 (1990s fully trimmed) vs MEXT 5.0 (no subcutaneous fat) vs AFCD 3.0 (lean flesh, 12% unanalysed trim) vs CoFID 2.8 (UK trim). Foundation describes the US retail cut being fed.
 - note: Sibling of food 10001 (chicken thigh with skin raw, SR 172385 / FND 2727567).
@@ -13,14 +14,14 @@
 |---|---|---|
 | FCDB:795 Chicken, flesh only, raw | Chicken, flesh only, raw — whole-bird skinless flesh (breast-dominant blend), nearest DK frame; no thigh-specific skinless entry | independent (0/43 incidental matches) |
 | BLS:V413000 Chicken meat, without skin, raw | Chicken meat, without skin, raw — whole-bird flesh; BLS 4.0 rows here are heavily aggregated from frida/NO/USDA | independent (1/42 incidental matches) |
-| MEXT:11224 Chicken, broiler, thigh, meat without skin, raw | broiler thigh, meat without skin, raw — EXACT match; trimmed 'without subcutaneous fat'; AA + FA volumes covered | independent (2/44 incidental matches) |
-| CIQUAL:36024 Poulet, cuisse, viande crue | Poulet, cuisse, viande crue — whole-leg meat (thigh+drumstick), genuinely French, K2 measured | independent (0/27 incidental matches) |
-| CIQUAL:36019 Poulet, haut de cuisse, viande crue | Poulet, haut de cuisse, viande crue — literal thigh match but suspected USDA copy (echo screen decides) | ECHO of USDA (11/27 values identical to <0.5%) |
+| MEXT:11224 Chicken, broiler, thigh, meat without skin, raw | broiler thigh, meat without skin, raw — EXACT match; trimmed 'without subcutaneous fat'; AA + FA volumes covered | independent (3/44 incidental matches) |
+| CIQUAL:36024 Poulet, cuisse, viande crue | Poulet, cuisse, viande crue — whole-leg meat (thigh+drumstick), genuinely French, K2 measured | independent (1/27 incidental matches) |
+| CIQUAL:36019 Poulet, haut de cuisse, viande crue | Poulet, haut de cuisse, viande crue — literal thigh match but suspected USDA copy (echo screen decides) | ECHO of USDA (23/27 values identical to <0.5%) |
 | AFCD:F002806 Chicken, thigh, lean flesh, raw | Chicken, thigh, lean flesh, raw — EXACT match, Analysed (2019 composite, 8 samples, 5 states); lean-trim frame (12% separable fat unanalysed) | independent (0/31 incidental matches) |
-| CoFID:18-289 Chicken, dark meat, raw | Chicken, dark meat, raw — thigh+drumstick flesh; underlying survey LGC 1994 nutrient analysis of chicken | independent (0/30 incidental matches) |
-| IodineDB:NDB 05098 Chicken thigh, oven-roasted (skin removed)  | Chicken thigh, oven-roasted (skin removed), n=35 — COOKED frame; plausibility only for the raw row | independent (0/0 incidental matches) |
-| Spitze03:Chicken, dark meat, raw | Spitze 2003 p6, lit source b: 1690±370 mg/kg wet /10; the value food 10001 (thigh+skin) validated against; skin is taurine-poor so skinless >= skin-on | independent (0/0 incidental matches) |
-| Spitze03:Chicken, leg, raw | Spitze 2003 p6, lit source c: 337 (300-380) mg/kg wet /10 — 5x below source b's dark meat; known taurine-literature split, review must arbitrate | independent (0/0 incidental matches) |
+| CoFID:18-289 Chicken, dark meat, raw | Chicken, dark meat, raw — thigh+drumstick flesh; underlying survey LGC 1994 nutrient analysis of chicken | independent (1/30 incidental matches) |
+| IodineDB:NDB 05098 Chicken thigh, oven-roasted (skin removed)  | Chicken thigh, oven-roasted (skin removed), n=35 — COOKED frame; plausibility only for the raw row | USDA-affiliated — evidence, never independent confirmation |
+| Spitze03:Chicken, dark meat, raw | Spitze 2003 p6, lit source b: 1690±370 mg/kg wet /10; the value food 10001 (thigh+skin) validated against; skin is taurine-poor so skinless >= skin-on | no USDA overlap — independence not establishable |
+| Spitze03:Chicken, leg, raw | Spitze 2003 p6, lit source c: 337 (300-380) mg/kg wet /10 — 5x below source b's dark meat; known taurine-literature split, review must arbitrate | no USDA overlap — independence not establishable |
 | NRC2006:Chicken, meat and skin, raw (whole carcass) | Table 13-7 pantothenic acid 9.20 mg/kg /10; n=1, whole-carcass meat+skin frame (20.3% fat) — context for the no-USDA B5 row | independent (0/2 incidental matches) |
 
 _value marks: † borrowed  ° compiled  ‡ computed  ~ estimated  < censored upper bound  tr trace  ≈ echo of USDA  ? unknown origin; (n=x) sample count_
@@ -109,13 +110,14 @@ _value marks: † borrowed  ° compiled  ‡ computed  ~ estimated  < censored u
 | Energy (1008) | kcal | — | 121‡ | 104.207‡ | 131‡ | 114‡ / 116≈ | 109° | 127.907‡ | — | 127‡ | — | — | **confirm** |
 | Water (1051) | g | 72.92 (n=8) | 76.22 (n=7) | 77.2 | 75† | 76° / 76.2≈ | 75.8° | 74.0667 (n=30) | — | 76.1 | — | — | **confirm** |
 | Ash (1007) | g | 0.9575 (n=8) | 0.95 (n=7) | 1 | 1† | 0.98° / 0.95≈ | — | 1 (n=30) | — | 1 | — | — | **confirm** |
-| Crude Fiber (1079) | g | — | 0† | 0 | 0? | 0° / 0≈ | 0° | 0† | — | 0~ | — | — | **confirm** |
+| Crude Fiber (1079) | g | — | 0† | 0 | 0‡ | 0° / 0≈ | 0° | 0† | — | 0~ | — | — | **confirm** |
 | Carbohydrate (1005) | g | 0‡ | 0† | 0 | 0‡ | 0° / 0≈ | 0° | 0‡ | — | 0 | — | — | **confirm** |
 
 ## Needs attention (everything not confirm/usda_only)
 
 ### Taurine (1234) — adopt_foreign
-- no USDA value; 2 independent(s) available
+- no USDA value; 2 measured source(s) available
+- anchor is a tie-break between split sources — review must arbitrate
 - suggestion: 33.7 mg (source `literature`)
   - Spitze03 [analysed] 169 — Spitze 2003 p6, lit source b: 1690±370 mg/kg wet /10; the value food 10001 (thigh+skin) validated against; skin is tauri
   - Spitze03 [analysed] 33.7 — Spitze 2003 p6, lit source c: 337 (300-380) mg/kg wet /10 — 5x below source b's dark meat; known taurine-literature spli
@@ -141,14 +143,16 @@ _value marks: † borrowed  ° compiled  ‡ computed  ~ estimated  < censored u
   - CoFID [compiled] 0.6 — Poly FA /100g food; refs: Reviewed 2013. LGC, Nutrient analysis of chicken and turkey, 1994-1995; vitamin K1 from Bolton
 
 ### Chloride (1088) — adopt_foreign
-- no USDA value; 2 independent(s) available
+- no USDA value; 2 measured source(s) available
+- anchor is a tie-break between split sources — review must arbitrate
 - suggestion: 69 mg (source `literature`)
   - BLS [borrowed] 85 — CLD [Übernommener Wert] -
   - AFCD [analysed] 69 — Chloride; food-level derivation: Analysed
   - CoFID [compiled] 110 — Chloride; refs: Reviewed 2013. LGC, Nutrient analysis of chicken and turkey, 1994-1995; vitamin K1 from Bolton-Smith et 
 
 ### Iodine (1100) — adopt_foreign
-- no USDA value; 4 independent(s) available
+- no USDA value; 6 measured source(s) available
+- anchor is a tie-break between split sources — review must arbitrate
 - suggestion: 0.9 µg (source `literature`)
   - FCDB [analysed] 0.4 — Iodine; src [1055] The iodine content of Danish food (1982)
   - BLS [borrowed] 1 — ID [Aggregation] National Food Institute; Food data (frida.fooddata.dk), version 4.2; 2022#Norweg
@@ -171,6 +175,7 @@ _value marks: † borrowed  ° compiled  ‡ computed  ~ estimated  < censored u
 
 ### Vitamin K (1185) — form_defect
 - USDA K row is K1-only (2.9 µg); menaquinone-inclusive tables read ~29.915 µg
+- anchor tie-broken — review must arbitrate
 - suggestion: 23 µg (source `literature`)
   - FCDB [computed] 0 — Vitamin K; src [1003] Value calculated by converting various analytical data
   - BLS [computed] 5.83 — VITK [Formelberechnung] -; VITK1=0µg, VITK2=5.83µg
@@ -180,7 +185,7 @@ _value marks: † borrowed  ° compiled  ‡ computed  ~ estimated  < censored u
   - CoFID [compiled] 0.05 — Vitamin K1 (K1 only); refs: Reviewed 2013. LGC, Nutrient analysis of chicken and turkey, 1994-1995; vitamin K1 from Bolt
 
 ### Pantothenic acid (1170) — adopt_foreign
-- no USDA value; 5 independent(s) available
+- no USDA value; 5 measured source(s) available
 - suggestion: 1.06 mg (source `literature`)
   - FCDB [borrowed] 1.058 — Pantothenic acid; src [1938] USDA National Nutrient Database for Standard Reference, Release 20 (2007)
   - BLS [borrowed] 1.06 — PANTAC [Nährstoffdatenbank] US Department of Agriculture, Agricultural Research Service; USDA National Nutri
@@ -204,7 +209,7 @@ _value marks: † borrowed  ° compiled  ‡ computed  ~ estimated  < censored u
   - NRC2006 [compiled] 6 — Table 13-7 folate 0.06 mg/kg /10; n=1 meat+skin frame — supports the low side of the folate spread
 
 ### Biotin (1176) — adopt_foreign
-- no USDA value; 3 independent(s) available
+- no USDA value; 3 measured source(s) available
 - suggestion: 3.6 µg (source `literature`)
   - FCDB [borrowed] 2 — Biotin; src [1344] McCance and Widdowson's: The Composition of Foods, 4th revised and extended edition (1978)
   - BLS [borrowed] 0.84 — BIOT [Übernommener Wert] -

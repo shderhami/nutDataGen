@@ -15,10 +15,9 @@ from __future__ import annotations
 import re
 from functools import lru_cache
 from pathlib import Path
-from typing import Optional
 
 from intake.model import Q_ANALYSED, Q_BORROWED, Q_COMPUTED, SourceValue
-from intake.units import KJ_PER_KCAL, to_fediaf
+from intake.units import check_header_alignment, parse_float, to_fediaf
 
 LABEL = "AFCD"
 _DIR = Path(__file__).resolve().parents[2] / "data" / "afcd_au"
@@ -42,7 +41,7 @@ COL_MAP: dict[int, tuple[int, str, str]] = {
     72: (1093, "mg", "Sodium"), 75: (1095, "mg", "Zinc"),
     76: (1106, "µg", "Retinol (preformed)"),
     85: (1165, "mg", "Thiamin"), 86: (1166, "mg", "Riboflavin"),
-    87: (1167, "mg", "Niacin (preformed)"),
+    87: (1167, "mg", "Niacin (B3)"),  # preformed niacin, matches USDA 1167
     90: (1170, "mg", "Pantothenic acid"), 91: (1175, "mg", "Pyridoxine B6"),
     92: (1176, "µg", "Biotin"), 93: (1178, "µg", "Cobalamin B12"),
     94: (1177, "µg", "Folate, natural"),
@@ -52,7 +51,7 @@ COL_MAP: dict[int, tuple[int, str, str]] = {
     221: (1271, "mg", "C20:4w6 ARA"), 222: (1278, "mg", "C20:5w3 EPA"),
     224: (1280, "mg", "C22:5w3 DPA"), 229: (1272, "mg", "C22:6w3 DHA"),
     230: (1293, "g", "Total PUFA, equated"),
-    255: (1220, "mg", "Arginine"), 257: (1216, "mg", "Cystine+cysteine"),
+    255: (1220, "mg", "Arginine"), 257: (1216, "mg", "Cystine plus cysteine"),
     260: (1221, "mg", "Histidine"), 261: (1212, "mg", "Isoleucine"),
     262: (1213, "mg", "Leucine"), 263: (1214, "mg", "Lysine"),
     264: (1215, "mg", "Methionine"), 265: (1217, "mg", "Phenylalanine"),
@@ -73,11 +72,7 @@ _BORROW_KEYWORDS: dict[str, tuple[int, ...]] = {
 }
 
 
-def _f(x) -> Optional[float]:
-    try:
-        return float(x)
-    except (TypeError, ValueError):
-        return None
+_f = parse_float
 
 
 @lru_cache(maxsize=1)
@@ -87,7 +82,10 @@ def _profiles() -> dict[str, tuple]:
     wb = load_workbook(_PROFILES, read_only=True, data_only=True)
     ws = wb["All solids & liquids per 100 g"]
     it = ws.iter_rows(values_only=True)
-    next(it), next(it), next(it)
+    next(it), next(it)
+    header = next(it)
+    check_header_alignment(
+        header, {i: label for i, (_nid, _unit, label) in COL_MAP.items()}, LABEL)
     out = {str(r[0]): tuple(r) for r in it if r[0] is not None}
     wb.close()
     return out
@@ -153,18 +151,12 @@ def extract(key: str, note: str = "") -> list[SourceValue]:
             quality = Q_COMPUTED
         if nid in flagged:
             quality = Q_BORROWED
-            hit = next((s for s in sentences if s), "")
-            item_note += f"; sampling: {hit[:120]}"
+            item_note += f"; sampling: {sentences[0][:120]}" if sentences else ""
         out.append(SourceValue(
             source=LABEL, source_food=food, nutrient_id=nid,
             value=to_fediaf(nid, val, unit), quality=quality, note=item_note,
         ))
     return out
-
-
-def sampling_details(key: str) -> str:
-    """Full Sampling Details text for the report appendix."""
-    return _details().get(str(key), {}).get("Sampling Details", "")
 
 
 def search(query: str) -> list[tuple[str, str]]:

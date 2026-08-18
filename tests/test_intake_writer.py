@@ -16,7 +16,8 @@ def spec(tmp_path):
         "food": {
             "food_name": "test food raw", "category": "Muscle Meat",
             "base_unit": "g", "portion_qty": 100.0, "grams_per_unit": 1.0,
-            "sr_legacy_fdc_id": 111111,
+            "sr_legacy_fdc_id": 111111, "cooking_method": None,
+            "price_per_unit": 0.02, "protein_species": "chicken",
         },
         "sources": {},
     }))
@@ -77,11 +78,65 @@ class TestGates:
         decisions[PUFA_TOTAL_ID]["value"] = 0.1   # < component sum 0.6
         assert any("PUFA invariant" in p for p in check_gates(spec, decisions))
 
+    def test_censored_min_zero_rejected(self, spec):
+        decisions = full_decisions({1100: {
+            "value": 0.9, "source": "literature", "comment": "x",
+            "num_samples": 35, "min_value": 0.0, "max_value": 9.5}})
+        assert any("censored/zero minimum" in p for p in check_gates(spec, decisions))
+
+    def test_stats_on_calculated_source_rejected(self, spec):
+        # foreign stats on a non-literature label would earn a poolable
+        # fdc_range CV and double-count the dataset in cv-v8 pooling
+        decisions = full_decisions({1293: {
+            "value": 1.0, "source": "calculated", "comment": "x",
+            "num_samples": 4, "min_value": 0.5, "max_value": 1.5}})
+        assert any("double-count" in p for p in check_gates(spec, decisions))
+
+    def test_unconvertible_unit_fails_at_gate(self, spec):
+        decisions = full_decisions({1003: {
+            "value": 1.0, "unit": "IU", "source": "sr_legacy", "comment": "x"}})
+        assert any("No conversion" in p for p in check_gates(spec, decisions))
+
+    def test_food_block_validated_at_gate_time(self, tmp_path):
+        path = tmp_path / "bad_food.json"
+        path.write_text(json.dumps({
+            "slug": "bad_food",
+            "food": {
+                "food_name": "bad", "category": "Poultry",   # invalid category
+                "base_unit": "g", "portion_qty": 100.0, "grams_per_unit": 1.0,
+                "sr_legacy_fdc_id": 1, "price_per_unit": 0.0,  # missing price
+                "bogus_field": 1,
+            },
+            "sources": {},
+        }))
+        problems = check_gates(load_spec(path), full_decisions())
+        assert any("category" in p for p in problems)
+        assert any("price_per_unit" in p for p in problems)
+        assert any("bogus_field" in str(p) for p in problems)
+        assert any("cooking_method" in p for p in problems)
+
     def test_apply_dry_run_refuses_on_gate_failure(self, spec):
         decisions = full_decisions()
         del decisions[1234]
         with pytest.raises(GateFailure):
             apply(spec, decisions, commit=False)
+
+
+class TestReviewGates:
+    def test_commit_refuses_proposed_file(self, spec):
+        with pytest.raises(GateFailure, match="unreviewed output"):
+            apply(spec, full_decisions(), commit=True, signed_off_by="Shahab",
+                  meta={"basename": "proposed_decisions.json", "reviewed_by": "Shahab"})
+
+    def test_commit_requires_reviewed_by(self, spec):
+        with pytest.raises(GateFailure, match="reviewed_by"):
+            apply(spec, full_decisions(), commit=True, signed_off_by="Shahab",
+                  meta={"basename": "decisions.json", "reviewed_by": ""})
+
+    def test_commit_requires_sign_off(self, spec):
+        with pytest.raises(GateFailure, match="signed-off-by"):
+            apply(spec, full_decisions(), commit=True,
+                  meta={"basename": "decisions.json", "reviewed_by": "Shahab"})
 
 
 class TestPlanRecords:
@@ -100,11 +155,13 @@ class TestPlanRecords:
             assert r["ai_recommendation"] is None
 
     def test_decisions_roundtrip(self, spec, tmp_path):
-        payload = {"slug": "test_food", "decisions": [
+        payload = {"slug": "test_food", "reviewed_by": "Shahab", "decisions": [
             {"nutrient_id": nid, "verdict": "confirm",
              "decision": d} for nid, d in full_decisions().items()]}
         path = tmp_path / "decisions.json"
         path.write_text(json.dumps(payload))
-        loaded = load_decisions(path)
+        loaded, meta = load_decisions(path)
         assert set(loaded) == set(FEDIAF_IDS)
+        assert meta["reviewed_by"] == "Shahab"
+        assert meta["basename"] == "decisions.json"
         assert check_gates(spec, loaded) == []

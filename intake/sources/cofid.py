@@ -13,8 +13,8 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Optional
 
-from intake.model import Q_COMPILED, Q_TRACE, SourceValue
-from intake.units import to_fediaf
+from intake.model import FORM_K1_ONLY, Q_COMPILED, Q_TRACE, SourceValue
+from intake.units import check_header_alignment, to_fediaf
 
 LABEL = "CoFID"
 _XLSX = (Path(__file__).resolve().parents[2]
@@ -40,7 +40,8 @@ SHEET_MAP: dict[str, dict[int, tuple[int, str, str]]] = {
         7: (1106, "µg", "Retinol"), 10: (1110, "µg", "Vitamin D"),
         11: (1109, "mg", "Vitamin E"), 12: (1185, "µg", "Vitamin K1 (K1 only)"),
         13: (1165, "mg", "Thiamin"), 14: (1166, "mg", "Riboflavin"),
-        15: (1167, "mg", "Niacin (preformed)"), 18: (1175, "mg", "Vitamin B6"),
+        15: (1167, "mg", "Niacin"),  # preformed, matches USDA 1167
+        18: (1175, "mg", "Vitamin B6"),
         19: (1178, "µg", "Vitamin B12"), 20: (1177, "µg", "Folate"),
         21: (1170, "mg", "Pantothenate"), 22: (1176, "µg", "Biotin"),
     },
@@ -68,31 +69,32 @@ def _parse(raw) -> Optional[tuple[float, str]]:
         return None
 
 
-@lru_cache(maxsize=1)
-def _sheets() -> dict[str, dict[str, tuple]]:
+@lru_cache(maxsize=None)  # bounded: only the four SHEET_MAP sheets
+def _sheet(sheet: str) -> dict[str, tuple]:
     from openpyxl import load_workbook
 
     wb = load_workbook(_XLSX, read_only=True, data_only=True)
-    out: dict[str, dict[str, tuple]] = {}
-    for sheet in SHEET_MAP:
-        ws = wb[sheet]
-        rows = {}
-        for r in ws.iter_rows(values_only=True, min_row=4):
-            code = str(r[0] or "").strip()
-            if code:
-                rows[code] = tuple(r)
-        out[sheet] = rows
+    ws = wb[sheet]
+    it = ws.iter_rows(values_only=True)
+    header = next(it)
+    check_header_alignment(
+        header, {i: label for i, (_nid, _unit, label) in SHEET_MAP[sheet].items()},
+        f"{LABEL} {sheet}")
+    rows = {}
+    for r in it:
+        code = str(r[0] or "").strip()
+        if code and code not in ("Food Code",):
+            rows[code] = tuple(r)
     wb.close()
-    return out
+    return rows
 
 
 def extract(key: str, note: str = "") -> list[SourceValue]:
-    sheets = _sheets()
     out: list[SourceValue] = []
     found = False
     food = str(key)
     for sheet, cols in SHEET_MAP.items():
-        row = sheets[sheet].get(str(key))
+        row = _sheet(sheet).get(str(key))
         if row is None:
             continue
         found = True
@@ -107,6 +109,7 @@ def extract(key: str, note: str = "") -> list[SourceValue]:
                 source=LABEL, source_food=food, nutrient_id=nid,
                 value=to_fediaf(nid, value, unit), quality=quality,
                 note=f"{label}; refs: {refs}",
+                form=FORM_K1_ONLY if nid == 1185 else "",
             ))
     if not found:
         raise KeyError(f"CoFID food code {key!r} not found")
@@ -116,6 +119,6 @@ def extract(key: str, note: str = "") -> list[SourceValue]:
 def search(query: str) -> list[tuple[str, str]]:
     q = query.lower()
     return [
-        (code, str(r[1])) for code, r in sorted(_sheets()["1.3 Proximates"].items())
+        (code, str(r[1])) for code, r in sorted(_sheet("1.3 Proximates").items())
         if q in str(r[1] or "").lower()
     ]

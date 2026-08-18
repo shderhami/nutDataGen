@@ -1,6 +1,20 @@
 {
   "slug": "chicken_thigh_skinless",
   "generated": "2026-08-18",
+  "engine": {
+    "agreement_rtol": 0.2,
+    "eps_by_unit": {
+      "g": 0.01,
+      "mg": 0.01,
+      "µg": 1.0,
+      "IU": 1.0,
+      "kcal": 6.0
+    },
+    "echo_rtol": 0.005,
+    "echo_min_matches": 5,
+    "echo_min_ratio": 0.4
+  },
+  "review_contract": "Machine output — the writer refuses to --commit this file. Review each decision, save as decisions.json, and add a top-level \"reviewed_by\".",
   "decisions": [
     {
       "nutrient_id": 1003,
@@ -203,7 +217,8 @@
       "unit": "mg",
       "verdict": "adopt_foreign",
       "reasons": [
-        "no USDA value; 2 independent(s) available"
+        "no USDA value; 2 measured source(s) available",
+        "anchor is a tie-break between split sources — review must arbitrate"
       ],
       "decision": {
         "value": 33.7,
@@ -440,7 +455,8 @@
       "unit": "mg",
       "verdict": "adopt_foreign",
       "reasons": [
-        "no USDA value; 2 independent(s) available"
+        "no USDA value; 2 measured source(s) available",
+        "anchor is a tie-break between split sources — review must arbitrate"
       ],
       "decision": {
         "value": 69.0,
@@ -547,12 +563,13 @@
       "unit": "µg",
       "verdict": "adopt_foreign",
       "reasons": [
-        "no USDA value; 4 independent(s) available"
+        "no USDA value; 6 measured source(s) available",
+        "anchor is a tie-break between split sources — review must arbitrate"
       ],
       "decision": {
         "value": 0.9,
         "source": "literature",
-        "comment": "Validated 2026-08-18: no USDA value; set from IodineDB (NDB 05098 Chicken thigh, oven-roasted (skin removed) ) — refs: FCDB 0.4 (n=5), CIQUAL 2, CoFID 6, IodineDB 0.9 (n=35)",
+        "comment": "Validated 2026-08-18: no USDA value; set from IodineDB (NDB 05098 Chicken thigh, oven-roasted (skin removed) ) — refs: FCDB 0.4 (n=5), MEXT 0, CIQUAL 2, AFCD 0, CoFID 6, IodineDB 0.9 (n=35)",
         "num_samples": 35
       }
     },
@@ -627,7 +644,8 @@
       "unit": "µg",
       "verdict": "form_defect",
       "reasons": [
-        "USDA K row is K1-only (2.9 µg); menaquinone-inclusive tables read ~29.915 µg"
+        "USDA K row is K1-only (2.9 µg); menaquinone-inclusive tables read ~29.915 µg",
+        "anchor tie-broken — review must arbitrate"
       ],
       "decision": {
         "value": 23.0,
@@ -695,7 +713,7 @@
       "unit": "mg",
       "verdict": "adopt_foreign",
       "reasons": [
-        "no USDA value; 5 independent(s) available"
+        "no USDA value; 5 measured source(s) available"
       ],
       "decision": {
         "value": 1.06,
@@ -760,7 +778,7 @@
       "unit": "µg",
       "verdict": "adopt_foreign",
       "reasons": [
-        "no USDA value; 3 independent(s) available"
+        "no USDA value; 3 measured source(s) available"
       ],
       "decision": {
         "value": 3.6,
@@ -841,12 +859,12 @@
       "unit": "g",
       "verdict": "confirm",
       "reasons": [
-        "5/5 independent(s) within ±20%: BLS 0, MEXT 0, CIQUAL 0, AFCD 0, CoFID 0"
+        "4/4 independent(s) within ±20%: MEXT 0, CIQUAL 0, AFCD 0, CoFID 0"
       ],
       "decision": {
         "value": 0.0,
         "source": "sr_legacy",
-        "comment": "Validated 2026-08-18: kept sr_legacy 0 g; refs within range: BLS 0, MEXT 0, CIQUAL 0, AFCD 0, CoFID 0",
+        "comment": "Validated 2026-08-18: kept sr_legacy 0 g; refs within range: MEXT 0, CIQUAL 0, AFCD 0, CoFID 0",
         "derivation_description": "deriv Z: Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)"
       }
     },

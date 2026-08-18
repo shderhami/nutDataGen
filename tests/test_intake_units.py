@@ -41,9 +41,33 @@ class TestToFediaf:
         with pytest.raises(ValueError):
             to_fediaf(1106, 1.0, "g")    # no g->IU route for vitamin A
 
+    def test_blank_unit_fails_loud(self):
+        # audit 2026-08-18: '' used to skip the IU factor (vit A 3.33x low)
+        for bad in ("", "  ", None):
+            with pytest.raises(ValueError, match="Missing unit"):
+                to_fediaf(1106, 10.0, bad)  # type: ignore[arg-type]
+
+    def test_kj_spelling_variant(self):
+        assert math.isclose(to_fediaf(1008, 506.0, "KJ"), 506.0 / KJ_PER_KCAL)
+
 
 class TestParseUnit:
     def test_strips_denominator(self):
         assert parse_per100g_unit("mg/100 g") == "mg"
         assert parse_per100g_unit("kJ/100g") == "kJ"
         assert parse_per100g_unit("µg/100 g") == "µg"
+
+
+class TestHeaderAlignment:
+    HEADER = ("Food", "Water (g)", "Chloride (mg)", "C20:5w3 (mg)")
+
+    def test_aligned_map_passes(self):
+        from intake.units import check_header_alignment
+        check_header_alignment(
+            self.HEADER, {1: "Water", 2: "Chloride", 3: "C20:5w3 EPA"}, "TEST")
+
+    def test_shifted_map_fails_loud(self):
+        from intake.units import check_header_alignment
+        with pytest.raises(ValueError, match="no longer aligns"):
+            check_header_alignment(
+                self.HEADER, {1: "Chloride", 2: "Water"}, "TEST")

@@ -29,10 +29,14 @@ python -m intake write ...       5. WRITE    gated insert (backup, 52-complete,
 # generate the review artifacts (no DB access)
 .venv/bin/python -m intake report --spec data/intake/chicken_thigh_skinless.json
 
-# write after review (dry-run first; --commit takes a pg_dump backup itself)
+# review: copy proposed_decisions.json -> decisions.json, walk it with the
+# operator, edit, and add a top-level "reviewed_by": "<name>" — the writer
+# REFUSES to commit the proposed file or any file without reviewed_by.
+
+# write (dry-run first; --commit takes a pg_dump backup of the configured DB)
 .venv/bin/python -m intake write --spec data/intake/chicken_thigh_skinless.json \
     --decisions data/intake/chicken_thigh_skinless/decisions.json
-.venv/bin/python -m intake write --spec ... --decisions ... --commit
+.venv/bin/python -m intake write --spec ... --decisions ... --commit --signed-off-by "Shahab"
 ```
 
 After a committed write, the runbook's Phases 3–5 still apply: `cv_assign.py
@@ -88,11 +92,21 @@ verdicts and the report like any adapter value.
   `(x)` = estimated, `Tr` = trace; CIQUAL `< x` kept as censored upper bound.
 - **Verdicts are advisory.** The rule engine implements runbook §2.3
   (measured-beats-derived, region rule, assumed-zero replacement, ±20%
-  agreement with scale-aware epsilon) so review time goes to contested rows;
-  nothing writes without operator-approved decisions.
-- **Write gates**: exactly 52 FEDIAF nutrients, value+source+comment each,
-  coherent ranges (no censored min=0 stats), PUFA total ≥ component sum,
-  pg_dump backup before insert, orphan cleanup on failure, AI columns NULL.
+  agreement with scale-aware epsilon, form-declared vitamin K totals,
+  deterministic tie-breaking with an explicit review flag) so review time
+  goes to contested rows. The active thresholds are stamped into every
+  report and decisions file.
+- **Review gates**: `--commit` refuses `proposed_decisions.json` (machine
+  output), refuses a decisions file without a top-level `"reviewed_by"`, and
+  requires `--signed-off-by` (cv_assign contract) — a rule-engine suggestion
+  can never reach the DB claiming validation that did not happen.
+- **Write gates**: the food block is validated at gate time (add_ingredient
+  VALID_* rules, kwarg check, real nonzero price, cooking_method declared);
+  exactly 52 FEDIAF nutrients, value+source+comment each, units convertible,
+  coherent ranges (no censored min=0 stats), stats-carrying sources limited
+  to foundation/sr_legacy/literature (cv-v8 double-count guard), PUFA total
+  ≥ component sum, pg_dump backup of the configured DB before insert,
+  orphan cleanup that never masks the original failure, AI columns NULL.
 
 ## Review conventions (unchanged from the sweep)
 

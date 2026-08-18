@@ -10,7 +10,13 @@ from datetime import date
 from pathlib import Path
 from typing import Optional
 
-from intake.compare import NutrientComparison, V_CONFIRM, V_USDA_ONLY
+from intake.compare import (
+    NutrientComparison,
+    V_CONFIRM,
+    V_USDA_ONLY,
+    engine_constants,
+    verdict_counts,
+)
 from intake.model import (
     FEDIAF_BY_ID,
     Extraction,
@@ -54,12 +60,17 @@ def render_report(spec: IntakeSpec, extraction: Extraction,
                   comparisons: list[NutrientComparison],
                   echo_verdicts: dict[str, str]) -> str:
     foreign_labels = sorted({sv.source for sv in extraction.foreign})
+    engine = engine_constants()
+    eps = ", ".join(f"{u} {e:g}" for u, e in engine["eps_by_unit"].items())
     lines = [
         f"# Intake report: {spec.food['food_name']}",
         "",
         f"- generated: {date.today().isoformat()}  |  spec: `{spec.path}`",
         f"- Foundation FDC: {spec.foundation_fdc_id or '—'}  |  SR Legacy FDC: {spec.sr_fdc_id or '—'}",
         f"- category: {spec.food.get('category')}  |  per {spec.food.get('portion_qty')} {spec.food.get('base_unit')}",
+        (f"- engine: agreement ±{engine['agreement_rtol']:.0%} (abs floors: {eps}); "
+         f"echo <{engine['echo_rtol']:.1%} at ≥{engine['echo_min_matches']} matches "
+         f"and ≥{engine['echo_min_ratio']:.0%} of comparables"),
     ]
     for note in spec.notes:
         lines.append(f"- note: {note}")
@@ -76,10 +87,10 @@ def render_report(spec: IntakeSpec, extraction: Extraction,
         by_category.setdefault(cat, []).append(comparison)
 
     needs_attention: list[NutrientComparison] = []
+    foreign_header = ("".join(f" {lab} |" for lab in foreign_labels))
     for cat, comps in by_category.items():
         lines += [f"## {cat}", "",
-                  "| nutrient | unit | FND | SR | " + " | ".join(foreign_labels)
-                  + " | verdict |",
+                  "| nutrient | unit | FND | SR |" + foreign_header + " verdict |",
                   "|---|---|---|---|" + "---|" * (len(foreign_labels) + 1)]
         for c in comps:
             per_label = {lab: [sv for sv in c.foreign if sv.source == lab]
@@ -108,10 +119,7 @@ def render_report(spec: IntakeSpec, extraction: Extraction,
         lines.append("")
 
     lines += ["## Verdict summary", ""]
-    counts: dict[str, int] = {}
-    for c in comparisons:
-        counts[c.verdict] = counts.get(c.verdict, 0) + 1
-    for verdict, count in sorted(counts.items(), key=lambda kv: -kv[1]):
+    for verdict, count in sorted(verdict_counts(comparisons).items(), key=lambda kv: -kv[1]):
         lines.append(f"- {verdict}: {count}")
     return "\n".join(lines) + "\n"
 
@@ -132,6 +140,11 @@ def proposed_decisions(spec: IntakeSpec,
                                  "comment": "FILL ME: no rule-engine suggestion"}
         decisions.append(entry)
     return {"slug": spec.slug, "generated": date.today().isoformat(),
+            "engine": engine_constants(),
+            "review_contract": (
+                "Machine output — the writer refuses to --commit this file. "
+                "Review each decision, save as decisions.json, and add a "
+                "top-level \"reviewed_by\"."),
             "decisions": decisions}
 
 

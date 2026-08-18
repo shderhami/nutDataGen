@@ -6,11 +6,12 @@ pipeline hashes — so an extraction is reproducible for as long as the repo is.
 Encodes the sweep's USDA lessons:
 - derivation decode: assumed/borrowed zeros (Z, BF*) are flagged, analytical
   codes (A*) are trusted (runbook rule 2.3-3);
-- retinol crosswalk: Foundation sometimes publishes retinol (1105) without
-  RAE (1106) — RAE := retinol here (cats gain nothing from carotenoids);
-- vitamin D crosswalk: 1114 (µg) fills 1110 (IU) at x40 when 1110 is absent;
-- menaquinone note: MK-4 (1183) is surfaced on the vitamin K row so the
-  K1-only blindness of SR is visible at review time.
+- crosswalks (one table, `_CROSSWALK`): retinol 1105 fills RAE 1106 (RAE :=
+  retinol here — cats gain nothing from carotenoids) and vitamin D µg 1114
+  fills IU 1110, with a published target (a zero included) always winning;
+  mirrors usda_api._retinol_fallback on the API path — keep the two in sync;
+- menaquinone: MK-4 (1183) is surfaced on the vitamin K row, and USDA K rows
+  carry form=k1_only so the rule engine knows SR's blindness structurally.
 """
 from __future__ import annotations
 
@@ -22,13 +23,14 @@ from typing import Iterable, Optional
 import cv_config
 from intake.model import (
     FEDIAF_IDS,
+    FORM_K1_ONLY,
     Q_ANALYSED,
     Q_BORROWED,
     Q_COMPUTED,
     Q_UNKNOWN,
     SourceValue,
 )
-from intake.units import to_fediaf
+from intake.units import parse_float, to_fediaf
 
 RETINOL_ID = 1105
 VITA_RAE_ID = 1106
@@ -37,7 +39,13 @@ VITD_IU_ID = 1110
 MK4_ID = 1183
 VITK1_ID = 1185
 
-_EXTRA_IDS = frozenset({RETINOL_ID, VITD_UG_ID, MK4_ID})
+# raw USDA nutrient id -> the FEDIAF id it may fill when that id is absent
+_CROSSWALK: dict[int, int] = {RETINOL_ID: VITA_RAE_ID, VITD_UG_ID: VITD_IU_ID}
+_CROSSWALK_NOTES: dict[int, str] = {
+    RETINOL_ID: "retinol (1105) as RAE — crosswalk",
+    VITD_UG_ID: "vit D µg (1114) x40 -> IU — crosswalk",
+}
+_EXTRA_IDS = frozenset(_CROSSWALK) | {MK4_ID}
 _WANTED_IDS = FEDIAF_IDS | _EXTRA_IDS
 
 _DATASETS: tuple[tuple[str, Path], ...] = (
@@ -45,12 +53,7 @@ _DATASETS: tuple[tuple[str, Path], ...] = (
     ("SR", cv_config.FDC_SRL_DIR),
 )
 
-
-def _f(x: str) -> Optional[float]:
-    try:
-        return float(x)
-    except (TypeError, ValueError):
-        return None
+_f = parse_float
 
 
 @lru_cache(maxsize=1)
@@ -100,13 +103,32 @@ def _quality(code: str, description: str, data_points: Optional[int]) -> str:
     return Q_UNKNOWN
 
 
+def _make_value(label: str, food: str, nid: int, target: int, amount: float,
+                dp: Optional[int], vmin: Optional[float], vmax: Optional[float],
+                code: str, desc: str, year: Optional[str]) -> SourceValue:
+    """One converted SourceValue under its FEDIAF target id."""
+    scale = to_fediaf(target, 1.0, _units_by_nutrient()[nid]) if target in FEDIAF_IDS else 1.0
+    note = f"deriv {code}: {desc}" if code else ""
+    if nid in _CROSSWALK_NOTES:
+        note = f"{note}; {_CROSSWALK_NOTES[nid]}" if note else _CROSSWALK_NOTES[nid]
+    return SourceValue(
+        source=label, source_food=food, nutrient_id=target,
+        value=amount * scale, n=dp,
+        vmin=vmin * scale if vmin is not None else None,
+        vmax=vmax * scale if vmax is not None else None,
+        quality=_quality(code, desc, dp), note=note, year=year,
+        form=FORM_K1_ONLY if target == VITK1_ID else "",
+    )
+
+
 def extract_many(fdc_ids: Iterable[int]) -> dict[int, dict[int, SourceValue]]:
     """One pass over both bulk files; {fdc_id: {nutrient_id: SourceValue}}."""
     wanted = {int(i) for i in fdc_ids}
     names = food_names(wanted)
-    units = _units_by_nutrient()
     derivations = _derivations()
-    out: dict[int, dict[int, SourceValue]] = {fid: {} for fid in wanted}
+    # raw rows keyed by the RAW USDA nutrient id; crosswalk precedence and the
+    # MK-4 note are resolved in _finalize once the whole food is read.
+    raw: dict[int, dict[int, SourceValue]] = {fid: {} for fid in wanted}
 
     for label, dirpath in _DATASETS:
         with open(dirpath / "food_nutrient.csv", newline="", encoding="utf-8-sig") as fh:
@@ -126,64 +148,29 @@ def extract_many(fdc_ids: Iterable[int]) -> dict[int, dict[int, SourceValue]]:
                 dp = int(row[col["data_points"]] or 0) or None
                 der_id = row[col["derivation_id"]]
                 code, desc = derivations.get(int(der_id), ("", "")) if der_id else ("", "")
-                vmin, vmax = _f(row[col["min"]]), _f(row[col["max"]])
-                sv = SourceValue(
-                    source=label,
-                    source_food=f"{fid} {names.get(fid, '')}".strip(),
-                    nutrient_id=nid if nid in FEDIAF_IDS else VITK1_ID,  # placeholder; fixed in _convert
-                    value=amount, n=dp, vmin=vmin, vmax=vmax,
-                    quality=_quality(code, desc, dp),
-                    note=f"deriv {code}: {desc}" if code else "",
+                raw[fid][nid] = _make_value(
+                    label=label, food=f"{fid} {names.get(fid, '')}".strip(),
+                    nid=nid, target=_CROSSWALK.get(nid, nid), amount=amount,
+                    dp=dp, vmin=_f(row[col["min"]]), vmax=_f(row[col["max"]]),
+                    code=code, desc=desc,
                     year=row[col["min_year_acquired"]] or None,
                 )
-                # Keyed by the RAW USDA nutrient id; crosswalk precedence is
-                # resolved in _finalize after the whole food is read.
-                out[fid][nid] = _convert(sv, nid, amount, vmin, vmax, units[nid])
-    for fid in wanted:
-        out[fid] = _finalize(out[fid])
-    return out
-
-
-def _convert(sv: SourceValue, nid: int, amount: float,
-             vmin: Optional[float], vmax: Optional[float], unit: str) -> SourceValue:
-    """Convert a raw USDA row into FEDIAF units under its FEDIAF target id."""
-    target = {RETINOL_ID: VITA_RAE_ID, VITD_UG_ID: VITD_IU_ID}.get(nid, nid)
-    if target not in FEDIAF_IDS:  # MK-4 kept raw; folded into the K note later
-        return SourceValue(
-            source=sv.source, source_food=sv.source_food, nutrient_id=VITK1_ID,
-            value=amount, n=sv.n, vmin=vmin, vmax=vmax, quality=sv.quality,
-            note=sv.note, year=sv.year,
-        )
-    scale = to_fediaf(target, 1.0, unit)
-    note = sv.note
-    if nid == RETINOL_ID:
-        note = f"{note}; retinol (1105) as RAE — crosswalk" if note else "retinol (1105) as RAE — crosswalk"
-    if nid == VITD_UG_ID:
-        note = f"{note}; vit D µg (1114) x40 -> IU" if note else "vit D µg (1114) x40 -> IU"
-    return SourceValue(
-        source=sv.source, source_food=sv.source_food, nutrient_id=target,
-        value=amount * scale, n=sv.n,
-        vmin=vmin * scale if vmin is not None else None,
-        vmax=vmax * scale if vmax is not None else None,
-        quality=sv.quality, note=note, year=sv.year,
-    )
+    return {fid: _finalize(rows) for fid, rows in raw.items()}
 
 
 def _finalize(rows: dict[int, SourceValue]) -> dict[int, SourceValue]:
     """Resolve crosswalk precedence and the MK-4 note; key by FEDIAF id."""
-    out: dict[int, SourceValue] = {}
-    for nid, sv in rows.items():
-        if nid in (RETINOL_ID, VITD_UG_ID, MK4_ID):
-            continue
-        out[nid] = sv
-    # published target beats crosswalk (a published zero included)
-    if VITA_RAE_ID not in out and RETINOL_ID in rows:
-        out[VITA_RAE_ID] = rows[RETINOL_ID]
-    if VITD_IU_ID not in out and VITD_UG_ID in rows:
-        out[VITD_IU_ID] = rows[VITD_UG_ID]
+    out: dict[int, SourceValue] = {
+        nid: sv for nid, sv in rows.items() if nid not in _EXTRA_IDS
+    }
+    # a published target beats its crosswalk source (a published zero included)
+    for source_id, target_id in _CROSSWALK.items():
+        if target_id not in out and source_id in rows:
+            out[target_id] = rows[source_id]
     mk4 = rows.get(MK4_ID)
     if mk4 is not None and mk4.value > 0:
-        note = f"USDA MK-4 (1183) = {mk4.value:g} µg — SR/FND K row is K1 only; total-K doctrine applies"
+        note = (f"USDA MK-4 (1183) = {mk4.value:g} µg — SR/FND K row is K1 only; "
+                f"total-K doctrine applies")
         if VITK1_ID in out:
             out[VITK1_ID] = out[VITK1_ID].with_note(note)
         else:

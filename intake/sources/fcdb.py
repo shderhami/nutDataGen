@@ -20,12 +20,15 @@ from intake.model import (
     Q_UNKNOWN,
     SourceValue,
 )
-from intake.units import parse_per100g_unit, to_fediaf
+from intake.units import parse_float, parse_per100g_unit, to_fediaf
 
 LABEL = "FCDB"
 _XLSX = Path(__file__).resolve().parents[2] / "data" / "fcdb_dk" / "FCDB_6.1_Dataset.xlsx"
 
 # ParameterName -> FEDIAF nutrient id (definition-comparable only).
+# NOTE "Vitamin D" (total) is the definitional match for 1110 (D2+D3); the CV
+# pipeline's cv_intl.PARAM_MAP reads the "Vitamin D3" row for its dispersion
+# observations — a deliberate, documented split, do not "fix" one to the other.
 PARAM_MAP: dict[str, int] = {
     "Energy (kcal)": 1008,
     "Protein": 1003, "Fat": 1004, "Ash": 1007, "Water": 1051,
@@ -55,16 +58,12 @@ _COMPUTED_MARKERS = ("calculat", "beregn", "recipe")
 _ESTIMATED_MARKERS = ("estimated value", "anslået", "skøn")
 
 
-def _f(x) -> Optional[float]:
-    try:
-        return float(x)
-    except (TypeError, ValueError):
-        return None
+_f = parse_float
 
 
 @lru_cache(maxsize=1)
-def _workbook_tables() -> tuple[list[tuple], dict[str, str], dict[int, str], dict[int, str]]:
-    """(data rows, param->unit, source id->text, food id->name) — one load."""
+def _meta() -> tuple[dict[str, str], dict[int, str], dict[int, str]]:
+    """(param->unit, source id->citation, food id->name) — metadata sheets only."""
     from openpyxl import load_workbook
 
     wb = load_workbook(_XLSX, read_only=True, data_only=True)
@@ -98,22 +97,36 @@ def _workbook_tables() -> tuple[list[tuple], dict[str, str], dict[int, str], dic
         int(r[hdr["FoodID"]]): str(r[hdr["FoodName"]])
         for r in it if _f(r[hdr["FoodID"]]) is not None
     }
+    wb.close()
+    return param_units, sources, foods
 
+
+@lru_cache(maxsize=1)
+def _data_by_food() -> dict[int, list[tuple]]:
+    """Data_Normalised rows for mapped parameters only, grouped by FoodID.
+
+    One streaming pass; keeps ~50 rows/food instead of the full 144k-row
+    sheet (which cost ~46 MB resident and a second full copy)."""
+    from openpyxl import load_workbook
+
+    wb = load_workbook(_XLSX, read_only=True, data_only=True)
     ws = wb["Data_Normalised"]
     it = ws.iter_rows(values_only=True)
-    hdr_row = next(it)
-    rows = [tuple(r) for r in it]
+    idx = {h: i for i, h in enumerate(next(it))}
+    out: dict[int, list[tuple]] = {}
+    for r in it:
+        param = str(r[idx["ParameterName"]])
+        if param not in PARAM_MAP:
+            continue
+        food_id = r[idx["FoodID"]]
+        if not isinstance(food_id, int):
+            continue
+        out.setdefault(food_id, []).append((
+            param, _f(r[idx["ResVal"]]), _f(r[idx["Min"]]), _f(r[idx["Max"]]),
+            r[idx["NumberOfDeterminations"]], str(r[idx["Source"]]),
+        ))
     wb.close()
-    idx = {h: i for i, h in enumerate(hdr_row)}
-    keyed = [
-        (
-            r[idx["FoodID"]], str(r[idx["ParameterName"]]), _f(r[idx["ResVal"]]),
-            _f(r[idx["Min"]]), _f(r[idx["Max"]]), r[idx["NumberOfDeterminations"]],
-            str(r[idx["Source"]]),
-        )
-        for r in rows
-    ]
-    return keyed, param_units, sources, foods
+    return out
 
 
 def _classify(source_ids: str, sources: dict[int, str]) -> tuple[str, str]:
@@ -139,11 +152,13 @@ def _classify(source_ids: str, sources: dict[int, str]) -> tuple[str, str]:
 
 
 def extract(key: int, note: str = "") -> list[SourceValue]:
-    rows, param_units, sources, foods = _workbook_tables()
-    food_name = foods.get(int(key), f"FoodID {key}")
+    param_units, sources, foods = _meta()
+    if int(key) not in foods:
+        raise KeyError(f"FCDB FoodID {key} not found")
+    food_name = foods[int(key)]
     out: list[SourceValue] = []
-    for food_id, param, val, vmin, vmax, n, src in rows:
-        if food_id != int(key) or param not in PARAM_MAP or val is None:
+    for param, val, vmin, vmax, n, src in _data_by_food().get(int(key), []):
+        if val is None:
             continue
         nid = PARAM_MAP[param]
         unit = parse_per100g_unit(param_units[param])
@@ -163,6 +178,6 @@ def extract(key: int, note: str = "") -> list[SourceValue]:
 
 
 def search(query: str) -> list[tuple[int, str]]:
-    _, _, _, foods = _workbook_tables()
+    _, _, foods = _meta()
     q = query.lower()
     return [(fid, name) for fid, name in sorted(foods.items()) if q in name.lower()]

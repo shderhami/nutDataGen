@@ -15,7 +15,8 @@ source, with frame caveats), then:
 ```bash
 .venv/bin/python -m intake report --spec data/intake/<slug>.json   # artifacts
 # review report.md with the operator, finalize decisions.json (Phase 2 rules)
-.venv/bin/python -m intake write --spec ... --decisions ... --commit
+# and add top-level "reviewed_by" — the writer refuses unreviewed files
+.venv/bin/python -m intake write --spec ... --decisions ... --commit --signed-off-by "Shahab"
 ```
 
 Extraction is from the pinned bulk datasets (no API, no billing); Phase 2
