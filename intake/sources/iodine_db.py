@@ -12,14 +12,22 @@ from functools import lru_cache
 from pathlib import Path
 
 from intake.model import Q_ANALYSED, SourceValue
-from intake.units import parse_float
+from intake.units import check_header_alignment, parse_float
 
 LABEL = "IodineDB"
 _XLSX = (Path(__file__).resolve().parents[2]
          / "data" / "usda_iodine" / "Iodine Database_Release 4_Per 100g.xlsx")
 IODINE_ID = 1100
 
+# source-level lineage: every value from this adapter is USDA-affiliated
+# (consumed centrally by extract.run — never independent confirmation)
+USDA_LINEAGE = True
+
 _f = parse_float
+
+# header row 2 (0-indexed 1): the positional map this adapter relies on
+_HEADER_LABELS = {3: "Description", 4: "n", 5: "Iodine", 6: "SD",
+                  7: "Min", 8: "Max"}
 
 
 @lru_cache(maxsize=1)
@@ -28,9 +36,10 @@ def _rows() -> list[tuple]:
 
     wb = load_workbook(_XLSX, read_only=True, data_only=True)
     ws = wb["Sheet1"]
-    out = [tuple(r) for i, r in enumerate(ws.iter_rows(values_only=True)) if i >= 2]
+    all_rows = [tuple(r) for r in ws.iter_rows(values_only=True)]
     wb.close()
-    return out
+    check_header_alignment(all_rows[1], _HEADER_LABELS, LABEL)
+    return all_rows[2:]
 
 
 def extract(key: str, note: str = "") -> list[SourceValue]:

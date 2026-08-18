@@ -33,6 +33,13 @@ from intake.model import (
 )
 from intake.spec import IntakeSpec
 
+# the machine artifact's filename — writer.py's commit refusal keys on this
+# exact constant, so producer and gate cannot drift apart
+PROPOSED_DECISIONS_BASENAME = "proposed_decisions.json"
+
+# verdicts whose decisions must carry an operator `resolution` before commit
+CONTESTED_VERDICTS = frozenset({"review", "no_evidence"})
+
 _MARK = {
     Q_ANALYSED: "", Q_BORROWED: "†", Q_COMPILED: "°", Q_COMPUTED: "‡",
     Q_ESTIMATED: "~", Q_CENSORED: "<", Q_TRACE: " tr", Q_ECHO: "≈", Q_UNKNOWN: "?",
@@ -100,11 +107,15 @@ def render_report(spec: IntakeSpec, extraction: Extraction,
             row += [_foreign_cell(per_label[lab]) for lab in foreign_labels]
             row.append(f"**{c.verdict}**")
             lines.append(" | ".join(row) + " |")
-            if c.verdict not in (V_CONFIRM, V_USDA_ONLY):
+            has_bounds = any("detection-limit" in r for r in c.reasons)
+            if c.verdict not in (V_CONFIRM, V_USDA_ONLY) or has_bounds:
+                # detection-limit context must reach the reviewer even on
+                # confirm/usda_only rows (audit 2026-08-18: the trace demotion
+                # had moved those rows off this list entirely)
                 needs_attention.append(c)
         lines.append("")
 
-    lines += ["## Needs attention (everything not confirm/usda_only)", ""]
+    lines += ["## Needs attention (contested rows + detection-limit context)", ""]
     if not needs_attention:
         lines.append("None.")
     for c in needs_attention:
@@ -138,6 +149,10 @@ def proposed_decisions(spec: IntakeSpec,
         else:
             entry["decision"] = {"value": None, "source": None,
                                  "comment": "FILL ME: no rule-engine suggestion"}
+        if c.verdict in CONTESTED_VERDICTS:
+            # the writer refuses to commit while this is null — the reviewer
+            # states in a sentence why the final value stands
+            entry["decision"]["resolution"] = None
         decisions.append(entry)
     return {"slug": spec.slug, "generated": date.today().isoformat(),
             "engine": engine_constants(),
@@ -156,7 +171,7 @@ def write_artifacts(spec: IntakeSpec, extraction: Extraction,
     report_path = out_dir / "report.md"
     report_path.write_text(
         render_report(spec, extraction, comparisons, echo_verdicts))
-    decisions_path = out_dir / "proposed_decisions.json"
+    decisions_path = out_dir / PROPOSED_DECISIONS_BASENAME
     decisions_path.write_text(
         json.dumps(proposed_decisions(spec, comparisons), indent=2, ensure_ascii=False))
     return report_path, decisions_path

@@ -126,6 +126,54 @@ def ingredient_class_for(category: str) -> str:
     return CATEGORY_TO_INGREDIENT_CLASS.get(category, "other")
 
 
+def ingredient_field_problems(
+    category: str,
+    base_unit: str,
+    cooking_method: Optional[str] = None,
+    source: str = "grocery",
+    protein_species: Optional[str] = None,
+    supplement_info: Optional[str] = None,
+    is_corrector: bool = False,
+    **_ignored,
+) -> list[str]:
+    """Every constraint add_ingredient enforces, as a checkable problem list.
+
+    Shared with gate-time validators (intake writer) so a spec that would die
+    inside add_ingredient fails BEFORE any backup/insert — and so the two
+    rule sets cannot drift (a rule added here binds both).
+    """
+    problems: list[str] = []
+    if category not in VALID_CATEGORIES:
+        problems.append(
+            f"Invalid category '{category}'. "
+            f"Must be one of: {', '.join(VALID_CATEGORIES)}")
+    if base_unit not in VALID_BASE_UNITS:
+        problems.append(
+            f"Invalid base_unit '{base_unit}'. "
+            f"Must be one of: {', '.join(VALID_BASE_UNITS)}")
+    if cooking_method is not None and cooking_method not in VALID_COOKING_METHODS:
+        problems.append(
+            f"Invalid cooking_method '{cooking_method}'. "
+            f"Must be one of: {', '.join(VALID_COOKING_METHODS)} (or None)")
+    if source not in VALID_SOURCES:
+        problems.append(
+            f"Invalid source '{source}'. "
+            f"Must be one of: {', '.join(VALID_SOURCES)}")
+    if protein_species is not None and protein_species not in VALID_PROTEIN_SPECIES:
+        problems.append(
+            f"Invalid protein_species '{protein_species}'. "
+            f"Must be one of: {', '.join(VALID_PROTEIN_SPECIES)} (or None)")
+    if supplement_info is not None and source not in SUPPLEMENT_INFO_SOURCES:
+        problems.append(
+            "supplement_info can only be set when source is one of: "
+            f"{', '.join(SUPPLEMENT_INFO_SOURCES)}")
+    if is_corrector and category not in CORRECTOR_CATEGORIES:
+        problems.append(
+            f"is_corrector is only valid for category in "
+            f"{', '.join(CORRECTOR_CATEGORIES)}, not '{category}'")
+    return problems
+
+
 def add_ingredient(
     food_name: str,
     category: str,
@@ -154,41 +202,13 @@ def add_ingredient(
     drives its legal-max limits, the latter selects the delivered-spec CV in
     cv_assign. They are meaningful only for CORRECTOR_CATEGORIES rows.
     """
-    if category not in VALID_CATEGORIES:
-        raise ValueError(
-            f"Invalid category '{category}'. "
-            f"Must be one of: {', '.join(VALID_CATEGORIES)}"
-        )
-    if base_unit not in VALID_BASE_UNITS:
-        raise ValueError(
-            f"Invalid base_unit '{base_unit}'. "
-            f"Must be one of: {', '.join(VALID_BASE_UNITS)}"
-        )
-    if cooking_method is not None and cooking_method not in VALID_COOKING_METHODS:
-        raise ValueError(
-            f"Invalid cooking_method '{cooking_method}'. "
-            f"Must be one of: {', '.join(VALID_COOKING_METHODS)} (or None)"
-        )
-    if source not in VALID_SOURCES:
-        raise ValueError(
-            f"Invalid source '{source}'. "
-            f"Must be one of: {', '.join(VALID_SOURCES)}"
-        )
-    if protein_species is not None and protein_species not in VALID_PROTEIN_SPECIES:
-        raise ValueError(
-            f"Invalid protein_species '{protein_species}'. "
-            f"Must be one of: {', '.join(VALID_PROTEIN_SPECIES)} (or None)"
-        )
-    if supplement_info is not None and source not in SUPPLEMENT_INFO_SOURCES:
-        raise ValueError(
-            "supplement_info can only be set when source is one of: "
-            f"{', '.join(SUPPLEMENT_INFO_SOURCES)}"
-        )
-    if is_corrector and category not in CORRECTOR_CATEGORIES:
-        raise ValueError(
-            f"is_corrector is only valid for category in "
-            f"{', '.join(CORRECTOR_CATEGORIES)}, not '{category}'"
-        )
+    problems = ingredient_field_problems(
+        category=category, base_unit=base_unit, cooking_method=cooking_method,
+        source=source, protein_species=protein_species,
+        supplement_info=supplement_info, is_corrector=is_corrector,
+    )
+    if problems:
+        raise ValueError(problems[0])
     db = get_db()
     with db.cursor() as cur:
         cur.execute(

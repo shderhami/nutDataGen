@@ -63,6 +63,29 @@ class LiteratureValue:
     vmax: Optional[float] = None
     quality: str = Q_ANALYSED
     note: str = ""
+    usda_lineage: bool = False  # set true when the cited number is itself
+                                # USDA-derived (common in feed literature)
+
+    def to_source_value(self):
+        """Unit-converted SourceValue — the single transcription point, so a
+        field added here cannot be silently dropped on the way into the
+        comparison engine (audit 2026-08-18)."""
+        from intake.model import SourceValue
+        from intake.units import to_fediaf
+
+        scale = to_fediaf(self.nutrient_id, 1.0, self.unit)
+        return SourceValue(
+            source=self.source,
+            source_food=self.item or self.source,
+            nutrient_id=self.nutrient_id,
+            value=self.value * scale,
+            n=self.n,
+            vmin=self.vmin * scale if self.vmin is not None else None,
+            vmax=self.vmax * scale if self.vmax is not None else None,
+            quality=self.quality,
+            note=self.note,
+            usda_lineage=self.usda_lineage,
+        )
 
 
 @dataclass
@@ -131,6 +154,7 @@ def load_spec(path: str | Path) -> IntakeSpec:
             vmax=float(entry["max"]) if entry.get("max") is not None else None,
             quality=str(entry.get("quality", Q_ANALYSED)),
             note=str(entry.get("note", "")),
+            usda_lineage=bool(entry.get("usda_lineage", False)),
         ))
     return IntakeSpec(
         slug=str(raw["slug"]), food=dict(raw["food"]), sources=sources,

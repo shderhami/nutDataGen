@@ -245,7 +245,8 @@
         "min_value": 6.31,
         "max_value": 9.92,
         "year_acquired": "2023",
-        "derivation_description": "deriv A: Analytical"
+        "derivation_description": "deriv A: Analytical",
+        "resolution": null
       }
     },
     {
@@ -352,7 +353,8 @@
         "min_value": 0.86,
         "max_value": 1.97,
         "year_acquired": "2023",
-        "derivation_description": "deriv A: Analytical"
+        "derivation_description": "deriv A: Analytical",
+        "resolution": null
       }
     },
     {
@@ -645,7 +647,7 @@
       "verdict": "form_defect",
       "reasons": [
         "USDA K row is K1-only (2.9 µg); menaquinone-inclusive tables read ~29.915 µg",
-        "anchor tie-broken — review must arbitrate"
+        "anchor is a tie-break between split sources — review must arbitrate"
       ],
       "decision": {
         "value": 23.0,
@@ -751,7 +753,8 @@
         "value": 4.0,
         "source": "sr_legacy",
         "comment": "Validated 2026-08-18: kept sr_legacy 4 µg after review (intl differ: FCDB 21.1667 (n=24), MEXT 10, CIQUAL 7.67, AFCD 32, CoFID 9, NRC2006 6)",
-        "derivation_description": "deriv BFPN: Based on another form of the food or similar food"
+        "derivation_description": "deriv BFPN: Based on another form of the food or similar food",
+        "resolution": null
       }
     },
     {

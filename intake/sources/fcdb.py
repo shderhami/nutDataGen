@@ -10,7 +10,6 @@ from __future__ import annotations
 
 from functools import lru_cache
 from pathlib import Path
-from typing import Optional
 
 from intake.model import (
     Q_ANALYSED,
@@ -118,9 +117,12 @@ def _data_by_food() -> dict[int, list[tuple]]:
         param = str(r[idx["ParameterName"]])
         if param not in PARAM_MAP:
             continue
-        food_id = r[idx["FoodID"]]
-        if not isinstance(food_id, int):
+        # tolerate float/str-typed ids like _meta() does — a re-export that
+        # changes the cell type must not silently empty the extraction
+        food_id_raw = _f(r[idx["FoodID"]])
+        if food_id_raw is None:
             continue
+        food_id = int(food_id_raw)
         out.setdefault(food_id, []).append((
             param, _f(r[idx["ResVal"]]), _f(r[idx["Min"]]), _f(r[idx["Max"]]),
             r[idx["NumberOfDeterminations"]], str(r[idx["Source"]]),

@@ -25,6 +25,36 @@ class TestFoundation:
         assert sv.quality == Q_COMPUTED and "NC" in sv.note
 
 
+class TestCrosswalks:
+    """The maiden pair exercises neither crosswalk (SR publishes both sides),
+    so these pins cover the fill/precedence/MK-4 layer explicitly."""
+
+    @pytest.fixture(scope="class")
+    def foods(self):
+        # salmon FND: retinol 1105 only; pollock FND: vit D 1114 only;
+        # fortified cheese: BOTH 1114 and published 1110; feta: MK-4 only
+        return extract_many([2684441, 2768206, 325198, 2684242])
+
+    def test_retinol_fills_rae_with_iu_conversion(self, foods):
+        sv = foods[2684441][1106]
+        assert math.isclose(sv.value, 2.151 * 3.33, rel_tol=1e-3)
+        assert sv.n == 8 and "crosswalk" in sv.note
+
+    def test_vitd_ug_fills_iu_slot(self, foods):
+        sv = foods[2768206][1110]
+        assert sv.value == 0.0 and "x40" in sv.note
+
+    def test_published_target_beats_crosswalk(self, foods):
+        sv = foods[325198][1110]
+        assert sv.value == 301.0 and "crosswalk" not in sv.note
+
+    def test_mk4_only_food_gets_mk4_form_not_k1_label(self, foods):
+        from intake.model import FORM_MK4_ONLY
+        sv = foods[2684242][1185]
+        assert sv.value == 4.5 and sv.form == FORM_MK4_ONLY
+        assert "MK-4" in sv.note and "K1 only" not in sv.note
+
+
 class TestSRLegacy:
     def test_vitamin_a_converted_to_iu(self, thigh_pair):
         sv = thigh_pair[173627][1106]

@@ -2,30 +2,17 @@
 curated literature evidence)."""
 from __future__ import annotations
 
+from dataclasses import replace
+
 from intake import usda_bulk
 from intake.model import Extraction, SourceValue
 from intake.sources import registry
 from intake.spec import IntakeSpec
-from intake.units import to_fediaf
 
 
 def literature_values(spec: IntakeSpec) -> list[SourceValue]:
     """Curated book/paper evidence (plan §5), unit-converted like any adapter."""
-    out: list[SourceValue] = []
-    for lit in spec.literature:
-        scale = to_fediaf(lit.nutrient_id, 1.0, lit.unit)
-        out.append(SourceValue(
-            source=lit.source,
-            source_food=lit.item or lit.source,
-            nutrient_id=lit.nutrient_id,
-            value=lit.value * scale,
-            n=lit.n,
-            vmin=lit.vmin * scale if lit.vmin is not None else None,
-            vmax=lit.vmax * scale if lit.vmax is not None else None,
-            quality=lit.quality,
-            note=lit.note,
-        ))
-    return out
+    return [lit.to_source_value() for lit in spec.literature]
 
 
 def run(spec: IntakeSpec) -> Extraction:
@@ -46,6 +33,10 @@ def run(spec: IntakeSpec) -> Extraction:
     adapters = registry()
     for name, refs in spec.sources.items():
         adapter = adapters[name]
+        # source-level lineage declaration (adapter module attribute) is
+        # applied centrally so a new USDA-affiliated adapter cannot forget
+        # the per-row flag on some branch (audit 2026-08-18)
+        adapter_lineage = bool(getattr(adapter, "USDA_LINEAGE", False))
         for ref in refs:
             values = adapter.extract(ref.key, note=ref.note)
             if not values:
@@ -55,6 +46,9 @@ def run(spec: IntakeSpec) -> Extraction:
                 raise KeyError(
                     f"{adapter.LABEL} key {ref.key!r} produced no values — "
                     f"check the spec entry")
+            if adapter_lineage:
+                values = [sv if sv.usda_lineage else replace(sv, usda_lineage=True)
+                          for sv in values]
             extraction.foreign.extend(values)
             label = f"{adapter.LABEL}:{values[0].source_food}"
             extraction.source_notes[label] = ref.note

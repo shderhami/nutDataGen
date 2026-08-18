@@ -24,6 +24,7 @@ import cv_config
 from intake.model import (
     FEDIAF_IDS,
     FORM_K1_ONLY,
+    FORM_MK4_ONLY,
     Q_ANALYSED,
     Q_BORROWED,
     Q_COMPUTED,
@@ -91,13 +92,19 @@ def food_names(fdc_ids: Iterable[int]) -> dict[int, str]:
 
 
 def _quality(code: str, description: str, data_points: Optional[int]) -> str:
-    if code.startswith("A"):
-        return Q_ANALYSED
     lowered = description.lower()
     if code == "Z" or code.startswith("BF") or "assumed" in lowered:
         return Q_BORROWED
-    if "calculated" in lowered or "computed" in lowered:
+    # A-prefix codes are NOT uniformly analytical: AS is "Summed" and AR is
+    # regression-derived — the CV pipeline (cv_extract._calc_derivation_ids)
+    # excludes those same rows from dispersion pooling, so classifying them
+    # `analysed` here would let the two pipelines contradict each other on
+    # the same cell (audit 2026-08-18).
+    if any(m in lowered for m in ("summed", "regression", "calculated",
+                                  "computed", "imputed", "recipe")):
         return Q_COMPUTED
+    if code.startswith("A"):
+        return Q_ANALYSED
     if data_points and data_points > 0:
         return Q_ANALYSED
     return Q_UNKNOWN
@@ -169,15 +176,19 @@ def _finalize(rows: dict[int, SourceValue]) -> dict[int, SourceValue]:
             out[target_id] = rows[source_id]
     mk4 = rows.get(MK4_ID)
     if mk4 is not None and mk4.value > 0:
-        note = (f"USDA MK-4 (1183) = {mk4.value:g} µg — SR/FND K row is K1 only; "
-                f"total-K doctrine applies")
         if VITK1_ID in out:
-            out[VITK1_ID] = out[VITK1_ID].with_note(note)
+            out[VITK1_ID] = out[VITK1_ID].with_note(
+                f"USDA MK-4 (1183) = {mk4.value:g} µg — this K row is K1 only; "
+                f"total-K doctrine applies")
         else:
+            # no K1 row at all: surface the MK-4 measurement honestly as an
+            # MK-4-only value (74 Foundation foods) — never labeled K1-only
             out[VITK1_ID] = SourceValue(
                 source=mk4.source, source_food=mk4.source_food,
                 nutrient_id=VITK1_ID, value=mk4.value, n=mk4.n,
                 vmin=mk4.vmin, vmax=mk4.vmax, quality=mk4.quality,
-                note=note, year=mk4.year,
+                note=(f"USDA publishes MK-4 (1183) only for this food — no K1 "
+                      f"row; value is menaquinone-4 alone"),
+                year=mk4.year, form=FORM_MK4_ONLY,
             )
     return out

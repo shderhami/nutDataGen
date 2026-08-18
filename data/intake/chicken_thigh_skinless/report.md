@@ -113,7 +113,7 @@ _value marks: † borrowed  ° compiled  ‡ computed  ~ estimated  < censored u
 | Crude Fiber (1079) | g | — | 0† | 0 | 0‡ | 0° / 0≈ | 0° | 0† | — | 0~ | — | — | **confirm** |
 | Carbohydrate (1005) | g | 0‡ | 0† | 0 | 0‡ | 0° / 0≈ | 0° | 0‡ | — | 0 | — | — | **confirm** |
 
-## Needs attention (everything not confirm/usda_only)
+## Needs attention (contested rows + detection-limit context)
 
 ### Taurine (1234) — adopt_foreign
 - no USDA value; 2 measured source(s) available
@@ -139,7 +139,7 @@ _value marks: † borrowed  ° compiled  ‡ computed  ~ estimated  < censored u
   - FCDB [computed] 1.50637 — Sum polyunsaturated fatty acids; src [1003] Value calculated by converting various analytical data
   - BLS [computed] 1.51 — FAPU [Formelberechnung] -
   - MEXT [analysed] 0.71 — FAPU (FA volume, per 100 g EP)
-  - AFCD [analysed] 0.52 — Total PUFA, equated; food-level derivation: Analysed
+  - AFCD [analysed] 0.52 — Total polyunsaturated; food-level derivation: Analysed
   - CoFID [compiled] 0.6 — Poly FA /100g food; refs: Reviewed 2013. LGC, Nutrient analysis of chicken and turkey, 1994-1995; vitamin K1 from Bolton
 
 ### Chloride (1088) — adopt_foreign
@@ -175,14 +175,14 @@ _value marks: † borrowed  ° compiled  ‡ computed  ~ estimated  < censored u
 
 ### Vitamin K (1185) — form_defect
 - USDA K row is K1-only (2.9 µg); menaquinone-inclusive tables read ~29.915 µg
-- anchor tie-broken — review must arbitrate
+- anchor is a tie-break between split sources — review must arbitrate
 - suggestion: 23 µg (source `literature`)
   - FCDB [computed] 0 — Vitamin K; src [1003] Value calculated by converting various analytical data
   - BLS [computed] 5.83 — VITK [Formelberechnung] -; VITK1=0µg, VITK2=5.83µg
   - MEXT [analysed] 23 — VITK (main volume); menaquinone-inclusive total K
   - CIQUAL [compiled] 36.83 — Vitamine K1+K2 total-K; K1=2.53, K2=34.3
-  - CIQUAL [echo] 2.9 — Vitamine K1+K2 total-K; K1=2.9, K2 n/a; was compiled
-  - CoFID [compiled] 0.05 — Vitamin K1 (K1 only); refs: Reviewed 2013. LGC, Nutrient analysis of chicken and turkey, 1994-1995; vitamin K1 from Bolt
+  - CIQUAL [echo] 2.9 — Vitamine K1 only; K2 n/a; was compiled
+  - CoFID [compiled] 0.05 — Vitamin K1; refs: Reviewed 2013. LGC, Nutrient analysis of chicken and turkey, 1994-1995; vitamin K1 from Bolton-Smith e
 
 ### Pantothenic acid (1170) — adopt_foreign
 - no USDA value; 5 measured source(s) available

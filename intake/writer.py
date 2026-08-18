@@ -1,31 +1,32 @@
 """Gated DB writer: reviewed decisions -> ingredients + 52 nutrient rows.
 
-Refuses to write unless every gate passes:
-- the decisions file is a REVIEWED file: it carries `reviewed_by`, it is not
-  the machine-generated proposed_decisions.json, and --commit requires
-  --signed-off-by (same contract as cv_assign) — a rule-engine suggestion
-  must never reach the DB claiming validation that did not happen;
-- the food block is valid NOW (add_ingredient's VALID_* rules + kwarg check,
-  price present and nonzero, cooking_method declared) — not mid-commit after
-  the backup;
-- exactly the 52 FEDIAF nutrients, each with value + source + comment;
-- units convertible to the FEDIAF declared unit (fail at gate, not mid-write);
-- coherent stats (0 < min <= value <= max; censored min=0 ranges rejected);
-- stats-carrying sources limited to foundation/sr_legacy/literature — foreign
-  stats on a 'calculated' row would earn a poolable fdc_range CV and
-  double-count the same dataset in cv-v8 pooling;
+Two gate classes:
+
+RECORD GATES (fail dry-run and commit — the plan itself is wrong):
+- decisions slug matches the spec slug (a decisions file from another food
+  must never write under this spec's ingredient);
+- exactly the 52 FEDIAF nutrients, each with numeric value + source + comment;
+- units convertible to the FEDIAF declared unit (entry-level `unit` edits are
+  honored — see load_decisions);
+- coherent stats (0 < min <= value <= max; median inside the range; censored
+  min=0 rejected); stats-carrying sources limited to
+  foundation/sr_legacy/literature (cv-v8 double-count guard);
 - PUFA total (1293) >= sum of tracked components (lamb convention).
 
-Records go through `database.create_nutrient_record`, so FEDIAF unit
-conversion and the platform stats conventions apply exactly as in the
-interactive flow. AI columns stay NULL — provenance lives in the comment.
-Commit path: pg_dump backup (same DB coordinates as the write, from config),
-insert, verify completeness; the orphan ingredient row is removed if anything
-fails after it was created, without masking the original error.
+COMMIT GATES (dry-run prints them as blockers and still previews):
+- food block valid per database.ingredient_field_problems (the same rules
+  add_ingredient enforces — shared code, cannot drift) plus intake policy:
+  known kwargs only, real nonzero price, cooking_method declared,
+  protein_species for meat categories, supplements out of scope (plan §2);
+- REVIEW CONTRACT: refuses the machine artifact (by its shared basename
+  constant AND by its `review_contract` content marker), requires a top-level
+  `reviewed_by`, `--signed-off-by` (cv_assign contract), and an operator
+  `resolution` sentence on every contested-verdict row.
 
-After a commit the CV pipeline still must run (Phase 3 of the runbook):
-    cv_assign.py --food-id <id>            # dry-run
-    cv_assign.py --food-id <id> --commit --signed-off-by "..."
+Commit path: pg_dump backup of the configured DB, insert, completeness check,
+orphan cleanup that never masks the original failure, and a committed
+`write_receipt.json` recording food_id / reviewer / signer / backup — the
+durable trace of who approved the rows.
 """
 from __future__ import annotations
 
@@ -47,6 +48,7 @@ from intake.model import (
     PUFA_COMPONENT_IDS,
     PUFA_TOTAL_ID,
 )
+from intake.report import CONTESTED_VERDICTS, PROPOSED_DECISIONS_BASENAME
 from intake.spec import IntakeSpec
 
 # what the rule engine emits, plus 'calculated' for recomputed totals
@@ -54,7 +56,6 @@ from intake.spec import IntakeSpec
 _VALID_SOURCES = frozenset({"foundation", "sr_legacy", "literature", "calculated"})
 _STATS_SOURCES = frozenset({"foundation", "sr_legacy", "literature"})
 _PUFA_TOLERANCE = 1e-6
-_PROPOSED_BASENAME = "proposed_decisions.json"
 _SPECIES_CATEGORIES = frozenset({"Muscle Meat", "Organ Meat"})
 
 # preferred pinned client (dumps any server <= 18), then PATH fallback —
@@ -68,45 +69,59 @@ class GateFailure(ValueError):
 
 
 def load_decisions(path: str | Path) -> tuple[dict[int, dict[str, Any]], dict[str, Any]]:
-    """(decisions by nutrient id, file-level metadata)."""
+    """(decisions by nutrient id, file-level metadata).
+
+    The entry-level `unit` (what the artifact displays to the reviewer) is
+    folded into the decision when the decision has none, so a reviewed unit
+    edit takes effect instead of being silently discarded (audit 2026-08-18).
+    """
     path = Path(path)
     raw = json.loads(path.read_text())
     out: dict[int, dict[str, Any]] = {}
     for entry in raw["decisions"]:
         nid = int(entry["nutrient_id"])
-        out[nid] = dict(entry["decision"] or {})
-        out[nid]["_verdict"] = entry.get("verdict", "")
+        decision = dict(entry["decision"] or {})
+        if entry.get("unit") and not decision.get("unit"):
+            decision["unit"] = entry["unit"]
+        decision["_verdict"] = entry.get("verdict", "")
+        # a split-source tie-break needs arbitration regardless of verdict
+        # (e.g. an adopt_foreign anchored between 169 and 33.7)
+        decision["_tie_break"] = any(
+            "tie-break between split sources" in str(r)
+            for r in entry.get("reasons", []))
+        out[nid] = decision
     meta = {
         "slug": raw.get("slug"),
         "reviewed_by": str(raw.get("reviewed_by", "") or "").strip(),
         "basename": path.name,
+        "has_review_contract": "review_contract" in raw,
     }
     return out, meta
 
 
 def _check_food_block(spec: IntakeSpec) -> list[str]:
+    """Commit blockers from the food block (shared DB rules + intake policy)."""
     problems: list[str] = []
     food = spec.food
     allowed = set(inspect.signature(database.add_ingredient).parameters)
     unknown = set(food) - allowed
     if unknown:
         problems.append(f"food block: unknown add_ingredient fields {sorted(unknown)}")
-    checks = (
-        ("category", database.VALID_CATEGORIES, True),
-        ("base_unit", database.VALID_BASE_UNITS, True),
-        ("source", database.VALID_SOURCES, False),
-        ("cooking_method", database.VALID_COOKING_METHODS, False),
-        ("protein_species", database.VALID_PROTEIN_SPECIES, False),
-    )
-    for field, valid, required in checks:
-        value = food.get(field)
-        if value is None:
-            if required:
-                problems.append(f"food block: {field} missing")
-            continue
-        if value not in valid:
-            problems.append(
-                f"food block: {field} {value!r} invalid (one of {sorted(valid)})")
+    # the exact rules add_ingredient will enforce, checked NOW (shared code)
+    problems += [f"food block: {p}" for p in database.ingredient_field_problems(
+        category=food.get("category", ""),
+        base_unit=food.get("base_unit", ""),
+        cooking_method=food.get("cooking_method"),
+        source=food.get("source", "grocery"),
+        protein_species=food.get("protein_species"),
+        supplement_info=food.get("supplement_info"),
+        is_corrector=bool(food.get("is_corrector", False)),
+    )]
+    # intake policy on top
+    if food.get("category") == "Supplement":
+        problems.append(
+            "food block: supplements are out of intake scope (plan §2 "
+            "non-goal) — use the interactive Path B flow")
     if "cooking_method" not in food:
         problems.append(
             "food block: cooking_method must be declared explicitly "
@@ -123,9 +138,21 @@ def _check_food_block(spec: IntakeSpec) -> list[str]:
     return problems
 
 
-def check_gates(spec: IntakeSpec, decisions: dict[int, dict[str, Any]]) -> list[str]:
-    """Returns a list of gate failures (empty = all gates pass)."""
-    problems = _check_food_block(spec)
+def _numeric(value: Any) -> bool:
+    return isinstance(value, (int, float)) and not isinstance(value, bool)
+
+
+def check_gates(spec: IntakeSpec, decisions: dict[int, dict[str, Any]],
+                meta: Optional[dict[str, Any]] = None) -> tuple[list[str], list[str]]:
+    """(record problems, commit blockers). Record problems invalidate even a
+    dry-run preview; commit blockers only stop --commit."""
+    problems: list[str] = []
+    commit_problems = _check_food_block(spec)
+    meta = meta or {}
+    if meta.get("slug") and meta["slug"] != spec.slug:
+        problems.append(
+            f"decisions file is for slug '{meta['slug']}' but the spec is "
+            f"'{spec.slug}' — refusing to cross-wire foods")
     ids = set(decisions)
     missing, extra = FEDIAF_IDS - ids, ids - FEDIAF_IDS
     if missing:
@@ -137,6 +164,12 @@ def check_gates(spec: IntakeSpec, decisions: dict[int, dict[str, Any]]) -> list[
         name = FEDIAF_BY_ID[nid]["nutrient_name"]
         if d.get("value") is None:
             problems.append(f"{nid} {name}: no value (unresolved decision)")
+            continue
+        bad_types = [f for f in ("value", "min_value", "max_value", "median_value")
+                     if d.get(f) is not None and not _numeric(d[f])]
+        if bad_types:
+            problems.append(f"{nid} {name}: non-numeric {bad_types} "
+                            f"(hand-edit left a string?)")
             continue
         if not d.get("source") or d["source"] not in _VALID_SOURCES:
             problems.append(f"{nid} {name}: source {d.get('source')!r} invalid")
@@ -157,20 +190,33 @@ def check_gates(spec: IntakeSpec, decisions: dict[int, dict[str, Any]]) -> list[
                     f"ranges are not storable (bracket-guard rule)")
             elif not (vmin <= d["value"] <= vmax):
                 problems.append(f"{nid} {name}: value outside [min,max]")
+            elif d.get("median_value") is not None and not (vmin <= d["median_value"] <= vmax):
+                problems.append(f"{nid} {name}: median outside [min,max]")
             if d.get("source") not in _STATS_SOURCES:
                 problems.append(
                     f"{nid} {name}: stats on source {d.get('source')!r} would "
                     f"earn a poolable fdc_range CV (double-count risk) — use "
                     f"'literature' when the stats come from a citable source")
+        elif d.get("median_value") is not None:
+            problems.append(f"{nid} {name}: median_value without a min/max range")
+        contested = (d.get("_verdict") in CONTESTED_VERDICTS
+                     or d.get("_tie_break"))
+        if contested and not str(d.get("resolution", "") or "").strip():
+            label = (f"verdict '{d['_verdict']}'" if d.get("_verdict") in CONTESTED_VERDICTS
+                     else "split-source tie-break")
+            commit_problems.append(
+                f"{nid} {name}: {label} needs an operator 'resolution' "
+                f"sentence in the decision before commit")
     if not missing and all(
-            decisions[n].get("value") is not None for n in PUFA_COMPONENT_IDS + (PUFA_TOTAL_ID,)):
+            _numeric(decisions[n].get("value"))
+            for n in PUFA_COMPONENT_IDS + (PUFA_TOTAL_ID,)):
         total = decisions[PUFA_TOTAL_ID]["value"]
         component_sum = sum(decisions[n]["value"] for n in PUFA_COMPONENT_IDS)
         if total + _PUFA_TOLERANCE < component_sum:
             problems.append(
                 f"PUFA invariant: total {total} < component sum {component_sum:.6g} "
                 f"(recompute per lamb convention)")
-    return problems
+    return problems, commit_problems
 
 
 def plan_records(spec: IntakeSpec, decisions: dict[int, dict[str, Any]],
@@ -224,20 +270,59 @@ def _backup(slug: str) -> Path:
     return path
 
 
+def _review_refusal(meta: dict[str, Any], signed_off_by: Optional[str]) -> Optional[str]:
+    """The commit-time review contract, in one place."""
+    if meta.get("basename") == PROPOSED_DECISIONS_BASENAME:
+        return (f"refusing to commit {PROPOSED_DECISIONS_BASENAME} — it is the "
+                f"rule engine's unreviewed output. Review it, save as "
+                f"decisions.json with a top-level \"reviewed_by\", and retry.")
+    if meta.get("has_review_contract"):
+        return ("decisions file still carries the machine 'review_contract' "
+                "marker — reviewing includes removing it (renaming the file "
+                "is not a review)")
+    if not meta.get("reviewed_by"):
+        return ('decisions file has no top-level "reviewed_by" — the review '
+                "must be recorded in the artifact itself")
+    if not (signed_off_by or "").strip():
+        return "--commit requires --signed-off-by NAME (cv_assign contract)"
+    return None
+
+
+def _write_receipt(spec: IntakeSpec, food_id: int, reviewed_by: str,
+                   signed_off_by: str, backup: Path,
+                   decisions_basename: str) -> Path:
+    """Durable, committed record of who approved the write (the sign-off
+    otherwise exists only in terminal scrollback)."""
+    receipt = {
+        "slug": spec.slug, "food_id": food_id,
+        "written_at": datetime.now().isoformat(timespec="seconds"),
+        "reviewed_by": reviewed_by, "signed_off_by": signed_off_by,
+        "decisions_file": decisions_basename, "backup": str(backup),
+    }
+    path = spec.out_dir / "write_receipt.json"
+    path.write_text(json.dumps(receipt, indent=2))
+    return path
+
+
 def apply(spec: IntakeSpec, decisions: dict[int, dict[str, Any]],
           commit: bool = False, signed_off_by: Optional[str] = None,
           meta: Optional[dict[str, Any]] = None) -> Optional[int]:
-    problems = check_gates(spec, decisions)
+    meta = meta or {}
+    problems, commit_problems = check_gates(spec, decisions, meta)
     if problems:
         raise GateFailure("write gates FAILED:\n  - " + "\n  - ".join(problems))
-    meta = meta or {}
-    reviewed_by = meta.get("reviewed_by", "")
-    if meta.get("basename") == _PROPOSED_BASENAME or not reviewed_by:
-        review_state = ("UNREVIEWED machine output — copy to decisions.json, "
-                        "review it, and add top-level \"reviewed_by\"")
-    else:
-        review_state = f"reviewed by {reviewed_by}"
+    if commit and commit_problems:
+        raise GateFailure("commit blockers:\n  - " + "\n  - ".join(commit_problems))
+    refusal = _review_refusal(meta, signed_off_by)
+    if commit and refusal:
+        raise GateFailure(refusal)
+
     preview = plan_records(spec, decisions, food_id=0)
+    reviewed = (meta.get("reviewed_by")
+                and meta.get("basename") != PROPOSED_DECISIONS_BASENAME
+                and not meta.get("has_review_contract"))
+    review_state = (f"reviewed by {meta['reviewed_by']}" if reviewed
+                    else "UNREVIEWED machine output — review before commit")
     print(f"Gates PASS: {len(preview)} nutrient rows planned for "
           f"'{spec.food['food_name']}' ({review_state})")
     by_source: dict[str, int] = {}
@@ -246,21 +331,10 @@ def apply(spec: IntakeSpec, decisions: dict[int, dict[str, Any]],
         by_source[src] = by_source.get(src, 0) + 1
     print(f"  by source: {by_source}")
     if not commit:
+        for blocker in commit_problems:
+            print(f"  COMMIT BLOCKER: {blocker}")
         print("DRY RUN — nothing written. Use --commit --signed-off-by NAME to apply.")
         return None
-
-    # review gates (cv_assign contract): a machine suggestion never writes
-    if meta.get("basename") == _PROPOSED_BASENAME:
-        raise GateFailure(
-            f"refusing to commit {_PROPOSED_BASENAME} — it is the rule "
-            f"engine's unreviewed output. Review it, save as decisions.json "
-            f"with a top-level \"reviewed_by\", and retry.")
-    if not reviewed_by:
-        raise GateFailure(
-            'decisions file has no top-level "reviewed_by" — the review must '
-            "be recorded in the artifact itself")
-    if not (signed_off_by or "").strip():
-        raise GateFailure("--commit requires --signed-off-by NAME (cv_assign contract)")
 
     existing = database.food_exists_by_name(spec.food["food_name"])
     if existing is not None:
@@ -282,8 +356,12 @@ def apply(spec: IntakeSpec, decisions: dict[int, dict[str, Any]],
             print(f"WARNING: could not remove orphan ingredient {food_id}: "
                   f"{cleanup_exc}. Remove it manually (database.delete_food).")
         raise
+    receipt = _write_receipt(spec, food_id, meta["reviewed_by"],
+                             str(signed_off_by), backup,
+                             meta.get("basename", "?"))
     print(f"Inserted food_id {food_id} with {len(records)} nutrient rows "
-          f"(reviewed by {reviewed_by}, signed off by {signed_off_by}).")
+          f"(reviewed by {meta['reviewed_by']}, signed off by {signed_off_by}).")
+    print(f"Receipt: {receipt} — commit it with the decisions file.")
     print("Next: cv_assign.py --food-id "
           f"{food_id} (dry run, then --commit --signed-off-by), then cv_intl "
           "FOOD_MAP if FCDB stats exist (runbook Phases 3-4).")

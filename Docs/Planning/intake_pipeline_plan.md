@@ -211,3 +211,47 @@ Accepted (documented, not changed): intake keeps its own bulk-CSV readers
 rather than reusing cv_sources (deliberately self-contained; divergence risk
 noted in code comments); FCDB "Vitamin D" (value match) vs cv_intl
 "Vitamin D3" (dispersion match) is a documented split, not a drift.
+
+### G-5 Second audit (2026-08-18, fresh 8-angle pass over the fixed branch)
+
+10 further findings confirmed and fixed (668 tests pass), several in the
+round-1 fixes themselves:
+1. Decisions/spec slug never cross-checked — another food's decisions file
+   could write under this spec's ingredient → hard gate.
+2. CIQUAL K2 "traces" fabricated menaquinone totals (47 foods) → traces
+   never make a total; K1-only rows carry form=k1_only.
+3. Reviewed `unit` edits (entry-level key) were silently discarded →
+   load_decisions folds them in; the unit gate now actually fires.
+4. Header tripwire holes (family-token collisions, substring matches, CoFID
+   twin columns, IndexError on shrunk headers; iodine_db unguarded) →
+   every-word exact matching, guarded indexing, iodine tripwire added.
+5. Trace demotion hid detection-limit context from the rendered report →
+   bounds lines now emitted in all verdict branches and such rows join the
+   needs-attention section.
+6. MK-4-only foods (74 in Foundation) got formless K rows mislabeled
+   "K1 only" → form=mk4_only with an honest note.
+7. BLS 'Labelangabe' (package declarations, 201 rows) counted independent →
+   classified borrowed. USDA AS/AR (summed/regression) no longer classify
+   as analysed (aligns with the CV pipeline's derivation rules).
+8. Tie flag fired on identical values, diluting the arbitrate signal → flags
+   only genuine value splits; single shared phrasing.
+9. Review-gate depth: producer/gate share one basename constant; the machine
+   `review_contract` marker must be DELETED by review (renaming is not a
+   review); contested rows (review/no_evidence verdicts + split tie-breaks)
+   each require an operator `resolution` sentence before commit; a committed
+   write drops a git-committable write_receipt.json (reviewer, signer,
+   backup) — the durable approval trace.
+10. Gate placement: food-block/price/resolution issues are COMMIT BLOCKERS
+    (dry-run previews and lists them); record-level defects still fail both.
+    add_ingredient's field rules extracted to shared
+    database.ingredient_field_problems so the gate cannot drift; supplements
+    explicitly out of intake scope; non-numeric hand-edits are gate problems,
+    not tracebacks; median_value fully gated.
+
+Also from measurement: round-1 loader fixes verified (cold run 15 s → 5.5 s;
+FCDB search 11 s → 0.16 s). Accepted: FCDB's remaining 2.5 s openpyxl parse
+(a derived pickle cache was judged not worth the staleness surface);
+CoFID's per-sheet loads (+0.15 s on report, big win on search); BLS
+single-key scan shape. Test-quality gaps closed: crosswalk/precedence/MK-4
+pins on real foods, echo→judge integration test, extract fail-loud tests,
+replace-median negative case, review-gate ordering tests.

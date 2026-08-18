@@ -79,6 +79,13 @@ class TestBLS:
         sv = _by_id(chicken_flesh, 1185)
         assert "VITK2=5.83" in sv.note
 
+    def test_label_declaration_origin_is_borrowed(self):
+        # round-2 audit: 'Labelangabe' (manufacturer package figure) fell to
+        # unknown and counted as independent evidence
+        from intake.sources.bls import _origin_quality
+        assert _origin_quality("Labelangabe") == Q_BORROWED
+        assert _origin_quality("Logische Null") == "computed"
+
 
 class TestMEXT:
     @pytest.fixture(scope="class")
@@ -116,10 +123,19 @@ class TestCIQUAL:
         assert sv.form == FORM_TOTAL_K
 
     def test_k1_without_k2_not_marked_total(self):
-        from intake.model import FORM_TOTAL_K
+        from intake.model import FORM_K1_ONLY
         from intake.sources import ciqual
         sv = _by_id(ciqual.extract(36019), 1185)   # K1=2.9, K2 not reported
-        assert sv.form != FORM_TOTAL_K
+        assert sv.form == FORM_K1_ONLY
+
+    def test_k2_traces_does_not_fabricate_a_total(self):
+        # round-2 audit: a 'traces' K2 was treated as a measured menaquinone,
+        # letting K1-only values defeat the form-defect rule (47 foods)
+        from intake.model import FORM_K1_ONLY
+        from intake.sources import ciqual
+        sv = _by_id(ciqual.extract(20016), 1185)   # chou-fleur: K1=3.31, K2=traces
+        assert math.isclose(sv.value, 3.31)
+        assert sv.form == FORM_K1_ONLY and "traces" in sv.note
 
     def test_censored_iodine_upper_bound(self):
         from intake.sources import ciqual

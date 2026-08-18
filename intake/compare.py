@@ -180,10 +180,15 @@ def _quality_rank(sv: SourceValue) -> int:
 
 
 def closest_to_median(svs: list[SourceValue]) -> tuple[SourceValue, bool]:
-    """(anchor, was_tie). Deterministic: distance to median, ties broken by
+    """(anchor, was_split). Deterministic: distance to median, ties broken by
     larger n, then quality rank, then lower value — never floating-point noise
     (audit finding 2026-08-18: a two-way literature split was decided by the
-    16th decimal digit of the distance)."""
+    16th decimal digit of the distance).
+
+    was_split is True only when the equidistant candidates carry DIFFERENT
+    values — identical measurements are agreement, not a split, and must not
+    trigger the review-must-arbitrate flag (round-2 audit: the flag fired on
+    every even-count set, teaching operators to skim past it)."""
     med = statistics.median(sv.value for sv in svs)
     tol = 1e-9 * max(1.0, abs(med))
     best = min(abs(sv.value - med) for sv in svs)
@@ -191,7 +196,11 @@ def closest_to_median(svs: list[SourceValue]) -> tuple[SourceValue, bool]:
     if len(tied) == 1:
         return tied[0], False
     tied.sort(key=lambda sv: (-(sv.n or 0), _quality_rank(sv), sv.value))
-    return tied[0], True
+    was_split = len({sv.value for sv in tied}) > 1
+    return tied[0], was_split
+
+
+_TIE_REASON = "anchor is a tie-break between split sources — review must arbitrate"
 
 
 def _cite(svs: list[SourceValue]) -> str:
@@ -226,8 +235,7 @@ def judge(comparison: NutrientComparison) -> None:
             comparison.reasons.append(
                 f"no USDA value; {len(evidence)} measured source(s) available")
             if tied:
-                comparison.reasons.append(
-                    "anchor is a tie-break between split sources — review must arbitrate")
+                comparison.reasons.append(_TIE_REASON)
             if bounds_note:
                 comparison.reasons.append(bounds_note)
             comparison.suggestion = Suggestion(
@@ -276,7 +284,9 @@ def judge(comparison: NutrientComparison) -> None:
             f"USDA zero is assumed/borrowed ({primary.note[:60]}) but "
             f"{len(nonzero_ind)} independent(s) measure nonzero")
         if tied:
-            comparison.reasons.append("replacement anchor tie-broken — review must arbitrate")
+            comparison.reasons.append(_TIE_REASON)
+        if bounds_note:
+            comparison.reasons.append(bounds_note)
         comparison.suggestion = Suggestion(
             value=pick.value, source="literature",
             comment=(f"Validated {today}: USDA assumed zero replaced{edge} per "
@@ -298,7 +308,7 @@ def judge(comparison: NutrientComparison) -> None:
                     f"USDA K row is K1-only ({primary.value:g} µg); "
                     f"menaquinone-inclusive tables read ~{med:g} µg")
                 if tied:
-                    comparison.reasons.append("anchor tie-broken — review must arbitrate")
+                    comparison.reasons.append(_TIE_REASON)
                 comparison.suggestion = Suggestion(
                     value=pick.value, source="literature",
                     comment=(f"Validated {today}: SR vit K counts K1 only; total-K "
@@ -314,14 +324,16 @@ def judge(comparison: NutrientComparison) -> None:
         comparison.reasons.append(
             f"{len(hits)}/{len(independents)} independent(s) within "
             f"±{AGREEMENT_RTOL:.0%}: {_cite(hits)}")
+        if bounds_note:
+            comparison.reasons.append(bounds_note)
         base.comment = (f"Validated {today}: kept {primary_src} {primary.value:g} {unit}; "
                         f"refs within range: {_cite(hits)}")
         comparison.suggestion = base
         return
 
     if not independents:
-        lineage = [sv for sv in comparison.foreign
-                   if sv.usda_lineage and sv.quality in INDEPENDENT_QUALITIES]
+        lineage = [sv for sv in _measured_evidence(comparison.foreign)
+                   if sv.usda_lineage]
         comparison.verdict = V_USDA_ONLY
         note = "no independent foreign value"
         if lineage:
@@ -339,6 +351,8 @@ def judge(comparison: NutrientComparison) -> None:
         comparison.reasons.append(
             f"region-sensitive; foreign cluster differs: {_cite(independents)} — "
             f"US mean kept unless defective")
+        if bounds_note:
+            comparison.reasons.append(bounds_note)
         base.comment = (f"Validated {today}: kept {primary_src} {primary.value:g} {unit} "
                         f"(region rule; intl: {_cite(independents)})")
         comparison.suggestion = base

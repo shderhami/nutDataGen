@@ -186,6 +186,50 @@ class TestClosestToMedian:
         anchor, tied = closest_to_median(svs)
         assert (anchor.value, tied) == (3.6, False)
 
+    def test_identical_values_are_agreement_not_a_split(self):
+        # round-2 audit: the flag fired on every even-count set, teaching
+        # operators to skim past the arbitrate sentence
+        anchor, tied = closest_to_median([sv(1100, 2.0, "A"), sv(1100, 2.0, "B")])
+        assert anchor.value == 2.0 and tied is False
+
+
+class TestRoundTwoRegressions:
+    def test_replace_not_fired_when_independents_median_is_zero(self):
+        # independents mostly measuring zero AGREE with the assumed zero
+        c = comparison(1280, sr=sv(1280, 0.0, "SR", quality=Q_BORROWED,
+                                   note="deriv Z: assumed zero"),
+                       foreign=[sv(1280, 0.0, "MEXT"), sv(1280, 0.0, "AFCD"),
+                                sv(1280, 0.02, "FCDB")])
+        assert c.verdict != "replace_suggest"
+
+    def test_no_usda_overlap_is_labeled_not_independent(self):
+        extraction = Extraction(foreign=[sv(1100, 2.0, "CIQUAL", food="lone food")])
+        verdicts = screen_echoes(extraction)
+        assert any("independence not establishable" in v for v in verdicts.values())
+
+    def test_bounds_info_visible_on_confirm(self):
+        c = comparison(1090, sr=sv(1090, 23.0, "SR"),
+                       foreign=[sv(1090, 24.0, "MEXT"),
+                                sv(1090, 0.1, "CIQUAL", quality=Q_CENSORED)])
+        assert c.verdict == V_CONFIRM
+        assert any("detection-limit" in r for r in c.reasons)
+
+    def test_compare_all_echo_flows_into_judge(self):
+        # end-to-end: a verbatim copy must not confirm USDA (round-2 audit:
+        # nothing previously ran the screener and judge on the same data)
+        from intake.compare import compare_all
+        ids = (1003, 1004, 1087, 1089, 1092, 1093)
+        srt = {nid: sv(nid, v, source="SR")
+               for nid, v in zip(ids, (19.66, 4.12, 7.0, 0.81, 242.0, 95.0))}
+        copycat = [sv(nid, srt[nid].value, source="CIQUAL", quality=Q_COMPILED,
+                      food="copy food") for nid in ids]
+        extraction = Extraction(sr=srt, foreign=copycat)
+        comparisons, verdicts = compare_all(extraction)
+        assert any("ECHO" in v for v in verdicts.values())
+        by_id = {c.nutrient_id: c for c in comparisons}
+        for nid in ids:
+            assert by_id[nid].verdict == V_USDA_ONLY   # echo cannot confirm
+
 
 class TestStatsFrom:
     def test_coherent_range_is_stored(self):

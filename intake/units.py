@@ -60,25 +60,29 @@ def parse_float(raw) -> "float | None":
         return None
 
 
-def _header_token(label: str) -> str:
-    """The label's most specific word, for header alignment checks."""
-    words = re.sub(r"[^a-z0-9:]+", " ", label.lower()).split()
-    return max(words, key=len) if words else ""
+def _norm_words(text: str) -> list[str]:
+    return re.sub(r"[^a-z0-9:.]+", " ", text.lower()).split()
 
 
 def check_header_alignment(header: "tuple | list", labels_by_index: dict[int, str],
                            source: str) -> None:
     """Tripwire for positional column maps (audit 2026-08-18): a dataset
     release that inserts/reorders a column silently shifts every index after
-    it. Each mapped column's header must still contain the most specific word
-    of its expected label; raise loudly otherwise."""
+    it. EVERY word of the expected label (length >= 2) must appear as an
+    exact word of that column's header cell — exact-word matching so 'K1'
+    cannot pass on a 'Vitamin K2' or 'B12' cell, and family words alone
+    ('Vitamine', 'C18:2' on CoFID's twin columns) cannot vouch for a shifted
+    neighbour. A header shorter than the map is a mismatch, not an IndexError.
+    """
     problems = []
     for i, label in labels_by_index.items():
-        token = _header_token(label)
-        cell = re.sub(r"[^a-z0-9:]+", " ", str(header[i] if i < len(header) else "").lower())
-        if token and token not in cell:
-            problems.append(f"col {i}: expected '{label}' (token '{token}'), "
-                            f"header says '{str(header[i])[:60]}'")
+        wanted = [w for w in _norm_words(label) if len(w) >= 2]
+        cell_raw = str(header[i]) if i < len(header) else ""
+        cell_words = set(_norm_words(cell_raw))
+        missing = [w for w in wanted if w not in cell_words]
+        if missing:
+            problems.append(f"col {i}: expected '{label}' (missing {missing}), "
+                            f"header says '{cell_raw[:60]}'")
     if problems:
         raise ValueError(
             f"{source}: column map no longer aligns with the dataset header — "

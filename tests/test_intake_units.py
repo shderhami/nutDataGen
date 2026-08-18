@@ -64,10 +64,32 @@ class TestHeaderAlignment:
     def test_aligned_map_passes(self):
         from intake.units import check_header_alignment
         check_header_alignment(
-            self.HEADER, {1: "Water", 2: "Chloride", 3: "C20:5w3 EPA"}, "TEST")
+            self.HEADER, {1: "Water", 2: "Chloride", 3: "C20:5w3"}, "TEST")
 
     def test_shifted_map_fails_loud(self):
         from intake.units import check_header_alignment
         with pytest.raises(ValueError, match="no longer aligns"):
             check_header_alignment(
                 self.HEADER, {1: "Chloride", 2: "Water"}, "TEST")
+
+    def test_family_shift_is_caught(self):
+        # round-2 audit: 'Vitamine K1' shifted onto a 'Vitamine E' column
+        # passed the old longest-word check ('vitamine' matched both)
+        from intake.units import check_header_alignment
+        header = ("x", "Vitamine E (mg 100 g)", "Vitamine K1 (µg 100 g)")
+        check_header_alignment(header, {2: "Vitamine K1"}, "TEST")
+        with pytest.raises(ValueError, match="no longer aligns"):
+            check_header_alignment(header, {1: "Vitamine K1"}, "TEST")
+
+    def test_substring_cannot_vouch(self):
+        # 'B1' must not pass on a 'Vitamine B12' cell
+        from intake.units import check_header_alignment
+        header = ("x", "Vitamine B12 ou Cobalamine (µg)")
+        with pytest.raises(ValueError, match="no longer aligns"):
+            check_header_alignment(header, {1: "B1"}, "TEST")
+
+    def test_short_header_is_a_mismatch_not_indexerror(self):
+        # round-2 audit: a shrunk dataset raised bare IndexError
+        from intake.units import check_header_alignment
+        with pytest.raises(ValueError, match="no longer aligns"):
+            check_header_alignment(("only", "two"), {5: "Energy"}, "TEST")

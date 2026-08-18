@@ -17,6 +17,7 @@ from pathlib import Path
 from typing import Optional
 
 from intake.model import (
+    FORM_K1_ONLY,
     FORM_TOTAL_K,
     Q_CENSORED,
     Q_COMPILED,
@@ -31,15 +32,15 @@ _XLSX = Path(__file__).resolve().parents[2] / "data" / "ciqual_fr" / "Table_Ciqu
 
 # column index -> (nutrient_id, unit, short label)
 COL_MAP: dict[int, tuple[int, str, str]] = {
-    12: (1008, "kcal", "Energie NxJones"),
+    12: (1008, "kcal", "Energie Jones"),
     13: (1051, "g", "Eau"),
-    15: (1003, "g", "Protéines Nx6.25"),
+    15: (1003, "g", "Protéines 6.25"),
     16: (1005, "g", "Glucides"),
     17: (1004, "g", "Lipides"),
     26: (1079, "g", "Fibres"),
     28: (1007, "g", "Cendres"),
-    43: (1269, "g", "AG 18:2 LA"), 44: (1270, "g", "AG 18:3 ALA"),
-    45: (1271, "g", "AG 20:4 ARA"), 46: (1278, "g", "AG 20:5 EPA"),
+    43: (1269, "g", "AG 18:2"), 44: (1270, "g", "AG 18:3"),
+    45: (1271, "g", "AG 20:4"), 46: (1278, "g", "AG 20:5 EPA"),
     47: (1272, "g", "AG 22:6 DHA"),
     50: (1087, "mg", "Calcium"), 51: (1088, "mg", "Chlorure"),
     52: (1098, "mg", "Cuivre"), 53: (1089, "mg", "Fer"),
@@ -117,21 +118,31 @@ def extract(key: int, note: str = "") -> list[SourceValue]:
             source=LABEL, source_food=food, nutrient_id=nid,
             value=to_fediaf(nid, value, unit), quality=quality, note=label,
         ))
-    # vitamin K: total-K doctrine (K1 + K2 when reported)
+    # vitamin K, total-K doctrine: only a genuinely MEASURED K2 makes the row
+    # menaquinone-inclusive. A K2 of "traces" is detection-limit information —
+    # treating it as a measurement fabricated total-K rows on 47 foods and
+    # let a K1-only value defeat the form-defect rule (audit 2026-08-18).
     k1, k2 = _parse(row[_K1_COL]), _parse(row[_K2_COL])
-    if k1 is not None or k2 is not None:
-        total = (k1[0] if k1 else 0.0) + (k2[0] if k2 else 0.0)
-        quality = Q_CENSORED if (k1 and k1[1] == Q_CENSORED) or (k2 and k2[1] == Q_CENSORED) else Q_COMPILED
-        forms = []
-        forms.append(f"K1={k1[0]:g}" if k1 else "K1 n/a")
-        forms.append(f"K2={k2[0]:g}" if k2 else "K2 n/a")
+    k2_measured = k2 is not None and k2[1] != Q_TRACE
+    if k2_measured:
+        total = (k1[0] if k1 else 0.0) + k2[0]
+        quality = (Q_CENSORED
+                   if (k1 and k1[1] == Q_CENSORED) or k2[1] == Q_CENSORED
+                   else Q_COMPILED)
+        k1_txt = f"K1={k1[0]:g}" if k1 else "K1 n/a"
         out.append(SourceValue(
             source=LABEL, source_food=food, nutrient_id=1185,
             value=to_fediaf(1185, total, "µg"), quality=quality,
-            note="Vitamine K1+K2 total-K; " + ", ".join(forms),
-            # only a true K1+K2 sum counts as menaquinone-inclusive; a lone
-            # K1 with K2 unreported must not satisfy the form-defect rule
-            form=FORM_TOTAL_K if k2 is not None else "",
+            note=f"Vitamine K1+K2 total-K; {k1_txt}, K2={k2[0]:g}",
+            form=FORM_TOTAL_K,
+        ))
+    elif k1 is not None:
+        k2_txt = "K2=traces (<LOQ)" if k2 is not None else "K2 n/a"
+        out.append(SourceValue(
+            source=LABEL, source_food=food, nutrient_id=1185,
+            value=to_fediaf(1185, k1[0], "µg"), quality=k1[1],
+            note=f"Vitamine K1 only; {k2_txt}",
+            form=FORM_K1_ONLY,
         ))
     return out
 

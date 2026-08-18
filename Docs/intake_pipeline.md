@@ -30,8 +30,12 @@ python -m intake write ...       5. WRITE    gated insert (backup, 52-complete,
 .venv/bin/python -m intake report --spec data/intake/chicken_thigh_skinless.json
 
 # review: copy proposed_decisions.json -> decisions.json, walk it with the
-# operator, edit, and add a top-level "reviewed_by": "<name>" — the writer
-# REFUSES to commit the proposed file or any file without reviewed_by.
+# operator, edit, add a top-level "reviewed_by": "<name>", DELETE the
+# machine "review_contract" key, and write a one-sentence "resolution" into
+# every contested decision (review/no_evidence verdicts and split-source
+# tie-breaks — the dry run lists them as COMMIT BLOCKERS). The writer
+# refuses to commit without all of these; after a commit it drops a
+# write_receipt.json (food_id, reviewer, signer, backup) to commit to git.
 
 # write (dry-run first; --commit takes a pg_dump backup of the configured DB)
 .venv/bin/python -m intake write --spec data/intake/chicken_thigh_skinless.json \

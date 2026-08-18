@@ -43,6 +43,7 @@ INDEPENDENT_QUALITIES = frozenset({Q_ANALYSED, Q_COMPILED, Q_ESTIMATED, Q_UNKNOW
 # column covers so the rule engine never has to sniff free-text notes.
 FORM_TOTAL_K = "total_k"     # K1 + menaquinones (MEXT VITK, BLS VITK, CIQUAL K1+K2)
 FORM_K1_ONLY = "k1_only"     # phylloquinone only (SR/FND 1185, CoFID)
+FORM_MK4_ONLY = "mk4_only"   # menaquinone-4 only (USDA 1183 with no 1185 row)
 
 
 @dataclass(frozen=True)

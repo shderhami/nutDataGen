@@ -38,7 +38,7 @@ SHEET_MAP: dict[str, dict[int, tuple[int, str, str]]] = {
     },
     "1.5 Vitamins": {
         7: (1106, "µg", "Retinol"), 10: (1110, "µg", "Vitamin D"),
-        11: (1109, "mg", "Vitamin E"), 12: (1185, "µg", "Vitamin K1 (K1 only)"),
+        11: (1109, "mg", "Vitamin E"), 12: (1185, "µg", "Vitamin K1"),
         13: (1165, "mg", "Thiamin"), 14: (1166, "mg", "Riboflavin"),
         15: (1167, "mg", "Niacin"),  # preformed, matches USDA 1167
         18: (1175, "mg", "Vitamin B6"),
@@ -46,9 +46,9 @@ SHEET_MAP: dict[str, dict[int, tuple[int, str, str]]] = {
         21: (1170, "mg", "Pantothenate"), 22: (1176, "µg", "Biotin"),
     },
     "1.12 (PUFA per 100gFood)": {
-        14: (1269, "g", "cis n-6 C18:2 LA"), 16: (1270, "g", "cis n-3 C18:3 ALA"),
-        26: (1271, "g", "cis n-6 C20:4 ARA"), 28: (1278, "g", "cis n-3 C20:5 EPA"),
-        38: (1280, "g", "cis n-3 C22:5 DPA"), 40: (1272, "g", "cis n-3 C22:6 DHA"),
+        14: (1269, "g", "cis n-6 C18:2"), 16: (1270, "g", "cis n-3 C18:3"),
+        26: (1271, "g", "cis n-6 C20:4"), 28: (1278, "g", "cis n-3 C20:5"),
+        38: (1280, "g", "cis n-3 C22:5"), 40: (1272, "g", "cis n-3 C22:6"),
     },
 }
 

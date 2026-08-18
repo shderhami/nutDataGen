@@ -75,9 +75,11 @@ def _origin_quality(origin: Optional[str]) -> str:
         return Q_COMPUTED
     if "schätz" in text:
         return Q_ESTIMATED
-    if any(m in text for m in ("übernommen", "literatur", "datenbank", "aggregation")):
+    if any(m in text for m in ("übernommen", "literatur", "datenbank",
+                               "aggregation", "labelangabe")):
         # Aggregation rows name the pooled databases in Referenz (frida/NO/USDA
-        # in practice) — treat as adopted, never as independent German work.
+        # in practice); Labelangabe is a manufacturer's package declaration —
+        # neither is independent German analytical work.
         return Q_BORROWED
     return Q_UNKNOWN
 

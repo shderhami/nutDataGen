@@ -66,3 +66,27 @@ class TestLiteratureBlock:
     def test_empty_block_is_fine(self, tmp_path):
         spec = load_spec(_write_spec(tmp_path))
         assert spec.literature == [] and literature_values(spec) == []
+
+    def test_literature_lineage_declares_usda_derived_numbers(self, tmp_path):
+        spec = load_spec(_write_spec(tmp_path, literature=[
+            {"source": "SomeReview", "nutrient_id": 1234, "value": 50,
+             "unit": "mg", "usda_lineage": True,
+             "note": "review table reprints USDA figures"}]))
+        assert literature_values(spec)[0].usda_lineage is True
+
+
+class TestFdcIdCoercion:
+    def test_quoted_ids_are_coerced_to_int(self, tmp_path):
+        payload = {
+            "slug": "t",
+            "food": {
+                "food_name": "t", "category": "Muscle Meat", "base_unit": "g",
+                "portion_qty": 100.0, "grams_per_unit": 1.0,
+                "sr_legacy_fdc_id": "173627", "foundation_fdc_id": "2646171",
+            },
+            "sources": {},
+        }
+        path = tmp_path / "coerce.json"
+        path.write_text(json.dumps(payload))
+        spec = load_spec(path)
+        assert spec.sr_fdc_id == 173627 and spec.foundation_fdc_id == 2646171
