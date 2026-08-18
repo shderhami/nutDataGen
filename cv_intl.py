@@ -33,6 +33,9 @@ INTL_CSV = Path(__file__).parent / "data" / "cv_curation" / "intl_cv_observation
 _FCDB_XLSX = Path(__file__).parent / "data" / "fcdb_dk" / "FCDB_6.1_Dataset.xlsx"
 
 # our food_id -> (FCDB FoodID, FCDB food name as recorded)
+# 10048 (chicken thigh boneless skinless, added 2026-08-18) is deliberately
+# UNMAPPED: FCDB has no skinless-thigh entry; 795 "Chicken, flesh only" is a
+# whole-bird blend whose dispersion does not describe a thigh population.
 FOOD_MAP = {
     10002: (712, "Liver, broiler or fryer, raw"),
     10013: (742, "Liver, ox, raw"),

@@ -9,55 +9,113 @@
     "sr_legacy_fdc_id": 173627,
     "foundation_fdc_id": 2646171,
     "cooking_method": null,
-    "price_per_unit": 0.0,
+    "price_per_unit": 0.0106,
     "source": "grocery",
     "protein_species": "chicken",
     "display_name": "Chicken thigh, boneless skinless"
   },
   "notes": [
-    "price_per_unit is a placeholder — set the real grocery price before write --commit",
+    "price_per_unit 0.0106/g confirmed by Shahab 2026-08-18 (review session)",
     "Fat frame spread is expected: FND 7.92 (2023 retail trim) vs SR 4.12 (1990s fully trimmed) vs MEXT 5.0 (no subcutaneous fat) vs AFCD 3.0 (lean flesh, 12% unanalysed trim) vs CoFID 2.8 (UK trim). Foundation describes the US retail cut being fed.",
     "Sibling of food 10001 (chicken thigh with skin raw, SR 172385 / FND 2727567)."
   ],
   "sources": {
     "fcdb": [
-      {"key": 795, "note": "Chicken, flesh only, raw — whole-bird skinless flesh (breast-dominant blend), nearest DK frame; no thigh-specific skinless entry"}
+      {
+        "key": 795,
+        "note": "Chicken, flesh only, raw — whole-bird skinless flesh (breast-dominant blend), nearest DK frame; no thigh-specific skinless entry"
+      }
     ],
     "bls": [
-      {"key": "V413000", "note": "Chicken meat, without skin, raw — whole-bird flesh; BLS 4.0 rows here are heavily aggregated from frida/NO/USDA"}
+      {
+        "key": "V413000",
+        "note": "Chicken meat, without skin, raw — whole-bird flesh; BLS 4.0 rows here are heavily aggregated from frida/NO/USDA"
+      }
     ],
     "mext": [
-      {"key": "11224", "note": "broiler thigh, meat without skin, raw — EXACT match; trimmed 'without subcutaneous fat'; AA + FA volumes covered"}
+      {
+        "key": "11224",
+        "note": "broiler thigh, meat without skin, raw — EXACT match; trimmed 'without subcutaneous fat'; AA + FA volumes covered"
+      }
     ],
     "ciqual": [
-      {"key": 36024, "note": "Poulet, cuisse, viande crue — whole-leg meat (thigh+drumstick), genuinely French, K2 measured"},
-      {"key": 36019, "note": "Poulet, haut de cuisse, viande crue — literal thigh match but suspected USDA copy (echo screen decides)"}
+      {
+        "key": 36024,
+        "note": "Poulet, cuisse, viande crue — whole-leg meat (thigh+drumstick), genuinely French, K2 measured"
+      },
+      {
+        "key": 36019,
+        "note": "Poulet, haut de cuisse, viande crue — literal thigh match but suspected USDA copy (echo screen decides)"
+      }
     ],
     "afcd": [
-      {"key": "F002806", "note": "Chicken, thigh, lean flesh, raw — EXACT match, Analysed (2019 composite, 8 samples, 5 states); lean-trim frame (12% separable fat unanalysed)"}
+      {
+        "key": "F002806",
+        "note": "Chicken, thigh, lean flesh, raw — EXACT match, Analysed (2019 composite, 8 samples, 5 states); lean-trim frame (12% separable fat unanalysed)"
+      }
     ],
     "cofid": [
-      {"key": "18-289", "note": "Chicken, dark meat, raw — thigh+drumstick flesh; underlying survey LGC 1994 nutrient analysis of chicken"}
+      {
+        "key": "18-289",
+        "note": "Chicken, dark meat, raw — thigh+drumstick flesh; underlying survey LGC 1994 nutrient analysis of chicken"
+      }
     ],
     "iodine_db": [
-      {"key": "05098", "note": "Chicken thigh, oven-roasted (skin removed), n=35 — COOKED frame; plausibility only for the raw row"}
+      {
+        "key": "05098",
+        "note": "Chicken thigh, oven-roasted (skin removed), n=35 — COOKED frame; plausibility only for the raw row"
+      }
     ]
   },
   "literature": [
-    {"source": "Spitze03", "item": "Chicken, dark meat, raw", "nutrient_id": 1234,
-     "value": 169, "unit": "mg", "n": 6, "quality": "analysed",
-     "note": "Spitze 2003 p6, lit source b: 1690±370 mg/kg wet /10; the value food 10001 (thigh+skin) validated against; skin is taurine-poor so skinless >= skin-on"},
-    {"source": "Spitze03", "item": "Chicken, leg, raw", "nutrient_id": 1234,
-     "value": 33.7, "unit": "mg", "n": 12, "min": 30, "max": 38, "quality": "analysed",
-     "note": "Spitze 2003 p6, lit source c: 337 (300-380) mg/kg wet /10 — 5x below source b's dark meat; known taurine-literature split, review must arbitrate"},
-    {"source": "NRC2006", "item": "Chicken, meat and skin, raw (whole carcass)", "nutrient_id": 1170,
-     "value": 0.92, "unit": "mg", "quality": "compiled",
-     "note": "Table 13-7 pantothenic acid 9.20 mg/kg /10; n=1, whole-carcass meat+skin frame (20.3% fat) — context for the no-USDA B5 row"},
-    {"source": "NRC2006", "item": "Chicken, meat and skin, raw (whole carcass)", "nutrient_id": 1177,
-     "value": 6, "unit": "µg", "quality": "compiled",
-     "note": "Table 13-7 folate 0.06 mg/kg /10; n=1 meat+skin frame — supports the low side of the folate spread"},
-    {"source": "NRC2006", "item": "Chicken, meat and skin, raw (whole carcass)", "nutrient_id": 1103,
-     "value": 14, "unit": "µg", "quality": "compiled",
-     "note": "Table 13-6 Se 0.14 mg/kg /10; n=1 meat+skin frame; US feed-table context for the region-sensitive Se row"}
+    {
+      "source": "Spitze03",
+      "item": "Chicken, dark meat, raw",
+      "nutrient_id": 1234,
+      "value": 169,
+      "unit": "mg",
+      "n": 6,
+      "quality": "analysed",
+      "note": "Spitze 2003 p6, lit source b: 1690±370 mg/kg wet /10; the value food 10001 (thigh+skin) validated against; skin is taurine-poor so skinless >= skin-on"
+    },
+    {
+      "source": "Spitze03",
+      "item": "Chicken, leg, raw",
+      "nutrient_id": 1234,
+      "value": 33.7,
+      "unit": "mg",
+      "n": 12,
+      "min": 30,
+      "max": 38,
+      "quality": "analysed",
+      "note": "Spitze 2003 p6, lit source c: 337 (300-380) mg/kg wet /10 — 5x below source b's dark meat; known taurine-literature split, review must arbitrate"
+    },
+    {
+      "source": "NRC2006",
+      "item": "Chicken, meat and skin, raw (whole carcass)",
+      "nutrient_id": 1170,
+      "value": 0.92,
+      "unit": "mg",
+      "quality": "compiled",
+      "note": "Table 13-7 pantothenic acid 9.20 mg/kg /10; n=1, whole-carcass meat+skin frame (20.3% fat) — context for the no-USDA B5 row"
+    },
+    {
+      "source": "NRC2006",
+      "item": "Chicken, meat and skin, raw (whole carcass)",
+      "nutrient_id": 1177,
+      "value": 6,
+      "unit": "µg",
+      "quality": "compiled",
+      "note": "Table 13-7 folate 0.06 mg/kg /10; n=1 meat+skin frame — supports the low side of the folate spread"
+    },
+    {
+      "source": "NRC2006",
+      "item": "Chicken, meat and skin, raw (whole carcass)",
+      "nutrient_id": 1103,
+      "value": 14,
+      "unit": "µg",
+      "quality": "compiled",
+      "note": "Table 13-6 Se 0.14 mg/kg /10; n=1 meat+skin frame; US feed-table context for the region-sensitive Se row"
+    }
   ]
 }
