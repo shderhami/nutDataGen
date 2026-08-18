@@ -6,7 +6,24 @@ and defect taxonomy from the 23-food validation sweep (2026-08-16/17).
 Companion references: `Docs/reference_sources_guide.md` (per-source reading
 quirks, nutrient→source routing), `data/README.md` (dataset provenance).
 
-## Phase 1 — Interactive add (main.py)
+## Phase 1 — Add
+
+**Path A (preferred): the intake pipeline** — `Docs/intake_pipeline.md`.
+Curate `data/intake/<slug>.json` (USDA FDC ids + the matched entry per local
+source, with frame caveats), then:
+
+```bash
+.venv/bin/python -m intake report --spec data/intake/<slug>.json   # artifacts
+# review report.md with the operator, finalize decisions.json (Phase 2 rules)
+.venv/bin/python -m intake write --spec ... --decisions ... --commit
+```
+
+Extraction is from the pinned bulk datasets (no API, no billing); Phase 2
+below is encoded in its rule engine but every verdict is reviewed before the
+gated write. Spec + report + decisions are committed to git as the audit
+record. Then continue with Phase 3.
+
+**Path B (fallback — no local-source coverage): interactive add (main.py)**
 
 1. Collect up front: SR Legacy + Foundation FDC IDs (no in-app search — look
    them up first), category, base unit/portion, price. Whole foods are stored
