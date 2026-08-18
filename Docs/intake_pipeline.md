@@ -50,7 +50,12 @@ FCDB carries stats for the food, pytest, memory update.
     "fcdb":   [{"key": 795,      "note": "whole-bird flesh — frame caveat"}],
     "ciqual": [{"key": 36024},   {"key": 36019, "note": "echo suspect"}],
     "mext":   [{"key": "11224"}]
-  }
+  },
+  "literature": [
+    {"source": "Spitze03", "item": "Chicken, dark meat, raw",
+     "nutrient_id": 1234, "value": 169, "unit": "mg", "n": 6,
+     "note": "p6 source b: 1690±370 mg/kg wet /10"}
+  ]
 }
 ```
 
@@ -60,6 +65,14 @@ K1+K2, censored values), `afcd` (Australian, sampling-details borrow scan),
 `cofid` (UK compilation, underlying refs), `iodine_db` (USDA iodine R4,
 n/SD/min/max by NDB number). Keys are each table's native id; `note` is the
 frame caveat printed verbatim in the report.
+
+`literature` is the curated channel for book/paper evidence — NRC 2006
+(tables 13-1/5/6/7; +1 header offset, mg/kg as-fed ÷10, fatty-carcass
+frames), Spitze 2003 (mg/kg wet ÷10), Donadelli 2019, Seong 2014/2015,
+Biel 2019. These are page/table lookups with food-matching judgment, so they
+are curated per food rather than parsed: each entry carries its citation in
+`note`, converts through the same unit layer, and flows through comparison,
+verdicts and the report like any adapter value.
 
 ## What the machinery guarantees
 

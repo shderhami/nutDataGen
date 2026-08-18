@@ -41,5 +41,22 @@
     "iodine_db": [
       {"key": "05098", "note": "Chicken thigh, oven-roasted (skin removed), n=35 — COOKED frame; plausibility only for the raw row"}
     ]
-  }
+  },
+  "literature": [
+    {"source": "Spitze03", "item": "Chicken, dark meat, raw", "nutrient_id": 1234,
+     "value": 169, "unit": "mg", "n": 6, "quality": "analysed",
+     "note": "Spitze 2003 p6, lit source b: 1690±370 mg/kg wet /10; the value food 10001 (thigh+skin) validated against; skin is taurine-poor so skinless >= skin-on"},
+    {"source": "Spitze03", "item": "Chicken, leg, raw", "nutrient_id": 1234,
+     "value": 33.7, "unit": "mg", "n": 12, "min": 30, "max": 38, "quality": "analysed",
+     "note": "Spitze 2003 p6, lit source c: 337 (300-380) mg/kg wet /10 — 5x below source b's dark meat; known taurine-literature split, review must arbitrate"},
+    {"source": "NRC2006", "item": "Chicken, meat and skin, raw (whole carcass)", "nutrient_id": 1170,
+     "value": 0.92, "unit": "mg", "quality": "compiled",
+     "note": "Table 13-7 pantothenic acid 9.20 mg/kg /10; n=1, whole-carcass meat+skin frame (20.3% fat) — context for the no-USDA B5 row"},
+    {"source": "NRC2006", "item": "Chicken, meat and skin, raw (whole carcass)", "nutrient_id": 1177,
+     "value": 6, "unit": "µg", "quality": "compiled",
+     "note": "Table 13-7 folate 0.06 mg/kg /10; n=1 meat+skin frame — supports the low side of the folate spread"},
+    {"source": "NRC2006", "item": "Chicken, meat and skin, raw (whole carcass)", "nutrient_id": 1103,
+     "value": 14, "unit": "µg", "quality": "compiled",
+     "note": "Table 13-6 Se 0.14 mg/kg /10; n=1 meat+skin frame; US feed-table context for the region-sensitive Se row"}
+  ]
 }
