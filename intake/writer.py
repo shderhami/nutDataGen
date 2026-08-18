@@ -3,15 +3,21 @@
 Two gate classes:
 
 RECORD GATES (fail dry-run and commit — the plan itself is wrong):
-- decisions slug matches the spec slug (a decisions file from another food
-  must never write under this spec's ingredient);
-- exactly the 52 FEDIAF nutrients, each with numeric value + source + comment;
+- decisions slug present AND equal to the spec slug (fail-closed: an absent
+  slug must never disable the cross-wire gate); duplicate nutrient_id
+  entries are refused at load (shadowing);
+- exactly the 52 FEDIAF nutrients, each with a FINITE, non-negative numeric
+  value + source + comment (json.loads accepts NaN/Infinity — rejected);
 - units convertible to the FEDIAF declared unit (entry-level `unit` edits are
   honored — see load_decisions);
-- coherent stats (0 < min <= value <= max; median inside the range; censored
-  min=0 rejected); stats-carrying sources limited to
+- coherent stats (0 < min <= value <= max, min strictly < max — zero-width
+  ranges earn falsely tight CVs; median inside the range; censored min=0
+  rejected); stats-carrying sources limited to
   foundation/sr_legacy/literature (cv-v8 double-count guard);
-- PUFA total (1293) >= sum of tracked components (lamb convention).
+- PUFA total (1293) >= sum of tracked components (lamb convention);
+- contested status (verdicts + split tie-breaks) is taken from the sibling
+  machine artifact when present, so editing the reviewed copy's verdict
+  strings cannot skip the resolution requirement.
 
 COMMIT GATES (dry-run prints them as blockers and still previews):
 - food block valid per database.ingredient_field_problems (the same rules
@@ -251,6 +257,10 @@ def check_gates(spec: IntakeSpec, decisions: dict[int, dict[str, Any]],
                 problems.append(
                     f"{nid} {name}: min_value {vmin} — censored/zero minimum "
                     f"ranges are not storable (bracket-guard rule)")
+            elif vmin >= vmax:
+                problems.append(
+                    f"{nid} {name}: degenerate range [{vmin}, {vmax}] — a "
+                    f"zero-width range would earn a falsely tight CV")
             elif not (vmin <= d["value"] <= vmax):
                 problems.append(f"{nid} {name}: value outside [min,max]")
             elif d.get("median_value") is not None and not (vmin <= d["median_value"] <= vmax):

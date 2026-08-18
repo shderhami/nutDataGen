@@ -171,9 +171,10 @@ def extract(key: int, note: str = "") -> list[SourceValue]:
         # FCDB Min/Max are unreliable in ~26% of foods (censored-zero
         # encodings, 0/0 placeholders, value-outside-range, min>max — corpus
         # sweep 2026-08-18): emit a range only when it coherently brackets
-        # the value, so no downstream consumer can pool a corrupt one.
+        # the value AND has width (min==max is a single-determination
+        # artifact that would earn a falsely tight literature_range CV).
         if (vmin is not None and vmax is not None
-                and 0 < vmin <= val <= vmax):
+                and 0 < vmin <= val <= vmax and vmin < vmax):
             svmin, svmax = vmin * scale, vmax * scale
         else:
             svmin = svmax = None

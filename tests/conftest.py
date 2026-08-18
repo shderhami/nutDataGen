@@ -84,3 +84,49 @@ def _block_billed_api_calls(request, monkeypatch):
 
     monkeypatch.setattr(anthropic, "Anthropic", _blocked)
     monkeypatch.setattr(anthropic, "AsyncAnthropic", _blocked)
+
+
+# =============================================================================
+# Production-mutation tripwire (added 2026-08-18)
+# =============================================================================
+# An audit harness with an incomplete monkeypatch once wrote a 52-row test
+# ingredient into the PRODUCTION database while its own report claimed no DB
+# was touched. Tests must never mutate production — this fixture proves it
+# every run instead of trusting assertions: it snapshots production row
+# counts before the session and fails loudly if they changed after. Skips
+# when the DB is unreachable or the session already targets a test database.
+
+_PRODUCTION_DB = "cat_food_formulator"
+
+
+def _prod_counts():
+    import config as _config
+    if _config.DATABASE_NAME != _PRODUCTION_DB:
+        return None  # session already points at a test DB — nothing to guard
+    try:
+        from db_connection import get_db
+        db = get_db()
+        with db.cursor() as cur:
+            cur.execute("SELECT COUNT(*) AS n FROM ingredients")
+            foods = cur.fetchone()["n"]
+            cur.execute("SELECT COUNT(*) AS n FROM ingredient_nutrients")
+            rows = cur.fetchone()["n"]
+        return foods, rows
+    except Exception:  # noqa: BLE001 - unreachable DB means nothing to guard
+        return None
+
+
+@pytest.fixture(scope="session", autouse=True)
+def production_db_mutation_tripwire():
+    before = _prod_counts()
+    yield
+    if before is None:
+        return
+    after = _prod_counts()
+    if after is not None and after != before:
+        raise RuntimeError(
+            f"PRODUCTION DATABASE MUTATED DURING TESTS: ingredients "
+            f"{before[0]}->{after[0]}, ingredient_nutrients "
+            f"{before[1]}->{after[1]}. A test or harness wrote to "
+            f"{_PRODUCTION_DB}. Find and remove the stray rows, and fix the "
+            f"test to target cat_food_formulator_test (DATABASE_NAME env).")

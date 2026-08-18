@@ -104,13 +104,30 @@ verdicts and the report like any adapter value.
   output), refuses a decisions file without a top-level `"reviewed_by"`, and
   requires `--signed-off-by` (cv_assign contract) — a rule-engine suggestion
   can never reach the DB claiming validation that did not happen.
-- **Write gates**: the food block is validated at gate time (add_ingredient
-  VALID_* rules, kwarg check, real nonzero price, cooking_method declared);
-  exactly 52 FEDIAF nutrients, value+source+comment each, units convertible,
-  coherent ranges (no censored min=0 stats), stats-carrying sources limited
-  to foundation/sr_legacy/literature (cv-v8 double-count guard), PUFA total
-  ≥ component sum, pg_dump backup of the configured DB before insert,
-  orphan cleanup that never masks the original failure, AI columns NULL.
+- **Write gates**: the food block is validated at gate time (the SAME rules
+  add_ingredient enforces, via shared database.ingredient_field_problems,
+  plus kwarg check, real nonzero price, positive portion/gram masses,
+  cooking_method declared); the decisions file must carry the spec's slug
+  (fail-closed) with no duplicate nutrient ids; exactly 52 FEDIAF nutrients,
+  each with a finite non-negative value + source + comment, units
+  convertible, coherent ranges (no censored min=0, no zero-width ranges),
+  stats-carrying sources limited to foundation/sr_legacy/literature (cv-v8
+  double-count guard), PUFA total ≥ component sum, pg_dump backup of the
+  configured DB before insert, orphan cleanup that never masks the original
+  failure, AI columns NULL. Food-block/price/resolution issues are COMMIT
+  BLOCKERS: the dry run previews the plan and lists them.
+- **Corpus-hardened extraction**: adapters were swept over their full
+  datasets (~19,000 foods); BLS trace/censored tokens parse, FCDB emits only
+  coherent nonzero-width ranges, CoFID's monosaccharide-equivalent
+  "carbohydrate" is deliberately unmapped, USDA sub-sample/acquisition ids
+  do not resolve as foods (a typo'd id fails loud), and USDA's negative
+  carb-by-difference artifacts clamp to 0 with a note.
+- **Verified end to end**: the full commit path (backup → insert →
+  completeness → receipt, plus orphan cleanup and the duplicate-name gate)
+  has been executed against `cat_food_formulator_test` — rehearse a write
+  any time with `DATABASE_NAME=cat_food_formulator_test` in the environment.
+  The pytest suite carries a production-mutation tripwire
+  (tests/conftest.py) that fails the run if production row counts change.
 
 ## Review conventions (unchanged from the sweep)
 

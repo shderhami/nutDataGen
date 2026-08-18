@@ -211,8 +211,10 @@ def _cite(svs: list[SourceValue]) -> str:
 
 
 def _stats_from(sv: SourceValue) -> dict:
-    """Anchor-source stats worth storing (cv-v7: coherent {min,max,n} only)."""
-    if sv.n and sv.vmin is not None and sv.vmax is not None and 0 < sv.vmin <= sv.value <= sv.vmax:
+    """Anchor-source stats worth storing (cv-v7: coherent {min,max,n} only;
+    a zero-width range is a single-determination artifact, not a spread)."""
+    if (sv.n and sv.vmin is not None and sv.vmax is not None
+            and 0 < sv.vmin <= sv.value <= sv.vmax and sv.vmin < sv.vmax):
         return {"num_samples": sv.n, "min_value": sv.vmin, "max_value": sv.vmax}
     return {"num_samples": sv.n} if sv.n else {}
 

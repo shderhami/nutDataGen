@@ -255,3 +255,45 @@ CoFID's per-sheet loads (+0.15 s on report, big win on search); BLS
 single-key scan shape. Test-quality gaps closed: crosswalk/precedence/MK-4
 pins on real foods, echo→judge integration test, extract fail-loud tests,
 replace-median negative case, review-gate ordering tests.
+
+### G-6 Third audit (2026-08-18, escalated methodology at the operator's
+request: 3 reading angles + adversarial fuzzing + full-corpus sweep + live
+test-DB write + mutation testing + docs consistency)
+
+Execution angles (the new methodology) carried the round:
+- **Fuzzing** (executed attacks): slug gate failed OPEN on an absent key →
+  fail-closed; NaN/Infinity and negative values passed all gates → finite,
+  non-negative required; portion/gram masses unguarded → positive required;
+  duplicate nutrient_id entries silently last-won → refused at load; verdict
+  self-attestation → contested status now restored from the sibling machine
+  artifact. Held: bool rejection, homoglyph units, review-contract refusals,
+  parameterized SQL.
+- **Full-corpus sweep** (~19,000 foods, ~697k values; 5/8 adapters fully
+  clean): BLS TR/<LOD/<LOQ tokens crashed 408 foods → parsed; FCDB min/max
+  corrupt in 26% of foods → coherent-and-nonzero-width guard at the adapter;
+  CoFID "carbohydrate" is monosaccharide equivalents → unmapped from 1005;
+  USDA sub-sample ids resolved as plausible 1-row foods → data_type filter;
+  negative carb-by-difference artifacts → clamped with note.
+- **Live end-to-end write** (cat_food_formulator_test): the full commit path
+  executed correctly (backup coordinates, 52 rows, µg→IU stored conversion,
+  duplicate-name gate before backup, orphan cleanup without masking).
+  Fixes: GateFailure refusals print as messages (exit 2) not tracebacks;
+  successful orphan cleanup announces itself.
+- **Mutation testing**: 12/12 deliberate guard-breaks killed by named
+  regression tests; zero survivors — the test suite empirically guards
+  every probed invariant.
+- Reading angles (run inline after sustained API overloads): degenerate
+  zero-width ranges could earn falsely tight CVs → strict min<max at the
+  FCDB adapter, _stats_from and the write gate; docs/docstrings updated to
+  the current gate reality.
+
+**Audit-process incident (2026-08-18):** the fuzzing agent's harness had a
+monkeypatch gap — one commit-path probe ran with the backup stubbed but the
+real database live, writing a 52-row test ingredient into PRODUCTION while
+the agent's report claimed no DB was touched. Caught by this round's
+DB-linked-id verification, removed (delete_food 10047; counts verified back
+to 43/pre-state). Standing mitigations: tests/conftest.py now carries a
+production-mutation tripwire (fails any pytest session that changes
+production row counts), and verification harnesses must target
+cat_food_formulator_test via DATABASE_NAME and prove cleanliness with
+before/after counts — assertions are not evidence.

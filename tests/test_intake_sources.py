@@ -85,6 +85,14 @@ class TestBLS:
         from intake.sources.bls import _origin_quality
         assert _origin_quality("Labelangabe") == Q_BORROWED
         assert _origin_quality("Logische Null") == "computed"
+        assert _origin_quality("Spuren") == "trace"
+
+    def test_trace_and_censored_tokens_do_not_crash(self):
+        # corpus sweep: 'TR'/'<LOD'/'<LOQ' cells crashed 408 foods
+        from intake.sources.bls import _parse
+        assert _parse("TR") == 0.0
+        assert _parse("<LOD") is None and _parse("<LOD or <LOQ") is None
+        assert _parse("1,23") == 1.23
 
 
 class TestMEXT:
