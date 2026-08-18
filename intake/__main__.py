@@ -78,7 +78,17 @@ def main(argv: list[str] | None = None) -> int:
     p.set_defaults(func=_cmd_write)
 
     args = parser.parse_args(argv)
-    return args.func(args)
+    try:
+        return args.func(args)
+    except Exception as exc:
+        from intake.writer import GateFailure
+
+        if isinstance(exc, (GateFailure, KeyError)):
+            # expected refusals (gates, bad spec keys) are operator messages,
+            # not crashes — no traceback (round-3 live-write audit)
+            print(f"REFUSED: {exc}", file=sys.stderr)
+            return 2
+        raise
 
 
 if __name__ == "__main__":

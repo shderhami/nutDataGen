@@ -176,6 +176,9 @@ def _extract_thiamin(key: str) -> list[SourceValue]:
 
 
 def extract(key: str, note: str = "") -> list[SourceValue]:
+    _, _, _, items = _volume(_MAIN, "Table")
+    if str(key) not in items:
+        raise KeyError(f"MEXT item {key!r} not found in the main volume")
     out = _extract_volume(_MAIN, key, _MAIN_TAG_MAP, _MAIN_NAME_MAP, "main volume")
     out += _extract_thiamin(key)
     out += _extract_volume(_AA, key, _AA_TAG_MAP, {}, "AA volume, per 100 g EP")

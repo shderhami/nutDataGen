@@ -22,9 +22,13 @@ _XLSX = (Path(__file__).resolve().parents[2]
 
 # sheet -> {column index: (nutrient_id, unit, label)}
 SHEET_MAP: dict[str, dict[int, tuple[int, str, str]]] = {
+    # NOTE col 11 "Carbohydrate" is deliberately NOT mapped to 1005: CoFID
+    # publishes monosaccharide equivalents (white sugar reads 105 g/100 g),
+    # not carbohydrate-by-difference — starches read ~+10% vs our definition
+    # (corpus sweep 2026-08-18).
     "1.3 Proximates": {
         7: (1051, "g", "Water"), 9: (1003, "g", "Protein"), 10: (1004, "g", "Fat"),
-        11: (1005, "g", "Carbohydrate"), 12: (1008, "kcal", "Energy"),
+        12: (1008, "kcal", "Energy"),
         25: (1079, "g", "AOAC fibre"),
         39: (1293, "g", "Poly FA /100g food"),
     },

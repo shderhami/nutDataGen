@@ -79,6 +79,13 @@ def _derivations() -> dict[int, tuple[str, str]]:
     return out
 
 
+# the Foundation bulk holds 469 real foods and ~87,500 sub-sample /
+# acquisition rows — a mistyped id is ~187x more likely to land on a
+# non-food that "extracts" a plausible 1-nutrient table (corpus sweep
+# 2026-08-18). Only real food rows resolve.
+_REAL_FOOD_TYPES = frozenset({"foundation_food", "sr_legacy_food"})
+
+
 def food_names(fdc_ids: Iterable[int]) -> dict[int, str]:
     wanted = {int(i) for i in fdc_ids}
     names: dict[int, str] = {}
@@ -86,7 +93,7 @@ def food_names(fdc_ids: Iterable[int]) -> dict[int, str]:
         with open(dirpath / "food.csv", newline="", encoding="utf-8-sig") as fh:
             for row in csv.DictReader(fh):
                 fid = int(row["fdc_id"])
-                if fid in wanted:
+                if fid in wanted and row["data_type"] in _REAL_FOOD_TYPES:
                     names[fid] = row["description"]
     return names
 
@@ -116,6 +123,13 @@ def _make_value(label: str, food: str, nid: int, target: int, amount: float,
     """One converted SourceValue under its FEDIAF target id."""
     scale = to_fediaf(target, 1.0, _units_by_nutrient()[nid]) if target in FEDIAF_IDS else 1.0
     note = f"deriv {code}: {desc}" if code else ""
+    if nid == 1005 and amount < 0:
+        # USDA carbohydrate-by-difference on lean meats can compute slightly
+        # negative (10 foods in the pinned Foundation bulk, -0.15..-0.71 g) —
+        # an arithmetic artifact meaning zero (corpus sweep 2026-08-18)
+        note = (f"{note}; by-difference {amount:g} clamped to 0" if note
+                else f"by-difference {amount:g} clamped to 0")
+        amount, vmin, vmax = 0.0, None, None
     if nid in _CROSSWALK_NOTES:
         note = f"{note}; {_CROSSWALK_NOTES[nid]}" if note else _CROSSWALK_NOTES[nid]
     return SourceValue(
@@ -129,13 +143,18 @@ def _make_value(label: str, food: str, nid: int, target: int, amount: float,
 
 
 def extract_many(fdc_ids: Iterable[int]) -> dict[int, dict[int, SourceValue]]:
-    """One pass over both bulk files; {fdc_id: {nutrient_id: SourceValue}}."""
+    """One pass over both bulk files; {fdc_id: {nutrient_id: SourceValue}}.
+
+    Ids that do not resolve to a REAL food row (foundation_food /
+    sr_legacy_food) return empty tables, which extract.run fails loud on.
+    """
     wanted = {int(i) for i in fdc_ids}
     names = food_names(wanted)
+    wanted &= set(names)   # sub-sample/acquisition ids never extract
     derivations = _derivations()
     # raw rows keyed by the RAW USDA nutrient id; crosswalk precedence and the
     # MK-4 note are resolved in _finalize once the whole food is read.
-    raw: dict[int, dict[int, SourceValue]] = {fid: {} for fid in wanted}
+    raw: dict[int, dict[int, SourceValue]] = {int(i): {} for i in fdc_ids}
 
     for label, dirpath in _DATASETS:
         with open(dirpath / "food_nutrient.csv", newline="", encoding="utf-8-sig") as fh:

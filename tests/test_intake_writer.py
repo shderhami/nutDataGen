@@ -126,6 +126,70 @@ class TestGates:
         assert any("cross-wire" in p
                    for p in check_gates(spec, full_decisions(), meta)[0])
 
+    def test_slug_gate_fails_closed(self, spec):
+        # round-3 fuzzing: REMOVING the slug key disabled the gate entirely
+        for absent in (None, ""):
+            meta = dict(REVIEWED_META, slug=absent)
+            assert any("fail-closed" in p
+                       for p in check_gates(spec, full_decisions(), meta)[0])
+
+    def test_nonfinite_values_rejected(self, spec):
+        # round-3 fuzzing: json.loads accepts NaN/Infinity and they passed
+        # every comparison gate into the insert
+        for poison in (float("nan"), float("inf"), float("-inf")):
+            decisions = full_decisions({1106: {
+                "value": poison, "source": "sr_legacy", "comment": "x"}})
+            assert any("non-finite" in p for p in problems_of(spec, decisions))
+
+    def test_negative_value_rejected(self, spec):
+        decisions = full_decisions({1106: {
+            "value": -500.0, "source": "sr_legacy", "comment": "x"}})
+        assert any("negative value" in p for p in problems_of(spec, decisions))
+
+    def test_duplicate_nutrient_ids_refused_at_load(self, tmp_path):
+        # round-3 fuzzing: a 53rd shadowing entry silently last-won
+        payload = {"slug": "test_food", "reviewed_by": "S", "decisions": [
+            {"nutrient_id": 1106, "verdict": "confirm",
+             "decision": {"value": 1.0, "source": "sr_legacy", "comment": "a"}},
+            {"nutrient_id": 1106, "verdict": "confirm",
+             "decision": {"value": 999999.0, "source": "sr_legacy", "comment": "b"}}]}
+        path = tmp_path / "decisions.json"
+        path.write_text(json.dumps(payload))
+        with pytest.raises(GateFailure, match="duplicate nutrient_id"):
+            load_decisions(path)
+
+    def test_mass_fields_must_be_positive(self, tmp_path):
+        path = tmp_path / "zero_mass.json"
+        path.write_text(json.dumps({
+            "slug": "zm",
+            "food": {
+                "food_name": "zm", "category": "Muscle Meat", "base_unit": "g",
+                "portion_qty": 100.0, "grams_per_unit": 0,
+                "sr_legacy_fdc_id": 1, "cooking_method": None,
+                "price_per_unit": 0.02, "protein_species": "chicken",
+            },
+            "sources": {},
+        }))
+        _, blockers = check_gates(load_spec(path), full_decisions())
+        assert any("grams_per_unit" in b and "positive" in b for b in blockers)
+
+    def test_machine_verdicts_override_self_attestation(self, tmp_path):
+        # round-3 fuzzing: editing 'review' -> 'confirm' in the reviewed copy
+        # skipped the resolution requirement; the sibling machine file's
+        # verdicts now govern gating
+        machine = {"slug": "test_food", "review_contract": "x", "decisions": [
+            {"nutrient_id": 1004, "verdict": "review",
+             "reasons": ["all differ"],
+             "decision": {"value": 7.9, "source": "foundation", "comment": "m"}}]}
+        (tmp_path / "proposed_decisions.json").write_text(json.dumps(machine))
+        reviewed = {"slug": "test_food", "reviewed_by": "S", "decisions": [
+            {"nutrient_id": 1004, "verdict": "confirm",   # spoofed
+             "decision": {"value": 7.9, "source": "foundation", "comment": "m"}}]}
+        path = tmp_path / "decisions.json"
+        path.write_text(json.dumps(reviewed))
+        loaded, meta = load_decisions(path)
+        assert loaded[1004]["_verdict"] == "review"   # machine wins
+
     def test_apply_dry_run_refuses_on_gate_failure(self, spec):
         decisions = full_decisions()
         del decisions[1234]

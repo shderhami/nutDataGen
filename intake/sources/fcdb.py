@@ -168,11 +168,19 @@ def extract(key: int, note: str = "") -> list[SourceValue]:
         n_val = _f(n)
         n_int = int(n_val) if n_val is not None and n_val > 0 else None
         scale = to_fediaf(nid, 1.0, unit)
+        # FCDB Min/Max are unreliable in ~26% of foods (censored-zero
+        # encodings, 0/0 placeholders, value-outside-range, min>max — corpus
+        # sweep 2026-08-18): emit a range only when it coherently brackets
+        # the value, so no downstream consumer can pool a corrupt one.
+        if (vmin is not None and vmax is not None
+                and 0 < vmin <= val <= vmax):
+            svmin, svmax = vmin * scale, vmax * scale
+        else:
+            svmin = svmax = None
         out.append(SourceValue(
             source=LABEL, source_food=f"{key} {food_name}", nutrient_id=nid,
             value=val * scale, n=n_int,
-            vmin=vmin * scale if vmin is not None else None,
-            vmax=vmax * scale if vmax is not None else None,
+            vmin=svmin, vmax=svmax,
             quality=quality,
             note=f"{param}; {src_note}" if src_note else param,
         ))

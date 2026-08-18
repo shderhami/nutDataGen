@@ -49,7 +49,11 @@ _HDR_RE = re.compile(r"^(\S+) .*\[([^\]/]+)/100\s*g\]$")
 
 
 def _parse(raw) -> Optional[float]:
-    """BLS cells are numeric, or '-' for not-applicable/missing."""
+    """BLS cells: numeric; '-' missing; 'TR' trace (origin column says
+    Spuren, which _origin_quality maps to Q_TRACE); '<LOD'/'<LOQ' carry no
+    numeric bound at all and are skipped. The corpus sweep (2026-08-18)
+    found 1,510 such token cells across 408 foods — a plain float() crashed
+    every one of those extractions."""
     if raw is None:
         return None
     if isinstance(raw, (int, float)):
@@ -57,7 +61,14 @@ def _parse(raw) -> Optional[float]:
     text = str(raw).strip()
     if text in ("-", ""):
         return None
-    return float(text.replace(",", "."))
+    if text.upper() == "TR":
+        return 0.0
+    if text.startswith("<"):
+        return None
+    try:
+        return float(text.replace(",", "."))
+    except ValueError:
+        return None
 
 
 def _origin_quality(origin: Optional[str]) -> str:

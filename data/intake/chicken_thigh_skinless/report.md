@@ -111,7 +111,7 @@ _value marks: † borrowed  ° compiled  ‡ computed  ~ estimated  < censored u
 | Water (1051) | g | 72.92 (n=8) | 76.22 (n=7) | 77.2 | 75† | 76° / 76.2≈ | 75.8° | 74.0667 (n=30) | — | 76.1 | — | — | **confirm** |
 | Ash (1007) | g | 0.9575 (n=8) | 0.95 (n=7) | 1 | 1† | 0.98° / 0.95≈ | — | 1 (n=30) | — | 1 | — | — | **confirm** |
 | Crude Fiber (1079) | g | — | 0† | 0 | 0‡ | 0° / 0≈ | 0° | 0† | — | 0~ | — | — | **confirm** |
-| Carbohydrate (1005) | g | 0‡ | 0† | 0 | 0‡ | 0° / 0≈ | 0° | 0‡ | — | 0 | — | — | **confirm** |
+| Carbohydrate (1005) | g | 0‡ | 0† | 0 | 0‡ | 0° / 0≈ | — | 0‡ | — | 0 | — | — | **confirm** |
 
 ## Needs attention (contested rows + detection-limit context)
 

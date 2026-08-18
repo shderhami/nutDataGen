@@ -32,6 +32,7 @@ from __future__ import annotations
 
 import inspect
 import json
+import math
 import os
 import shutil
 import subprocess
@@ -78,8 +79,14 @@ def load_decisions(path: str | Path) -> tuple[dict[int, dict[str, Any]], dict[st
     path = Path(path)
     raw = json.loads(path.read_text())
     out: dict[int, dict[str, Any]] = {}
+    duplicates: list[int] = []
     for entry in raw["decisions"]:
         nid = int(entry["nutrient_id"])
+        if nid in out:
+            # last-wins shadowing would let a second entry below the fold
+            # silently replace the reviewed one (round-3 fuzzing)
+            duplicates.append(nid)
+            continue
         decision = dict(entry["decision"] or {})
         if entry.get("unit") and not decision.get("unit"):
             decision["unit"] = entry["unit"]
@@ -90,13 +97,49 @@ def load_decisions(path: str | Path) -> tuple[dict[int, dict[str, Any]], dict[st
             "tie-break between split sources" in str(r)
             for r in entry.get("reasons", []))
         out[nid] = decision
+    if duplicates:
+        raise GateFailure(
+            f"decisions file contains duplicate nutrient_id entries "
+            f"{sorted(set(duplicates))} — a shadowed entry cannot be reviewed")
     meta = {
         "slug": raw.get("slug"),
         "reviewed_by": str(raw.get("reviewed_by", "") or "").strip(),
         "basename": path.name,
         "has_review_contract": "review_contract" in raw,
     }
+    _restore_machine_verdicts(path, raw, out)
     return out, meta
+
+
+def _restore_machine_verdicts(path: Path, raw: dict,
+                              decisions: dict[int, dict[str, Any]]) -> None:
+    """Contested status comes from the MACHINE artifact when it is present.
+
+    The reviewed file's own verdict strings are self-attested — editing
+    'review' to 'confirm' (or dropping the reasons array) would silently
+    skip the resolution requirement (round-3 fuzzing). When the sibling
+    proposed_decisions.json exists for the same slug, its verdicts and
+    tie-break reasons override the reviewed copy's for gating purposes.
+    """
+    if path.name == PROPOSED_DECISIONS_BASENAME:
+        return
+    machine_path = path.parent / PROPOSED_DECISIONS_BASENAME
+    if not machine_path.exists():
+        return
+    try:
+        machine = json.loads(machine_path.read_text())
+    except (OSError, json.JSONDecodeError):
+        return
+    if machine.get("slug") != raw.get("slug"):
+        return
+    for entry in machine.get("decisions", []):
+        nid = int(entry["nutrient_id"])
+        if nid not in decisions:
+            continue
+        decisions[nid]["_verdict"] = entry.get("verdict", "")
+        decisions[nid]["_tie_break"] = any(
+            "tie-break between split sources" in str(r)
+            for r in entry.get("reasons", []))
 
 
 def _check_food_block(spec: IntakeSpec) -> list[str]:
@@ -127,10 +170,16 @@ def _check_food_block(spec: IntakeSpec) -> list[str]:
             "food block: cooking_method must be declared explicitly "
             "(null = fed raw; the key documents the intent)")
     price = food.get("price_per_unit")
-    if not isinstance(price, (int, float)) or price <= 0:
+    if not _numeric(price) or price <= 0:
         problems.append(
             f"food block: price_per_unit {price!r} — a real nonzero price is "
             f"required (a 0-cost ingredient reads as free to the formulator)")
+    for mass_field in ("portion_qty", "grams_per_unit"):
+        mass = food.get(mass_field)
+        if not _numeric(mass) or mass <= 0:
+            problems.append(
+                f"food block: {mass_field} {mass!r} must be a positive number "
+                f"(zero would divide-by-zero the per-gram nutrient math)")
     if food.get("category") in _SPECIES_CATEGORIES and not food.get("protein_species"):
         problems.append(
             "food block: protein_species required for Muscle/Organ Meat "
@@ -139,7 +188,10 @@ def _check_food_block(spec: IntakeSpec) -> list[str]:
 
 
 def _numeric(value: Any) -> bool:
-    return isinstance(value, (int, float)) and not isinstance(value, bool)
+    # json.loads accepts bare NaN/Infinity — non-finite values pass every
+    # comparison gate and PostgreSQL numeric stores them (round-3 fuzzing)
+    return (isinstance(value, (int, float)) and not isinstance(value, bool)
+            and math.isfinite(value))
 
 
 def check_gates(spec: IntakeSpec, decisions: dict[int, dict[str, Any]],
@@ -149,10 +201,17 @@ def check_gates(spec: IntakeSpec, decisions: dict[int, dict[str, Any]],
     problems: list[str] = []
     commit_problems = _check_food_block(spec)
     meta = meta or {}
-    if meta.get("slug") and meta["slug"] != spec.slug:
-        problems.append(
-            f"decisions file is for slug '{meta['slug']}' but the spec is "
-            f"'{spec.slug}' — refusing to cross-wire foods")
+    if meta:
+        # fail CLOSED: the slug is the only binding between a decisions file
+        # and a spec — an absent/empty slug disabled the gate (round-3 fuzzing)
+        if not meta.get("slug"):
+            problems.append(
+                "decisions file has no top-level 'slug' — required to bind "
+                "it to the spec (fail-closed cross-wire gate)")
+        elif meta["slug"] != spec.slug:
+            problems.append(
+                f"decisions file is for slug '{meta['slug']}' but the spec is "
+                f"'{spec.slug}' — refusing to cross-wire foods")
     ids = set(decisions)
     missing, extra = FEDIAF_IDS - ids, ids - FEDIAF_IDS
     if missing:
@@ -168,8 +227,12 @@ def check_gates(spec: IntakeSpec, decisions: dict[int, dict[str, Any]],
         bad_types = [f for f in ("value", "min_value", "max_value", "median_value")
                      if d.get(f) is not None and not _numeric(d[f])]
         if bad_types:
-            problems.append(f"{nid} {name}: non-numeric {bad_types} "
-                            f"(hand-edit left a string?)")
+            problems.append(f"{nid} {name}: non-numeric/non-finite {bad_types} "
+                            f"(hand-edit left a string, NaN or Infinity?)")
+            continue
+        if d["value"] < 0:
+            problems.append(f"{nid} {name}: negative value {d['value']} — "
+                            f"nutrient concentrations are non-negative")
             continue
         if not d.get("source") or d["source"] not in _VALID_SOURCES:
             problems.append(f"{nid} {name}: source {d.get('source')!r} invalid")
@@ -352,6 +415,8 @@ def apply(spec: IntakeSpec, decisions: dict[int, dict[str, Any]],
     except Exception:
         try:  # cleanup must never mask the original failure (main.py contract)
             database.delete_food(food_id)
+            print(f"Removed orphan ingredient {food_id} after the failure "
+                  f"below — the DB is clean.")
         except Exception as cleanup_exc:  # noqa: BLE001
             print(f"WARNING: could not remove orphan ingredient {food_id}: "
                   f"{cleanup_exc}. Remove it manually (database.delete_food).")

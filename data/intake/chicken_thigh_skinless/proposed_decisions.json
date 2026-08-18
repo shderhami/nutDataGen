@@ -877,12 +877,12 @@
       "unit": "g",
       "verdict": "confirm",
       "reasons": [
-        "4/4 independent(s) within ±20%: MEXT 0, CIQUAL 0, AFCD 0, CoFID 0"
+        "3/3 independent(s) within ±20%: MEXT 0, CIQUAL 0, AFCD 0"
       ],
       "decision": {
         "value": 0.0,
         "source": "foundation",
-        "comment": "Validated 2026-08-18: kept foundation 0 g; refs within range: MEXT 0, CIQUAL 0, AFCD 0, CoFID 0",
+        "comment": "Validated 2026-08-18: kept foundation 0 g; refs within range: MEXT 0, CIQUAL 0, AFCD 0",
         "derivation_description": "deriv NC: Calculated"
       }
     }
