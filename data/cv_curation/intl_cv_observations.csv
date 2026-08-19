@@ -152,3 +152,6 @@ food_id,nutrient_id,source,source_food_id,source_food,param,value,n,min,max,cv_w
 10038,1051,FCDB 6.1,789,"Pork, hand, lean, raw",Water,74.0,18,72.0,76.1,0.015207,1832
 10038,1176,FCDB 6.1,789,"Pork, hand, lean, raw",Biotin,2.6,4,1.4,4.8,0.623226,1071
 10038,1177,FCDB 6.1,789,"Pork, hand, lean, raw",Folate,2.1,4,0.8,4.6,0.862391,1071
+10050,1087,FCDB 6.1,641,"Heart, beef, raw",Calcium,3.95,6,3.32,4.84,0.150134,1015
+10050,1090,FCDB 6.1,641,"Heart, beef, raw",Magnesium,17.0,4,15.0,20.0,0.140172,1348
+10050,1091,FCDB 6.1,641,"Heart, beef, raw",Phosphorus,214.0,6,194.0,230.0,0.065633,1015

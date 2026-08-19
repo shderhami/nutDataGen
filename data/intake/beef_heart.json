@@ -1,0 +1,53 @@
+{
+  "slug": "beef_heart",
+  "food": {
+    "food_name": "beef heart raw",
+    "category": "Organ Meat",
+    "base_unit": "g",
+    "portion_qty": 100.0,
+    "grams_per_unit": 1.0,
+    "sr_legacy_fdc_id": 168625,
+    "cooking_method": null,
+    "price_per_unit": 0.0099,
+    "source": "grocery",
+    "protein_species": "beef",
+    "display_name": "Beef heart, trimmed"
+  },
+  "notes": [
+    "FRAME: trimmed heart muscle (cap/vessels off) — confirmed by Shahab 2026-08-18; every dataset is trimmed-frame (fat cluster 2.95-3.94; MEXT 7.6 is semi-trimmed JP convention). Wegmans sells trimmed; price 0.0099/g as sold.",
+    "SR-only food: no Foundation entry exists for beef heart.",
+    "Cardiac siblings for cross-species anchors: chicken heart 10007 (validated: vit K MK-4 50, taurine 231), turkey heart 10029.",
+    "Seong 2014 B1/B2/B6 columns NOT curated (PDF column ambiguity: B2 0.07 vs cardiac family ~0.9) — consult the PDF visually if those rows contest."
+  ],
+  "sources": {
+    "fcdb": [
+      {"key": 641, "note": "Heart, beef, raw — Danish analytical; stats n=4-6 on Ca/Mg/P/folate (cv-v8 FOOD_MAP candidate)"}
+    ],
+    "mext": [
+      {"key": "11091", "note": "beef heart raw — SEMI-TRIMMED frame (fat 7.6 vs cluster ~3.5): expect fat and fat-tracking rows to read high; minerals/water-solubles comparable"}
+    ],
+    "ciqual": [
+      {"key": 40052, "note": "Coeur, boeuf, cru — echo suspect (chicken heart's CIQUAL entry was a USDA copy; screener decides)"}
+    ],
+    "cofid": [
+      {"key": "18-398", "note": "Heart, ox, raw — UK; cite underlying survey from refs"}
+    ]
+  },
+  "literature": [
+    {"source": "SR-NZ", "item": "Beef, New Zealand imported, heart, raw (FDC 174723)", "nutrient_id": 1004,
+     "value": 3.4, "unit": "g", "usda_lineage": true,
+     "note": "USDA NZ-imported entry — grass-fed frame corroboration for trimmed fat; USDA lineage, never independent"},
+    {"source": "Seong14", "item": "Hanwoo beef heart", "nutrient_id": 1167,
+     "value": 7.46, "unit": "mg", "quality": "analysed",
+     "note": "Seong 2014 vitamin table: niacin 7.46±1.06 mg/100 g, hanwoo cattle heart"},
+    {"source": "Seong14", "item": "Hanwoo beef heart", "nutrient_id": 1106,
+     "value": 12.49, "unit": "µg", "quality": "analysed",
+     "note": "Seong 2014 vitamin table: vitamin A 12.49±2.69 µg/100 g (retinol basis), hanwoo cattle heart"},
+    {"source": "Seong14", "item": "Hanwoo beef heart", "nutrient_id": 1089,
+     "value": 5.888, "unit": "mg", "quality": "analysed",
+     "note": "Seong 2014 prose: heart Fe 58.88 mg/kg = 5.888 mg/100 g, hanwoo cattle"},
+    {"source": "Biel19", "item": "Beef heart", "nutrient_id": 1101,
+     "value": 0.29, "unit": "mg", "quality": "analysed",
+     "note": "Biel 2019 prose: beef hearts Mn 0.29 mg/100 g (veal 0.35)"}
+  ]
+}

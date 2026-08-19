@@ -1,0 +1,825 @@
+{
+  "slug": "beef_heart",
+  "generated": "2026-08-19",
+  "engine": {
+    "agreement_rtol": 0.2,
+    "eps_by_unit": {
+      "g": 0.01,
+      "mg": 0.01,
+      "µg": 1.0,
+      "IU": 1.0,
+      "kcal": 6.0
+    },
+    "echo_rtol": 0.005,
+    "echo_min_matches": 5,
+    "echo_min_ratio": 0.4
+  },
+  "review_contract": "Machine output — the writer refuses to --commit this file. Review each decision, save as decisions.json, and add a top-level \"reviewed_by\".",
+  "decisions": [
+    {
+      "nutrient_id": 1003,
+      "name": "Crude Protein",
+      "unit": "g",
+      "verdict": "confirm",
+      "reasons": [
+        "3/3 independent(s) within ±20%: MEXT 16.5, CIQUAL 18.5, CoFID 18.2"
+      ],
+      "decision": {
+        "value": 17.72,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-19: kept sr_legacy 17.72 g; refs within range: MEXT 16.5, CIQUAL 18.5, CoFID 18.2",
+        "num_samples": 1,
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1220,
+      "name": "Arginine",
+      "unit": "g",
+      "verdict": "adopt_foreign",
+      "reasons": [
+        "no USDA value; 2 measured source(s) available",
+        "anchor is a tie-break between split sources — review must arbitrate"
+      ],
+      "decision": {
+        "value": 1.0,
+        "source": "literature",
+        "comment": "Validated 2026-08-19: no USDA value; set from MEXT (11091 Beef, offal and by-products, heart, raw) — refs: FCDB 1.10565, MEXT 1"
+      }
+    },
+    {
+      "nutrient_id": 1221,
+      "name": "Histidine",
+      "unit": "g",
+      "verdict": "adopt_foreign",
+      "reasons": [
+        "no USDA value; 2 measured source(s) available",
+        "anchor is a tie-break between split sources — review must arbitrate"
+      ],
+      "decision": {
+        "value": 0.43,
+        "source": "literature",
+        "comment": "Validated 2026-08-19: no USDA value; set from MEXT (11091 Beef, offal and by-products, heart, raw) — refs: FCDB 0.48195, MEXT 0.43"
+      }
+    },
+    {
+      "nutrient_id": 1212,
+      "name": "Isoleucine",
+      "unit": "g",
+      "verdict": "adopt_foreign",
+      "reasons": [
+        "no USDA value; 2 measured source(s) available",
+        "anchor is a tie-break between split sources — review must arbitrate"
+      ],
+      "decision": {
+        "value": 0.73,
+        "source": "literature",
+        "comment": "Validated 2026-08-19: no USDA value; set from MEXT (11091 Beef, offal and by-products, heart, raw) — refs: FCDB 0.8505, MEXT 0.73"
+      }
+    },
+    {
+      "nutrient_id": 1213,
+      "name": "Leucine",
+      "unit": "g",
+      "verdict": "adopt_foreign",
+      "reasons": [
+        "no USDA value; 2 measured source(s) available",
+        "anchor is a tie-break between split sources — review must arbitrate"
+      ],
+      "decision": {
+        "value": 1.4000000000000001,
+        "source": "literature",
+        "comment": "Validated 2026-08-19: no USDA value; set from MEXT (11091 Beef, offal and by-products, heart, raw) — refs: FCDB 1.61595, MEXT 1.4"
+      }
+    },
+    {
+      "nutrient_id": 1214,
+      "name": "Lysine",
+      "unit": "g",
+      "verdict": "adopt_foreign",
+      "reasons": [
+        "no USDA value; 2 measured source(s) available",
+        "anchor is a tie-break between split sources — review must arbitrate"
+      ],
+      "decision": {
+        "value": 1.3,
+        "source": "literature",
+        "comment": "Validated 2026-08-19: no USDA value; set from MEXT (11091 Beef, offal and by-products, heart, raw) — refs: FCDB 1.6443, MEXT 1.3"
+      }
+    },
+    {
+      "nutrient_id": 1215,
+      "name": "Methionine",
+      "unit": "g",
+      "verdict": "adopt_foreign",
+      "reasons": [
+        "no USDA value; 2 measured source(s) available",
+        "anchor is a tie-break between split sources — review must arbitrate"
+      ],
+      "decision": {
+        "value": 0.41000000000000003,
+        "source": "literature",
+        "comment": "Validated 2026-08-19: no USDA value; set from MEXT (11091 Beef, offal and by-products, heart, raw) — refs: FCDB 0.4536, MEXT 0.41"
+      }
+    },
+    {
+      "nutrient_id": 1216,
+      "name": "Cystine",
+      "unit": "g",
+      "verdict": "adopt_foreign",
+      "reasons": [
+        "no USDA value; 2 measured source(s) available",
+        "anchor is a tie-break between split sources — review must arbitrate"
+      ],
+      "decision": {
+        "value": 0.22,
+        "source": "literature",
+        "comment": "Validated 2026-08-19: no USDA value; set from MEXT (11091 Beef, offal and by-products, heart, raw) — refs: FCDB 0.184275, MEXT 0.22"
+      }
+    },
+    {
+      "nutrient_id": 1217,
+      "name": "Phenylalanine",
+      "unit": "g",
+      "verdict": "adopt_foreign",
+      "reasons": [
+        "no USDA value; 2 measured source(s) available",
+        "anchor is a tie-break between split sources — review must arbitrate"
+      ],
+      "decision": {
+        "value": 0.7000000000000001,
+        "source": "literature",
+        "comment": "Validated 2026-08-19: no USDA value; set from MEXT (11091 Beef, offal and by-products, heart, raw) — refs: FCDB 0.82215, MEXT 0.7"
+      }
+    },
+    {
+      "nutrient_id": 1218,
+      "name": "Tyrosine",
+      "unit": "g",
+      "verdict": "adopt_foreign",
+      "reasons": [
+        "no USDA value; 2 measured source(s) available",
+        "anchor is a tie-break between split sources — review must arbitrate"
+      ],
+      "decision": {
+        "value": 0.53,
+        "source": "literature",
+        "comment": "Validated 2026-08-19: no USDA value; set from MEXT (11091 Beef, offal and by-products, heart, raw) — refs: FCDB 0.65205, MEXT 0.53"
+      }
+    },
+    {
+      "nutrient_id": 1211,
+      "name": "Threonine",
+      "unit": "g",
+      "verdict": "adopt_foreign",
+      "reasons": [
+        "no USDA value; 2 measured source(s) available",
+        "anchor is a tie-break between split sources — review must arbitrate"
+      ],
+      "decision": {
+        "value": 0.6900000000000001,
+        "source": "literature",
+        "comment": "Validated 2026-08-19: no USDA value; set from MEXT (11091 Beef, offal and by-products, heart, raw) — refs: FCDB 0.82215, MEXT 0.69"
+      }
+    },
+    {
+      "nutrient_id": 1210,
+      "name": "Tryptophan",
+      "unit": "g",
+      "verdict": "adopt_foreign",
+      "reasons": [
+        "no USDA value; 2 measured source(s) available",
+        "anchor is a tie-break between split sources — review must arbitrate"
+      ],
+      "decision": {
+        "value": 0.21,
+        "source": "literature",
+        "comment": "Validated 2026-08-19: no USDA value; set from MEXT (11091 Beef, offal and by-products, heart, raw) — refs: FCDB 1.95615, MEXT 0.21"
+      }
+    },
+    {
+      "nutrient_id": 1219,
+      "name": "Valine",
+      "unit": "g",
+      "verdict": "adopt_foreign",
+      "reasons": [
+        "no USDA value; 2 measured source(s) available",
+        "anchor is a tie-break between split sources — review must arbitrate"
+      ],
+      "decision": {
+        "value": 0.85,
+        "source": "literature",
+        "comment": "Validated 2026-08-19: no USDA value; set from MEXT (11091 Beef, offal and by-products, heart, raw) — refs: FCDB 0.06804, MEXT 0.85"
+      }
+    },
+    {
+      "nutrient_id": 1234,
+      "name": "Taurine",
+      "unit": "mg",
+      "verdict": "no_evidence",
+      "reasons": [
+        "no measurement in any local resource — operator/literature call"
+      ],
+      "decision": {
+        "value": null,
+        "source": null,
+        "comment": "FILL ME: no rule-engine suggestion",
+        "resolution": null
+      }
+    },
+    {
+      "nutrient_id": 1004,
+      "name": "Total Fat",
+      "unit": "g",
+      "verdict": "confirm",
+      "reasons": [
+        "1/4 independent(s) within ±20%: CoFID 3.5"
+      ],
+      "decision": {
+        "value": 3.94,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-19: kept sr_legacy 3.94 g; refs within range: CoFID 3.5",
+        "num_samples": 1,
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1269,
+      "name": "Linoleic acid",
+      "unit": "g",
+      "verdict": "confirm",
+      "reasons": [
+        "1/3 independent(s) within ±20%: FCDB 0.346305 (n=3)"
+      ],
+      "decision": {
+        "value": 0.395,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-19: kept sr_legacy 0.395 g; refs within range: FCDB 0.346305 (n=3)",
+        "num_samples": 1,
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1271,
+      "name": "Arachidonic acid",
+      "unit": "g",
+      "verdict": "review",
+      "reasons": [
+        "all 1 independent(s) differ >±20% from sr_legacy 0.128: MEXT 0.02"
+      ],
+      "decision": {
+        "value": 0.128,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-19: kept sr_legacy 0.128 g after review (intl differ: MEXT 0.02)",
+        "num_samples": 1,
+        "derivation_description": "deriv A: Analytical",
+        "resolution": null
+      }
+    },
+    {
+      "nutrient_id": 1270,
+      "name": "Alpha-linolenic acid",
+      "unit": "g",
+      "verdict": "confirm",
+      "reasons": [
+        "1/3 independent(s) within ±20%: CIQUAL 0.026"
+      ],
+      "decision": {
+        "value": 0.016,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-19: kept sr_legacy 0.016 g; refs within range: CIQUAL 0.026"
+      }
+    },
+    {
+      "nutrient_id": 1278,
+      "name": "EPA",
+      "unit": "g",
+      "verdict": "confirm",
+      "reasons": [
+        "2/3 independent(s) within ±20%: MEXT 0, CIQUAL 0"
+      ],
+      "decision": {
+        "value": 0.0,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-19: kept sr_legacy 0 g; refs within range: MEXT 0, CIQUAL 0",
+        "derivation_description": "deriv Z: Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)"
+      }
+    },
+    {
+      "nutrient_id": 1272,
+      "name": "DHA",
+      "unit": "g",
+      "verdict": "confirm",
+      "reasons": [
+        "3/3 independent(s) within ±20%: FCDB 0.0043757 (n=3), MEXT 0, CIQUAL 0"
+      ],
+      "decision": {
+        "value": 0.0,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-19: kept sr_legacy 0 g; refs within range: FCDB 0.0043757 (n=3), MEXT 0, CIQUAL 0",
+        "derivation_description": "deriv Z: Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)"
+      }
+    },
+    {
+      "nutrient_id": 1293,
+      "name": "Fatty acids, total polyunsaturated",
+      "unit": "g",
+      "verdict": "review",
+      "reasons": [
+        "all 2 independent(s) differ >±20% from sr_legacy 0.546: MEXT 0.33, CoFID 0.1"
+      ],
+      "decision": {
+        "value": 0.546,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-19: kept sr_legacy 0.546 g after review (intl differ: MEXT 0.33, CoFID 0.1)",
+        "num_samples": 1,
+        "derivation_description": "deriv A: Analytical",
+        "resolution": null
+      }
+    },
+    {
+      "nutrient_id": 1280,
+      "name": "DPA 22:5 n-3",
+      "unit": "g",
+      "verdict": "confirm",
+      "reasons": [
+        "1/2 independent(s) within ±20%: MEXT 0"
+      ],
+      "decision": {
+        "value": 0.0,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-19: kept sr_legacy 0 g; refs within range: MEXT 0",
+        "derivation_description": "deriv Z: Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)"
+      }
+    },
+    {
+      "nutrient_id": 1087,
+      "name": "Calcium",
+      "unit": "mg",
+      "verdict": "confirm",
+      "reasons": [
+        "1/4 independent(s) within ±20%: CIQUAL 7"
+      ],
+      "decision": {
+        "value": 7.0,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-19: kept sr_legacy 7 mg; refs within range: CIQUAL 7",
+        "num_samples": 1,
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1091,
+      "name": "Phosphorus",
+      "unit": "mg",
+      "verdict": "confirm",
+      "reasons": [
+        "4/4 independent(s) within ±20%: FCDB 214 (n=6), MEXT 170, CIQUAL 212, CoFID 210"
+      ],
+      "decision": {
+        "value": 212.0,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-19: kept sr_legacy 212 mg; refs within range: FCDB 214 (n=6), MEXT 170, CIQUAL 212, CoFID 210",
+        "num_samples": 1,
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1092,
+      "name": "Potassium",
+      "unit": "mg",
+      "verdict": "confirm",
+      "reasons": [
+        "4/4 independent(s) within ±20%: FCDB 240 (n=1), MEXT 260, CIQUAL 287, CoFID 290"
+      ],
+      "decision": {
+        "value": 287.0,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-19: kept sr_legacy 287 mg; refs within range: FCDB 240 (n=1), MEXT 260, CIQUAL 287, CoFID 290",
+        "num_samples": 1,
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1093,
+      "name": "Sodium",
+      "unit": "mg",
+      "verdict": "confirm",
+      "reasons": [
+        "3/4 independent(s) within ±20%: FCDB 95 (n=1), CIQUAL 81.7, CoFID 88"
+      ],
+      "decision": {
+        "value": 98.0,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-19: kept sr_legacy 98 mg; refs within range: FCDB 95 (n=1), CIQUAL 81.7, CoFID 88",
+        "num_samples": 1,
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1088,
+      "name": "Chloride",
+      "unit": "mg",
+      "verdict": "adopt_foreign",
+      "reasons": [
+        "no USDA value; 1 measured source(s) available"
+      ],
+      "decision": {
+        "value": 44.0,
+        "source": "literature",
+        "comment": "Validated 2026-08-19: no USDA value; set from CoFID (18-398 Heart, ox, raw) — refs: CoFID 44"
+      }
+    },
+    {
+      "nutrient_id": 1090,
+      "name": "Magnesium",
+      "unit": "mg",
+      "verdict": "confirm",
+      "reasons": [
+        "4/4 independent(s) within ±20%: FCDB 17 (n=4), MEXT 23, CIQUAL 21, CoFID 22"
+      ],
+      "decision": {
+        "value": 21.0,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-19: kept sr_legacy 21 mg; refs within range: FCDB 17 (n=4), MEXT 23, CIQUAL 21, CoFID 22",
+        "num_samples": 1,
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1089,
+      "name": "Iron",
+      "unit": "mg",
+      "verdict": "confirm",
+      "reasons": [
+        "3/5 independent(s) within ±20%: FCDB 4.2 (n=1), CIQUAL 5.14, CoFID 5"
+      ],
+      "decision": {
+        "value": 4.31,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-19: kept sr_legacy 4.31 mg; refs within range: FCDB 4.2 (n=1), CIQUAL 5.14, CoFID 5",
+        "num_samples": 1,
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1098,
+      "name": "Copper",
+      "unit": "mg",
+      "verdict": "confirm",
+      "reasons": [
+        "3/4 independent(s) within ±20%: MEXT 0.42, CIQUAL 0.4, CoFID 0.37"
+      ],
+      "decision": {
+        "value": 0.396,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-19: kept sr_legacy 0.396 mg; refs within range: MEXT 0.42, CIQUAL 0.4, CoFID 0.37",
+        "num_samples": 1,
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1101,
+      "name": "Manganese",
+      "unit": "mg",
+      "verdict": "confirm",
+      "reasons": [
+        "3/4 independent(s) within ±20%: FCDB 0.032 (n=3), CIQUAL 0.035, CoFID 0.04"
+      ],
+      "decision": {
+        "value": 0.035,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-19: kept sr_legacy 0.035 mg; refs within range: FCDB 0.032 (n=3), CIQUAL 0.035, CoFID 0.04",
+        "num_samples": 1,
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1095,
+      "name": "Zinc",
+      "unit": "mg",
+      "verdict": "confirm",
+      "reasons": [
+        "4/4 independent(s) within ±20%: FCDB 1.4 (n=1), MEXT 2.1, CIQUAL 1.49, CoFID 1.8"
+      ],
+      "decision": {
+        "value": 1.7,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-19: kept sr_legacy 1.7 mg; refs within range: FCDB 1.4 (n=1), MEXT 2.1, CIQUAL 1.49, CoFID 1.8",
+        "num_samples": 1,
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1100,
+      "name": "Iodine",
+      "unit": "µg",
+      "verdict": "adopt_foreign",
+      "reasons": [
+        "no USDA value; 2 measured source(s) available",
+        "anchor is a tie-break between split sources — review must arbitrate"
+      ],
+      "decision": {
+        "value": 1.8,
+        "source": "literature",
+        "comment": "Validated 2026-08-19: no USDA value; set from FCDB (641 Heart, beef, raw) — refs: FCDB 1.8 (n=1), CIQUAL 1.9",
+        "num_samples": 1
+      }
+    },
+    {
+      "nutrient_id": 1103,
+      "name": "Selenium",
+      "unit": "µg",
+      "verdict": "confirm",
+      "reasons": [
+        "1/3 independent(s) within ±20%: CIQUAL 23.5"
+      ],
+      "decision": {
+        "value": 21.8,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-19: kept sr_legacy 21.8 µg; refs within range: CIQUAL 23.5",
+        "num_samples": 1,
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1106,
+      "name": "Vitamin A",
+      "unit": "IU",
+      "verdict": "confirm",
+      "reasons": [
+        "1/3 independent(s) within ±20%: CIQUAL 0",
+        "detection-limit info: CoFID trace"
+      ],
+      "decision": {
+        "value": 0.0,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-19: kept sr_legacy 0 IU; refs within range: CIQUAL 0"
+      }
+    },
+    {
+      "nutrient_id": 1110,
+      "name": "Vitamin D",
+      "unit": "IU",
+      "verdict": "adopt_foreign",
+      "reasons": [
+        "no USDA value; 2 measured source(s) available",
+        "anchor is a tie-break between split sources — review must arbitrate"
+      ],
+      "decision": {
+        "value": 0.0,
+        "source": "literature",
+        "comment": "Validated 2026-08-19: no USDA value; set from MEXT (11091 Beef, offal and by-products, heart, raw) — refs: MEXT 0, CIQUAL 37.2"
+      }
+    },
+    {
+      "nutrient_id": 1109,
+      "name": "Vitamin E",
+      "unit": "IU",
+      "verdict": "confirm",
+      "reasons": [
+        "3/3 independent(s) within ±20%: MEXT 0.894, CIQUAL 0.3278, CoFID 0.6705"
+      ],
+      "decision": {
+        "value": 0.3278,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-19: kept sr_legacy 0.3278 IU; refs within range: MEXT 0.894, CIQUAL 0.3278, CoFID 0.6705",
+        "num_samples": 2,
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1185,
+      "name": "Vitamin K",
+      "unit": "µg",
+      "verdict": "form_defect",
+      "reasons": [
+        "USDA K row is K1-only (0 µg); menaquinone-inclusive tables read ~5 µg"
+      ],
+      "decision": {
+        "value": 5.0,
+        "source": "literature",
+        "comment": "Validated 2026-08-19: SR vit K counts K1 only; total-K (incl. MK-4) set per MEXT (11091 Beef, offal and by-products, heart, raw); refs: MEXT 5"
+      }
+    },
+    {
+      "nutrient_id": 1165,
+      "name": "Thiamin",
+      "unit": "mg",
+      "verdict": "confirm",
+      "reasons": [
+        "1/4 independent(s) within ±20%: CIQUAL 0.24"
+      ],
+      "decision": {
+        "value": 0.238,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-19: kept sr_legacy 0.238 mg; refs within range: CIQUAL 0.24",
+        "num_samples": 1,
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1166,
+      "name": "Riboflavin",
+      "unit": "mg",
+      "verdict": "confirm",
+      "reasons": [
+        "4/4 independent(s) within ±20%: FCDB 0.75 (n=1), MEXT 0.9, CIQUAL 0.91, CoFID 0.8"
+      ],
+      "decision": {
+        "value": 0.906,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-19: kept sr_legacy 0.906 mg; refs within range: FCDB 0.75 (n=1), MEXT 0.9, CIQUAL 0.91, CoFID 0.8",
+        "num_samples": 1,
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1167,
+      "name": "Niacin",
+      "unit": "mg",
+      "verdict": "confirm",
+      "reasons": [
+        "4/5 independent(s) within ±20%: FCDB 7.5 (n=1), CIQUAL 6.78, CoFID 6.3, Seong14 7.46"
+      ],
+      "decision": {
+        "value": 7.53,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-19: kept sr_legacy 7.53 mg; refs within range: FCDB 7.5 (n=1), CIQUAL 6.78, CoFID 6.3, Seong14 7.46",
+        "num_samples": 1,
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1170,
+      "name": "Pantothenic acid",
+      "unit": "mg",
+      "verdict": "confirm",
+      "reasons": [
+        "2/4 independent(s) within ±20%: MEXT 2.16, CIQUAL 1.79"
+      ],
+      "decision": {
+        "value": 1.79,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-19: kept sr_legacy 1.79 mg; refs within range: MEXT 2.16, CIQUAL 1.79",
+        "num_samples": 1,
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1175,
+      "name": "Pyridoxine",
+      "unit": "mg",
+      "verdict": "confirm",
+      "reasons": [
+        "3/4 independent(s) within ±20%: FCDB 0.26 (n=2), MEXT 0.29, CoFID 0.23"
+      ],
+      "decision": {
+        "value": 0.279,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-19: kept sr_legacy 0.279 mg; refs within range: FCDB 0.26 (n=2), MEXT 0.29, CoFID 0.23",
+        "num_samples": 1,
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1177,
+      "name": "Folic acid",
+      "unit": "µg",
+      "verdict": "confirm",
+      "reasons": [
+        "2/4 independent(s) within ±20%: CIQUAL 3, CoFID 4"
+      ],
+      "decision": {
+        "value": 3.0,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-19: kept sr_legacy 3 µg; refs within range: CIQUAL 3, CoFID 4",
+        "num_samples": 2,
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1178,
+      "name": "Cobalamin",
+      "unit": "µg",
+      "verdict": "confirm",
+      "reasons": [
+        "2/4 independent(s) within ±20%: FCDB 10 (n=2), CIQUAL 8.44"
+      ],
+      "decision": {
+        "value": 8.55,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-19: kept sr_legacy 8.55 µg; refs within range: FCDB 10 (n=2), CIQUAL 8.44",
+        "num_samples": 1,
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1176,
+      "name": "Biotin",
+      "unit": "µg",
+      "verdict": "adopt_foreign",
+      "reasons": [
+        "no USDA value; 1 measured source(s) available"
+      ],
+      "decision": {
+        "value": 2.0,
+        "source": "literature",
+        "comment": "Validated 2026-08-19: no USDA value; set from CoFID (18-398 Heart, ox, raw) — refs: CoFID 2"
+      }
+    },
+    {
+      "nutrient_id": 1180,
+      "name": "Choline",
+      "unit": "mg",
+      "verdict": "review",
+      "reasons": [
+        "no USDA value and no measured foreign value (only borrowed) — operator/literature call"
+      ],
+      "decision": {
+        "value": null,
+        "source": null,
+        "comment": "FILL ME: no rule-engine suggestion",
+        "resolution": null
+      }
+    },
+    {
+      "nutrient_id": 1008,
+      "name": "Energy",
+      "unit": "kcal",
+      "verdict": "confirm",
+      "reasons": [
+        "1/1 independent(s) within ±20%: CoFID 104"
+      ],
+      "decision": {
+        "value": 112.0,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-19: kept sr_legacy 112 kcal; refs within range: CoFID 104",
+        "derivation_description": "deriv NC: Calculated"
+      }
+    },
+    {
+      "nutrient_id": 1051,
+      "name": "Water",
+      "unit": "g",
+      "verdict": "confirm",
+      "reasons": [
+        "3/3 independent(s) within ±20%: MEXT 74.8, CIQUAL 79, CoFID 76.4"
+      ],
+      "decision": {
+        "value": 77.11,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-19: kept sr_legacy 77.11 g; refs within range: MEXT 74.8, CIQUAL 79, CoFID 76.4",
+        "num_samples": 1,
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1007,
+      "name": "Ash",
+      "unit": "g",
+      "verdict": "confirm",
+      "reasons": [
+        "2/2 independent(s) within ±20%: MEXT 1, CIQUAL 1.1"
+      ],
+      "decision": {
+        "value": 1.1,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-19: kept sr_legacy 1.1 g; refs within range: MEXT 1, CIQUAL 1.1",
+        "num_samples": 1,
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1079,
+      "name": "Crude Fiber",
+      "unit": "g",
+      "verdict": "confirm",
+      "reasons": [
+        "2/2 independent(s) within ±20%: MEXT 0, CIQUAL 0"
+      ],
+      "decision": {
+        "value": 0.0,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-19: kept sr_legacy 0 g; refs within range: MEXT 0, CIQUAL 0",
+        "derivation_description": "deriv Z: Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)"
+      }
+    },
+    {
+      "nutrient_id": 1005,
+      "name": "Carbohydrate",
+      "unit": "g",
+      "verdict": "review",
+      "reasons": [
+        "all 2 independent(s) differ >±20% from sr_legacy 0.14: MEXT 0.1, CIQUAL 0.6"
+      ],
+      "decision": {
+        "value": 0.14,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-19: kept sr_legacy 0.14 g after review (intl differ: MEXT 0.1, CIQUAL 0.6)",
+        "derivation_description": "deriv NC: Calculated",
+        "resolution": null
+      }
+    }
+  ]
+}

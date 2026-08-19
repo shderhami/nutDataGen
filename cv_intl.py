@@ -37,6 +37,7 @@ _FCDB_XLSX = Path(__file__).parent / "data" / "fcdb_dk" / "FCDB_6.1_Dataset.xlsx
 # UNMAPPED: FCDB has no skinless-thigh entry; 795 "Chicken, flesh only" is a
 # whole-bird blend whose dispersion does not describe a thigh population.
 FOOD_MAP = {
+    10050: (641, "Heart, beef, raw"),
     10002: (712, "Liver, broiler or fryer, raw"),
     10013: (742, "Liver, ox, raw"),
     10021: (940, 'Beef, topside "cap on", raw'),
@@ -80,6 +81,7 @@ EXCLUDES = {
 
 # our food_id -> FDC ids whose bulk stats form the US side of calibration pairs
 FDC_MAP = {
+    10050: (168625,),
     10002: (171060,), 10013: (169451,), 10021: (173997, 746761),
     10035: (168672, 2646174), 10038: (168260,), 10037: (168314, 2646168),
     10014: (175167, 2684441), 10009: (174216,), 10019: (169295, 2685570),
