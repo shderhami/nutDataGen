@@ -79,6 +79,14 @@ Compilations copy each other and USDA. A "confirming" table may be an echo:
 
 Decision rules, in order:
 
+0. **Check Foundation bulk FIRST.** Before weighing any international value,
+   pull the food's own Foundation measurement from `data/usda_bulk/foundation`
+   (`intake.usda_bulk.extract_many` does it filtered and unit-converted). The
+   2026-08-18 reconciliation found 41 cells where an unused Foundation n≥4
+   measurement sat next to an SR/literature value — including cells the sweep
+   had re-anchored to international clusters while USDA's own re-measurement
+   agreed with those clusters (squash Mg). The intake pipeline does this
+   structurally; manual re-validations must not skip it.
 1. **Measured beats derived.** USDA analytical values (real `data_points`)
    survive unless ≥3 independents + a physiology cross-check agree they are
    defective (this happened twice in 23 foods: chicken-liver vit A n=4 below
