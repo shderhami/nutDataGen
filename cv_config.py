@@ -14,7 +14,7 @@ import hashlib
 import re
 from pathlib import Path
 
-PIPELINE_VERSION = "cv-v8"   # v8: international same-food CV pooling at discounted effective n (+ v7 literature_range tier)
+PIPELINE_VERSION = "cv-v8.1"  # v8.1: FOOD_MAP + FDC_MAP grew (10050 beef heart -> FCDB 641; 156 obs, +3 range cells); sigma2 recheck 0.243 vs applied 0.240 (within tolerance, constant unchanged). v8: international same-food CV pooling at discounted effective n (+ v7 literature_range tier)
 
 # cv-v8 — International CV pooling calibration.
 # A matched foreign observation is credited at n_eff = 1/(1/n + 2*INTL_CV_SIGMA2)
