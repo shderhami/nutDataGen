@@ -1,0 +1,56 @@
+{
+  "slug": "chicken_breast_skinless",
+  "food": {
+    "food_name": "chicken breast boneless skinless raw",
+    "category": "Muscle Meat",
+    "base_unit": "g",
+    "portion_qty": 100.0,
+    "grams_per_unit": 1.0,
+    "sr_legacy_fdc_id": 171077,
+    "foundation_fdc_id": 2646170,
+    "cooking_method": null,
+    "price_per_unit": 0.0132,
+    "source": "grocery",
+    "protein_species": "chicken",
+    "display_name": "Chicken breast, boneless skinless"
+  },
+  "notes": [
+    "price_per_unit 0.0132/g confirmed by Shahab 2026-08-26.",
+    "Frame is clean: skinless breast is skinless breast — FND fat 1.93 (n=8) vs SR 2.62 (n=6) is a 0.7 g gap, no thigh-style trim war expected.",
+    "Completes the breast pair: sibling of 10016 (chicken breast with skin raw, SR 171474 / FND 2727569); thigh already has both forms (10001/10048).",
+    "FND 2646170 is the same 2023 study as the skinless thigh's 2646171 — coherent sibling pair.",
+    "SR 171077 vitamin K row carries a MEASURED USDA MK-4 (1183) sidecar — the menaquinone fix can cite USDA's own measurement this time.",
+    "Sweep anchors for the skin-on sibling (10016): taurine 16 (Spitze own-analysis), vit K 16 (MEXT-ratio method), chloride 75, iodine 1, biotin 2, B5 1.3."
+  ],
+  "sources": {
+    "fcdb": [
+      {"key": 795, "note": "Chicken, flesh only, raw — whole-bird skinless flesh; breast-DOMINANT blend so a closer proxy for breast than it was for thigh; still a frame caveat"}
+    ],
+    "bls": [
+      {"key": "V4A6100", "note": "Chicken breast, without skin, raw — EXACT match; the sweep's labeled-skinless context; expect frida/NO/USDA aggregation borrows"}
+    ],
+    "mext": [
+      {"key": "11220", "note": "broiler breast, meat without skin, raw — EXACT match; AA + FA volumes covered; expect 'without subcutaneous fat' trimmed frame"}
+    ],
+    "ciqual": [
+      {"key": 36017, "note": "Poulet, filet sans peau cru — EXACT match; echo screen decides independence (CIQUAL poultry entries are frequent USDA copies)"}
+    ],
+    "afcd": [
+      {"key": "F002594", "note": "Chicken, breast, lean flesh, raw — EXACT match; check Derivation flag + Sampling Details borrow scan"}
+    ],
+    "cofid": [
+      {"key": "18-290", "note": "Chicken, light meat, raw — breast-dominant light meat; cite underlying survey from refs"}
+    ],
+    "iodine_db": [
+      {"key": "05064", "note": "Chicken breast, oven-roasted (skin removed), n=35 — COOKED frame; plausibility only; same source family as the sibling's iodine anchor"}
+    ]
+  },
+  "literature": [
+    {"source": "Spitze03", "item": "Chicken, raw, boneless skinless breast (own analysis)", "nutrient_id": 1234,
+     "value": 15.9, "unit": "mg", "n": 2, "min": 10.2, "max": 21.6, "quality": "analysed",
+     "note": "Spitze 2003 p5 own analysis: 159 (102-216) mg/kg wet /10 — the exact cut, and the anchor the sweep used to fix the skin-on sibling's white-meat taurine (AI had 2x)"},
+    {"source": "NRC2006", "item": "Chicken, meat and skin, raw (whole carcass)", "nutrient_id": 1103,
+     "value": 14, "unit": "µg", "quality": "compiled",
+     "note": "Table 13-6 Se 0.14 mg/kg /10; n=1 meat+skin frame; US feed-table context for the region-sensitive Se row"}
+  ]
+}
