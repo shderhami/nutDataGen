@@ -1,0 +1,54 @@
+{
+  "slug": "beef_chuck_trimmed",
+  "food": {
+    "food_name": "beef chuck under blade trimmed raw",
+    "category": "Muscle Meat",
+    "base_unit": "g",
+    "portion_qty": 100.0,
+    "grams_per_unit": 1.0,
+    "sr_legacy_fdc_id": 170814,
+    "cooking_method": null,
+    "price_per_unit": 0.0245,
+    "source": "grocery",
+    "protein_species": "beef",
+    "display_name": "Beef chuck roast, external fat trimmed"
+  },
+  "notes": [
+    "price_per_unit 0.0245/g confirmed by Shahab 2026-08-29 (trimmed-mass basis: Wegmans Choice chuck roast $9.99/lb with ~8-12% external-trim discard -> $0.0242-0.0250/g band).",
+    "FRAME: SR 170814 'under blade pot roast or steak, boneless, separable lean and fat, trimmed to 0\" fat, choice' = a boneless chuck roast with ALL EXTERNAL fat removed, seam fat and marbling left in (13.93 g fat/100 g). Customer instruction: buy boneless chuck roast, trim off all external/surface fat, do NOT dissect seam fat. Chosen 2026-08-29 with Shahab as the mid-fat beef for raw recipes: Met 2.69 g/1000 kcal (ceiling 3.25), fat 69 g/1000 kcal.",
+    "WARNING from the cut survey: fully-trimmed chuck frames ('separable lean only' <9% fat, incl. 'chuck for stew' at Met 4.9-5.2/1000 kcal) violate the methionine ceiling - do not swap to a leaner frame without redoing that math.",
+    "SR-only food: the only Foundation chuck aggregate (2646174, 17.8% fat as-sold retail) frame-mismatches this trimmed cut; no lean-chuck Foundation entry exists. Precedent: beef heart 10050 was SR-only.",
+    "Evidence tier: SR 170814 is from the 2011-2013 national chuck study - 107 nutrients, fat n=24, full FA panel, vitamin D and choline measured (richer than sibling 10035's handbook-era 168672, n=0). Grade 'choice' matches Wegmans stock.",
+    "Siblings for anchors: 10035 chuck roast untrimmed (validated 2026-08-17 - vit K 1.6, vit D 12 IU, iodine 2.8, chloride 52, biotin 2.8, taurine 40), 10021 top round, 10050 beef heart. Expect this cut's values to sit between 10035 and lean cuts on fat-tracking rows.",
+    "iodine_db adapter has NO beef entries (verified 2026-08-29: TDS R4 subset lacks plain beef cuts) - iodine anchor carried as a literature row citing the same FDA TDS chuck-roast datum the 10035 review used.",
+    "MEXT frame note: 'without subcutaneous fat' = external fat removed, seam fat in - the same frame concept as our 0\" trim lean+fat. Imported-beef class is the US/AU-origin population (policy precedent: 10021/10035 vit D reviews)."
+  ],
+  "sources": {
+    "fcdb": [
+      {"key": 1019, "note": "Beef, chuck, raw - Danish analytical; leaner Danish trim was a frame MISMATCH vs untrimmed 10035 (cv_intl EXCLUDES) but sits closer to this trimmed frame; compare engine decides row by row"}
+    ],
+    "bls": [
+      {"key": "U231100", "note": "Beef neck/chuck (Hals/Kamm), raw - German chuck-roll/neck region, adjacent to under blade; frame unstated, expect compilation quality"}
+    ],
+    "mext": [
+      {"key": "11065", "note": "Beef, imported beef, chuck roll, without subcutaneous fat, raw - BEST frame match: US/AU-origin population, chuck-roll complex (contains the under blade), external fat off"}
+    ],
+    "ciqual": [
+      {"key": 6270, "note": "Boeuf, paleron cru - French chuck/blade braising cut; 10035's paleron row was judged independent (gave K1 1.5); echo screen decides again here"}
+    ],
+    "cofid": [
+      {"key": "18-007", "note": "Beef, braising steak, raw, lean and fat - UK chuck-and-blade retail frame (~13% fat, closest CoFID frame to ours); underlying LGC carcase surveys per refs; lean-only twin is 18-006"}
+    ],
+    "afcd": [
+      {"key": "F000527", "note": "Beef, casserole meat, boneless, chuck, untrimmed, raw - Australian retail chuck; 'untrimmed' AU convention is leaner than US untrimmed, roughly bracketing our frame; check Derivation flag for borrows"}
+    ]
+  },
+  "literature": [
+    {"source": "Spitze03", "item": "Beef muscle band (ground <30% fat; b-grade whole cuts)", "nutrient_id": 1234,
+     "value": 40, "unit": "mg", "quality": "analysed",
+     "note": "Spitze 2003 beef muscle band 31-43 mg/100 g: ground <30% fat 36.4 (n=6, 33.4-38.5), b-grade whole 43+/-8 (n=5). Under blade is oxidative shoulder muscle -> high end, matching sibling 10035's validated 40. Lean-mass scaling from 10035's frame (82->86% lean) would give ~42; no under-blade-specific measurement exists, so no stats attached (sibling-consistency convention)."},
+    {"source": "FDA-TDS", "item": "Beef chuck roast, oven-roasted (TDS; not in local iodine_db subset)", "nutrient_id": 1100,
+     "value": 2.8, "unit": "µg", "quality": "analysed",
+     "note": "FDA Total Diet Study chuck roast oven-roasted 3.8 µg/100 g (n=8, SD 2.2), back-adjusted ~x0.75 for cooking moisture loss -> ~2.8-2.9 raw. Same datum and adjustment the 10035 review stored (2.8). COOKED-frame caveat as with the 10054 iodine anchor."}
+  ]
+}
