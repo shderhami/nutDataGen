@@ -1,0 +1,824 @@
+{
+  "slug": "lamb_heart",
+  "generated": "2026-08-31",
+  "engine": {
+    "agreement_rtol": 0.2,
+    "eps_by_unit": {
+      "g": 0.01,
+      "mg": 0.01,
+      "µg": 1.0,
+      "IU": 1.0,
+      "kcal": 6.0
+    },
+    "echo_rtol": 0.005,
+    "echo_min_matches": 5,
+    "echo_min_ratio": 0.4
+  },
+  "review_contract": "Machine output — the writer refuses to --commit this file. Review each decision, save as decisions.json, and add a top-level \"reviewed_by\".",
+  "decisions": [
+    {
+      "nutrient_id": 1003,
+      "name": "Crude Protein",
+      "unit": "g",
+      "verdict": "confirm",
+      "reasons": [
+        "1/1 independent(s) within ±20%: CoFID 17.1"
+      ],
+      "decision": {
+        "value": 18.09,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-31: kept sr_legacy 18.09 g; refs within range: CoFID 17.1",
+        "num_samples": 1,
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1220,
+      "name": "Arginine",
+      "unit": "g",
+      "verdict": "usda_only",
+      "reasons": [
+        "no independent foreign value"
+      ],
+      "decision": {
+        "value": 1.218,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-31: kept sr_legacy 1.218 g — no independent measurement in any local resource",
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1221,
+      "name": "Histidine",
+      "unit": "g",
+      "verdict": "usda_only",
+      "reasons": [
+        "no independent foreign value"
+      ],
+      "decision": {
+        "value": 0.383,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-31: kept sr_legacy 0.383 g — no independent measurement in any local resource",
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1212,
+      "name": "Isoleucine",
+      "unit": "g",
+      "verdict": "usda_only",
+      "reasons": [
+        "no independent foreign value"
+      ],
+      "decision": {
+        "value": 0.81,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-31: kept sr_legacy 0.81 g — no independent measurement in any local resource",
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1213,
+      "name": "Leucine",
+      "unit": "g",
+      "verdict": "usda_only",
+      "reasons": [
+        "no independent foreign value"
+      ],
+      "decision": {
+        "value": 1.397,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-31: kept sr_legacy 1.397 g — no independent measurement in any local resource",
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1214,
+      "name": "Lysine",
+      "unit": "g",
+      "verdict": "usda_only",
+      "reasons": [
+        "no independent foreign value"
+      ],
+      "decision": {
+        "value": 1.58,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-31: kept sr_legacy 1.58 g — no independent measurement in any local resource",
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1215,
+      "name": "Methionine",
+      "unit": "g",
+      "verdict": "usda_only",
+      "reasons": [
+        "no independent foreign value"
+      ],
+      "decision": {
+        "value": 0.59,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-31: kept sr_legacy 0.59 g — no independent measurement in any local resource",
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1216,
+      "name": "Cystine",
+      "unit": "g",
+      "verdict": "usda_only",
+      "reasons": [
+        "no independent foreign value"
+      ],
+      "decision": {
+        "value": 0.237,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-31: kept sr_legacy 0.237 g — no independent measurement in any local resource",
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1217,
+      "name": "Phenylalanine",
+      "unit": "g",
+      "verdict": "usda_only",
+      "reasons": [
+        "no independent foreign value"
+      ],
+      "decision": {
+        "value": 0.712,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-31: kept sr_legacy 0.712 g — no independent measurement in any local resource",
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1218,
+      "name": "Tyrosine",
+      "unit": "g",
+      "verdict": "usda_only",
+      "reasons": [
+        "no independent foreign value"
+      ],
+      "decision": {
+        "value": 0.627,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-31: kept sr_legacy 0.627 g — no independent measurement in any local resource",
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1211,
+      "name": "Threonine",
+      "unit": "g",
+      "verdict": "usda_only",
+      "reasons": [
+        "no independent foreign value"
+      ],
+      "decision": {
+        "value": 0.863,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-31: kept sr_legacy 0.863 g — no independent measurement in any local resource",
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1210,
+      "name": "Tryptophan",
+      "unit": "g",
+      "verdict": "usda_only",
+      "reasons": [
+        "no independent foreign value"
+      ],
+      "decision": {
+        "value": 0.2,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-31: kept sr_legacy 0.2 g — no independent measurement in any local resource",
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1219,
+      "name": "Valine",
+      "unit": "g",
+      "verdict": "usda_only",
+      "reasons": [
+        "no independent foreign value"
+      ],
+      "decision": {
+        "value": 0.921,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-31: kept sr_legacy 0.921 g — no independent measurement in any local resource",
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1234,
+      "name": "Taurine",
+      "unit": "mg",
+      "verdict": "adopt_foreign",
+      "reasons": [
+        "no USDA value; 1 measured source(s) available"
+      ],
+      "decision": {
+        "value": 65.0,
+        "source": "literature",
+        "comment": "Validated 2026-08-31: no USDA value; set from CardiacFamily (Cross-species cardiac scaling (validated hearts 10007/10029/10050)) — refs: CardiacFamily 65"
+      }
+    },
+    {
+      "nutrient_id": 1004,
+      "name": "Total Fat",
+      "unit": "g",
+      "verdict": "review",
+      "reasons": [
+        "all 1 independent(s) differ >±20% from sr_legacy 3.68: CoFID 6.8"
+      ],
+      "decision": {
+        "value": 3.68,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-31: kept sr_legacy 3.68 g after review (intl differ: CoFID 6.8)",
+        "num_samples": 1,
+        "derivation_description": "deriv A: Analytical",
+        "resolution": null
+      }
+    },
+    {
+      "nutrient_id": 1269,
+      "name": "Linoleic acid",
+      "unit": "g",
+      "verdict": "confirm",
+      "reasons": [
+        "1/1 independent(s) within ±20%: CoFID 0.31"
+      ],
+      "decision": {
+        "value": 0.34,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-31: kept sr_legacy 0.34 g; refs within range: CoFID 0.31"
+      }
+    },
+    {
+      "nutrient_id": 1271,
+      "name": "Arachidonic acid",
+      "unit": "g",
+      "verdict": "review",
+      "reasons": [
+        "all 1 independent(s) differ >±20% from sr_legacy 0.091: CoFID 0.05"
+      ],
+      "decision": {
+        "value": 0.091,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-31: kept sr_legacy 0.091 g after review (intl differ: CoFID 0.05)",
+        "resolution": null
+      }
+    },
+    {
+      "nutrient_id": 1270,
+      "name": "Alpha-linolenic acid",
+      "unit": "g",
+      "verdict": "confirm",
+      "reasons": [
+        "1/1 independent(s) within ±20%: CoFID 0.09"
+      ],
+      "decision": {
+        "value": 0.096,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-31: kept sr_legacy 0.096 g; refs within range: CoFID 0.09"
+      }
+    },
+    {
+      "nutrient_id": 1278,
+      "name": "EPA",
+      "unit": "g",
+      "verdict": "region_keep",
+      "reasons": [
+        "region-sensitive; foreign cluster differs: CoFID 0.04 — US mean kept unless defective"
+      ],
+      "decision": {
+        "value": 0.059,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-31: kept sr_legacy 0.059 g (region rule; intl: CoFID 0.04)",
+        "num_samples": 1,
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1272,
+      "name": "DHA",
+      "unit": "g",
+      "verdict": "region_keep",
+      "reasons": [
+        "region-sensitive; foreign cluster differs: CoFID 0 — US mean kept unless defective"
+      ],
+      "decision": {
+        "value": 0.021,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-31: kept sr_legacy 0.021 g (region rule; intl: CoFID 0)",
+        "num_samples": 1,
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1293,
+      "name": "Fatty acids, total polyunsaturated",
+      "unit": "g",
+      "verdict": "review",
+      "reasons": [
+        "all 1 independent(s) differ >±20% from sr_legacy 0.646: CoFID 0.5"
+      ],
+      "decision": {
+        "value": 0.646,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-31: kept sr_legacy 0.646 g after review (intl differ: CoFID 0.5)",
+        "derivation_description": "deriv NC: Calculated",
+        "resolution": null
+      }
+    },
+    {
+      "nutrient_id": 1280,
+      "name": "DPA 22:5 n-3",
+      "unit": "g",
+      "verdict": "region_keep",
+      "reasons": [
+        "region-sensitive; foreign cluster differs: CoFID 0 — US mean kept unless defective"
+      ],
+      "decision": {
+        "value": 0.032,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-31: kept sr_legacy 0.032 g (region rule; intl: CoFID 0)",
+        "num_samples": 1,
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1087,
+      "name": "Calcium",
+      "unit": "mg",
+      "verdict": "review",
+      "reasons": [
+        "all 1 independent(s) differ >±20% from sr_legacy 5: CoFID 7"
+      ],
+      "decision": {
+        "value": 5.0,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-31: kept sr_legacy 5 mg after review (intl differ: CoFID 7)",
+        "num_samples": 1,
+        "derivation_description": "deriv A: Analytical",
+        "resolution": null
+      }
+    },
+    {
+      "nutrient_id": 1091,
+      "name": "Phosphorus",
+      "unit": "mg",
+      "verdict": "confirm",
+      "reasons": [
+        "1/1 independent(s) within ±20%: CoFID 210"
+      ],
+      "decision": {
+        "value": 204.0,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-31: kept sr_legacy 204 mg; refs within range: CoFID 210",
+        "num_samples": 1,
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1092,
+      "name": "Potassium",
+      "unit": "mg",
+      "verdict": "confirm",
+      "reasons": [
+        "1/1 independent(s) within ±20%: CoFID 280"
+      ],
+      "decision": {
+        "value": 277.0,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-31: kept sr_legacy 277 mg; refs within range: CoFID 280",
+        "num_samples": 1,
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1093,
+      "name": "Sodium",
+      "unit": "mg",
+      "verdict": "review",
+      "reasons": [
+        "all 1 independent(s) differ >±20% from sr_legacy 94: CoFID 140"
+      ],
+      "decision": {
+        "value": 94.0,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-31: kept sr_legacy 94 mg after review (intl differ: CoFID 140)",
+        "num_samples": 1,
+        "derivation_description": "deriv A: Analytical",
+        "resolution": null
+      }
+    },
+    {
+      "nutrient_id": 1088,
+      "name": "Chloride",
+      "unit": "mg",
+      "verdict": "adopt_foreign",
+      "reasons": [
+        "no USDA value; 1 measured source(s) available"
+      ],
+      "decision": {
+        "value": 140.0,
+        "source": "literature",
+        "comment": "Validated 2026-08-31: no USDA value; set from CoFID (18-396 Heart, lamb, raw) — refs: CoFID 140"
+      }
+    },
+    {
+      "nutrient_id": 1090,
+      "name": "Magnesium",
+      "unit": "mg",
+      "verdict": "confirm",
+      "reasons": [
+        "1/1 independent(s) within ±20%: CoFID 21"
+      ],
+      "decision": {
+        "value": 20.0,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-31: kept sr_legacy 20 mg; refs within range: CoFID 21",
+        "num_samples": 1,
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1089,
+      "name": "Iron",
+      "unit": "mg",
+      "verdict": "confirm",
+      "reasons": [
+        "1/1 independent(s) within ±20%: CoFID 3.6"
+      ],
+      "decision": {
+        "value": 3.29,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-31: kept sr_legacy 3.29 mg; refs within range: CoFID 3.6",
+        "num_samples": 1,
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1098,
+      "name": "Copper",
+      "unit": "mg",
+      "verdict": "review",
+      "reasons": [
+        "all 1 independent(s) differ >±20% from sr_legacy 0.412: CoFID 0.52"
+      ],
+      "decision": {
+        "value": 0.412,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-31: kept sr_legacy 0.412 mg after review (intl differ: CoFID 0.52)",
+        "num_samples": 1,
+        "derivation_description": "deriv A: Analytical",
+        "resolution": null
+      }
+    },
+    {
+      "nutrient_id": 1101,
+      "name": "Manganese",
+      "unit": "mg",
+      "verdict": "confirm",
+      "reasons": [
+        "1/1 independent(s) within ±20%: CoFID 0.02"
+      ],
+      "decision": {
+        "value": 0.022,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-31: kept sr_legacy 0.022 mg; refs within range: CoFID 0.02",
+        "num_samples": 1,
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1095,
+      "name": "Zinc",
+      "unit": "mg",
+      "verdict": "confirm",
+      "reasons": [
+        "1/1 independent(s) within ±20%: CoFID 2"
+      ],
+      "decision": {
+        "value": 1.65,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-31: kept sr_legacy 1.65 mg; refs within range: CoFID 2",
+        "num_samples": 1,
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1100,
+      "name": "Iodine",
+      "unit": "µg",
+      "verdict": "adopt_foreign",
+      "reasons": [
+        "no USDA value; 1 measured source(s) available"
+      ],
+      "decision": {
+        "value": 1.8,
+        "source": "literature",
+        "comment": "Validated 2026-08-31: no USDA value; set from CardiacFamily (Cardiac iodine family (beef 1.8 FCDB n=1 + CIQUAL 1.9)) — refs: CardiacFamily 1.8"
+      }
+    },
+    {
+      "nutrient_id": 1103,
+      "name": "Selenium",
+      "unit": "µg",
+      "verdict": "region_keep",
+      "reasons": [
+        "region-sensitive; foreign cluster differs: CoFID 2 — US mean kept unless defective"
+      ],
+      "decision": {
+        "value": 10.9,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-31: kept sr_legacy 10.9 µg (region rule; intl: CoFID 2)",
+        "num_samples": 1,
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1106,
+      "name": "Vitamin A",
+      "unit": "IU",
+      "verdict": "usda_only",
+      "reasons": [
+        "no independent foreign value",
+        "detection-limit info: CoFID trace"
+      ],
+      "decision": {
+        "value": 16.65,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-31: kept sr_legacy 16.65 IU — no independent measurement in any local resource"
+      }
+    },
+    {
+      "nutrient_id": 1110,
+      "name": "Vitamin D",
+      "unit": "IU",
+      "verdict": "usda_only",
+      "reasons": [
+        "no independent foreign value"
+      ],
+      "decision": {
+        "value": 1.0,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-31: kept sr_legacy 1 IU — no independent measurement in any local resource",
+        "num_samples": 1,
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1109,
+      "name": "Vitamin E",
+      "unit": "IU",
+      "verdict": "confirm",
+      "reasons": [
+        "1/1 independent(s) within ±20%: CoFID 0.5513"
+      ],
+      "decision": {
+        "value": 0.9685,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-31: kept sr_legacy 0.9685 IU; refs within range: CoFID 0.5513",
+        "num_samples": 1,
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1185,
+      "name": "Vitamin K",
+      "unit": "µg",
+      "verdict": "adopt_foreign",
+      "reasons": [
+        "no USDA value; 1 measured source(s) available"
+      ],
+      "decision": {
+        "value": 5.0,
+        "source": "literature",
+        "comment": "Validated 2026-08-31: no USDA value; set from CardiacFamily (Ruminant cardiac total-K convention (MEXT beef heart 11091)) — refs: CardiacFamily 5"
+      }
+    },
+    {
+      "nutrient_id": 1165,
+      "name": "Thiamin",
+      "unit": "mg",
+      "verdict": "confirm",
+      "reasons": [
+        "1/1 independent(s) within ±20%: CoFID 0.48"
+      ],
+      "decision": {
+        "value": 0.52,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-31: kept sr_legacy 0.52 mg; refs within range: CoFID 0.48",
+        "num_samples": 1,
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1166,
+      "name": "Riboflavin",
+      "unit": "mg",
+      "verdict": "review",
+      "reasons": [
+        "all 1 independent(s) differ >±20% from sr_legacy 0.537: CoFID 0.9"
+      ],
+      "decision": {
+        "value": 0.537,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-31: kept sr_legacy 0.537 mg after review (intl differ: CoFID 0.9)",
+        "num_samples": 1,
+        "derivation_description": "deriv A: Analytical",
+        "resolution": null
+      }
+    },
+    {
+      "nutrient_id": 1167,
+      "name": "Niacin",
+      "unit": "mg",
+      "verdict": "confirm",
+      "reasons": [
+        "1/1 independent(s) within ±20%: CoFID 6.9"
+      ],
+      "decision": {
+        "value": 5.757,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-31: kept sr_legacy 5.757 mg; refs within range: CoFID 6.9",
+        "num_samples": 1,
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1170,
+      "name": "Pantothenic acid",
+      "unit": "mg",
+      "verdict": "confirm",
+      "reasons": [
+        "1/1 independent(s) within ±20%: CoFID 2.5"
+      ],
+      "decision": {
+        "value": 2.244,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-31: kept sr_legacy 2.244 mg; refs within range: CoFID 2.5",
+        "num_samples": 1,
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1175,
+      "name": "Pyridoxine",
+      "unit": "mg",
+      "verdict": "review",
+      "reasons": [
+        "all 1 independent(s) differ >±20% from sr_legacy 0.144: CoFID 0.29"
+      ],
+      "decision": {
+        "value": 0.144,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-31: kept sr_legacy 0.144 mg after review (intl differ: CoFID 0.29)",
+        "num_samples": 1,
+        "derivation_description": "deriv A: Analytical",
+        "resolution": null
+      }
+    },
+    {
+      "nutrient_id": 1177,
+      "name": "Folic acid",
+      "unit": "µg",
+      "verdict": "adopt_foreign",
+      "reasons": [
+        "no USDA value; 2 measured source(s) available"
+      ],
+      "decision": {
+        "value": 2.0,
+        "source": "literature",
+        "comment": "Validated 2026-08-31: no USDA value; set from SR-US (Lamb, variety meats, heart, raw (FDC 172527)) — refs: CoFID 2, SR-US 2 (n=2)",
+        "num_samples": 2
+      }
+    },
+    {
+      "nutrient_id": 1178,
+      "name": "Cobalamin",
+      "unit": "µg",
+      "verdict": "confirm",
+      "reasons": [
+        "1/1 independent(s) within ±20%: CoFID 8"
+      ],
+      "decision": {
+        "value": 8.4,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-31: kept sr_legacy 8.4 µg; refs within range: CoFID 8",
+        "num_samples": 1,
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1176,
+      "name": "Biotin",
+      "unit": "µg",
+      "verdict": "adopt_foreign",
+      "reasons": [
+        "no USDA value; 1 measured source(s) available"
+      ],
+      "decision": {
+        "value": 4.0,
+        "source": "literature",
+        "comment": "Validated 2026-08-31: no USDA value; set from CoFID (18-396 Heart, lamb, raw) — refs: CoFID 4"
+      }
+    },
+    {
+      "nutrient_id": 1180,
+      "name": "Choline",
+      "unit": "mg",
+      "verdict": "adopt_foreign",
+      "reasons": [
+        "no USDA value; 1 measured source(s) available"
+      ],
+      "decision": {
+        "value": 228.0,
+        "source": "literature",
+        "comment": "Validated 2026-08-31: no USDA value; set from CardiacFamily (Cardiac choline family (chicken 227 FDC-2023, beef 229 FDC-2023-via-FCDB)) — refs: CardiacFamily 228"
+      }
+    },
+    {
+      "nutrient_id": 1008,
+      "name": "Energy",
+      "unit": "kcal",
+      "verdict": "confirm",
+      "reasons": [
+        "1/1 independent(s) within ±20%: CoFID 129"
+      ],
+      "decision": {
+        "value": 105.0,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-31: kept sr_legacy 105 kcal; refs within range: CoFID 129",
+        "derivation_description": "deriv NC: Calculated"
+      }
+    },
+    {
+      "nutrient_id": 1051,
+      "name": "Water",
+      "unit": "g",
+      "verdict": "confirm",
+      "reasons": [
+        "1/1 independent(s) within ±20%: CoFID 75.6"
+      ],
+      "decision": {
+        "value": 77.84,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-31: kept sr_legacy 77.84 g; refs within range: CoFID 75.6",
+        "num_samples": 1,
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1007,
+      "name": "Ash",
+      "unit": "g",
+      "verdict": "usda_only",
+      "reasons": [
+        "no independent foreign value"
+      ],
+      "decision": {
+        "value": 1.13,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-31: kept sr_legacy 1.13 g — no independent measurement in any local resource",
+        "num_samples": 1,
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1079,
+      "name": "Crude Fiber",
+      "unit": "g",
+      "verdict": "usda_only",
+      "reasons": [
+        "no independent foreign value"
+      ],
+      "decision": {
+        "value": 0.0,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-31: kept sr_legacy 0 g — no independent measurement in any local resource",
+        "derivation_description": "deriv Z: Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)"
+      }
+    },
+    {
+      "nutrient_id": 1005,
+      "name": "Carbohydrate",
+      "unit": "g",
+      "verdict": "usda_only",
+      "reasons": [
+        "no independent foreign value"
+      ],
+      "decision": {
+        "value": 0.0,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-08-31: kept sr_legacy 0 g — no independent measurement in any local resource",
+        "derivation_description": "deriv NC: Calculated"
+      }
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "slug": "lamb_heart",
+  "food": {
+    "food_name": "lamb heart raw",
+    "category": "Organ Meat",
+    "base_unit": "g",
+    "portion_qty": 100.0,
+    "grams_per_unit": 1.0,
+    "sr_legacy_fdc_id": 174444,
+    "cooking_method": null,
+    "price_per_unit": 0.0176,
+    "source": "grocery",
+    "protein_species": "lamb",
+    "display_name": "Lamb heart"
+  },
+  "notes": [
+    "price_per_unit 0.0176/g ($7.99/lb) CONFIRMED by Shahab 2026-08-31 at approval.",
+    "FRAME DECISION (Shahab 2026-08-31): supply is NZ/AU imported -> PRIMARY = SR 174444 'Lamb, New Zealand, imported, heart, raw' (grass-fed frame: fat 3.68, Se 10.9 NZ low-Se soils, vit A 5 µg and vit D 1 µg MEASURED natively - no false-zero fight). US domestic 172527 (grain-fed: fat 5.68 n=12, Se 32) carried as USDA-LINEAGE literature contrast rows so the frame choice gets explicit resolutions.",
+    "4th cardiac species - the validated heart family anchors cross-species rows: chicken 10007 (taurine 231, vit K MK-4 50, Zn 2.3), turkey 10029, beef 10050 (taurine 65 scaled, vit K 5 MEXT total, choline 229, chloride 44 CoFID ox, iodine 1.8 FCDB, biotin 2 CoFID).",
+    "SR-only food (Foundation has only ground lamb). BOTH SR lamb hearts carry FULL 12/12 AA panels - unlike beef heart, no foreign AA adoption needed.",
+    "THIN INTERNATIONALS: only BLS V515100 + CoFID 18-396 exist (no FCDB/MEXT/CIQUAL/AFCD lamb heart - verified 2026-08-31) -> no cv_intl mapping candidate; review leans on the cardiac-family physiology cross-checks. NZ n=1 on most rows -> expect class_pool CVs.",
+    "Zn sanity pre-check PASSED: NZ 1.65 / US 1.87 sit in the validated cardiac band (~1.8-2.3; the chicken-heart 3x Zn defect pattern is absent).",
+    "BLS also has mutton V516100 and sheep V514100 hearts - lamb V515100 used; the others are age-class brackets only (not included as sources).",
+    "Watch EPA 0.059/DHA 0.021 (NZ n=1): grass-fed ruminant n-3 - plausible for pasture; PUFA total 0.646 vs component sum to be gate-checked as usual."
+  ],
+  "sources": {
+    "bls": [
+      {"key": "V515100", "note": "Lamb heart, raw - German table; expect SFK/frida borrows flagged; mutton/sheep siblings bracket for context"}
+    ],
+    "cofid": [
+      {"key": "18-396", "note": "Heart, lamb, raw - UK McCance/LGC organ heritage; the chloride + biotin carrier (ox heart 18-398 supplied beef heart's 44/2); cite underlying refs"}
+    ]
+  },
+  "literature": [
+    {"source": "SR-US", "item": "Lamb, variety meats, heart, raw (FDC 172527) - US domestic grain-fed", "nutrient_id": 1004,
+     "value": 5.68, "unit": "g", "n": 12, "usda_lineage": true,
+     "note": "US domestic frame CONTRAST (grain-fed, n=12): fed population is NZ/AU grass-fed per Shahab - kept as lineage corroboration that cardiac fat runs 3.7-5.7 across systems; never independent"},
+    {"source": "SR-US", "item": "Lamb, variety meats, heart, raw (FDC 172527)", "nutrient_id": 1103,
+     "value": 32, "unit": "µg", "n": 3, "usda_lineage": true,
+     "note": "US grain-fed Se (Se-rich feed) - frame contrast only; the fed population follows NZ low-Se soils (primary 10.9). Region-sensitive row: resolution must document the NZ choice"},
+    {"source": "SR-US", "item": "Lamb, variety meats, heart, raw (FDC 172527)", "nutrient_id": 1177,
+     "value": 2, "unit": "µg", "n": 2, "usda_lineage": true,
+     "note": "Folate missing from the NZ entry; US domestic measured 2 (n=2) - cardiac folate is uniformly low (beef heart 3, CIQUAL beef 3, CoFID ox 4). USDA lineage, adoption anchor"},
+    {"source": "CardiacFamily", "item": "Cross-species cardiac scaling (validated hearts 10007/10029/10050)", "nutrient_id": 1234,
+     "value": 65, "unit": "mg", "quality": "estimated",
+     "note": "No lamb-heart taurine measurement in any local resource. Ruminant cardiac convention = beef heart 10050's validated 65 (muscle 36-43 x cardiac ratio ~1.5); ovine muscle taurine sits in the same band as bovine. SPARSE-EVIDENCE flag - same convention, same caveat as 10050"},
+    {"source": "CardiacFamily", "item": "Ruminant cardiac total-K convention (MEXT beef heart 11091)", "nutrient_id": 1185,
+     "value": 5, "unit": "µg", "quality": "estimated",
+     "note": "No lamb vit K row anywhere; ruminant cardiac MK-4 convention = beef heart's 5 (MEXT total-K; ruminant MK-4 << poultry's 50). Cross-species, flag in comment"},
+    {"source": "CardiacFamily", "item": "Cardiac choline family (chicken 227 FDC-2023, beef 229 FDC-2023-via-FCDB)", "nutrient_id": 1180,
+     "value": 228, "unit": "mg", "quality": "estimated",
+     "note": "No lamb choline row anywhere; mammalian/avian cardiac choline is tightly clustered 227-229 - cross-species estimate at the family midpoint, sparse-evidence flag"},
+    {"source": "CardiacFamily", "item": "Cardiac iodine family (beef 1.8 FCDB n=1 + CIQUAL 1.9)", "nutrient_id": 1100,
+     "value": 1.8, "unit": "µg", "quality": "estimated",
+     "note": "No lamb iodine row; ruminant cardiac iodine ~1.8-1.9 per the beef heart adoption. If CoFID 18-396 carries a measured lamb value, prefer it at review"}
+  ]
+}
