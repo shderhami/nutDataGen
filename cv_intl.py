@@ -47,6 +47,7 @@ FOOD_MAP = {
     10050: (641, "Heart, beef, raw"),
     10055: (1019, "Beef, chuck, raw"),
     10056: (56, "Squash, raw"),  # Danish "squash" = courgette/zucchini (2020 veg study, n=8 on 19 params)
+    10057: (764, "Beans, green, raw"),  # older Danish composition surveys (n=4-13); B2 range corrupt in workbook (min>max, self-drops)
     10002: (712, "Liver, broiler or fryer, raw"),
     10013: (742, "Liver, ox, raw"),
     10021: (940, 'Beef, topside "cap on", raw'),
@@ -79,6 +80,8 @@ EXCLUDES = {
     # (10035, 1004/1051/1007) trim-mismatch excludes retired 2026-08-29: FCDB
     # 1019 now maps to the frame-matched 10055, where fat/water/ash are honest.
     (10056, 1176): "cell's own literature_range stats ARE this FCDB row (study 2127) — double-count guard",
+    (10057, 1098): "1977-80 contaminant-monitoring survey (src 1082), not retail population spread — pork Cu/Zn precedent",
+    (10057, 1095): "1977-80 contaminant-monitoring survey (src 1082) — pork Cu/Zn precedent",
     (10021, 1004): "trim mismatch: cap-on topside vs 1/8-inch trim",
     (10021, 1003): "trim mismatch",
     (10038, 1098): "FCDB multi-decade contaminant monitoring series (n=266)",
@@ -92,6 +95,7 @@ FDC_MAP = {
     10050: (168625,),
     10055: (170814,),
     10056: (169291, 2685568),
+    10057: (169961, 2346400),
     10002: (171060,), 10013: (169451,), 10021: (173997, 746761),
     10038: (168260,), 10037: (168314, 2646168),
     10014: (175167, 2684441), 10009: (174216,), 10019: (169295, 2685570),

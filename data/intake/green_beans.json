@@ -1,0 +1,52 @@
+{
+  "slug": "green_beans",
+  "food": {
+    "food_name": "green beans raw",
+    "category": "Plant Matter",
+    "base_unit": "g",
+    "portion_qty": 100.0,
+    "grams_per_unit": 1.0,
+    "sr_legacy_fdc_id": 169961,
+    "foundation_fdc_id": 2346400,
+    "cooking_method": null,
+    "price_per_unit": 0.0055,
+    "source": "grocery",
+    "protein_species": null,
+    "display_name": "Green beans, raw"
+  },
+  "notes": [
+    "price_per_unit 0.0055/g confirmed by Shahab 2026-08-31.",
+    "PURPOSE (vegetable slate #2, 2026-08-31): the insoluble-fiber bulk ingredient - ~31 kcal/100 g, weight-management filler for indoor cats; complements zucchini (moisture) and pumpkin/butternut (soluble fiber).",
+    "PREP NOTE for recipes: raw green beans carry low-level phytohaemagglutinin (far below dried beans); customer guidance should be lightly steamed even in raw recipes.",
+    "FRAME: fresh pods, raw - FND 2346400 (2022 Foundation produce study) + SR 169961. FCDB fresh-raw entry 764 exists (frozen 1822 NOT used).",
+    "PRODUCE DOCTRINE (10056 zucchini precedent): expect vit A override to 0 (SR row is carotene-RAE; cats cannot convert; species-correct design), expect vit K form_defect MISFIRE (plants have no menaquinones - keep SR K1, green beans are genuinely K1-rich ~43 µg), plant zeros (taurine/D/B12) are TRUE zeros.",
+    "BLS omitted: no raw green-bean entry in the export (only cooked X-code composites) - verified 2026-08-31 via green bean/bohne/french/runner/pods/string searches.",
+    "Siblings for anchors: 10056 zucchini (chloride 65 AFCD-analysed, iodine 0.6 TDS), 10019 butternut, 10036 pumpkin.",
+    "MEXT 06010 'Kidney beans, Sayaingen, immature pods' = green beans (same species, Phaseolus vulgaris immature pods)."
+  ],
+  "sources": {
+    "fcdb": [
+      {"key": 764, "note": "Beans, green, raw - Danish; check for study-2127-era n=8 stats like zucchini's (cv_intl FOOD_MAP candidate)"}
+    ],
+    "mext": [
+      {"key": "06010", "note": "Kidney beans, Sayaingen, immature pods, raw = green beans; Japanese analytical; total-K = K1 for plants"}
+    ],
+    "ciqual": [
+      {"key": 20061, "note": "Haricot vert, cru - exact match; echo screen decides independence"}
+    ],
+    "cofid": [
+      {"key": "13-514", "note": "Beans, green, raw - UK; chloride + biotin carrier (PHE 2017 survey family); runner beans 13-112 NOT used (different species)"}
+    ],
+    "afcd": [
+      {"key": "F000431", "note": "Bean, green, fresh, raw - exact match; chloride analysed expected (zucchini precedent); check Derivation flag"}
+    ],
+    "iodine_db": [
+      {"key": "11061", "note": "Green beans, fresh/frozen, boiled - COOKED frame, plausibility anchor; US TDS datum preferred for iodine per region rule"}
+    ]
+  },
+  "literature": [
+    {"source": "Spitze03", "item": "Plant-matter taurine survey", "nutrient_id": 1234,
+     "value": 0, "unit": "mg", "quality": "analysed",
+     "note": "Plants carry no taurine - biochemical zero, not unmeasured (Spitze 2003 plant survey). Butternut 10019 / zucchini 10056 convention."}
+  ]
+}
