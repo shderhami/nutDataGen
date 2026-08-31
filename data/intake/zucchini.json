@@ -1,0 +1,54 @@
+{
+  "slug": "zucchini",
+  "food": {
+    "food_name": "zucchini raw",
+    "category": "Plant Matter",
+    "base_unit": "g",
+    "portion_qty": 100.0,
+    "grams_per_unit": 1.0,
+    "sr_legacy_fdc_id": 169291,
+    "foundation_fdc_id": 2685568,
+    "cooking_method": null,
+    "price_per_unit": 0.0033,
+    "source": "grocery",
+    "protein_species": null,
+    "display_name": "Zucchini, raw (with skin)"
+  },
+  "notes": [
+    "price_per_unit 0.0033/g confirmed by Shahab 2026-08-31.",
+    "PURPOSE (vegetable slate 2026-08-31): the moisture vehicle among the veg adds - ~95% water, ~17 kcal/100 g, raw-recipe friendly (grated raw). Complements pumpkin/butternut's soluble-fiber role; green beans (insoluble-fiber bulk) queued after this.",
+    "FRAME: includes skin, raw - FND 2685568 and SR 169291 share it. FND is the SAME 2023 Foundation produce study as butternut's 2685570 (sibling coherence, like the 10048/10054 chicken pair).",
+    "PLANT-ZERO conventions (butternut 10019 precedent): taurine 0 = biochemical zero via literature row (Spitze plant survey); SR vitamin D 0 and B12 0 are TRUE zeros for produce, keep sr_legacy - do NOT treat as unpopulated-zero suspects (that rule's false-positive audit was about meats).",
+    "Iodine expectation: butternut stored 0.5 µg (<LOD convention, all tables). iodine_db 11478 covers zucchini itself this time (boiled frame - cooked-frame caveat, plausibility anchor like breast's 05064).",
+    "FCDB naming quirk: Danish 'Squash, raw' (56) IS courgette/zucchini - butternut and kuri are named separately in FCDB, confirming. If its values read butternut-like (~45 kcal), treat as a mis-key and drop.",
+    "Siblings for anchors: 10019 butternut (validated sweep + Foundation reconciliation; chloride 28, iodine 0.5), 10036 pumpkin. Expect zucchini chloride ~ CoFID courgette measurement."
+  ],
+  "sources": {
+    "fcdb": [
+      {"key": 56, "note": "Squash, raw - Danish 'squash' = courgette/zucchini (butternut/kuri separately named); Danish analytical, expect n's on minerals"}
+    ],
+    "bls": [
+      {"key": "G582100", "note": "Courgette raw - German compilation; expect SFK borrows flagged as such"}
+    ],
+    "mext": [
+      {"key": "06116", "note": "Zucchini, fruit, raw - Japanese analytical; total-K = K1 for plants (no menaquinone concern in produce)"}
+    ],
+    "ciqual": [
+      {"key": 20020, "note": "Courgette, chair et peau, crue - flesh AND skin, exact frame match; echo screen decides independence"}
+    ],
+    "cofid": [
+      {"key": "13-627", "note": "Courgette, raw - UK; chloride + biotin carrier (the two SR gaps CoFID usually fills); cite underlying survey from refs"}
+    ],
+    "afcd": [
+      {"key": "F009775", "note": "Zucchini, green skin, fresh, unpeeled, raw - exact frame; check Derivation flag for borrows"}
+    ],
+    "iodine_db": [
+      {"key": "11478", "note": "Squash, summer, zucchini, fresh/frozen, boiled - COOKED frame, plausibility anchor; veg iodine typically <LOD (butternut convention 0.5)"}
+    ]
+  },
+  "literature": [
+    {"source": "Spitze03", "item": "Plant-matter taurine survey", "nutrient_id": 1234,
+     "value": 0, "unit": "mg", "quality": "analysed",
+     "note": "Plants carry no taurine - biochemical zero, not unmeasured (Spitze 2003 plant survey found none beyond trace in a few items). Butternut 10019 convention."}
+  ]
+}
