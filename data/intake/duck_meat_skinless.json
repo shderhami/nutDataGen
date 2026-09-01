@@ -1,0 +1,50 @@
+{
+  "slug": "duck_meat_skinless",
+  "food": {
+    "food_name": "duck meat only raw",
+    "category": "Muscle Meat",
+    "base_unit": "g",
+    "portion_qty": 100.0,
+    "grams_per_unit": 1.0,
+    "sr_legacy_fdc_id": 172410,
+    "cooking_method": null,
+    "price_per_unit": 0.0167,
+    "source": "grocery",
+    "protein_species": "duck",
+    "display_name": "Duck, meat only (whole bird, skinless)"
+  },
+  "notes": [
+    "PRICE: $4.40/lb Costco whole Pekin sticker (Shahab 2026-09-01) / 453.592 = 0.0097/g as-sold, / 0.58 assumed boneless-edible yield = 0.0167/g. SAME price as the sibling (whole-bird cost allocates uniformly per edible gram since everything edible is used). Yield assumption adjustable - CONFIRM at approval.",
+    "SIBLING PAIR (option A, approved 2026-09-01): this is the SKINLESS component. Sibling spec = duck_meat_skin.json (SR 172408, 'duck meat and skin raw'). DO NOT confuse: this entry is SR 172410, fat 5.95, kcal 135. Recipes blend the two (e.g., 85:15 -> Met ~2.6/1000 kcal); this entry ALONE reads Met 3.66/1000 kcal (above the 3.25 ceiling - by design, the skin sibling is the diluent).",
+    "WHY TWO ENTRIES: derived-skin option was quantitatively refuted (subtraction gives negative protein/Met/B6 and >100% mass closure at all plausible skin fractions - the two SR composites are independent sample sets); MEXT's own meat/skin/composite triple proves linear blending of measured frames is exact (f=0.405, rms 0.3%). Chat analysis 2026-09-01.",
+    "FRAME: whole-bird skinless flesh composite ('domesticated' USDA = White Pekin, the Costco breed). Customer: skin the whole bird; giblets/neck are NOT part of this entry (weigh separately; species-specific organ entries may come later).",
+    "Panel: 92 nutrients, full 12/12 AA, vit D/E/K/A + choline native; only Cl/I/biotin/taurine gaps.",
+    "POULTRY DOCTRINE expectations: vit K form_defect WILL fire (SR K1-only vs MEXT total_k; duck is dark meat, MK-4-rich - thigh precedent adopted MEXT totals 20-23); taurine cross-species from Spitze chicken dark meat 169 (duck is all-dark oxidative muscle).",
+    "Internationals: 5 frame-matched adapters (no CIQUAL raw duck meat - only foie gras; verified 2026-09-01; no TDS duck in iodine_db)."
+  ],
+  "sources": {
+    "fcdb": [
+      {"key": 728, "note": "Duck, flesh only, raw - Danish; check for stats (cv_intl FOOD_MAP candidate)"}
+    ],
+    "bls": [
+      {"key": "V463000", "note": "Duck meat, without skin, raw - German; echo screen decides (BLS poultry sometimes analytical, unlike its lamb organs)"}
+    ],
+    "mext": [
+      {"key": "11247", "note": "Duck, domesticated, meat without skin, raw - Japanese analytical; total-K carrier for the menaquinone fix"}
+    ],
+    "cofid": [
+      {"key": "18-489", "note": "Duck, meat only, raw - UK; chloride + biotin carrier; frame-exact"}
+    ],
+    "afcd": [
+      {"key": "F003632", "note": "Duck, lean flesh, raw - Australian; check Derivation flag for borrows"}
+    ]
+  },
+  "literature": [
+    {"source": "Spitze03", "item": "Chicken dark meat (poultry dark-muscle proxy; no duck taurine exists locally)", "nutrient_id": 1234,
+     "value": 169, "unit": "mg", "quality": "estimated",
+     "note": "No duck taurine measurement in any local resource. Duck is all-dark oxidative muscle -> Spitze chicken dark meat 169+/-37 (n=6), the same anchor validated for thighs 10001/10048. Cross-species, SPARSE-EVIDENCE flag"},
+    {"source": "PoultryFamily", "item": "Poultry muscle iodine (TDS chicken thigh/breast both ~1)", "nutrient_id": 1100,
+     "value": 1, "unit": "µg", "quality": "estimated",
+     "note": "No duck iodine in TDS or any adapter. Poultry muscle family = 1 µg (10001/10048/10054 all 1, US TDS-anchored). Cross-species, SPARSE-EVIDENCE flag"}
+  ]
+}

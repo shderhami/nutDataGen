@@ -1,0 +1,784 @@
+{
+  "slug": "duck_meat_skinless",
+  "generated": "2026-09-01",
+  "engine": {
+    "agreement_rtol": 0.2,
+    "eps_by_unit": {
+      "g": 0.01,
+      "mg": 0.01,
+      "µg": 1.0,
+      "IU": 1.0,
+      "kcal": 6.0
+    },
+    "echo_rtol": 0.005,
+    "echo_min_matches": 5,
+    "echo_min_ratio": 0.4
+  },
+  "review_contract": "Machine output — the writer refuses to --commit this file. Review each decision, save as decisions.json, and add a top-level \"reviewed_by\".",
+  "decisions": [
+    {
+      "nutrient_id": 1003,
+      "name": "Crude Protein",
+      "unit": "g",
+      "verdict": "confirm",
+      "reasons": [
+        "2/2 independent(s) within ±20%: MEXT 20.1, AFCD 17.8"
+      ],
+      "decision": {
+        "value": 18.28,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-09-01: kept sr_legacy 18.28 g; refs within range: MEXT 20.1, AFCD 17.8",
+        "num_samples": 13
+      }
+    },
+    {
+      "nutrient_id": 1220,
+      "name": "Arginine",
+      "unit": "g",
+      "verdict": "confirm",
+      "reasons": [
+        "2/2 independent(s) within ±20%: MEXT 1.3, AFCD 1.163"
+      ],
+      "decision": {
+        "value": 1.166,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-09-01: kept sr_legacy 1.166 g; refs within range: MEXT 1.3, AFCD 1.163"
+      }
+    },
+    {
+      "nutrient_id": 1221,
+      "name": "Histidine",
+      "unit": "g",
+      "verdict": "confirm",
+      "reasons": [
+        "1/2 independent(s) within ±20%: AFCD 0.527"
+      ],
+      "decision": {
+        "value": 0.483,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-09-01: kept sr_legacy 0.483 g; refs within range: AFCD 0.527"
+      }
+    },
+    {
+      "nutrient_id": 1212,
+      "name": "Isoleucine",
+      "unit": "g",
+      "verdict": "confirm",
+      "reasons": [
+        "2/2 independent(s) within ±20%: MEXT 0.94, AFCD 0.992"
+      ],
+      "decision": {
+        "value": 0.939,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-09-01: kept sr_legacy 0.939 g; refs within range: MEXT 0.94, AFCD 0.992"
+      }
+    },
+    {
+      "nutrient_id": 1213,
+      "name": "Leucine",
+      "unit": "g",
+      "verdict": "confirm",
+      "reasons": [
+        "2/2 independent(s) within ±20%: MEXT 1.6, AFCD 1.476"
+      ],
+      "decision": {
+        "value": 1.544,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-09-01: kept sr_legacy 1.544 g; refs within range: MEXT 1.6, AFCD 1.476"
+      }
+    },
+    {
+      "nutrient_id": 1214,
+      "name": "Lysine",
+      "unit": "g",
+      "verdict": "confirm",
+      "reasons": [
+        "2/2 independent(s) within ±20%: MEXT 1.8, AFCD 1.465"
+      ],
+      "decision": {
+        "value": 1.564,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-09-01: kept sr_legacy 1.564 g; refs within range: MEXT 1.8, AFCD 1.465"
+      }
+    },
+    {
+      "nutrient_id": 1215,
+      "name": "Methionine",
+      "unit": "g",
+      "verdict": "confirm",
+      "reasons": [
+        "2/2 independent(s) within ±20%: MEXT 0.54, AFCD 0.496"
+      ],
+      "decision": {
+        "value": 0.494,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-09-01: kept sr_legacy 0.494 g; refs within range: MEXT 0.54, AFCD 0.496"
+      }
+    },
+    {
+      "nutrient_id": 1216,
+      "name": "Cystine",
+      "unit": "g",
+      "verdict": "confirm",
+      "reasons": [
+        "1/2 independent(s) within ±20%: MEXT 0.24"
+      ],
+      "decision": {
+        "value": 0.281,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-09-01: kept sr_legacy 0.281 g; refs within range: MEXT 0.24"
+      }
+    },
+    {
+      "nutrient_id": 1217,
+      "name": "Phenylalanine",
+      "unit": "g",
+      "verdict": "confirm",
+      "reasons": [
+        "2/2 independent(s) within ±20%: MEXT 0.82, AFCD 0.784"
+      ],
+      "decision": {
+        "value": 0.766,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-09-01: kept sr_legacy 0.766 g; refs within range: MEXT 0.82, AFCD 0.784"
+      }
+    },
+    {
+      "nutrient_id": 1218,
+      "name": "Tyrosine",
+      "unit": "g",
+      "verdict": "confirm",
+      "reasons": [
+        "2/2 independent(s) within ±20%: MEXT 0.72, AFCD 0.658"
+      ],
+      "decision": {
+        "value": 0.696,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-09-01: kept sr_legacy 0.696 g; refs within range: MEXT 0.72, AFCD 0.658"
+      }
+    },
+    {
+      "nutrient_id": 1211,
+      "name": "Threonine",
+      "unit": "g",
+      "verdict": "confirm",
+      "reasons": [
+        "2/2 independent(s) within ±20%: MEXT 0.92, AFCD 0.972"
+      ],
+      "decision": {
+        "value": 0.781,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-09-01: kept sr_legacy 0.781 g; refs within range: MEXT 0.92, AFCD 0.972"
+      }
+    },
+    {
+      "nutrient_id": 1210,
+      "name": "Tryptophan",
+      "unit": "g",
+      "verdict": "confirm",
+      "reasons": [
+        "2/2 independent(s) within ±20%: MEXT 0.26, AFCD 0.225"
+      ],
+      "decision": {
+        "value": 0.254,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-09-01: kept sr_legacy 0.254 g; refs within range: MEXT 0.26, AFCD 0.225"
+      }
+    },
+    {
+      "nutrient_id": 1219,
+      "name": "Valine",
+      "unit": "g",
+      "verdict": "confirm",
+      "reasons": [
+        "2/2 independent(s) within ±20%: MEXT 0.99, AFCD 0.966"
+      ],
+      "decision": {
+        "value": 0.956,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-09-01: kept sr_legacy 0.956 g; refs within range: MEXT 0.99, AFCD 0.966"
+      }
+    },
+    {
+      "nutrient_id": 1234,
+      "name": "Taurine",
+      "unit": "mg",
+      "verdict": "adopt_foreign",
+      "reasons": [
+        "no USDA value; 1 measured source(s) available"
+      ],
+      "decision": {
+        "value": 169.0,
+        "source": "literature",
+        "comment": "Validated 2026-09-01: no USDA value; set from Spitze03 (Chicken dark meat (poultry dark-muscle proxy; no duck taurine exists locally)) — refs: Spitze03 169"
+      }
+    },
+    {
+      "nutrient_id": 1004,
+      "name": "Total Fat",
+      "unit": "g",
+      "verdict": "confirm",
+      "reasons": [
+        "1/2 independent(s) within ±20%: AFCD 5.5"
+      ],
+      "decision": {
+        "value": 5.95,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-09-01: kept sr_legacy 5.95 g; refs within range: AFCD 5.5",
+        "num_samples": 13
+      }
+    },
+    {
+      "nutrient_id": 1269,
+      "name": "Linoleic acid",
+      "unit": "g",
+      "verdict": "confirm",
+      "reasons": [
+        "1/2 independent(s) within ±20%: AFCD 0.63"
+      ],
+      "decision": {
+        "value": 0.67,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-09-01: kept sr_legacy 0.67 g; refs within range: AFCD 0.63",
+        "num_samples": 1
+      }
+    },
+    {
+      "nutrient_id": 1271,
+      "name": "Arachidonic acid",
+      "unit": "g",
+      "verdict": "review",
+      "reasons": [
+        "all 2 independent(s) differ >±20% from sr_legacy 0: MEXT 0.074, AFCD 0.07798"
+      ],
+      "decision": {
+        "value": 0.0,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-09-01: kept sr_legacy 0 g after review (intl differ: MEXT 0.074, AFCD 0.07798)",
+        "resolution": null
+      }
+    },
+    {
+      "nutrient_id": 1270,
+      "name": "Alpha-linolenic acid",
+      "unit": "g",
+      "verdict": "review",
+      "reasons": [
+        "all 2 independent(s) differ >±20% from sr_legacy 0.08: MEXT 0.015, AFCD 0.03"
+      ],
+      "decision": {
+        "value": 0.08,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-09-01: kept sr_legacy 0.08 g after review (intl differ: MEXT 0.015, AFCD 0.03)",
+        "num_samples": 1,
+        "resolution": null
+      }
+    },
+    {
+      "nutrient_id": 1278,
+      "name": "EPA",
+      "unit": "g",
+      "verdict": "confirm",
+      "reasons": [
+        "2/2 independent(s) within ±20%: MEXT 0.002, AFCD 0"
+      ],
+      "decision": {
+        "value": 0.0,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-09-01: kept sr_legacy 0 g; refs within range: MEXT 0.002, AFCD 0"
+      }
+    },
+    {
+      "nutrient_id": 1272,
+      "name": "DHA",
+      "unit": "g",
+      "verdict": "confirm",
+      "reasons": [
+        "2/2 independent(s) within ±20%: MEXT 0.003, AFCD 0.0052"
+      ],
+      "decision": {
+        "value": 0.0,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-09-01: kept sr_legacy 0 g; refs within range: MEXT 0.003, AFCD 0.0052"
+      }
+    },
+    {
+      "nutrient_id": 1293,
+      "name": "Fatty acids, total polyunsaturated",
+      "unit": "g",
+      "verdict": "confirm",
+      "reasons": [
+        "1/2 independent(s) within ±20%: AFCD 0.76"
+      ],
+      "decision": {
+        "value": 0.75,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-09-01: kept sr_legacy 0.75 g; refs within range: AFCD 0.76"
+      }
+    },
+    {
+      "nutrient_id": 1280,
+      "name": "DPA 22:5 n-3",
+      "unit": "g",
+      "verdict": "confirm",
+      "reasons": [
+        "2/2 independent(s) within ±20%: MEXT 0.007, AFCD 0"
+      ],
+      "decision": {
+        "value": 0.0,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-09-01: kept sr_legacy 0 g; refs within range: MEXT 0.007, AFCD 0"
+      }
+    },
+    {
+      "nutrient_id": 1087,
+      "name": "Calcium",
+      "unit": "mg",
+      "verdict": "review",
+      "reasons": [
+        "all 2 independent(s) differ >±20% from sr_legacy 11: MEXT 5, AFCD 7"
+      ],
+      "decision": {
+        "value": 11.0,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-09-01: kept sr_legacy 11 mg after review (intl differ: MEXT 5, AFCD 7)",
+        "num_samples": 2,
+        "resolution": null
+      }
+    },
+    {
+      "nutrient_id": 1091,
+      "name": "Phosphorus",
+      "unit": "mg",
+      "verdict": "confirm",
+      "reasons": [
+        "2/2 independent(s) within ±20%: MEXT 230, AFCD 170"
+      ],
+      "decision": {
+        "value": 203.0,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-09-01: kept sr_legacy 203 mg; refs within range: MEXT 230, AFCD 170",
+        "num_samples": 2
+      }
+    },
+    {
+      "nutrient_id": 1092,
+      "name": "Potassium",
+      "unit": "mg",
+      "verdict": "confirm",
+      "reasons": [
+        "1/2 independent(s) within ±20%: AFCD 270"
+      ],
+      "decision": {
+        "value": 271.0,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-09-01: kept sr_legacy 271 mg; refs within range: AFCD 270",
+        "num_samples": 3
+      }
+    },
+    {
+      "nutrient_id": 1093,
+      "name": "Sodium",
+      "unit": "mg",
+      "verdict": "confirm",
+      "reasons": [
+        "2/2 independent(s) within ±20%: MEXT 84, AFCD 91"
+      ],
+      "decision": {
+        "value": 74.0,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-09-01: kept sr_legacy 74 mg; refs within range: MEXT 84, AFCD 91",
+        "num_samples": 5
+      }
+    },
+    {
+      "nutrient_id": 1088,
+      "name": "Chloride",
+      "unit": "mg",
+      "verdict": "adopt_foreign",
+      "reasons": [
+        "no USDA value; 1 measured source(s) available"
+      ],
+      "decision": {
+        "value": 60.0,
+        "source": "literature",
+        "comment": "Validated 2026-09-01: no USDA value; set from AFCD (F003632 Duck, lean flesh, raw) — refs: AFCD 60"
+      }
+    },
+    {
+      "nutrient_id": 1090,
+      "name": "Magnesium",
+      "unit": "mg",
+      "verdict": "confirm",
+      "reasons": [
+        "1/2 independent(s) within ±20%: AFCD 19"
+      ],
+      "decision": {
+        "value": 19.0,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-09-01: kept sr_legacy 19 mg; refs within range: AFCD 19",
+        "num_samples": 1
+      }
+    },
+    {
+      "nutrient_id": 1089,
+      "name": "Iron",
+      "unit": "mg",
+      "verdict": "confirm",
+      "reasons": [
+        "1/2 independent(s) within ±20%: MEXT 2.4"
+      ],
+      "decision": {
+        "value": 2.4,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-09-01: kept sr_legacy 2.4 mg; refs within range: MEXT 2.4",
+        "num_samples": 1
+      }
+    },
+    {
+      "nutrient_id": 1098,
+      "name": "Copper",
+      "unit": "mg",
+      "verdict": "confirm",
+      "reasons": [
+        "2/2 independent(s) within ±20%: MEXT 0.31, AFCD 0.25"
+      ],
+      "decision": {
+        "value": 0.253,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-09-01: kept sr_legacy 0.253 mg; refs within range: MEXT 0.31, AFCD 0.25",
+        "num_samples": 282
+      }
+    },
+    {
+      "nutrient_id": 1101,
+      "name": "Manganese",
+      "unit": "mg",
+      "verdict": "confirm",
+      "reasons": [
+        "1/2 independent(s) within ±20%: MEXT 0.02"
+      ],
+      "decision": {
+        "value": 0.019,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-09-01: kept sr_legacy 0.019 mg; refs within range: MEXT 0.02"
+      }
+    },
+    {
+      "nutrient_id": 1095,
+      "name": "Zinc",
+      "unit": "mg",
+      "verdict": "confirm",
+      "reasons": [
+        "2/2 independent(s) within ±20%: MEXT 2.3, AFCD 2"
+      ],
+      "decision": {
+        "value": 1.9,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-09-01: kept sr_legacy 1.9 mg; refs within range: MEXT 2.3, AFCD 2",
+        "num_samples": 1
+      }
+    },
+    {
+      "nutrient_id": 1100,
+      "name": "Iodine",
+      "unit": "µg",
+      "verdict": "adopt_foreign",
+      "reasons": [
+        "no USDA value; 3 measured source(s) available"
+      ],
+      "decision": {
+        "value": 1.0,
+        "source": "literature",
+        "comment": "Validated 2026-09-01: no USDA value; set from PoultryFamily (Poultry muscle iodine (TDS chicken thigh/breast both ~1)) — refs: MEXT 11, AFCD 0, PoultryFamily 1"
+      }
+    },
+    {
+      "nutrient_id": 1103,
+      "name": "Selenium",
+      "unit": "µg",
+      "verdict": "region_keep",
+      "reasons": [
+        "region-sensitive; foreign cluster differs: MEXT 21, AFCD 25 — US mean kept unless defective"
+      ],
+      "decision": {
+        "value": 13.9,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-09-01: kept sr_legacy 13.9 µg (region rule; intl: MEXT 21, AFCD 25)",
+        "derivation_description": "deriv BFNN: Based on another form of the food or similar food"
+      }
+    },
+    {
+      "nutrient_id": 1106,
+      "name": "Vitamin A",
+      "unit": "IU",
+      "verdict": "region_keep",
+      "reasons": [
+        "region-sensitive; foreign cluster differs: MEXT 29.97, AFCD 59.94 — US mean kept unless defective"
+      ],
+      "decision": {
+        "value": 79.92,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-09-01: kept sr_legacy 79.92 IU (region rule; intl: MEXT 29.97, AFCD 59.94)",
+        "derivation_description": "deriv NC: Calculated"
+      }
+    },
+    {
+      "nutrient_id": 1110,
+      "name": "Vitamin D",
+      "unit": "IU",
+      "verdict": "region_keep",
+      "reasons": [
+        "region-sensitive; foreign cluster differs: MEXT 16 — US mean kept unless defective"
+      ],
+      "decision": {
+        "value": 3.0,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-09-01: kept sr_legacy 3 IU (region rule; intl: MEXT 16)",
+        "derivation_description": "deriv BFNN: Based on another form of the food or similar food"
+      }
+    },
+    {
+      "nutrient_id": 1109,
+      "name": "Vitamin E",
+      "unit": "IU",
+      "verdict": "confirm",
+      "reasons": [
+        "2/2 independent(s) within ±20%: MEXT 0.596, AFCD 0.596"
+      ],
+      "decision": {
+        "value": 1.043,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-09-01: kept sr_legacy 1.043 IU; refs within range: MEXT 0.596, AFCD 0.596",
+        "derivation_description": "deriv NR: Nutrient that is based on other nutrient/s"
+      }
+    },
+    {
+      "nutrient_id": 1185,
+      "name": "Vitamin K",
+      "unit": "µg",
+      "verdict": "form_defect",
+      "reasons": [
+        "USDA K row is K1-only (2.8 µg); menaquinone-inclusive tables read ~22 µg"
+      ],
+      "decision": {
+        "value": 22.0,
+        "source": "literature",
+        "comment": "Validated 2026-09-01: SR vit K counts K1 only; total-K (incl. MK-4) set per MEXT (11247 Duck, domesticated, meat without skin, raw); refs: MEXT 22"
+      }
+    },
+    {
+      "nutrient_id": 1165,
+      "name": "Thiamin",
+      "unit": "mg",
+      "verdict": "confirm",
+      "reasons": [
+        "2/2 independent(s) within ±20%: MEXT 0.40802, AFCD 0.32"
+      ],
+      "decision": {
+        "value": 0.36,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-09-01: kept sr_legacy 0.36 mg; refs within range: MEXT 0.40802, AFCD 0.32",
+        "num_samples": 1
+      }
+    },
+    {
+      "nutrient_id": 1166,
+      "name": "Riboflavin",
+      "unit": "mg",
+      "verdict": "confirm",
+      "reasons": [
+        "1/2 independent(s) within ±20%: MEXT 0.41"
+      ],
+      "decision": {
+        "value": 0.45,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-09-01: kept sr_legacy 0.45 mg; refs within range: MEXT 0.41",
+        "num_samples": 1
+      }
+    },
+    {
+      "nutrient_id": 1167,
+      "name": "Niacin",
+      "unit": "mg",
+      "verdict": "confirm",
+      "reasons": [
+        "1/2 independent(s) within ±20%: AFCD 4.5"
+      ],
+      "decision": {
+        "value": 5.3,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-09-01: kept sr_legacy 5.3 mg; refs within range: AFCD 4.5",
+        "num_samples": 1
+      }
+    },
+    {
+      "nutrient_id": 1170,
+      "name": "Pantothenic acid",
+      "unit": "mg",
+      "verdict": "confirm",
+      "reasons": [
+        "2/2 independent(s) within ±20%: MEXT 1.83, AFCD 1.4"
+      ],
+      "decision": {
+        "value": 1.6,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-09-01: kept sr_legacy 1.6 mg; refs within range: MEXT 1.83, AFCD 1.4",
+        "num_samples": 1
+      }
+    },
+    {
+      "nutrient_id": 1175,
+      "name": "Pyridoxine",
+      "unit": "mg",
+      "verdict": "review",
+      "reasons": [
+        "all 2 independent(s) differ >±20% from sr_legacy 0.34: MEXT 0.54, AFCD 0.1"
+      ],
+      "decision": {
+        "value": 0.34,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-09-01: kept sr_legacy 0.34 mg after review (intl differ: MEXT 0.54, AFCD 0.1)",
+        "num_samples": 1,
+        "resolution": null
+      }
+    },
+    {
+      "nutrient_id": 1177,
+      "name": "Folic acid",
+      "unit": "µg",
+      "verdict": "review",
+      "reasons": [
+        "all 1 independent(s) differ >±20% from sr_legacy 25: MEXT 14"
+      ],
+      "decision": {
+        "value": 25.0,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-09-01: kept sr_legacy 25 µg after review (intl differ: MEXT 14)",
+        "num_samples": 1,
+        "resolution": null
+      }
+    },
+    {
+      "nutrient_id": 1178,
+      "name": "Cobalamin",
+      "unit": "µg",
+      "verdict": "confirm",
+      "reasons": [
+        "1/2 independent(s) within ±20%: AFCD 0.7"
+      ],
+      "decision": {
+        "value": 0.4,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-09-01: kept sr_legacy 0.4 µg; refs within range: AFCD 0.7",
+        "num_samples": 1
+      }
+    },
+    {
+      "nutrient_id": 1176,
+      "name": "Biotin",
+      "unit": "µg",
+      "verdict": "adopt_foreign",
+      "reasons": [
+        "no USDA value; 2 measured source(s) available",
+        "anchor is a tie-break between split sources — review must arbitrate"
+      ],
+      "decision": {
+        "value": 2.9,
+        "source": "literature",
+        "comment": "Validated 2026-09-01: no USDA value; set from AFCD (F003632 Duck, lean flesh, raw) — refs: MEXT 5.6, AFCD 2.9"
+      }
+    },
+    {
+      "nutrient_id": 1180,
+      "name": "Choline",
+      "unit": "mg",
+      "verdict": "usda_only",
+      "reasons": [
+        "no independent foreign value"
+      ],
+      "decision": {
+        "value": 53.6,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-09-01: kept sr_legacy 53.6 mg — no independent measurement in any local resource",
+        "derivation_description": "deriv BFNN: Based on another form of the food or similar food"
+      }
+    },
+    {
+      "nutrient_id": 1008,
+      "name": "Energy",
+      "unit": "kcal",
+      "verdict": "usda_only",
+      "reasons": [
+        "no independent foreign value"
+      ],
+      "decision": {
+        "value": 135.0,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-09-01: kept sr_legacy 135 kcal — no independent measurement in any local resource",
+        "derivation_description": "deriv NC: Calculated"
+      }
+    },
+    {
+      "nutrient_id": 1051,
+      "name": "Water",
+      "unit": "g",
+      "verdict": "confirm",
+      "reasons": [
+        "2/2 independent(s) within ±20%: MEXT 77.2, AFCD 75.1"
+      ],
+      "decision": {
+        "value": 73.77,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-09-01: kept sr_legacy 73.77 g; refs within range: MEXT 77.2, AFCD 75.1",
+        "num_samples": 13
+      }
+    },
+    {
+      "nutrient_id": 1007,
+      "name": "Ash",
+      "unit": "g",
+      "verdict": "confirm",
+      "reasons": [
+        "2/2 independent(s) within ±20%: MEXT 1.1, AFCD 0.9"
+      ],
+      "decision": {
+        "value": 1.06,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-09-01: kept sr_legacy 1.06 g; refs within range: MEXT 1.1, AFCD 0.9",
+        "num_samples": 13
+      }
+    },
+    {
+      "nutrient_id": 1079,
+      "name": "Crude Fiber",
+      "unit": "g",
+      "verdict": "confirm",
+      "reasons": [
+        "2/2 independent(s) within ±20%: MEXT 0, AFCD 0"
+      ],
+      "decision": {
+        "value": 0.0,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-09-01: kept sr_legacy 0 g; refs within range: MEXT 0, AFCD 0",
+        "derivation_description": "deriv Z: Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)"
+      }
+    },
+    {
+      "nutrient_id": 1005,
+      "name": "Carbohydrate",
+      "unit": "g",
+      "verdict": "review",
+      "reasons": [
+        "all 2 independent(s) differ >±20% from sr_legacy 0.94: MEXT 0.2, AFCD 0"
+      ],
+      "decision": {
+        "value": 0.94,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-09-01: kept sr_legacy 0.94 g after review (intl differ: MEXT 0.2, AFCD 0)",
+        "derivation_description": "deriv NC: Calculated",
+        "resolution": null
+      }
+    }
+  ]
+}
