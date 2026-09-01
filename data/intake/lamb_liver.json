@@ -1,0 +1,117 @@
+{
+  "slug": "lamb_liver",
+  "food": {
+    "food_name": "lamb liver raw",
+    "category": "Organ Meat",
+    "base_unit": "g",
+    "portion_qty": 100.0,
+    "grams_per_unit": 1.0,
+    "sr_legacy_fdc_id": 172615,
+    "cooking_method": null,
+    "price_per_unit": 0.0198,
+    "source": "grocery",
+    "protein_species": "lamb",
+    "display_name": "Lamb liver"
+  },
+  "notes": [
+    "price_per_unit 0.0198/g confirmed by Shahab 2026-08-31 at approval. Sourcing NZ/AU confirmed (same supply as lamb heart 10058).",
+    "FRAME: NZ/AU imported primary = SR 172615 'Lamb, New Zealand, imported, liver, raw' - same sourcing decision as lamb heart 10058 (Shahab 2026-08-31: supply is NZ/AU). US domestic 172531 carried as USDA-LINEAGE contrast rows. CONFIRM sourcing still holds for liver at approval.",
+    "3rd liver species (chicken 10002, beef 10013). Both SR lamb livers have FULL 12/12 AA panels.",
+    "FORMULATION WARNING: lamb liver vit A ~15,434 µg = ~51,395 IU/100 g - HIGHER than beef liver (16,543 IU) and chicken liver (31,302 IU). Any recipe swapping livers must be re-checked against the FEDIAF vit A max (chicken-liver x2.85 episode precedent). Copper likewise: sheep are a copper-storage species (NZ 11.4, US monitoring mean 6.98 n=520) - liver drives recipe Cu against the FEDIAF max.",
+    "KEY TENSIONS for review: vit A US 7,391 (n=2) vs NZ 15,434 (n=0) - 2x split, CoFID arbitrates (UK lamb liver ~15-20k µg documented); Cu US 6.98 (n=520 monitoring-scale!) vs NZ 11.4 (n=1); Se 82.4 US high-Se vs 11.1 NZ low-Se soils (heart precedent, liver-concentrated).",
+    "THIN INTERNATIONALS (verified 2026-08-31): only BLS V535100 + CoFID 18-413 exist; NO FCDB/MEXT/CIQUAL/AFCD raw lamb liver (AFCD has only grilled F005021 - cooked frame, excluded; CIQUAL lamb = muscle cuts only). Heart precedent: BLS lamb organ rows may decode as wholesale McCance echoes - screener decides.",
+    "NZ gaps to fill: taurine, Cl, I, biotin, choline, vit K, folate, vit D 0 (below-LOQ suspicion - ruminant liver D is nonzero: beef 49 IU; CoFID lamb liver D expected to arbitrate).",
+    "Liver-family conventions (validated 10002/10013): chloride via CoFID organ surveys (chicken 130, beef 90 n=33); iodine beef 13 = TDS 17204 beef/calf liver pan-cooked; biotin high (chicken 210, beef 96 - both AI-era legacy, low confidence); taurine Spitze (chicken 110, beef 68 n=8); vit K low ruminant (beef 3.1); choline hepatic ~330 (beef 333.3)."
+  ],
+  "sources": {
+    "bls": [
+      {
+        "key": "V535100",
+        "note": "Lamb liver, raw - German table; heart's BLS lamb entry was a wholesale McCance echo, expect the same here (screener decides); sheep V534100 / mutton V536100 are age brackets, not included"
+      }
+    ],
+    "cofid": [
+      {
+        "key": "18-413",
+        "note": "Liver, lamb, raw - UK lamb liver is a well-analyzed staple (MW4 + Meat Supplement 1990s resampling); THE independent: chloride, biotin, iodine, vit A and vit D arbitration expected"
+      }
+    ]
+  },
+  "literature": [
+    {
+      "source": "SR-US",
+      "item": "Lamb, variety meats, liver, raw (FDC 172531) - US domestic",
+      "nutrient_id": 1106,
+      "value": 24612,
+      "unit": "IU",
+      "n": 2,
+      "usda_lineage": true,
+      "note": "US domestic retinol 7,391 µg x3.33 = 24,612 IU (n=2) - the LOW end of the 2x vit A split vs NZ primary 51,395 IU; lineage contrast so the review documents which population the stored value describes"
+    },
+    {
+      "source": "SR-US",
+      "item": "Lamb, variety meats, liver, raw (FDC 172531)",
+      "nutrient_id": 1098,
+      "value": 6.979,
+      "unit": "mg",
+      "n": 520,
+      "usda_lineage": true,
+      "note": "US FDA-era monitoring mean Cu 6.979 (n=520! sheep hepatic Cu was a compliance target) vs NZ primary 11.4 (n=1). Sheep = copper-storage species, spread 2-100 mg/kg documented; lineage contrast for the Cu-max discussion"
+    },
+    {
+      "source": "SR-US",
+      "item": "Lamb, variety meats, liver, raw (FDC 172531)",
+      "nutrient_id": 1103,
+      "value": 82.4,
+      "unit": "µg",
+      "n": 0,
+      "usda_lineage": true,
+      "note": "US high-Se feed contrast (liver concentrates Se); fed population follows NZ low-Se soils (primary 11.1) - heart 10058 precedent, resolution must document"
+    },
+    {
+      "source": "SR-US",
+      "item": "Lamb, variety meats, liver, raw (FDC 172531)",
+      "nutrient_id": 1177,
+      "value": 230,
+      "unit": "µg",
+      "usda_lineage": true,
+      "note": "Folate missing from the NZ entry; US domestic 230 µg - hepatic folate is high (chicken 578? beef 290 SR-era); USDA lineage, adoption anchor unless CoFID supplies a lamb value"
+    },
+    {
+      "source": "Spitze03",
+      "item": "Beef liver (ruminant hepatic proxy; no lamb liver taurine exists)",
+      "nutrient_id": 1234,
+      "value": 68,
+      "unit": "mg",
+      "quality": "estimated",
+      "note": "No lamb-liver taurine measurement in any local resource. Ruminant hepatic convention = beef liver 10013's validated 68 (Spitze 2003 beef liver mean 68.8, n=8). Cross-species, SPARSE-EVIDENCE flag"
+    },
+    {
+      "source": "LiverFamily",
+      "item": "Hepatic choline (beef liver SR 333.3; chicken 194)",
+      "nutrient_id": 1180,
+      "value": 330,
+      "unit": "mg",
+      "quality": "estimated",
+      "note": "No lamb choline row anywhere; ruminant hepatic choline ~330 per beef liver. Cross-species estimate, SPARSE-EVIDENCE flag"
+    },
+    {
+      "source": "LiverFamily",
+      "item": "Ruminant hepatic vitamin K (beef liver SR 3.1; chicken 13)",
+      "nutrient_id": 1185,
+      "value": 3.1,
+      "unit": "µg",
+      "quality": "estimated",
+      "note": "No measured lamb-liver K anywhere (BLS 0.5 is a computed echo). Ruminant hepatic convention = beef liver 10013's SR-measured 3.1. Cross-species, SPARSE-EVIDENCE flag"
+    },
+    {
+      "source": "IodineDB-x",
+      "item": "Beef/calf liver, pan-cooked (TDS 17204) - ruminant-liver cross-species",
+      "nutrient_id": 1100,
+      "value": 13,
+      "unit": "µg",
+      "quality": "estimated",
+      "note": "No lamb-liver iodine in any local resource; beef liver 10013 stored 13 from this same TDS datum. Ruminant hepatic cross-species anchor; prefer a CoFID lamb value at review if 18-413 carries one"
+    }
+  ]
+}
