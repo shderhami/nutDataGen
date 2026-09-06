@@ -1,0 +1,42 @@
+{
+  "slug": "beef_tallow",
+  "food": {
+    "food_name": "beef tallow",
+    "category": "Fish Oil",
+    "base_unit": "g",
+    "portion_qty": 100.0,
+    "grams_per_unit": 1.0,
+    "sr_legacy_fdc_id": 171400,
+    "cooking_method": "cooked",
+    "price_per_unit": 0.0353,
+    "source": "grocery",
+    "protein_species": null,
+    "display_name": "Beef tallow"
+  },
+  "notes": [
+    "price_per_unit 0.0353/g confirmed by Shahab 2026-09-06 (Kettle & Fire 14 oz, $14.00/397 g).",
+    "PURPOSE (methionine-diluent search 2026-09-06): the catalogue's Met-zero energy diluent - replacing 10% of a recipe's ME with tallow cuts Met/1000 kcal by ~10% while adding only ~0.34 g LA/1000 kcal. Chosen over butter (community/perception: universal 'vets say avoid' surface messaging despite sound formulated-dose science) and over lard/poultry fats (LA 11-22/1000 kcal defeats the purpose).",
+    "LINKED PRODUCT: Kettle & Fire 100% Grass-Fed Beef Tallow, 14 oz glass jar (ASIN B0FY7KCKTY) - the only candidate passing ALL checks: PHOTOGRAPHED single-ingredient label ('GRASS-FED AND GRASS-FINISHED BEEF TALLOW'), label panel corroborates SR 171400 to the rounding digit (929 vs 902 kcal, 50% vs 49.8% SFA, protein/Na/carb 0), durable brand. Customer guidance must say PLAIN tallow only - seasoned/garlic-infused tallows exist and allium is toxic to cats.",
+    "FRAME NOTE (documented deviation, NZ-lamb pattern): SR 171400 is conventional US commodity tallow; the linked product is grass-fed/finished - LA mildly overstated by SR (~3.1 vs ~2-2.5 grass), ALA/vit E mildly understated. Immaterial at diluent doses (~0.1 g LA per 1000-kcal batch); direction favorable for the LA concern.",
+    "REJECTED CANDIDATE forensics (ConsumerLab lesson applied to fat): Herd Beef Tallow ($9.98) disqualified on REPRODUCED label anomalies - jar and manufacturer site agree on ~35-38% SFA (pure beef tallow is ~50%; blend/bad-lab territory), three-way calorie drift across their own materials (110/115/120 per tbsp), fat 92% on the jar, cholesterol %DV arithmetic error, 'vitamins A D E K present' beside a panel declaring vit D 0. No stable signal to anchor an entry (unlike the NuNaturals %DV-invariance rescue).",
+    "CATEGORY FLAG for Shahab: no 'Fat' category exists; 'Fish Oil' chosen because it maps to ingredient_class fat_oil (the correct CV pool + supplement-tier delivered floors for manufactured fats). The category NAME is wrong-looking for tallow - if the sibling repo displays it customer-facing, consider a rename/alias there.",
+    "SR-only food (no Foundation tallow; suet 170193 exists as the raw-frame relative). SR 171400 panel: 90 nutrients, fat 100, vit E 2.7, vit D 28 IU, choline 79.8, Se 0.2, full FA panel, and EXPLICIT zeros for protein/minerals - so all AA rows are true biological zeros (rendered fat, protein 0.0).",
+    "Missing-from-SR gap set (Cl, I, Mn, biotin, taurine): expect BLS/FCDB/MEXT to supply trace-or-zero values; taurine carried as a biological-zero literature row (no protein = no free AAs)."
+  ],
+  "sources": {
+    "fcdb": [
+      {"key": 1455, "note": "Fat, beef tallow - Danish; check for stats and echo status (FCDB fat entries are often Souci/USDA borrows)"}
+    ],
+    "bls": [
+      {"key": "Q890000", "note": "Beef tallow/fat - German Q-class rendered animal fat; chloride/iodine carrier expected; mutton tallow Q880000 is the sibling bracket, not included"}
+    ],
+    "mext": [
+      {"key": "14015", "note": "Beef tallow - Japanese analytical; total-K carrier and the only likely analysed independent; fats chapter (14xxx)"}
+    ]
+  },
+  "literature": [
+    {"source": "Biological", "item": "Rendered fat, protein 0.0 (SR-measured)", "nutrient_id": 1234,
+     "value": 0, "unit": "mg", "quality": "analysed",
+     "note": "Taurine is a free amino acid; a rendered fat with SR-measured protein 0.0 carries none. Biological zero, same class as the plant-zero convention."}
+  ]
+}

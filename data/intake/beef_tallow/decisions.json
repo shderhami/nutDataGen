@@ -1,0 +1,789 @@
+{
+ "slug": "beef_tallow",
+ "generated": "2026-09-06",
+ "engine": {
+  "agreement_rtol": 0.2,
+  "eps_by_unit": {
+   "g": 0.01,
+   "mg": 0.01,
+   "µg": 1.0,
+   "IU": 1.0,
+   "kcal": 6.0
+  },
+  "echo_rtol": 0.005,
+  "echo_min_matches": 5,
+  "echo_min_ratio": 0.4
+ },
+ "decisions": [
+  {
+   "nutrient_id": 1003,
+   "name": "Crude Protein",
+   "unit": "g",
+   "verdict": "review",
+   "reasons": [
+    "all 2 independent(s) differ >±20% from sr_legacy 0: FCDB 5 (n=2), MEXT 0.2"
+   ],
+   "decision": {
+    "value": 0.0,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-06: kept sr_legacy 0 g after review (intl differ: FCDB 5 (n=2), MEXT 0.2)",
+    "resolution": "Keep SR 0: rendered-pure frame. SR MEASURED protein 0.0 and the K&F product label declares protein 0; FCDB 1455's protein/AA panel is a Danish GROUP-AVERAGE ('average values for groups of foods, converted') describing partially-refined drippings, not this product class; BLS's tiny values are Musterberechnung (model math). Approved by Shahab 2026-09-06."
+   }
+  },
+  {
+   "nutrient_id": 1220,
+   "name": "Arginine",
+   "unit": "g",
+   "verdict": "review",
+   "reasons": [
+    "all 1 independent(s) differ >±20% from sr_legacy 0: FCDB 0.272"
+   ],
+   "decision": {
+    "value": 0.0,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-06: kept sr_legacy 0 g after review (intl differ: FCDB 0.272)",
+    "resolution": "Keep SR 0: rendered-pure frame. SR MEASURED protein 0.0 and the K&F product label declares protein 0; FCDB 1455's protein/AA panel is a Danish GROUP-AVERAGE ('average values for groups of foods, converted') describing partially-refined drippings, not this product class; BLS's tiny values are Musterberechnung (model math). Approved by Shahab 2026-09-06."
+   }
+  },
+  {
+   "nutrient_id": 1221,
+   "name": "Histidine",
+   "unit": "g",
+   "verdict": "review",
+   "reasons": [
+    "all 1 independent(s) differ >±20% from sr_legacy 0: FCDB 0.128"
+   ],
+   "decision": {
+    "value": 0.0,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-06: kept sr_legacy 0 g after review (intl differ: FCDB 0.128)",
+    "resolution": "Keep SR 0: rendered-pure frame. SR MEASURED protein 0.0 and the K&F product label declares protein 0; FCDB 1455's protein/AA panel is a Danish GROUP-AVERAGE ('average values for groups of foods, converted') describing partially-refined drippings, not this product class; BLS's tiny values are Musterberechnung (model math). Approved by Shahab 2026-09-06."
+   }
+  },
+  {
+   "nutrient_id": 1212,
+   "name": "Isoleucine",
+   "unit": "g",
+   "verdict": "review",
+   "reasons": [
+    "all 1 independent(s) differ >±20% from sr_legacy 0: FCDB 0.152"
+   ],
+   "decision": {
+    "value": 0.0,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-06: kept sr_legacy 0 g after review (intl differ: FCDB 0.152)",
+    "resolution": "Keep SR 0: rendered-pure frame. SR MEASURED protein 0.0 and the K&F product label declares protein 0; FCDB 1455's protein/AA panel is a Danish GROUP-AVERAGE ('average values for groups of foods, converted') describing partially-refined drippings, not this product class; BLS's tiny values are Musterberechnung (model math). Approved by Shahab 2026-09-06."
+   }
+  },
+  {
+   "nutrient_id": 1213,
+   "name": "Leucine",
+   "unit": "g",
+   "verdict": "review",
+   "reasons": [
+    "all 1 independent(s) differ >±20% from sr_legacy 0: FCDB 0.296"
+   ],
+   "decision": {
+    "value": 0.0,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-06: kept sr_legacy 0 g after review (intl differ: FCDB 0.296)",
+    "resolution": "Keep SR 0: rendered-pure frame. SR MEASURED protein 0.0 and the K&F product label declares protein 0; FCDB 1455's protein/AA panel is a Danish GROUP-AVERAGE ('average values for groups of foods, converted') describing partially-refined drippings, not this product class; BLS's tiny values are Musterberechnung (model math). Approved by Shahab 2026-09-06."
+   }
+  },
+  {
+   "nutrient_id": 1214,
+   "name": "Lysine",
+   "unit": "g",
+   "verdict": "review",
+   "reasons": [
+    "all 1 independent(s) differ >±20% from sr_legacy 0: FCDB 0.336"
+   ],
+   "decision": {
+    "value": 0.0,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-06: kept sr_legacy 0 g after review (intl differ: FCDB 0.336)",
+    "resolution": "Keep SR 0: rendered-pure frame. SR MEASURED protein 0.0 and the K&F product label declares protein 0; FCDB 1455's protein/AA panel is a Danish GROUP-AVERAGE ('average values for groups of foods, converted') describing partially-refined drippings, not this product class; BLS's tiny values are Musterberechnung (model math). Approved by Shahab 2026-09-06."
+   }
+  },
+  {
+   "nutrient_id": 1215,
+   "name": "Methionine",
+   "unit": "g",
+   "verdict": "review",
+   "reasons": [
+    "all 1 independent(s) differ >±20% from sr_legacy 0: FCDB 0.044"
+   ],
+   "decision": {
+    "value": 0.0,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-06: kept sr_legacy 0 g after review (intl differ: FCDB 0.044)",
+    "resolution": "Keep SR 0: rendered-pure frame. SR MEASURED protein 0.0 and the K&F product label declares protein 0; FCDB 1455's protein/AA panel is a Danish GROUP-AVERAGE ('average values for groups of foods, converted') describing partially-refined drippings, not this product class; BLS's tiny values are Musterberechnung (model math). Approved by Shahab 2026-09-06."
+   }
+  },
+  {
+   "nutrient_id": 1216,
+   "name": "Cystine",
+   "unit": "g",
+   "verdict": "review",
+   "reasons": [
+    "all 1 independent(s) differ >±20% from sr_legacy 0: FCDB 0.036"
+   ],
+   "decision": {
+    "value": 0.0,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-06: kept sr_legacy 0 g after review (intl differ: FCDB 0.036)",
+    "resolution": "Keep SR 0: rendered-pure frame. SR MEASURED protein 0.0 and the K&F product label declares protein 0; FCDB 1455's protein/AA panel is a Danish GROUP-AVERAGE ('average values for groups of foods, converted') describing partially-refined drippings, not this product class; BLS's tiny values are Musterberechnung (model math). Approved by Shahab 2026-09-06."
+   }
+  },
+  {
+   "nutrient_id": 1217,
+   "name": "Phenylalanine",
+   "unit": "g",
+   "verdict": "review",
+   "reasons": [
+    "all 1 independent(s) differ >±20% from sr_legacy 0: FCDB 0.184"
+   ],
+   "decision": {
+    "value": 0.0,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-06: kept sr_legacy 0 g after review (intl differ: FCDB 0.184)",
+    "resolution": "Keep SR 0: rendered-pure frame. SR MEASURED protein 0.0 and the K&F product label declares protein 0; FCDB 1455's protein/AA panel is a Danish GROUP-AVERAGE ('average values for groups of foods, converted') describing partially-refined drippings, not this product class; BLS's tiny values are Musterberechnung (model math). Approved by Shahab 2026-09-06."
+   }
+  },
+  {
+   "nutrient_id": 1218,
+   "name": "Tyrosine",
+   "unit": "g",
+   "verdict": "review",
+   "reasons": [
+    "all 1 independent(s) differ >±20% from sr_legacy 0: FCDB 0.104"
+   ],
+   "decision": {
+    "value": 0.0,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-06: kept sr_legacy 0 g after review (intl differ: FCDB 0.104)",
+    "resolution": "Keep SR 0: rendered-pure frame. SR MEASURED protein 0.0 and the K&F product label declares protein 0; FCDB 1455's protein/AA panel is a Danish GROUP-AVERAGE ('average values for groups of foods, converted') describing partially-refined drippings, not this product class; BLS's tiny values are Musterberechnung (model math). Approved by Shahab 2026-09-06."
+   }
+  },
+  {
+   "nutrient_id": 1211,
+   "name": "Threonine",
+   "unit": "g",
+   "verdict": "review",
+   "reasons": [
+    "all 1 independent(s) differ >±20% from sr_legacy 0: FCDB 0.136"
+   ],
+   "decision": {
+    "value": 0.0,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-06: kept sr_legacy 0 g after review (intl differ: FCDB 0.136)",
+    "resolution": "Keep SR 0: rendered-pure frame. SR MEASURED protein 0.0 and the K&F product label declares protein 0; FCDB 1455's protein/AA panel is a Danish GROUP-AVERAGE ('average values for groups of foods, converted') describing partially-refined drippings, not this product class; BLS's tiny values are Musterberechnung (model math). Approved by Shahab 2026-09-06."
+   }
+  },
+  {
+   "nutrient_id": 1210,
+   "name": "Tryptophan",
+   "unit": "g",
+   "verdict": "review",
+   "reasons": [
+    "all 1 independent(s) differ >±20% from sr_legacy 0: FCDB 0.112"
+   ],
+   "decision": {
+    "value": 0.0,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-06: kept sr_legacy 0 g after review (intl differ: FCDB 0.112)",
+    "resolution": "Keep SR 0: rendered-pure frame. SR MEASURED protein 0.0 and the K&F product label declares protein 0; FCDB 1455's protein/AA panel is a Danish GROUP-AVERAGE ('average values for groups of foods, converted') describing partially-refined drippings, not this product class; BLS's tiny values are Musterberechnung (model math). Approved by Shahab 2026-09-06."
+   }
+  },
+  {
+   "nutrient_id": 1219,
+   "name": "Valine",
+   "unit": "g",
+   "verdict": "review",
+   "reasons": [
+    "all 1 independent(s) differ >±20% from sr_legacy 0: FCDB 0.216"
+   ],
+   "decision": {
+    "value": 0.0,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-06: kept sr_legacy 0 g after review (intl differ: FCDB 0.216)",
+    "resolution": "Keep SR 0: rendered-pure frame. SR MEASURED protein 0.0 and the K&F product label declares protein 0; FCDB 1455's protein/AA panel is a Danish GROUP-AVERAGE ('average values for groups of foods, converted') describing partially-refined drippings, not this product class; BLS's tiny values are Musterberechnung (model math). Approved by Shahab 2026-09-06."
+   }
+  },
+  {
+   "nutrient_id": 1234,
+   "name": "Taurine",
+   "unit": "mg",
+   "verdict": "adopt_foreign",
+   "reasons": [
+    "no USDA value; 1 measured source(s) available"
+   ],
+   "decision": {
+    "value": 0.0,
+    "source": "literature",
+    "comment": "Validated 2026-09-06: no USDA value; set from Biological (Rendered fat, protein 0.0 (SR-measured)) — refs: Biological 0",
+    "resolution": "Biological zero (SR protein 0.0 -> no free AAs). Approved by Shahab 2026-09-06."
+   }
+  },
+  {
+   "nutrient_id": 1004,
+   "name": "Total Fat",
+   "unit": "g",
+   "verdict": "confirm",
+   "reasons": [
+    "1/1 independent(s) within ±20%: MEXT 99.8"
+   ],
+   "decision": {
+    "value": 100.0,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-06: kept sr_legacy 100 g; refs within range: MEXT 99.8"
+   }
+  },
+  {
+   "nutrient_id": 1269,
+   "name": "Linoleic acid",
+   "unit": "g",
+   "verdict": "confirm",
+   "reasons": [
+    "1/1 independent(s) within ±20%: MEXT 3.3"
+   ],
+   "decision": {
+    "value": 3.1,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-06: kept sr_legacy 3.1 g; refs within range: MEXT 3.3",
+    "num_samples": 15
+   }
+  },
+  {
+   "nutrient_id": 1271,
+   "name": "Arachidonic acid",
+   "unit": "g",
+   "verdict": "confirm",
+   "reasons": [
+    "1/1 independent(s) within ±20%: MEXT 0"
+   ],
+   "decision": {
+    "value": 0.0,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-06: kept sr_legacy 0 g; refs within range: MEXT 0"
+   }
+  },
+  {
+   "nutrient_id": 1270,
+   "name": "Alpha-linolenic acid",
+   "unit": "g",
+   "verdict": "review",
+   "reasons": [
+    "all 1 independent(s) differ >±20% from sr_legacy 0.6: MEXT 0.17"
+   ],
+   "decision": {
+    "value": 0.6,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-06: kept sr_legacy 0.6 g after review (intl differ: MEXT 0.17)",
+    "num_samples": 9,
+    "resolution": "Keep SR 0.6 (US frame; FCDB 0.59 is an SR-1976 borrow of the same lineage; MEXT 0.17 is the JP population). Grass-fed linked product runs HIGHER ALA - SR is the conservative floor. Frame note stands."
+   }
+  },
+  {
+   "nutrient_id": 1278,
+   "name": "EPA",
+   "unit": "g",
+   "verdict": "confirm",
+   "reasons": [
+    "1/1 independent(s) within ±20%: MEXT 0"
+   ],
+   "decision": {
+    "value": 0.0,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-06: kept sr_legacy 0 g; refs within range: MEXT 0"
+   }
+  },
+  {
+   "nutrient_id": 1272,
+   "name": "DHA",
+   "unit": "g",
+   "verdict": "confirm",
+   "reasons": [
+    "1/1 independent(s) within ±20%: MEXT 0"
+   ],
+   "decision": {
+    "value": 0.0,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-06: kept sr_legacy 0 g; refs within range: MEXT 0"
+   }
+  },
+  {
+   "nutrient_id": 1293,
+   "name": "Fatty acids, total polyunsaturated",
+   "unit": "g",
+   "verdict": "confirm",
+   "reasons": [
+    "1/1 independent(s) within ±20%: MEXT 3.61"
+   ],
+   "decision": {
+    "value": 4.0,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-06: kept sr_legacy 4 g; refs within range: MEXT 3.61"
+   }
+  },
+  {
+   "nutrient_id": 1280,
+   "name": "DPA 22:5 n-3",
+   "unit": "g",
+   "verdict": "confirm",
+   "reasons": [
+    "1/1 independent(s) within ±20%: MEXT 0"
+   ],
+   "decision": {
+    "value": 0.0,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-06: kept sr_legacy 0 g; refs within range: MEXT 0"
+   }
+  },
+  {
+   "nutrient_id": 1087,
+   "name": "Calcium",
+   "unit": "mg",
+   "verdict": "usda_only",
+   "reasons": [
+    "no independent foreign value",
+    "detection-limit info: MEXT trace"
+   ],
+   "decision": {
+    "value": 0.0,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-06: kept sr_legacy 0 mg — no independent measurement in any local resource"
+   }
+  },
+  {
+   "nutrient_id": 1091,
+   "name": "Phosphorus",
+   "unit": "mg",
+   "verdict": "review",
+   "reasons": [
+    "all 1 independent(s) differ >±20% from sr_legacy 0: MEXT 1"
+   ],
+   "decision": {
+    "value": 0.0,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-06: kept sr_legacy 0 mg after review (intl differ: MEXT 1)",
+    "resolution": "Keep SR 0: MEXT's 1 mg-class traces are sub-material; SR stores explicit zeros and the K&F label declares 0 for Na/Ca/Fe/K. Region rule + label corroboration."
+   }
+  },
+  {
+   "nutrient_id": 1092,
+   "name": "Potassium",
+   "unit": "mg",
+   "verdict": "review",
+   "reasons": [
+    "all 1 independent(s) differ >±20% from sr_legacy 0: MEXT 1"
+   ],
+   "decision": {
+    "value": 0.0,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-06: kept sr_legacy 0 mg after review (intl differ: MEXT 1)",
+    "num_samples": 1,
+    "resolution": "Keep SR 0: MEXT's 1 mg-class traces are sub-material; SR stores explicit zeros and the K&F label declares 0 for Na/Ca/Fe/K. Region rule + label corroboration."
+   }
+  },
+  {
+   "nutrient_id": 1093,
+   "name": "Sodium",
+   "unit": "mg",
+   "verdict": "review",
+   "reasons": [
+    "all 1 independent(s) differ >±20% from sr_legacy 0: MEXT 1"
+   ],
+   "decision": {
+    "value": 0.0,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-06: kept sr_legacy 0 mg after review (intl differ: MEXT 1)",
+    "num_samples": 1,
+    "resolution": "Keep SR 0: MEXT's 1 mg-class traces are sub-material; SR stores explicit zeros and the K&F label declares 0 for Na/Ca/Fe/K. Region rule + label corroboration."
+   }
+  },
+  {
+   "nutrient_id": 1088,
+   "name": "Chloride",
+   "unit": "mg",
+   "verdict": "no_evidence",
+   "reasons": [
+    "no measurement in any local resource — operator/literature call"
+   ],
+   "decision": {
+    "value": 0,
+    "source": "literature",
+    "comment": "Validated 2026-09-06: NO chloride measurement exists in any local resource for rendered tallow (the one true no_evidence). Trace-zero set: a water-free rendered lipid retains no meaningful chloride. Operator call per the report.",
+    "resolution": "Operator trace-zero; nothing to adopt anywhere. Approved by Shahab 2026-09-06."
+   }
+  },
+  {
+   "nutrient_id": 1090,
+   "name": "Magnesium",
+   "unit": "mg",
+   "verdict": "confirm",
+   "reasons": [
+    "1/1 independent(s) within ±20%: MEXT 0"
+   ],
+   "decision": {
+    "value": 0.0,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-06: kept sr_legacy 0 mg; refs within range: MEXT 0"
+   }
+  },
+  {
+   "nutrient_id": 1089,
+   "name": "Iron",
+   "unit": "mg",
+   "verdict": "review",
+   "reasons": [
+    "all 1 independent(s) differ >±20% from sr_legacy 0: MEXT 0.1"
+   ],
+   "decision": {
+    "value": 0.0,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-06: kept sr_legacy 0 mg after review (intl differ: MEXT 0.1)",
+    "resolution": "Keep SR 0: MEXT's 1 mg-class traces are sub-material; SR stores explicit zeros and the K&F label declares 0 for Na/Ca/Fe/K. Region rule + label corroboration."
+   }
+  },
+  {
+   "nutrient_id": 1098,
+   "name": "Copper",
+   "unit": "mg",
+   "verdict": "usda_only",
+   "reasons": [
+    "no independent foreign value",
+    "detection-limit info: MEXT trace"
+   ],
+   "decision": {
+    "value": 0.0,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-06: kept sr_legacy 0 mg — no independent measurement in any local resource"
+   }
+  },
+  {
+   "nutrient_id": 1101,
+   "name": "Manganese",
+   "unit": "mg",
+   "verdict": "review",
+   "reasons": [
+    "no USDA value and no measured foreign value (only borrowed) — operator/literature call"
+   ],
+   "decision": {
+    "value": 0,
+    "source": "literature",
+    "comment": "Validated 2026-09-06: only a BLS borrow (0.001) exists = zero at storage precision; SR stores explicit 0 for every other mineral. Trace-zero.",
+    "resolution": "Operator trace-zero; BLS 0.001 borrow rounds to it. Approved by Shahab 2026-09-06."
+   }
+  },
+  {
+   "nutrient_id": 1095,
+   "name": "Zinc",
+   "unit": "mg",
+   "verdict": "usda_only",
+   "reasons": [
+    "no independent foreign value",
+    "detection-limit info: MEXT trace"
+   ],
+   "decision": {
+    "value": 0.0,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-06: kept sr_legacy 0 mg — no independent measurement in any local resource"
+   }
+  },
+  {
+   "nutrient_id": 1100,
+   "name": "Iodine",
+   "unit": "µg",
+   "verdict": "review",
+   "reasons": [
+    "no USDA value and no measured foreign value (only borrowed) — operator/literature call"
+   ],
+   "decision": {
+    "value": 0,
+    "source": "literature",
+    "comment": "Validated 2026-09-06: only a Norwegian-table borrow (0) exists; lipids carry ~no iodine. Trace-zero.",
+    "resolution": "Operator trace-zero (borrow-only row). Approved by Shahab 2026-09-06."
+   }
+  },
+  {
+   "nutrient_id": 1103,
+   "name": "Selenium",
+   "unit": "µg",
+   "verdict": "usda_only",
+   "reasons": [
+    "no independent foreign value"
+   ],
+   "decision": {
+    "value": 0.2,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-06: kept sr_legacy 0.2 µg — no independent measurement in any local resource",
+    "derivation_description": "deriv BFZN: Based on another form of the food or similar food"
+   }
+  },
+  {
+   "nutrient_id": 1106,
+   "name": "Vitamin A",
+   "unit": "IU",
+   "verdict": "region_keep",
+   "reasons": [
+    "region-sensitive; foreign cluster differs: MEXT 283.05 — US mean kept unless defective"
+   ],
+   "decision": {
+    "value": 0.0,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-06: kept sr_legacy 0 IU (region rule; intl: MEXT 283.05)",
+    "resolution": "Keep SR 0 with honest flag: foreign spread 63-733 IU (MEXT analysed 283) says tallow retinol is nonzero, but at diluent doses (~31 IU/1000 kcal even at MEXT's value) it is immaterial to both the min and the 100k max; storing 0 avoids crediting an unmeasured analysis row. LOW CONFIDENCE note."
+   }
+  },
+  {
+   "nutrient_id": 1110,
+   "name": "Vitamin D",
+   "unit": "IU",
+   "verdict": "region_keep",
+   "reasons": [
+    "region-sensitive; foreign cluster differs: MEXT 0 — US mean kept unless defective"
+   ],
+   "decision": {
+    "value": 28.0,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-06: kept sr_legacy 28 IU (region rule; intl: MEXT 0)",
+    "derivation_description": "deriv NR: Nutrient that is based on other nutrient/s",
+    "resolution": "Keep SR 28 IU (region; measured). K&F label's 'vit D 0 mcg' is rounding (<2 µg rounds to 0; 28 IU = 0.7 µg sits inside it). FCDB 92 computed, MEXT 0."
+   }
+  },
+  {
+   "nutrient_id": 1109,
+   "name": "Vitamin E",
+   "unit": "IU",
+   "verdict": "region_keep",
+   "reasons": [
+    "region-sensitive; foreign cluster differs: MEXT 0.894 — US mean kept unless defective"
+   ],
+   "decision": {
+    "value": 4.023000000000001,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-06: kept sr_legacy 4.023 IU (region rule; intl: MEXT 0.894)",
+    "num_samples": 1,
+    "resolution": "Keep SR 4.023 IU (region rule; foreign 1-2 IU lower). Grass-fed linked product runs higher E - SR direction favorable."
+   }
+  },
+  {
+   "nutrient_id": 1185,
+   "name": "Vitamin K",
+   "unit": "µg",
+   "verdict": "replace_suggest",
+   "reasons": [
+    "USDA zero is assumed/borrowed (deriv Z: Assumed zero (Insignificant amount or not naturally) but 1 independent(s) measure nonzero"
+   ],
+   "decision": {
+    "value": 26.0,
+    "source": "literature",
+    "comment": "Validated 2026-09-06: USDA assumed zero replaced per MEXT (14015 Beef tallow); refs: MEXT 26",
+    "resolution": "ACCEPT machine replace_suggest 26 (MEXT analysed total-K): SR 0 is deriv-Z assumed zero, and ruminant fat genuinely concentrates MK-4 - the menaquinone doctrine's cleanest case yet (fat-soluble vitamin in a pure fat). Approved by Shahab 2026-09-06."
+   }
+  },
+  {
+   "nutrient_id": 1165,
+   "name": "Thiamin",
+   "unit": "mg",
+   "verdict": "confirm",
+   "reasons": [
+    "1/1 independent(s) within ±20%: MEXT 0"
+   ],
+   "decision": {
+    "value": 0.0,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-06: kept sr_legacy 0 mg; refs within range: MEXT 0"
+   }
+  },
+  {
+   "nutrient_id": 1166,
+   "name": "Riboflavin",
+   "unit": "mg",
+   "verdict": "confirm",
+   "reasons": [
+    "1/1 independent(s) within ±20%: MEXT 0"
+   ],
+   "decision": {
+    "value": 0.0,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-06: kept sr_legacy 0 mg; refs within range: MEXT 0"
+   }
+  },
+  {
+   "nutrient_id": 1167,
+   "name": "Niacin",
+   "unit": "mg",
+   "verdict": "confirm",
+   "reasons": [
+    "1/1 independent(s) within ±20%: MEXT 0"
+   ],
+   "decision": {
+    "value": 0.0,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-06: kept sr_legacy 0 mg; refs within range: MEXT 0"
+   }
+  },
+  {
+   "nutrient_id": 1170,
+   "name": "Pantothenic acid",
+   "unit": "mg",
+   "verdict": "usda_only",
+   "reasons": [
+    "no independent foreign value"
+   ],
+   "decision": {
+    "value": 0.0,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-06: kept sr_legacy 0 mg — no independent measurement in any local resource"
+   }
+  },
+  {
+   "nutrient_id": 1175,
+   "name": "Pyridoxine",
+   "unit": "mg",
+   "verdict": "usda_only",
+   "reasons": [
+    "no independent foreign value"
+   ],
+   "decision": {
+    "value": 0.0,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-06: kept sr_legacy 0 mg — no independent measurement in any local resource"
+   }
+  },
+  {
+   "nutrient_id": 1177,
+   "name": "Folic acid",
+   "unit": "µg",
+   "verdict": "usda_only",
+   "reasons": [
+    "no independent foreign value"
+   ],
+   "decision": {
+    "value": 0.0,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-06: kept sr_legacy 0 µg — no independent measurement in any local resource"
+   }
+  },
+  {
+   "nutrient_id": 1178,
+   "name": "Cobalamin",
+   "unit": "µg",
+   "verdict": "usda_only",
+   "reasons": [
+    "no independent foreign value"
+   ],
+   "decision": {
+    "value": 0.0,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-06: kept sr_legacy 0 µg — no independent measurement in any local resource"
+   }
+  },
+  {
+   "nutrient_id": 1176,
+   "name": "Biotin",
+   "unit": "µg",
+   "verdict": "no_evidence",
+   "reasons": [
+    "no measurement in any local resource — operator/literature call"
+   ],
+   "decision": {
+    "value": 0,
+    "source": "literature",
+    "comment": "Validated 2026-09-06: no biotin measurement anywhere; biotin is water-soluble and rendered fat carries none. Trace-zero.",
+    "resolution": "Operator trace-zero (no_evidence). Approved by Shahab 2026-09-06."
+   }
+  },
+  {
+   "nutrient_id": 1180,
+   "name": "Choline",
+   "unit": "mg",
+   "verdict": "usda_only",
+   "reasons": [
+    "no independent foreign value"
+   ],
+   "decision": {
+    "value": 79.8,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-06: kept sr_legacy 79.8 mg — no independent measurement in any local resource",
+    "derivation_description": "deriv BFFN: Based on another form of the food or similar food"
+   }
+  },
+  {
+   "nutrient_id": 1008,
+   "name": "Energy",
+   "unit": "kcal",
+   "verdict": "usda_only",
+   "reasons": [
+    "no independent foreign value"
+   ],
+   "decision": {
+    "value": 902.0,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-06: kept sr_legacy 902 kcal — no independent measurement in any local resource",
+    "derivation_description": "deriv NC: Calculated"
+   }
+  },
+  {
+   "nutrient_id": 1051,
+   "name": "Water",
+   "unit": "g",
+   "verdict": "usda_only",
+   "reasons": [
+    "no independent foreign value",
+    "detection-limit info: BLS trace, MEXT trace"
+   ],
+   "decision": {
+    "value": 0.0,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-06: kept sr_legacy 0 g — no independent measurement in any local resource"
+   }
+  },
+  {
+   "nutrient_id": 1007,
+   "name": "Ash",
+   "unit": "g",
+   "verdict": "confirm",
+   "reasons": [
+    "1/1 independent(s) within ±20%: MEXT 0"
+   ],
+   "decision": {
+    "value": 0.0,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-06: kept sr_legacy 0 g; refs within range: MEXT 0"
+   }
+  },
+  {
+   "nutrient_id": 1079,
+   "name": "Crude Fiber",
+   "unit": "g",
+   "verdict": "confirm",
+   "reasons": [
+    "2/2 independent(s) within ±20%: FCDB 0, MEXT 0"
+   ],
+   "decision": {
+    "value": 0.0,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-06: kept sr_legacy 0 g; refs within range: FCDB 0, MEXT 0"
+   }
+  },
+  {
+   "nutrient_id": 1005,
+   "name": "Carbohydrate",
+   "unit": "g",
+   "verdict": "confirm",
+   "reasons": [
+    "1/1 independent(s) within ±20%: MEXT 0"
+   ],
+   "decision": {
+    "value": 0.0,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-06: kept sr_legacy 0 g; refs within range: MEXT 0"
+   }
+  }
+ ],
+ "reviewed_by": "Shahab",
+ "review_date": "2026-09-06"
+}
