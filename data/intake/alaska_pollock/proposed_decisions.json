@@ -1,0 +1,960 @@
+{
+  "slug": "alaska_pollock",
+  "generated": "2026-09-08",
+  "engine": {
+    "agreement_rtol": 0.2,
+    "eps_by_unit": {
+      "g": 0.01,
+      "mg": 0.01,
+      "µg": 1.0,
+      "IU": 1.0,
+      "kcal": 6.0
+    },
+    "echo_rtol": 0.005,
+    "echo_min_matches": 5,
+    "echo_min_ratio": 0.4
+  },
+  "review_contract": "Machine output — the writer refuses to --commit this file. Review each decision, save as decisions.json, and add a top-level \"reviewed_by\".",
+  "decisions": [
+    {
+      "nutrient_id": 1003,
+      "name": "Crude Protein",
+      "unit": "g",
+      "verdict": "confirm",
+      "reasons": [
+        "4/4 independent(s) within ±20%: MEXT 17.4, CIQUAL 16.3, CoFID 18, FCDB 18.1283 (n=12)"
+      ],
+      "decision": {
+        "value": 17.33,
+        "source": "foundation",
+        "comment": "Validated 2026-09-08: kept foundation 17.33 g; refs within range: MEXT 17.4, CIQUAL 16.3, CoFID 18, FCDB 18.1283 (n=12)",
+        "num_samples": 8,
+        "min_value": 16.3,
+        "max_value": 18.0,
+        "year_acquired": "2020",
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1220,
+      "name": "Arginine",
+      "unit": "g",
+      "verdict": "review",
+      "reasons": [
+        "all 1 independent(s) differ >±20% from foundation 0.8042: MEXT 1.1"
+      ],
+      "decision": {
+        "value": 0.8042,
+        "source": "foundation",
+        "comment": "Validated 2026-09-08: kept foundation 0.8042 g after review (intl differ: MEXT 1.1)",
+        "num_samples": 8,
+        "min_value": 0.5173,
+        "max_value": 0.9713,
+        "year_acquired": "2020",
+        "derivation_description": "deriv A: Analytical",
+        "resolution": null
+      }
+    },
+    {
+      "nutrient_id": 1221,
+      "name": "Histidine",
+      "unit": "g",
+      "verdict": "review",
+      "reasons": [
+        "all 1 independent(s) differ >±20% from foundation 0.2457: MEXT 0.42"
+      ],
+      "decision": {
+        "value": 0.2457,
+        "source": "foundation",
+        "comment": "Validated 2026-09-08: kept foundation 0.2457 g after review (intl differ: MEXT 0.42)",
+        "num_samples": 8,
+        "min_value": 0.177,
+        "max_value": 0.2736,
+        "year_acquired": "2020",
+        "derivation_description": "deriv A: Analytical",
+        "resolution": null
+      }
+    },
+    {
+      "nutrient_id": 1212,
+      "name": "Isoleucine",
+      "unit": "g",
+      "verdict": "confirm",
+      "reasons": [
+        "1/1 independent(s) within ±20%: MEXT 0.66"
+      ],
+      "decision": {
+        "value": 0.564,
+        "source": "foundation",
+        "comment": "Validated 2026-09-08: kept foundation 0.564 g; refs within range: MEXT 0.66",
+        "num_samples": 8,
+        "min_value": 0.3168,
+        "max_value": 0.7293,
+        "year_acquired": "2020",
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1213,
+      "name": "Leucine",
+      "unit": "g",
+      "verdict": "confirm",
+      "reasons": [
+        "1/1 independent(s) within ±20%: MEXT 1.2"
+      ],
+      "decision": {
+        "value": 1.044,
+        "source": "foundation",
+        "comment": "Validated 2026-09-08: kept foundation 1.044 g; refs within range: MEXT 1.2",
+        "num_samples": 8,
+        "min_value": 0.673,
+        "max_value": 1.187,
+        "year_acquired": "2020",
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1214,
+      "name": "Lysine",
+      "unit": "g",
+      "verdict": "confirm",
+      "reasons": [
+        "1/1 independent(s) within ±20%: MEXT 1.5"
+      ],
+      "decision": {
+        "value": 1.27,
+        "source": "foundation",
+        "comment": "Validated 2026-09-08: kept foundation 1.27 g; refs within range: MEXT 1.5",
+        "num_samples": 8,
+        "min_value": 1.124,
+        "max_value": 1.425,
+        "year_acquired": "2020",
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1215,
+      "name": "Methionine",
+      "unit": "g",
+      "verdict": "review",
+      "reasons": [
+        "all 1 independent(s) differ >±20% from foundation 0.4206: MEXT 0.54"
+      ],
+      "decision": {
+        "value": 0.4206,
+        "source": "foundation",
+        "comment": "Validated 2026-09-08: kept foundation 0.4206 g after review (intl differ: MEXT 0.54)",
+        "num_samples": 8,
+        "min_value": 0.4001,
+        "max_value": 0.4464,
+        "year_acquired": "2020",
+        "derivation_description": "deriv A: Analytical",
+        "resolution": null
+      }
+    },
+    {
+      "nutrient_id": 1216,
+      "name": "Cystine",
+      "unit": "g",
+      "verdict": "confirm",
+      "reasons": [
+        "1/1 independent(s) within ±20%: MEXT 0.19"
+      ],
+      "decision": {
+        "value": 0.1562,
+        "source": "foundation",
+        "comment": "Validated 2026-09-08: kept foundation 0.1562 g; refs within range: MEXT 0.19",
+        "num_samples": 8,
+        "min_value": 0.1477,
+        "max_value": 0.1692,
+        "year_acquired": "2020",
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1217,
+      "name": "Phenylalanine",
+      "unit": "g",
+      "verdict": "confirm",
+      "reasons": [
+        "1/1 independent(s) within ±20%: MEXT 0.62"
+      ],
+      "decision": {
+        "value": 0.4961,
+        "source": "foundation",
+        "comment": "Validated 2026-09-08: kept foundation 0.4961 g; refs within range: MEXT 0.62",
+        "num_samples": 8,
+        "min_value": 0.3956,
+        "max_value": 0.5814,
+        "year_acquired": "2020",
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1218,
+      "name": "Tyrosine",
+      "unit": "g",
+      "verdict": "confirm",
+      "reasons": [
+        "1/1 independent(s) within ±20%: MEXT 0.56"
+      ],
+      "decision": {
+        "value": 0.4611,
+        "source": "foundation",
+        "comment": "Validated 2026-09-08: kept foundation 0.4611 g; refs within range: MEXT 0.56",
+        "num_samples": 8,
+        "min_value": 0.3526,
+        "max_value": 0.5274,
+        "year_acquired": "2020",
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1211,
+      "name": "Threonine",
+      "unit": "g",
+      "verdict": "review",
+      "reasons": [
+        "all 1 independent(s) differ >±20% from foundation 0.5131: MEXT 0.72"
+      ],
+      "decision": {
+        "value": 0.5131,
+        "source": "foundation",
+        "comment": "Validated 2026-09-08: kept foundation 0.5131 g after review (intl differ: MEXT 0.72)",
+        "num_samples": 8,
+        "min_value": 0.3723,
+        "max_value": 0.6283,
+        "year_acquired": "2020",
+        "derivation_description": "deriv A: Analytical",
+        "resolution": null
+      }
+    },
+    {
+      "nutrient_id": 1210,
+      "name": "Tryptophan",
+      "unit": "g",
+      "verdict": "review",
+      "reasons": [
+        "all 1 independent(s) differ >±20% from foundation 0.1383: MEXT 0.18"
+      ],
+      "decision": {
+        "value": 0.1383,
+        "source": "foundation",
+        "comment": "Validated 2026-09-08: kept foundation 0.1383 g after review (intl differ: MEXT 0.18)",
+        "num_samples": 8,
+        "min_value": 0.1199,
+        "max_value": 0.1513,
+        "year_acquired": "2020",
+        "derivation_description": "deriv A: Analytical",
+        "resolution": null
+      }
+    },
+    {
+      "nutrient_id": 1219,
+      "name": "Valine",
+      "unit": "g",
+      "verdict": "confirm",
+      "reasons": [
+        "1/1 independent(s) within ±20%: MEXT 0.75"
+      ],
+      "decision": {
+        "value": 0.6057,
+        "source": "foundation",
+        "comment": "Validated 2026-09-08: kept foundation 0.6057 g; refs within range: MEXT 0.75",
+        "num_samples": 8,
+        "min_value": 0.3294,
+        "max_value": 0.7837,
+        "year_acquired": "2020",
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1234,
+      "name": "Taurine",
+      "unit": "mg",
+      "verdict": "adopt_foreign",
+      "reasons": [
+        "no USDA value; 1 measured source(s) available"
+      ],
+      "decision": {
+        "value": 100.0,
+        "source": "literature",
+        "comment": "Validated 2026-09-08: no USDA value; set from FishFamily (Gadid muscle taurine (family band: tilapia-est 84, salmon-Spitze 130)) — refs: FishFamily 100"
+      }
+    },
+    {
+      "nutrient_id": 1004,
+      "name": "Total Fat",
+      "unit": "g",
+      "verdict": "confirm",
+      "reasons": [
+        "1/4 independent(s) within ±20%: CoFID 1.1"
+      ],
+      "decision": {
+        "value": 0.9925,
+        "source": "foundation",
+        "comment": "Validated 2026-09-08: kept foundation 0.9925 g; refs within range: CoFID 1.1",
+        "num_samples": 8,
+        "min_value": 0.67,
+        "max_value": 1.43,
+        "year_acquired": "2020",
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1269,
+      "name": "Linoleic acid",
+      "unit": "g",
+      "verdict": "confirm",
+      "reasons": [
+        "4/4 independent(s) within ±20%: MEXT 0.001, CIQUAL 0.004, CoFID 0.01, FCDB 0"
+      ],
+      "decision": {
+        "value": 0.005875,
+        "source": "foundation",
+        "comment": "Validated 2026-09-08: kept foundation 0.005875 g; refs within range: MEXT 0.001, CIQUAL 0.004, CoFID 0.01, FCDB 0",
+        "num_samples": 8,
+        "year_acquired": "2020",
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1271,
+      "name": "Arachidonic acid",
+      "unit": "g",
+      "verdict": "confirm",
+      "reasons": [
+        "3/3 independent(s) within ±20%: MEXT 0.003, CIQUAL 4e-05, CoFID 0.01"
+      ],
+      "decision": {
+        "value": 0.004,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-09-08: kept sr_legacy 0.004 g; refs within range: MEXT 0.003, CIQUAL 4e-05, CoFID 0.01",
+        "num_samples": 3,
+        "min_value": 0.003,
+        "max_value": 0.005,
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1270,
+      "name": "Alpha-linolenic acid",
+      "unit": "g",
+      "verdict": "confirm",
+      "reasons": [
+        "2/3 independent(s) within ±20%: MEXT 0.001, CIQUAL 4e-05",
+        "detection-limit info: CoFID trace"
+      ],
+      "decision": {
+        "value": 0.004363,
+        "source": "foundation",
+        "comment": "Validated 2026-09-08: kept foundation 0.004363 g; refs within range: MEXT 0.001, CIQUAL 4e-05",
+        "num_samples": 8,
+        "year_acquired": "2020",
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1278,
+      "name": "EPA",
+      "unit": "g",
+      "verdict": "region_keep",
+      "reasons": [
+        "region-sensitive; foreign cluster differs: MEXT 0.032, CIQUAL 0.0048, CoFID 0.04 — US mean kept unless defective"
+      ],
+      "decision": {
+        "value": 0.1678,
+        "source": "foundation",
+        "comment": "Validated 2026-09-08: kept foundation 0.1678 g (region rule; intl: MEXT 0.032, CIQUAL 0.0048, CoFID 0.04)",
+        "num_samples": 8,
+        "min_value": 0.1217,
+        "max_value": 0.2174,
+        "year_acquired": "2020",
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1272,
+      "name": "DHA",
+      "unit": "g",
+      "verdict": "confirm",
+      "reasons": [
+        "1/3 independent(s) within ±20%: CoFID 0.19"
+      ],
+      "decision": {
+        "value": 0.2374,
+        "source": "foundation",
+        "comment": "Validated 2026-09-08: kept foundation 0.2374 g; refs within range: CoFID 0.19",
+        "num_samples": 8,
+        "min_value": 0.1868,
+        "max_value": 0.2785,
+        "year_acquired": "2020",
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1293,
+      "name": "Fatty acids, total polyunsaturated",
+      "unit": "g",
+      "verdict": "review",
+      "reasons": [
+        "all 2 independent(s) differ >±20% from foundation 0.4577: MEXT 0.09, CoFID 0.27"
+      ],
+      "decision": {
+        "value": 0.4577,
+        "source": "foundation",
+        "comment": "Validated 2026-09-08: kept foundation 0.4577 g after review (intl differ: MEXT 0.09, CoFID 0.27)",
+        "num_samples": 8,
+        "min_value": 0.373,
+        "max_value": 0.598,
+        "year_acquired": "2020",
+        "derivation_description": "deriv A: Analytical",
+        "resolution": null
+      }
+    },
+    {
+      "nutrient_id": 1280,
+      "name": "DPA 22:5 n-3",
+      "unit": "g",
+      "verdict": "confirm",
+      "reasons": [
+        "2/2 independent(s) within ±20%: MEXT 0.002, CoFID 0.01"
+      ],
+      "decision": {
+        "value": 0.01079,
+        "source": "foundation",
+        "comment": "Validated 2026-09-08: kept foundation 0.01079 g; refs within range: MEXT 0.002, CoFID 0.01",
+        "num_samples": 8,
+        "year_acquired": "2020",
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1087,
+      "name": "Calcium",
+      "unit": "mg",
+      "verdict": "review",
+      "reasons": [
+        "all 4 independent(s) differ >±20% from foundation 40.36: MEXT 13, CIQUAL 12.8, CoFID 7, FCDB 8.4 (n=2)"
+      ],
+      "decision": {
+        "value": 40.36,
+        "source": "foundation",
+        "comment": "Validated 2026-09-08: kept foundation 40.36 mg after review (intl differ: MEXT 13, CIQUAL 12.8, CoFID 7, FCDB 8.4 (n=2))",
+        "num_samples": 8,
+        "min_value": 7.412,
+        "max_value": 61.35,
+        "year_acquired": "2020",
+        "derivation_description": "deriv A: Analytical",
+        "resolution": null
+      }
+    },
+    {
+      "nutrient_id": 1091,
+      "name": "Phosphorus",
+      "unit": "mg",
+      "verdict": "confirm",
+      "reasons": [
+        "2/4 independent(s) within ±20%: MEXT 180, FCDB 210.5 (n=2)"
+      ],
+      "decision": {
+        "value": 223.2,
+        "source": "foundation",
+        "comment": "Validated 2026-09-08: kept foundation 223.2 mg; refs within range: MEXT 180, FCDB 210.5 (n=2)",
+        "num_samples": 8,
+        "min_value": 182.0,
+        "max_value": 263.8,
+        "year_acquired": "2020",
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1092,
+      "name": "Potassium",
+      "unit": "mg",
+      "verdict": "confirm",
+      "reasons": [
+        "4/4 independent(s) within ±20%: MEXT 350, CIQUAL 296, CoFID 303, FCDB 391 (n=2)"
+      ],
+      "decision": {
+        "value": 353.0,
+        "source": "foundation",
+        "comment": "Validated 2026-09-08: kept foundation 353 mg; refs within range: MEXT 350, CIQUAL 296, CoFID 303, FCDB 391 (n=2)",
+        "num_samples": 8,
+        "min_value": 285.0,
+        "max_value": 388.9,
+        "year_acquired": "2020",
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1093,
+      "name": "Sodium",
+      "unit": "mg",
+      "verdict": "confirm",
+      "reasons": [
+        "1/4 independent(s) within ±20%: MEXT 100"
+      ],
+      "decision": {
+        "value": 114.8,
+        "source": "foundation",
+        "comment": "Validated 2026-09-08: kept foundation 114.8 mg; refs within range: MEXT 100",
+        "num_samples": 8,
+        "min_value": 81.45,
+        "max_value": 149.5,
+        "year_acquired": "2020",
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1088,
+      "name": "Chloride",
+      "unit": "mg",
+      "verdict": "adopt_foreign",
+      "reasons": [
+        "no USDA value; 2 measured source(s) available",
+        "anchor is a tie-break between split sources — review must arbitrate"
+      ],
+      "decision": {
+        "value": 130.0,
+        "source": "literature",
+        "comment": "Validated 2026-09-08: no USDA value; set from CoFID (16-383 Coley, flesh only, raw) — refs: CIQUAL 297, CoFID 130"
+      }
+    },
+    {
+      "nutrient_id": 1090,
+      "name": "Magnesium",
+      "unit": "mg",
+      "verdict": "confirm",
+      "reasons": [
+        "2/4 independent(s) within ±20%: MEXT 24, FCDB 27.45 (n=2)"
+      ],
+      "decision": {
+        "value": 22.82,
+        "source": "foundation",
+        "comment": "Validated 2026-09-08: kept foundation 22.82 mg; refs within range: MEXT 24, FCDB 27.45 (n=2)",
+        "num_samples": 8,
+        "min_value": 18.36,
+        "max_value": 28.61,
+        "year_acquired": "2020",
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1089,
+      "name": "Iron",
+      "unit": "mg",
+      "verdict": "confirm",
+      "reasons": [
+        "3/4 independent(s) within ±20%: MEXT 0.2, CoFID 0.27, FCDB 0.27 (n=2)"
+      ],
+      "decision": {
+        "value": 0.2402,
+        "source": "foundation",
+        "comment": "Validated 2026-09-08: kept foundation 0.2402 mg; refs within range: MEXT 0.2, CoFID 0.27, FCDB 0.27 (n=2)",
+        "num_samples": 8,
+        "year_acquired": "2020",
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1098,
+      "name": "Copper",
+      "unit": "mg",
+      "verdict": "review",
+      "reasons": [
+        "all 4 independent(s) differ >±20% from foundation 0.09744: MEXT 0.03, CIQUAL 0.039, CoFID 0.04, FCDB 0.0565 (n=2)"
+      ],
+      "decision": {
+        "value": 0.09744,
+        "source": "foundation",
+        "comment": "Validated 2026-09-08: kept foundation 0.09744 mg after review (intl differ: MEXT 0.03, CIQUAL 0.039, CoFID 0.04, FCDB 0.0565 (n=2))",
+        "num_samples": 8,
+        "year_acquired": "2020",
+        "derivation_description": "deriv A: Analytical",
+        "resolution": null
+      }
+    },
+    {
+      "nutrient_id": 1101,
+      "name": "Manganese",
+      "unit": "mg",
+      "verdict": "confirm",
+      "reasons": [
+        "3/4 independent(s) within ±20%: MEXT 0, CoFID 0.01, FCDB 0.008 (n=2)"
+      ],
+      "decision": {
+        "value": 0.003125,
+        "source": "foundation",
+        "comment": "Validated 2026-09-08: kept foundation 0.003125 mg; refs within range: MEXT 0, CoFID 0.01, FCDB 0.008 (n=2)",
+        "num_samples": 8,
+        "year_acquired": "2020",
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1095,
+      "name": "Zinc",
+      "unit": "mg",
+      "verdict": "confirm",
+      "reasons": [
+        "4/4 independent(s) within ±20%: MEXT 0.5, CIQUAL 0.41, CoFID 0.4, FCDB 0.38 (n=2)"
+      ],
+      "decision": {
+        "value": 0.4313,
+        "source": "foundation",
+        "comment": "Validated 2026-09-08: kept foundation 0.4313 mg; refs within range: MEXT 0.5, CIQUAL 0.41, CoFID 0.4, FCDB 0.38 (n=2)",
+        "num_samples": 8,
+        "min_value": 0.344,
+        "max_value": 0.5336,
+        "year_acquired": "2020",
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1100,
+      "name": "Iodine",
+      "unit": "µg",
+      "verdict": "confirm",
+      "reasons": [
+        "2/4 independent(s) within ±20%: MEXT 160, FCDB 153 (n=2)"
+      ],
+      "decision": {
+        "value": 185.5,
+        "source": "foundation",
+        "comment": "Validated 2026-09-08: kept foundation 185.5 µg; refs within range: MEXT 160, FCDB 153 (n=2)",
+        "num_samples": 8,
+        "min_value": 133.0,
+        "max_value": 277.8,
+        "year_acquired": "2020",
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1103,
+      "name": "Selenium",
+      "unit": "µg",
+      "verdict": "confirm",
+      "reasons": [
+        "3/4 independent(s) within ±20%: MEXT 25, CoFID 33, FCDB 26 (n=2)"
+      ],
+      "decision": {
+        "value": 27.0,
+        "source": "foundation",
+        "comment": "Validated 2026-09-08: kept foundation 27 µg; refs within range: MEXT 25, CoFID 33, FCDB 26 (n=2)",
+        "num_samples": 8,
+        "min_value": 20.0,
+        "max_value": 33.25,
+        "year_acquired": "2020",
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1106,
+      "name": "Vitamin A",
+      "unit": "IU",
+      "verdict": "confirm",
+      "reasons": [
+        "1/4 independent(s) within ±20%: FCDB 10.4729 (n=2)"
+      ],
+      "decision": {
+        "value": 8.6913,
+        "source": "foundation",
+        "comment": "Validated 2026-09-08: kept foundation 8.6913 IU; refs within range: FCDB 10.4729 (n=2)",
+        "derivation_description": "deriv NC: Calculated"
+      }
+    },
+    {
+      "nutrient_id": 1110,
+      "name": "Vitamin D",
+      "unit": "IU",
+      "verdict": "region_keep",
+      "reasons": [
+        "region-sensitive; foreign cluster differs: MEXT 20, CIQUAL 44 — US mean kept unless defective",
+        "detection-limit info: CoFID trace"
+      ],
+      "decision": {
+        "value": 0.0,
+        "source": "foundation",
+        "comment": "Validated 2026-09-08: kept foundation 0 IU (region rule; intl: MEXT 20, CIQUAL 44)",
+        "derivation_description": "deriv NC: Calculated"
+      }
+    },
+    {
+      "nutrient_id": 1109,
+      "name": "Vitamin E",
+      "unit": "IU",
+      "verdict": "adopt_foreign",
+      "reasons": [
+        "no USDA value; 4 measured source(s) available",
+        "anchor is a tie-break between split sources — review must arbitrate"
+      ],
+      "decision": {
+        "value": 1.1324,
+        "source": "literature",
+        "comment": "Validated 2026-09-08: no USDA value; set from FCDB (66 Saithe, raw) — refs: MEXT 1.341, CIQUAL 0.5364, CoFID 0.8493, FCDB 1.1324 (n=2)",
+        "num_samples": 2
+      }
+    },
+    {
+      "nutrient_id": 1185,
+      "name": "Vitamin K",
+      "unit": "µg",
+      "verdict": "adopt_foreign",
+      "reasons": [
+        "no USDA value; 2 measured source(s) available",
+        "anchor is a tie-break between split sources — review must arbitrate"
+      ],
+      "decision": {
+        "value": 0.0,
+        "source": "literature",
+        "comment": "Validated 2026-09-08: no USDA value; set from MEXT (10199 Fish, cod, walleye pollock*, raw\n［*Syn. Alaska pollock］ ) — refs: MEXT 0, CIQUAL 0.1"
+      }
+    },
+    {
+      "nutrient_id": 1165,
+      "name": "Thiamin",
+      "unit": "mg",
+      "verdict": "confirm",
+      "reasons": [
+        "2/4 independent(s) within ±20%: CIQUAL 0.07, FCDB 0.0715 (n=2)"
+      ],
+      "decision": {
+        "value": 0.08626,
+        "source": "foundation",
+        "comment": "Validated 2026-09-08: kept foundation 0.08626 mg; refs within range: CIQUAL 0.07, FCDB 0.0715 (n=2)",
+        "num_samples": 8,
+        "min_value": 0.0575,
+        "max_value": 0.122,
+        "year_acquired": "2020",
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1166,
+      "name": "Riboflavin",
+      "unit": "mg",
+      "verdict": "confirm",
+      "reasons": [
+        "2/4 independent(s) within ±20%: MEXT 0.11, FCDB 0.123 (n=2)"
+      ],
+      "decision": {
+        "value": 0.1035,
+        "source": "foundation",
+        "comment": "Validated 2026-09-08: kept foundation 0.1035 mg; refs within range: MEXT 0.11, FCDB 0.123 (n=2)",
+        "num_samples": 8,
+        "min_value": 0.0167,
+        "max_value": 0.2,
+        "year_acquired": "2020",
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1167,
+      "name": "Niacin",
+      "unit": "mg",
+      "verdict": "confirm",
+      "reasons": [
+        "1/4 independent(s) within ±20%: MEXT 1.4"
+      ],
+      "decision": {
+        "value": 1.48,
+        "source": "foundation",
+        "comment": "Validated 2026-09-08: kept foundation 1.48 mg; refs within range: MEXT 1.4",
+        "num_samples": 8,
+        "min_value": 0.63,
+        "max_value": 2.32,
+        "year_acquired": "2020",
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1170,
+      "name": "Pantothenic acid",
+      "unit": "mg",
+      "verdict": "confirm",
+      "reasons": [
+        "2/3 independent(s) within ±20%: MEXT 0.2, FCDB 0.29 (n=2)",
+        "detection-limit info: CIQUAL <= 0.16"
+      ],
+      "decision": {
+        "value": 0.25,
+        "source": "foundation",
+        "comment": "Validated 2026-09-08: kept foundation 0.25 mg; refs within range: MEXT 0.2, FCDB 0.29 (n=2)",
+        "num_samples": 8,
+        "min_value": 0.16,
+        "max_value": 0.4,
+        "year_acquired": "2020",
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1175,
+      "name": "Pyridoxine",
+      "unit": "mg",
+      "verdict": "confirm",
+      "reasons": [
+        "1/4 independent(s) within ±20%: CIQUAL 0.14"
+      ],
+      "decision": {
+        "value": 0.1213,
+        "source": "foundation",
+        "comment": "Validated 2026-09-08: kept foundation 0.1213 mg; refs within range: CIQUAL 0.14",
+        "num_samples": 8,
+        "year_acquired": "2020",
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1177,
+      "name": "Folic acid",
+      "unit": "µg",
+      "verdict": "confirm",
+      "reasons": [
+        "1/4 independent(s) within ±20%: FCDB 10"
+      ],
+      "decision": {
+        "value": 9.573,
+        "source": "foundation",
+        "comment": "Validated 2026-09-08: kept foundation 9.573 µg; refs within range: FCDB 10",
+        "num_samples": 8,
+        "year_acquired": "2020",
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1178,
+      "name": "Cobalamin",
+      "unit": "µg",
+      "verdict": "confirm",
+      "reasons": [
+        "2/4 independent(s) within ±20%: CIQUAL 2.3, FCDB 2.63333 (n=2)"
+      ],
+      "decision": {
+        "value": 1.759,
+        "source": "foundation",
+        "comment": "Validated 2026-09-08: kept foundation 1.759 µg; refs within range: CIQUAL 2.3, FCDB 2.63333 (n=2)",
+        "num_samples": 8,
+        "min_value": 0.6,
+        "max_value": 2.0,
+        "year_acquired": "2020",
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1176,
+      "name": "Biotin",
+      "unit": "µg",
+      "verdict": "adopt_foreign",
+      "reasons": [
+        "no USDA value; 3 measured source(s) available"
+      ],
+      "decision": {
+        "value": 3.7,
+        "source": "literature",
+        "comment": "Validated 2026-09-08: no USDA value; set from CoFID (16-383 Coley, flesh only, raw) — refs: MEXT 2.5, CoFID 3.7, FCDB 3.8 (n=2)"
+      }
+    },
+    {
+      "nutrient_id": 1180,
+      "name": "Choline",
+      "unit": "mg",
+      "verdict": "adopt_foreign",
+      "reasons": [
+        "no USDA value; 1 measured source(s) available"
+      ],
+      "decision": {
+        "value": 92.2,
+        "source": "literature",
+        "comment": "Validated 2026-09-08: no USDA value; set from SR-US (Fish, pollock, Alaska, raw + additives (FDC 175130), lean-rescaled) — refs: SR-US 92.2"
+      }
+    },
+    {
+      "nutrient_id": 1008,
+      "name": "Energy",
+      "unit": "kcal",
+      "verdict": "confirm",
+      "reasons": [
+        "1/1 independent(s) within ±20%: CoFID 82"
+      ],
+      "decision": {
+        "value": 76.0,
+        "source": "sr_legacy",
+        "comment": "Validated 2026-09-08: kept sr_legacy 76 kcal; refs within range: CoFID 82",
+        "derivation_description": "deriv NC: Calculated"
+      }
+    },
+    {
+      "nutrient_id": 1051,
+      "name": "Water",
+      "unit": "g",
+      "verdict": "confirm",
+      "reasons": [
+        "4/4 independent(s) within ±20%: MEXT 81.6, CIQUAL 81.2, CoFID 81.9, FCDB 80.0333 (n=12)"
+      ],
+      "decision": {
+        "value": 80.4,
+        "source": "foundation",
+        "comment": "Validated 2026-09-08: kept foundation 80.4 g; refs within range: MEXT 81.6, CIQUAL 81.2, CoFID 81.9, FCDB 80.0333 (n=12)",
+        "num_samples": 8,
+        "min_value": 78.6,
+        "max_value": 82.2,
+        "year_acquired": "2020",
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1007,
+      "name": "Ash",
+      "unit": "g",
+      "verdict": "confirm",
+      "reasons": [
+        "3/3 independent(s) within ±20%: MEXT 1.1, CIQUAL 1.33, FCDB 1.16333 (n=12)"
+      ],
+      "decision": {
+        "value": 1.221,
+        "source": "foundation",
+        "comment": "Validated 2026-09-08: kept foundation 1.221 g; refs within range: MEXT 1.1, CIQUAL 1.33, FCDB 1.16333 (n=12)",
+        "num_samples": 8,
+        "min_value": 1.13,
+        "max_value": 1.36,
+        "year_acquired": "2020",
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1079,
+      "name": "Crude Fiber",
+      "unit": "g",
+      "verdict": "confirm",
+      "reasons": [
+        "3/3 independent(s) within ±20%: MEXT 0, CoFID 0, FCDB 0",
+        "detection-limit info: CIQUAL <= 0.17"
+      ],
+      "decision": {
+        "value": 0.0,
+        "source": "foundation",
+        "comment": "Validated 2026-09-08: kept foundation 0 g; refs within range: MEXT 0, CoFID 0, FCDB 0",
+        "num_samples": 8,
+        "year_acquired": "2020",
+        "derivation_description": "deriv A: Analytical"
+      }
+    },
+    {
+      "nutrient_id": 1005,
+      "name": "Carbohydrate",
+      "unit": "g",
+      "verdict": "review",
+      "reasons": [
+        "all 2 independent(s) differ >±20% from foundation 0.0565: MEXT 0, CIQUAL 0.51"
+      ],
+      "decision": {
+        "value": 0.0565,
+        "source": "foundation",
+        "comment": "Validated 2026-09-08: kept foundation 0.0565 g after review (intl differ: MEXT 0, CIQUAL 0.51)",
+        "derivation_description": "deriv NC: Calculated",
+        "resolution": null
+      }
+    }
+  ]
+}

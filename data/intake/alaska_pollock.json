@@ -1,0 +1,86 @@
+{
+  "slug": "alaska_pollock",
+  "food": {
+    "food_name": "alaska pollock wild raw",
+    "category": "Fish & Seafood",
+    "base_unit": "g",
+    "portion_qty": 100.0,
+    "grams_per_unit": 1.0,
+    "sr_legacy_fdc_id": 173725,
+    "foundation_fdc_id": 2768188,
+    "cooking_method": null,
+    "price_per_unit": 0.012,
+    "source": "grocery",
+    "protein_species": "fish",
+    "display_name": "Alaska pollock, wild (fillets)"
+  },
+  "notes": [
+    "price_per_unit 0.0120/g = Shahab's $0.34/oz (Safeway) / 28.3495 g/oz, confirmed 2026-09-07. Cheapest fish in the DB (tilapia 0.0154).",
+    "FRAME (decided with Shahab 2026-09-07; SECOND package label verified from photo 2026-09-08): UNTREATED-frame pair FND 2768188 + SR 173725. Waterfront Bistro bag (4x113g variant, Product of China - caught wild Alaska, processed/refrozen China): protein 15.9 / Na 119.5 / kcal 70.8 per 100 g = within ~8% of FND untreated (Na near-exact vs 114.8), despite the ingredient line DECLARING sodium tripolyphosphate. LESSON: an STP ingredient line does not mean the heavy-soak frame - the NUTRITION PANEL is the frame test.",
+    "AVOID-FRAME customer guidance (refined 2026-09-08): the heavy phosphate-soak population (FND 333476 = SR 175130: protein 12.2, Na 333, P 284) shows up on the PANEL, not the ingredient line - avoid bags reading sodium >=250 mg/serving or protein <14 g/serving; light-STP dips like Waterfront Bistro are fine.",
+    "PRE-REGISTERED LABEL REJECTION, DOUBLY CONFIRMED: the brand's own two printings claim vitamin D 6 mcg/serving (214 IU/100 g, online listing) vs 2 mcg/serving (71 IU/100 g, physical bag 2026-09-08) - self-inconsistent 3x, both far above every measurement. D row = 8 IU from SR 175130's analytical n=3 (range 4-16 IU, stats attached), unscaled (conservative); FND measured 0 below, MEXT analysed 20 above. If believed, the 214 claim would breach the 227 IU/1000 kcal legal max at ~1/2 recipe inclusion.",
+    "MEASURED-IODINE HIGHLIGHT: FND 2768188 iodine 185.5 ug/100 g (n=8) - the DB's first food with real USDA iodine. REVIEW MUST max-screen iodine: ~30% inclusion = ~480 ug/1000 kcal; check whether nutrient_limits carries an iodine max (if none, the no-max conservative-lens question applies).",
+    "Fish doctrine hooks: fish-diet vitamin K rule -> pairs with K1 corrector 10065 (3 tablets/1000 kcal); very lean (fat ~1) -> tallow 10064 is the natural diluent; gadids are LOW-THIAMINASE (safer raw than herring/smelt-class) and LOW-MERCURY - both worth customer-facing notes.",
+    "SR 173725 is a thin 45-nutrient stub (no AAs) but FND 2768188 carries the full 12/12 AA panel natively; SR contributes kcal 76 and handbook proximates.",
+    "SPECIES MAP for sources: Alaska/walleye pollock (Gadus chalcogrammus) EXACT = MEXT 10199, BLS T213100, CIQUAL 26006. Saithe/coley (Pollachius virens) = SIBLING species bracket = CoFID 16-383, FCDB 66. European pollack (P. pollachius, FCDB 587/CIQUAL 26129) EXCLUDED - third species.",
+    "Fish-family anchors (validated): taurine salmon 130 (Spitze same-item), tilapia 84 (estimate); vit K salmon 0.5/tilapia 1.4/mussel 0.1 (marine ~nil - the reason the fish K rule exists); chloride salmon 56/tilapia 61; iodine here is MEASURED, no anchor needed."
+  ],
+  "sources": {
+    "mext": [
+      {
+        "key": "10199",
+        "note": "Fish, cod, walleye pollock raw [Syn. Alaska pollock] - EXACT species, Japanese analysed panel; vit E/K/D arbitration expected"
+      }
+    ],
+    "bls": [
+      {
+        "key": "T213100",
+        "note": "Alaska pollock raw - EXACT species (distinct from their saithe T207100); echo screen decides independence"
+      }
+    ],
+    "ciqual": [
+      {
+        "key": 26006,
+        "note": "Lieu ou colin d'Alaska, cru - EXACT species; echo screen decides"
+      }
+    ],
+    "cofid": [
+      {
+        "key": "16-383",
+        "note": "Coley, flesh only, raw - SIBLING species (saithe/P. virens), UK bracket; the chloride + biotin carrier; frame note on species"
+      }
+    ],
+    "fcdb": [
+      {
+        "key": 66,
+        "note": "Saithe, raw - SIBLING species, Danish; check for stats; sibling-frame caveat on any adoption"
+      }
+    ],
+    "iodine_db": [
+      {
+        "key": "15019",
+        "note": "Fish, cod, Pacific, raw - gadid-family iodine plausibility for the MEASURED FND 185.5 (corroboration only; the FND value is primary)"
+      }
+    ]
+  },
+  "literature": [
+    {
+      "source": "SR-US",
+      "item": "Fish, pollock, Alaska, raw + additives (FDC 175130), lean-rescaled",
+      "nutrient_id": 1180,
+      "value": 92.2,
+      "unit": "mg",
+      "usda_lineage": true,
+      "note": "Choline missing from both primary entries; the treated twin measured 65 at protein 12.2 -> per-protein 5.33 x our 17.3 = 92.2 (dilution-invariant per-protein transfer, duck/yeast convention). USDA lineage, adoption anchor"
+    },
+    {
+      "source": "FishFamily",
+      "item": "Gadid muscle taurine (family band: tilapia-est 84, salmon-Spitze 130)",
+      "nutrient_id": 1234,
+      "value": 100,
+      "unit": "mg",
+      "quality": "estimated",
+      "note": "No pollock taurine measurement in any local resource; gadid muscle is taurine-substantial. Family-band mid 100, SPARSE-EVIDENCE flag; prefer any measured value surfacing at review"
+    }
+  ]
+}
