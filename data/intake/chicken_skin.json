@@ -1,0 +1,38 @@
+{
+  "slug": "chicken_skin",
+  "food": {
+    "food_name": "chicken skin raw",
+    "category": "Muscle Meat",
+    "base_unit": "g",
+    "portion_qty": 100.0,
+    "grams_per_unit": 1.0,
+    "sr_legacy_fdc_id": 171452,
+    "cooking_method": null,
+    "price_per_unit": 0.0044,
+    "source": "grocery",
+    "protein_species": "chicken",
+    "display_name": "Chicken skin (reserved from cuts)"
+  },
+  "notes": [
+    "PRICE: $1.99/lb proposed by Shahab 2026-09-09 / 453.592 = 0.0044/g (scrap-market anchor - what skin/trimmings fetch at butcher counters). Two model estimators were computed and REJECTED as economically inverted (skin must price below meat): market-residual from the DB's own cut pairs gave 0.0151-0.0166 (thigh, f=0.15-0.20) and tallow-energy-parity gave 0.0137. Recorded for auditability; the scrap anchor governs.",
+    "FRAME (Shahab 2026-09-09): RESERVED skin, not purchased - customers keep the skin they remove when skinning the skin-on cuts (10001 thigh / 10016 breast) for skinless recipes. Zero marginal purchase; pairs naturally with the skinless entries 10048/10054.",
+    "ACCURACY PROOF (the constructive duck lesson, 2026-09-09): SR 171452 is DIRECTLY MEASURED (87 nutrients, full 12/12 AA panel, fat n=35) - no duck-style subtraction. USDA's own trio reconstructs: thigh meat+skin = meat-only + skin at 2.0% macro rms (water -0.1%, fat +0.4%, Met -1.7%); breast likewise 2.0% (AAs within +/-8.5%). The skin entry IS the skin inside our validated skin-on entries.",
+    "ROLE: the SPECIES-PURE diluent for chicken recipes (dilution-family doctrine: tallow 10064 for beef/fish, duck skin-on 10061 for duck, chicken skin for chicken). Met 0.77/1000 kcal, fat 93/1000. LA HONESTY: 17.8/1000 kcal (chicken-fat profile) - unsuitable as a general LA-lean diluent (that is tallow's job); in chicken recipes it adds no new species and no new FA character.",
+    "Foreign coverage is ONE entry - AFCD F002773 'Chicken, skin, composite, raw' (ANALYSED; macros corroborate SR within 9%; carries analysed Cl 32/I 2.1/biotin 1.5 = three of the five gaps). MEXT/CoFID/BLS/FCDB publish only with/without-skin frames (verified 2026-09-09). CIQUAL none.",
+    "Expected LA review: SR 6.22 vs AFCD 4.18 - corn-fed n-6 precedent (6th occurrence expected); keep SR.",
+    "Gaps -> AFCD adapter (Cl, I, biotin) + literature (taurine, choline). Skin is collagen-rich: taurine and per-protein AA quality differ from muscle - taurine estimated LOW with sparse flag."
+  ],
+  "sources": {
+    "afcd": [
+      {"key": "F002773", "note": "Chicken, skin, composite, raw - the ONLY foreign skin-only entry anywhere; Australian ANALYSED panel incl. chloride/iodine/biotin; corn-fed LA caveat on FA rows"}
+    ]
+  },
+  "literature": [
+    {"source": "PoultryFamily", "item": "Collagen-rich skin taurine (muscle 169 dark / 15.9-16 white; skin is low-taurine connective tissue)", "nutrient_id": 1234,
+     "value": 30, "unit": "mg", "quality": "estimated",
+     "note": "No skin taurine measurement in any local resource. Skin is collagen-dominant (low free AA pool vs oxidative muscle); estimated well below dark-muscle 169, order-of white-meat levels. SPARSE-EVIDENCE flag - conservative low credit"},
+    {"source": "PoultryFamily", "item": "Skin choline (family: thigh meat 53-64, composite entries higher via lean)", "nutrient_id": 1180,
+     "value": 50, "unit": "mg", "quality": "estimated",
+     "note": "No skin choline anywhere (SR gap, AFCD lacks choline). Membrane-lipid-bearing tissue but low lean mass; family-informed estimate 50, SPARSE-EVIDENCE flag"}
+  ]
+}

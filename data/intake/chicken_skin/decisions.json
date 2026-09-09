@@ -1,0 +1,807 @@
+{
+ "slug": "chicken_skin",
+ "generated": "2026-09-09",
+ "engine": {
+  "agreement_rtol": 0.2,
+  "eps_by_unit": {
+   "g": 0.01,
+   "mg": 0.01,
+   "µg": 1.0,
+   "IU": 1.0,
+   "kcal": 6.0
+  },
+  "echo_rtol": 0.005,
+  "echo_min_matches": 5,
+  "echo_min_ratio": 0.4
+ },
+ "decisions": [
+  {
+   "nutrient_id": 1003,
+   "name": "Crude Protein",
+   "unit": "g",
+   "verdict": "confirm",
+   "reasons": [
+    "1/1 independent(s) within ±20%: AFCD 12.7"
+   ],
+   "decision": {
+    "value": 13.33,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-09: kept sr_legacy 13.33 g; refs within range: AFCD 12.7",
+    "num_samples": 31
+   }
+  },
+  {
+   "nutrient_id": 1220,
+   "name": "Arginine",
+   "unit": "g",
+   "verdict": "usda_only",
+   "reasons": [
+    "no independent foreign value"
+   ],
+   "decision": {
+    "value": 1.028,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-09: kept sr_legacy 1.028 g — no independent measurement in any local resource"
+   }
+  },
+  {
+   "nutrient_id": 1221,
+   "name": "Histidine",
+   "unit": "g",
+   "verdict": "usda_only",
+   "reasons": [
+    "no independent foreign value"
+   ],
+   "decision": {
+    "value": 0.256,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-09: kept sr_legacy 0.256 g — no independent measurement in any local resource"
+   }
+  },
+  {
+   "nutrient_id": 1212,
+   "name": "Isoleucine",
+   "unit": "g",
+   "verdict": "usda_only",
+   "reasons": [
+    "no independent foreign value"
+   ],
+   "decision": {
+    "value": 0.429,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-09: kept sr_legacy 0.429 g — no independent measurement in any local resource"
+   }
+  },
+  {
+   "nutrient_id": 1213,
+   "name": "Leucine",
+   "unit": "g",
+   "verdict": "usda_only",
+   "reasons": [
+    "no independent foreign value"
+   ],
+   "decision": {
+    "value": 0.783,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-09: kept sr_legacy 0.783 g — no independent measurement in any local resource"
+   }
+  },
+  {
+   "nutrient_id": 1214,
+   "name": "Lysine",
+   "unit": "g",
+   "verdict": "usda_only",
+   "reasons": [
+    "no independent foreign value"
+   ],
+   "decision": {
+    "value": 0.796,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-09: kept sr_legacy 0.796 g — no independent measurement in any local resource"
+   }
+  },
+  {
+   "nutrient_id": 1215,
+   "name": "Methionine",
+   "unit": "g",
+   "verdict": "usda_only",
+   "reasons": [
+    "no independent foreign value"
+   ],
+   "decision": {
+    "value": 0.267,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-09: kept sr_legacy 0.267 g — no independent measurement in any local resource"
+   }
+  },
+  {
+   "nutrient_id": 1216,
+   "name": "Cystine",
+   "unit": "g",
+   "verdict": "usda_only",
+   "reasons": [
+    "no independent foreign value"
+   ],
+   "decision": {
+    "value": 0.222,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-09: kept sr_legacy 0.222 g — no independent measurement in any local resource"
+   }
+  },
+  {
+   "nutrient_id": 1217,
+   "name": "Phenylalanine",
+   "unit": "g",
+   "verdict": "usda_only",
+   "reasons": [
+    "no independent foreign value"
+   ],
+   "decision": {
+    "value": 0.45,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-09: kept sr_legacy 0.45 g — no independent measurement in any local resource"
+   }
+  },
+  {
+   "nutrient_id": 1218,
+   "name": "Tyrosine",
+   "unit": "g",
+   "verdict": "usda_only",
+   "reasons": [
+    "no independent foreign value"
+   ],
+   "decision": {
+    "value": 0.303,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-09: kept sr_legacy 0.303 g — no independent measurement in any local resource"
+   }
+  },
+  {
+   "nutrient_id": 1211,
+   "name": "Threonine",
+   "unit": "g",
+   "verdict": "usda_only",
+   "reasons": [
+    "no independent foreign value"
+   ],
+   "decision": {
+    "value": 0.476,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-09: kept sr_legacy 0.476 g — no independent measurement in any local resource"
+   }
+  },
+  {
+   "nutrient_id": 1210,
+   "name": "Tryptophan",
+   "unit": "g",
+   "verdict": "review",
+   "reasons": [
+    "all 1 independent(s) differ >±20% from sr_legacy 0.107: AFCD 0.16"
+   ],
+   "decision": {
+    "value": 0.107,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-09: kept sr_legacy 0.107 g after review (intl differ: AFCD 0.16)",
+    "resolution": "Keep SR (US broiler program, fat n=35, region+measured): the single foreign source (AFCD skin composite, AU population/feed) diverges on this row as it does across the FA/mineral set - one-story population divergence, not a defect. LA specifically is the corn-fed n-6 pattern, 6th occurrence. Approved by Shahab 2026-09-09."
+   }
+  },
+  {
+   "nutrient_id": 1219,
+   "name": "Valine",
+   "unit": "g",
+   "verdict": "usda_only",
+   "reasons": [
+    "no independent foreign value"
+   ],
+   "decision": {
+    "value": 0.561,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-09: kept sr_legacy 0.561 g — no independent measurement in any local resource"
+   }
+  },
+  {
+   "nutrient_id": 1234,
+   "name": "Taurine",
+   "unit": "mg",
+   "verdict": "adopt_foreign",
+   "reasons": [
+    "no USDA value; 1 measured source(s) available"
+   ],
+   "decision": {
+    "value": 30.0,
+    "source": "literature",
+    "comment": "Validated 2026-09-09: no USDA value; set from PoultryFamily (Collagen-rich skin taurine (muscle 169 dark / 15.9-16 white; skin is low-taurine connective tissue)) — refs: PoultryFamily 30",
+    "resolution": "Adopt authored estimate 30 (collagen-low reasoning from validated family: dark muscle 169 / white ~16; NO measurement exists anywhere). SPARSE-EVIDENCE; low-stakes at diluent inclusions. Approved by Shahab 2026-09-09 with provenance disclosed."
+   }
+  },
+  {
+   "nutrient_id": 1004,
+   "name": "Total Fat",
+   "unit": "g",
+   "verdict": "confirm",
+   "reasons": [
+    "1/1 independent(s) within ±20%: AFCD 35.1"
+   ],
+   "decision": {
+    "value": 32.35,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-09: kept sr_legacy 32.35 g; refs within range: AFCD 35.1",
+    "num_samples": 35
+   }
+  },
+  {
+   "nutrient_id": 1269,
+   "name": "Linoleic acid",
+   "unit": "g",
+   "verdict": "review",
+   "reasons": [
+    "all 1 independent(s) differ >±20% from sr_legacy 6.22: AFCD 4.18"
+   ],
+   "decision": {
+    "value": 6.22,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-09: kept sr_legacy 6.22 g after review (intl differ: AFCD 4.18)",
+    "num_samples": 33,
+    "resolution": "Keep SR (US broiler program, fat n=35, region+measured): the single foreign source (AFCD skin composite, AU population/feed) diverges on this row as it does across the FA/mineral set - one-story population divergence, not a defect. LA specifically is the corn-fed n-6 pattern, 6th occurrence. Approved by Shahab 2026-09-09."
+   }
+  },
+  {
+   "nutrient_id": 1271,
+   "name": "Arachidonic acid",
+   "unit": "g",
+   "verdict": "review",
+   "reasons": [
+    "all 1 independent(s) differ >±20% from sr_legacy 0.09: AFCD 0.06634"
+   ],
+   "decision": {
+    "value": 0.09,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-09: kept sr_legacy 0.09 g after review (intl differ: AFCD 0.06634)",
+    "num_samples": 10,
+    "resolution": "Keep SR (US broiler program, fat n=35, region+measured): the single foreign source (AFCD skin composite, AU population/feed) diverges on this row as it does across the FA/mineral set - one-story population divergence, not a defect. LA specifically is the corn-fed n-6 pattern, 6th occurrence. Approved by Shahab 2026-09-09."
+   }
+  },
+  {
+   "nutrient_id": 1270,
+   "name": "Alpha-linolenic acid",
+   "unit": "g",
+   "verdict": "review",
+   "reasons": [
+    "all 1 independent(s) differ >±20% from sr_legacy 0.26: AFCD 0.36"
+   ],
+   "decision": {
+    "value": 0.26,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-09: kept sr_legacy 0.26 g after review (intl differ: AFCD 0.36)",
+    "num_samples": 27,
+    "resolution": "Keep SR (US broiler program, fat n=35, region+measured): the single foreign source (AFCD skin composite, AU population/feed) diverges on this row as it does across the FA/mineral set - one-story population divergence, not a defect. LA specifically is the corn-fed n-6 pattern, 6th occurrence. Approved by Shahab 2026-09-09."
+   }
+  },
+  {
+   "nutrient_id": 1278,
+   "name": "EPA",
+   "unit": "g",
+   "verdict": "region_keep",
+   "reasons": [
+    "region-sensitive; foreign cluster differs: AFCD 0 — US mean kept unless defective"
+   ],
+   "decision": {
+    "value": 0.02,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-09: kept sr_legacy 0.02 g (region rule; intl: AFCD 0)",
+    "num_samples": 6,
+    "resolution": "Region keep (US measured; AFCD's AU zeros/lows reflect feed system - grain-fed US poultry carries trace long-chain n-3). Approved by Shahab 2026-09-09."
+   }
+  },
+  {
+   "nutrient_id": 1272,
+   "name": "DHA",
+   "unit": "g",
+   "verdict": "region_keep",
+   "reasons": [
+    "region-sensitive; foreign cluster differs: AFCD 0 — US mean kept unless defective"
+   ],
+   "decision": {
+    "value": 0.03,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-09: kept sr_legacy 0.03 g (region rule; intl: AFCD 0)",
+    "num_samples": 3,
+    "resolution": "Region keep (US measured; AFCD's AU zeros/lows reflect feed system - grain-fed US poultry carries trace long-chain n-3). Approved by Shahab 2026-09-09."
+   }
+  },
+  {
+   "nutrient_id": 1293,
+   "name": "Fatty acids, total polyunsaturated",
+   "unit": "g",
+   "verdict": "review",
+   "reasons": [
+    "all 1 independent(s) differ >±20% from sr_legacy 6.81: AFCD 4.61"
+   ],
+   "decision": {
+    "value": 6.81,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-09: kept sr_legacy 6.81 g after review (intl differ: AFCD 4.61)",
+    "resolution": "Keep SR (US broiler program, fat n=35, region+measured): the single foreign source (AFCD skin composite, AU population/feed) diverges on this row as it does across the FA/mineral set - one-story population divergence, not a defect. LA specifically is the corn-fed n-6 pattern, 6th occurrence. Approved by Shahab 2026-09-09."
+   }
+  },
+  {
+   "nutrient_id": 1280,
+   "name": "DPA 22:5 n-3",
+   "unit": "g",
+   "verdict": "confirm",
+   "reasons": [
+    "1/1 independent(s) within ±20%: AFCD 0"
+   ],
+   "decision": {
+    "value": 0.01,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-09: kept sr_legacy 0.01 g; refs within range: AFCD 0",
+    "num_samples": 3
+   }
+  },
+  {
+   "nutrient_id": 1087,
+   "name": "Calcium",
+   "unit": "mg",
+   "verdict": "confirm",
+   "reasons": [
+    "1/1 independent(s) within ±20%: AFCD 13"
+   ],
+   "decision": {
+    "value": 11.0,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-09: kept sr_legacy 11 mg; refs within range: AFCD 13",
+    "num_samples": 24
+   }
+  },
+  {
+   "nutrient_id": 1091,
+   "name": "Phosphorus",
+   "unit": "mg",
+   "verdict": "confirm",
+   "reasons": [
+    "1/1 independent(s) within ±20%: AFCD 99"
+   ],
+   "decision": {
+    "value": 100.0,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-09: kept sr_legacy 100 mg; refs within range: AFCD 99",
+    "num_samples": 24
+   }
+  },
+  {
+   "nutrient_id": 1092,
+   "name": "Potassium",
+   "unit": "mg",
+   "verdict": "confirm",
+   "reasons": [
+    "1/1 independent(s) within ±20%: AFCD 120"
+   ],
+   "decision": {
+    "value": 103.0,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-09: kept sr_legacy 103 mg; refs within range: AFCD 120",
+    "num_samples": 24
+   }
+  },
+  {
+   "nutrient_id": 1093,
+   "name": "Sodium",
+   "unit": "mg",
+   "verdict": "review",
+   "reasons": [
+    "all 1 independent(s) differ >±20% from sr_legacy 63: AFCD 43"
+   ],
+   "decision": {
+    "value": 63.0,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-09: kept sr_legacy 63 mg after review (intl differ: AFCD 43)",
+    "num_samples": 24,
+    "resolution": "Keep SR (US broiler program, fat n=35, region+measured): the single foreign source (AFCD skin composite, AU population/feed) diverges on this row as it does across the FA/mineral set - one-story population divergence, not a defect. LA specifically is the corn-fed n-6 pattern, 6th occurrence. Approved by Shahab 2026-09-09."
+   }
+  },
+  {
+   "nutrient_id": 1088,
+   "name": "Chloride",
+   "unit": "mg",
+   "verdict": "adopt_foreign",
+   "reasons": [
+    "no USDA value; 1 measured source(s) available"
+   ],
+   "decision": {
+    "value": 32.0,
+    "source": "literature",
+    "comment": "Validated 2026-09-09: no USDA value; set from AFCD (F002773 Chicken, skin, composite, raw) — refs: AFCD 32",
+    "resolution": "Adopt AFCD 32 (ANALYSED, skin-specific - the only skin chloride measurement in existence; single-source dependency noted; Na 43:Cl 32 internally coherent). Approved by Shahab 2026-09-09."
+   }
+  },
+  {
+   "nutrient_id": 1090,
+   "name": "Magnesium",
+   "unit": "mg",
+   "verdict": "review",
+   "reasons": [
+    "all 1 independent(s) differ >±20% from sr_legacy 13: AFCD 8"
+   ],
+   "decision": {
+    "value": 13.0,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-09: kept sr_legacy 13 mg after review (intl differ: AFCD 8)",
+    "num_samples": 24,
+    "resolution": "Keep SR (US broiler program, fat n=35, region+measured): the single foreign source (AFCD skin composite, AU population/feed) diverges on this row as it does across the FA/mineral set - one-story population divergence, not a defect. LA specifically is the corn-fed n-6 pattern, 6th occurrence. Approved by Shahab 2026-09-09."
+   }
+  },
+  {
+   "nutrient_id": 1089,
+   "name": "Iron",
+   "unit": "mg",
+   "verdict": "review",
+   "reasons": [
+    "all 1 independent(s) differ >±20% from sr_legacy 1.08: AFCD 0.7"
+   ],
+   "decision": {
+    "value": 1.08,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-09: kept sr_legacy 1.08 mg after review (intl differ: AFCD 0.7)",
+    "num_samples": 24,
+    "resolution": "Keep SR (US broiler program, fat n=35, region+measured): the single foreign source (AFCD skin composite, AU population/feed) diverges on this row as it does across the FA/mineral set - one-story population divergence, not a defect. LA specifically is the corn-fed n-6 pattern, 6th occurrence. Approved by Shahab 2026-09-09."
+   }
+  },
+  {
+   "nutrient_id": 1098,
+   "name": "Copper",
+   "unit": "mg",
+   "verdict": "confirm",
+   "reasons": [
+    "1/1 independent(s) within ±20%: AFCD 0.04"
+   ],
+   "decision": {
+    "value": 0.041,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-09: kept sr_legacy 0.041 mg; refs within range: AFCD 0.04",
+    "num_samples": 24
+   }
+  },
+  {
+   "nutrient_id": 1101,
+   "name": "Manganese",
+   "unit": "mg",
+   "verdict": "confirm",
+   "reasons": [
+    "1/1 independent(s) within ±20%: AFCD 0.02"
+   ],
+   "decision": {
+    "value": 0.019,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-09: kept sr_legacy 0.019 mg; refs within range: AFCD 0.02",
+    "num_samples": 24
+   }
+  },
+  {
+   "nutrient_id": 1095,
+   "name": "Zinc",
+   "unit": "mg",
+   "verdict": "review",
+   "reasons": [
+    "all 1 independent(s) differ >±20% from sr_legacy 0.93: AFCD 0.7"
+   ],
+   "decision": {
+    "value": 0.93,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-09: kept sr_legacy 0.93 mg after review (intl differ: AFCD 0.7)",
+    "num_samples": 24,
+    "resolution": "Keep SR (US broiler program, fat n=35, region+measured): the single foreign source (AFCD skin composite, AU population/feed) diverges on this row as it does across the FA/mineral set - one-story population divergence, not a defect. LA specifically is the corn-fed n-6 pattern, 6th occurrence. Approved by Shahab 2026-09-09."
+   }
+  },
+  {
+   "nutrient_id": 1100,
+   "name": "Iodine",
+   "unit": "µg",
+   "verdict": "adopt_foreign",
+   "reasons": [
+    "no USDA value; 1 measured source(s) available"
+   ],
+   "decision": {
+    "value": 2.1,
+    "source": "literature",
+    "comment": "Validated 2026-09-09: no USDA value; set from AFCD (F002773 Chicken, skin, composite, raw) — refs: AFCD 2.1",
+    "resolution": "Adopt AFCD 2.1 (ANALYSED, skin-specific - beats the poultry-family estimate of 1; single-source dependency noted). Approved by Shahab 2026-09-09."
+   }
+  },
+  {
+   "nutrient_id": 1103,
+   "name": "Selenium",
+   "unit": "µg",
+   "verdict": "region_keep",
+   "reasons": [
+    "region-sensitive; foreign cluster differs: AFCD 0 — US mean kept unless defective"
+   ],
+   "decision": {
+    "value": 12.3,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-09: kept sr_legacy 12.3 µg (region rule; intl: AFCD 0)",
+    "num_samples": 3,
+    "derivation_description": "deriv A: Analytical",
+    "resolution": "Region keep (US measured; AFCD's AU zeros/lows reflect feed system - grain-fed US poultry carries trace long-chain n-3). Approved by Shahab 2026-09-09."
+   }
+  },
+  {
+   "nutrient_id": 1106,
+   "name": "Vitamin A",
+   "unit": "IU",
+   "verdict": "region_keep",
+   "reasons": [
+    "region-sensitive; foreign cluster differs: AFCD 366.3 — US mean kept unless defective"
+   ],
+   "decision": {
+    "value": 253.08,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-09: kept sr_legacy 253.08 IU (region rule; intl: AFCD 366.3)",
+    "derivation_description": "deriv NC: Calculated",
+    "resolution": "Region keep (US measured; AFCD's AU zeros/lows reflect feed system - grain-fed US poultry carries trace long-chain n-3). Approved by Shahab 2026-09-09."
+   }
+  },
+  {
+   "nutrient_id": 1110,
+   "name": "Vitamin D",
+   "unit": "IU",
+   "verdict": "region_keep",
+   "reasons": [
+    "region-sensitive; foreign cluster differs: AFCD 276 — US mean kept unless defective"
+   ],
+   "decision": {
+    "value": 24.0,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-09: kept sr_legacy 24 IU (region rule; intl: AFCD 276)",
+    "derivation_description": "deriv T: Taken from another source--other tables of food composition",
+    "resolution": "Region keep (US measured; AFCD's AU zeros/lows reflect feed system - grain-fed US poultry carries trace long-chain n-3). Approved by Shahab 2026-09-09."
+   }
+  },
+  {
+   "nutrient_id": 1109,
+   "name": "Vitamin E",
+   "unit": "IU",
+   "verdict": "region_keep",
+   "reasons": [
+    "region-sensitive; foreign cluster differs: AFCD 1.192 — US mean kept unless defective"
+   ],
+   "decision": {
+    "value": 0.0,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-09: kept sr_legacy 0 IU (region rule; intl: AFCD 1.192)",
+    "derivation_description": "deriv NR: Nutrient that is based on other nutrient/s",
+    "resolution": "Region keep (US measured; AFCD's AU zeros/lows reflect feed system - grain-fed US poultry carries trace long-chain n-3). Approved by Shahab 2026-09-09."
+   }
+  },
+  {
+   "nutrient_id": 1185,
+   "name": "Vitamin K",
+   "unit": "µg",
+   "verdict": "usda_only",
+   "reasons": [
+    "no independent foreign value"
+   ],
+   "decision": {
+    "value": 2.9,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-09: kept sr_legacy 2.9 µg — no independent measurement in any local resource",
+    "derivation_description": "deriv BFYN: Based on another form of the food or similar food"
+   }
+  },
+  {
+   "nutrient_id": 1165,
+   "name": "Thiamin",
+   "unit": "mg",
+   "verdict": "review",
+   "reasons": [
+    "all 1 independent(s) differ >±20% from sr_legacy 0.033: AFCD 0"
+   ],
+   "decision": {
+    "value": 0.033,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-09: kept sr_legacy 0.033 mg after review (intl differ: AFCD 0)",
+    "num_samples": 16,
+    "resolution": "Keep SR (US broiler program, fat n=35, region+measured): the single foreign source (AFCD skin composite, AU population/feed) diverges on this row as it does across the FA/mineral set - one-story population divergence, not a defect. LA specifically is the corn-fed n-6 pattern, 6th occurrence. Approved by Shahab 2026-09-09."
+   }
+  },
+  {
+   "nutrient_id": 1166,
+   "name": "Riboflavin",
+   "unit": "mg",
+   "verdict": "review",
+   "reasons": [
+    "all 1 independent(s) differ >±20% from sr_legacy 0.069: AFCD 0.1"
+   ],
+   "decision": {
+    "value": 0.069,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-09: kept sr_legacy 0.069 mg after review (intl differ: AFCD 0.1)",
+    "num_samples": 16,
+    "resolution": "Keep SR (US broiler program, fat n=35, region+measured): the single foreign source (AFCD skin composite, AU population/feed) diverges on this row as it does across the FA/mineral set - one-story population divergence, not a defect. LA specifically is the corn-fed n-6 pattern, 6th occurrence. Approved by Shahab 2026-09-09."
+   }
+  },
+  {
+   "nutrient_id": 1167,
+   "name": "Niacin",
+   "unit": "mg",
+   "verdict": "review",
+   "reasons": [
+    "all 1 independent(s) differ >±20% from sr_legacy 3.987: AFCD 2"
+   ],
+   "decision": {
+    "value": 3.987,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-09: kept sr_legacy 3.987 mg after review (intl differ: AFCD 2)",
+    "num_samples": 16,
+    "resolution": "Keep SR (US broiler program, fat n=35, region+measured): the single foreign source (AFCD skin composite, AU population/feed) diverges on this row as it does across the FA/mineral set - one-story population divergence, not a defect. LA specifically is the corn-fed n-6 pattern, 6th occurrence. Approved by Shahab 2026-09-09."
+   }
+  },
+  {
+   "nutrient_id": 1170,
+   "name": "Pantothenic acid",
+   "unit": "mg",
+   "verdict": "review",
+   "reasons": [
+    "all 1 independent(s) differ >±20% from sr_legacy 0.692: AFCD 0.3"
+   ],
+   "decision": {
+    "value": 0.692,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-09: kept sr_legacy 0.692 mg after review (intl differ: AFCD 0.3)",
+    "num_samples": 1,
+    "resolution": "Keep SR (US broiler program, fat n=35, region+measured): the single foreign source (AFCD skin composite, AU population/feed) diverges on this row as it does across the FA/mineral set - one-story population divergence, not a defect. LA specifically is the corn-fed n-6 pattern, 6th occurrence. Approved by Shahab 2026-09-09."
+   }
+  },
+  {
+   "nutrient_id": 1175,
+   "name": "Pyridoxine",
+   "unit": "mg",
+   "verdict": "confirm",
+   "reasons": [
+    "1/1 independent(s) within ±20%: AFCD 0.11"
+   ],
+   "decision": {
+    "value": 0.09,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-09: kept sr_legacy 0.09 mg; refs within range: AFCD 0.11",
+    "num_samples": 1
+   }
+  },
+  {
+   "nutrient_id": 1177,
+   "name": "Folic acid",
+   "unit": "µg",
+   "verdict": "review",
+   "reasons": [
+    "all 1 independent(s) differ >±20% from sr_legacy 3: AFCD 0"
+   ],
+   "decision": {
+    "value": 3.0,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-09: kept sr_legacy 3 µg after review (intl differ: AFCD 0)",
+    "resolution": "Keep SR (US broiler program, fat n=35, region+measured): the single foreign source (AFCD skin composite, AU population/feed) diverges on this row as it does across the FA/mineral set - one-story population divergence, not a defect. LA specifically is the corn-fed n-6 pattern, 6th occurrence. Approved by Shahab 2026-09-09."
+   }
+  },
+  {
+   "nutrient_id": 1178,
+   "name": "Cobalamin",
+   "unit": "µg",
+   "verdict": "confirm",
+   "reasons": [
+    "1/1 independent(s) within ±20%: AFCD 0.7"
+   ],
+   "decision": {
+    "value": 0.23,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-09: kept sr_legacy 0.23 µg; refs within range: AFCD 0.7"
+   }
+  },
+  {
+   "nutrient_id": 1176,
+   "name": "Biotin",
+   "unit": "µg",
+   "verdict": "adopt_foreign",
+   "reasons": [
+    "no USDA value; 1 measured source(s) available"
+   ],
+   "decision": {
+    "value": 1.5,
+    "source": "literature",
+    "comment": "Validated 2026-09-09: no USDA value; set from AFCD (F002773 Chicken, skin, composite, raw) — refs: AFCD 1.5",
+    "resolution": "Adopt AFCD 1.5 (ANALYSED, skin-specific; single-source dependency noted). Approved by Shahab 2026-09-09."
+   }
+  },
+  {
+   "nutrient_id": 1180,
+   "name": "Choline",
+   "unit": "mg",
+   "verdict": "adopt_foreign",
+   "reasons": [
+    "no USDA value; 1 measured source(s) available"
+   ],
+   "decision": {
+    "value": 50.0,
+    "source": "literature",
+    "comment": "Validated 2026-09-09: no USDA value; set from PoultryFamily (Skin choline (family: thigh meat 53-64, composite entries higher via lean)) — refs: PoultryFamily 50",
+    "resolution": "Adopt authored estimate 50 (no measurement exists: SR gap, AFCD carries no choline; family-informed). SPARSE-EVIDENCE. Approved by Shahab 2026-09-09 with provenance disclosed."
+   }
+  },
+  {
+   "nutrient_id": 1008,
+   "name": "Energy",
+   "unit": "kcal",
+   "verdict": "usda_only",
+   "reasons": [
+    "no independent foreign value"
+   ],
+   "decision": {
+    "value": 349.0,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-09: kept sr_legacy 349 kcal — no independent measurement in any local resource",
+    "derivation_description": "deriv NC: Calculated"
+   }
+  },
+  {
+   "nutrient_id": 1051,
+   "name": "Water",
+   "unit": "g",
+   "verdict": "confirm",
+   "reasons": [
+    "1/1 independent(s) within ±20%: AFCD 49.4"
+   ],
+   "decision": {
+    "value": 54.22,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-09: kept sr_legacy 54.22 g; refs within range: AFCD 49.4",
+    "num_samples": 30
+   }
+  },
+  {
+   "nutrient_id": 1007,
+   "name": "Ash",
+   "unit": "g",
+   "verdict": "confirm",
+   "reasons": [
+    "1/1 independent(s) within ±20%: AFCD 0.5"
+   ],
+   "decision": {
+    "value": 0.41,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-09: kept sr_legacy 0.41 g; refs within range: AFCD 0.5",
+    "num_samples": 25
+   }
+  },
+  {
+   "nutrient_id": 1079,
+   "name": "Crude Fiber",
+   "unit": "g",
+   "verdict": "confirm",
+   "reasons": [
+    "1/1 independent(s) within ±20%: AFCD 0"
+   ],
+   "decision": {
+    "value": 0.0,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-09: kept sr_legacy 0 g; refs within range: AFCD 0",
+    "derivation_description": "deriv Z: Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)"
+   }
+  },
+  {
+   "nutrient_id": 1005,
+   "name": "Carbohydrate",
+   "unit": "g",
+   "verdict": "confirm",
+   "reasons": [
+    "1/1 independent(s) within ±20%: AFCD 0"
+   ],
+   "decision": {
+    "value": 0.0,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-09: kept sr_legacy 0 g; refs within range: AFCD 0",
+    "derivation_description": "deriv Z: Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)"
+   }
+  }
+ ],
+ "reviewed_by": "Shahab",
+ "review_date": "2026-09-09"
+}
