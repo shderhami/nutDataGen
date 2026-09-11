@@ -40,7 +40,7 @@ SUPPLEMENT_INFO_SOURCES = ("online", "homemade")
 
 VALID_PROTEIN_SPECIES = (
     "chicken", "beef", "fish", "turkey",
-    "lamb", "pork", "duck", "rabbit", "mussel",
+    "lamb", "pork", "duck", "rabbit", "mussel", "egg",
 )
 
 # Categories for which the formulator flags are meaningful

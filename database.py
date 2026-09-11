@@ -98,7 +98,7 @@ SUPPLEMENT_INFO_SOURCES = ("online", "homemade")
 
 VALID_PROTEIN_SPECIES = (
     "chicken", "beef", "fish", "turkey",
-    "lamb", "pork", "duck", "rabbit", "mussel",
+    "lamb", "pork", "duck", "rabbit", "mussel", "egg",
 )
 
 # category -> ingredient_class, mirroring the backfill in alembic revision
