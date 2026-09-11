@@ -29,6 +29,7 @@ VALID_BASE_UNITS = ("g", "ml", "tsp", "tbsp", "drop", "capsule", "tablet", "unit
 VALID_CATEGORIES = (
     "Muscle Meat", "Organ Meat", "Fish & Seafood", "Egg",
     "Dairy", "Fish Oil", "Plant Matter", "Supplement", "Base",
+    "Animal Fat",
 )
 
 VALID_COOKING_METHODS = ("raw", "cooked", "boiled-drained")
@@ -44,7 +45,7 @@ VALID_PROTEIN_SPECIES = (
 
 # Categories for which the formulator flags are meaningful
 # (mirrors database.CORRECTOR_CATEGORIES / cv_config.SUPPLEMENT_CATEGORIES).
-CORRECTOR_CATEGORIES = ("Supplement", "Fish Oil")
+CORRECTOR_CATEGORIES = ("Supplement", "Fish Oil", "Animal Fat")
 
 
 def prompt_food_info() -> dict:

@@ -87,6 +87,7 @@ VALID_BASE_UNITS = ("g", "ml", "tsp", "tbsp", "drop", "capsule", "tablet", "unit
 VALID_CATEGORIES = (
     "Muscle Meat", "Organ Meat", "Fish & Seafood", "Egg",
     "Dairy", "Fish Oil", "Plant Matter", "Supplement", "Base",
+    "Animal Fat",
 )
 
 VALID_COOKING_METHODS = ("raw", "cooked", "boiled-drained")
@@ -110,6 +111,9 @@ CATEGORY_TO_INGREDIENT_CLASS = {
     "Egg": "egg",
     "Dairy": "dairy",
     "Fish Oil": "fat_oil",
+    # Rendered/separated terrestrial-animal fats (tallow, lard, duck fat, ghee).
+    # Same CV pool key as Fish Oil; tissues like chicken skin stay Muscle Meat.
+    "Animal Fat": "fat_oil",
     "Plant Matter": "plant",
     "Supplement": "supplement",
     "Base": "base",
@@ -118,7 +122,7 @@ CATEGORY_TO_INGREDIENT_CLASS = {
 # Categories where is_corrector is meaningful — the CV ladder only consults the flag
 # for these (mirrors cv_config.SUPPLEMENT_CATEGORIES; keep the two in sync). Setting it
 # on any other category would be silently ignored by resolve_cv.
-CORRECTOR_CATEGORIES = ("Supplement", "Fish Oil")
+CORRECTOR_CATEGORIES = ("Supplement", "Fish Oil", "Animal Fat")
 
 
 def ingredient_class_for(category: str) -> str:
