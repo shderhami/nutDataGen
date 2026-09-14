@@ -1,0 +1,54 @@
+{
+  "slug": "potato_boiled",
+  "food": {
+    "food_name": "potato boiled peeled",
+    "category": "Plant Matter",
+    "base_unit": "g",
+    "portion_qty": 100.0,
+    "grams_per_unit": 1.0,
+    "sr_legacy_fdc_id": 170440,
+    "cooking_method": "boiled-drained",
+    "price_per_unit": 0.0035,
+    "source": "grocery",
+    "protein_species": null,
+    "display_name": "Potato, boiled (peeled)"
+  },
+  "notes": [
+    "price_per_unit 0.0035/g confirmed by Shahab 2026-09-14 - COOKED-gram basis (rice-parity; sticker ~$1-1.30/lb raw x ~1.2-1.25 peel/boil yield factor lands here).",
+    "FRAME: FED-STATE basis per the rice 10033 precedent (boiled-drained) - the DB's starches store what recipes weigh and feed. SR 170440 'boiled, cooked without skin, flesh, without salt' = peeled, boiled, unsalted, exactly the customer prep. First MANDATORY-COOK ingredient (distinct from the steam-lightly veg class): raw potato is unsafe for cats (glycoalkaloids + indigestible raw starch).",
+    "CUSTOMER GUIDANCE (three hard rules for the popup): never raw; never green or sprouted potatoes (glycoalkaloids concentrate under skin and in sprouts - peeling + discarding green ones removes the hazard); boil in plain water, no salt.",
+    "FOUNDATION deliberately NOT paired: FND has only RAW entries (russet/red/gold 2346401-03, 2022 study, n=8) - frame-mismatched with the fed state. They serve as retention ANCHORS instead: raw K 450 (n=8) -> SR boiled 328 is the expected ~27% boil leach - coherent, validating the cooked entry's modern relevance. SR-primary food like rice.",
+    "PURPOSE: second starch, GRAIN-FREE alternative to rice 10033 (same role, same price); bonus mild Met dilution (Met 0.027 -> 0.31/1000 kcal); K-rich (328 cooked) toward the potassium minimum in meat-heavy recipes.",
+    "PRODUCE DOCTRINE expectations: taurine 0 (plant biochemical zero, literature row), vit A -> 0 species-correct if the SR row is carotene-RAE (potato ~nil anyway), vit K = K1-only IS complete for plants (no menaquinone misfire), D/B12 zeros are true zeros.",
+    "Panel: SR 170440 has 100 nutrients incl. full 12/12 AA panel; only the standard four gaps (taurine, Cl, iodine, biotin). Iodine gets a FRAME-EXACT US TDS entry (11367 peeled boiled) - no cooking back-adjustment needed, a first.",
+    "All seven sources are BOILED-frame-matched - the richest frame-exact coverage of any add: FCDB 801, BLS K110132, MEXT 02019, CIQUAL 4003, CoFID 13-490, AFCD F007320, TDS 11367."
+  ],
+  "sources": {
+    "fcdb": [
+      {"key": 801, "note": "Potato, boiled - Danish; check for stats (cv_intl candidate if n's present)"}
+    ],
+    "bls": [
+      {"key": "K110132", "note": "Potatoe peeled, boiled - German, exact frame; echo screen decides"}
+    ],
+    "mext": [
+      {"key": "02019", "note": "Potatoes, tuber, boiled - Japanese analysed; total-K = K1 for plants"}
+    ],
+    "ciqual": [
+      {"key": 4003, "note": "Pomme de terre, bouillie/cuite a l'eau - boiled; peel status unstated (French boiled convention is peeled) - minor frame note"}
+    ],
+    "cofid": [
+      {"key": "13-490", "note": "Potatoes, old, boiled in unsalted water, flesh only - UK, EXACT frame; chloride + biotin carrier"}
+    ],
+    "afcd": [
+      {"key": "F007320", "note": "Potato, pale skin, peeled, boiled, drained - the generic (non-variety) AU entry; check Derivation flags"}
+    ],
+    "iodine_db": [
+      {"key": "11367", "note": "Potato, peeled, boiled - US TDS in the EXACT fed frame (no cooking adjustment needed - a first for iodine anchoring)"}
+    ]
+  },
+  "literature": [
+    {"source": "Spitze03", "item": "Plant-matter taurine survey", "nutrient_id": 1234,
+     "value": 0, "unit": "mg", "quality": "analysed",
+     "note": "Plants carry no taurine - biochemical zero, not unmeasured (Spitze 2003 plant survey). Butternut/zucchini/green-beans convention."}
+  ]
+}

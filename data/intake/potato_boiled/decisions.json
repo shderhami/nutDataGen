@@ -1,0 +1,792 @@
+{
+ "slug": "potato_boiled",
+ "generated": "2026-09-14",
+ "engine": {
+  "agreement_rtol": 0.2,
+  "eps_by_unit": {
+   "g": 0.01,
+   "mg": 0.01,
+   "µg": 1.0,
+   "IU": 1.0,
+   "kcal": 6.0
+  },
+  "echo_rtol": 0.005,
+  "echo_min_matches": 5,
+  "echo_min_ratio": 0.4
+ },
+ "decisions": [
+  {
+   "nutrient_id": 1003,
+   "name": "Crude Protein",
+   "unit": "g",
+   "verdict": "confirm",
+   "reasons": [
+    "5/5 independent(s) within ±20%: BLS 2, MEXT 1.5, CIQUAL 1.8, CoFID 1.8, AFCD 1.5"
+   ],
+   "decision": {
+    "value": 1.71,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-14: kept sr_legacy 1.71 g; refs within range: BLS 2, MEXT 1.5, CIQUAL 1.8, CoFID 1.8, AFCD 1.5",
+    "num_samples": 6
+   }
+  },
+  {
+   "nutrient_id": 1220,
+   "name": "Arginine",
+   "unit": "g",
+   "verdict": "confirm",
+   "reasons": [
+    "1/1 independent(s) within ±20%: MEXT 0.073"
+   ],
+   "decision": {
+    "value": 0.079,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-14: kept sr_legacy 0.079 g; refs within range: MEXT 0.073"
+   }
+  },
+  {
+   "nutrient_id": 1221,
+   "name": "Histidine",
+   "unit": "g",
+   "verdict": "review",
+   "reasons": [
+    "all 1 independent(s) differ >±20% from sr_legacy 0.038: MEXT 0.026"
+   ],
+   "decision": {
+    "value": 0.038,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-14: kept sr_legacy 0.038 g after review (intl differ: MEXT 0.026)",
+    "resolution": "Keep SR measured panel (region rule): MEXT's AA-volume basis runs uniformly LOW across all seven contested AAs (method/basis, not per-row defects) and BLS is recipe-computed. One-story divergence. Approved by Shahab 2026-09-14."
+   }
+  },
+  {
+   "nutrient_id": 1212,
+   "name": "Isoleucine",
+   "unit": "g",
+   "verdict": "review",
+   "reasons": [
+    "all 1 independent(s) differ >±20% from sr_legacy 0.07: MEXT 0.049"
+   ],
+   "decision": {
+    "value": 0.07,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-14: kept sr_legacy 0.07 g after review (intl differ: MEXT 0.049)",
+    "resolution": "Keep SR measured panel (region rule): MEXT's AA-volume basis runs uniformly LOW across all seven contested AAs (method/basis, not per-row defects) and BLS is recipe-computed. One-story divergence. Approved by Shahab 2026-09-14."
+   }
+  },
+  {
+   "nutrient_id": 1213,
+   "name": "Leucine",
+   "unit": "g",
+   "verdict": "review",
+   "reasons": [
+    "all 1 independent(s) differ >±20% from sr_legacy 0.103: MEXT 0.08"
+   ],
+   "decision": {
+    "value": 0.103,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-14: kept sr_legacy 0.103 g after review (intl differ: MEXT 0.08)",
+    "resolution": "Keep SR measured panel (region rule): MEXT's AA-volume basis runs uniformly LOW across all seven contested AAs (method/basis, not per-row defects) and BLS is recipe-computed. One-story divergence. Approved by Shahab 2026-09-14."
+   }
+  },
+  {
+   "nutrient_id": 1214,
+   "name": "Lysine",
+   "unit": "g",
+   "verdict": "review",
+   "reasons": [
+    "all 1 independent(s) differ >±20% from sr_legacy 0.104: MEXT 0.083"
+   ],
+   "decision": {
+    "value": 0.104,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-14: kept sr_legacy 0.104 g after review (intl differ: MEXT 0.083)",
+    "resolution": "Keep SR measured panel (region rule): MEXT's AA-volume basis runs uniformly LOW across all seven contested AAs (method/basis, not per-row defects) and BLS is recipe-computed. One-story divergence. Approved by Shahab 2026-09-14."
+   }
+  },
+  {
+   "nutrient_id": 1215,
+   "name": "Methionine",
+   "unit": "g",
+   "verdict": "confirm",
+   "reasons": [
+    "1/1 independent(s) within ±20%: MEXT 0.024"
+   ],
+   "decision": {
+    "value": 0.027,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-14: kept sr_legacy 0.027 g; refs within range: MEXT 0.024"
+   }
+  },
+  {
+   "nutrient_id": 1216,
+   "name": "Cystine",
+   "unit": "g",
+   "verdict": "confirm",
+   "reasons": [
+    "1/1 independent(s) within ±20%: MEXT 0.02"
+   ],
+   "decision": {
+    "value": 0.022,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-14: kept sr_legacy 0.022 g; refs within range: MEXT 0.02"
+   }
+  },
+  {
+   "nutrient_id": 1217,
+   "name": "Phenylalanine",
+   "unit": "g",
+   "verdict": "review",
+   "reasons": [
+    "all 1 independent(s) differ >±20% from sr_legacy 0.076: MEXT 0.058"
+   ],
+   "decision": {
+    "value": 0.076,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-14: kept sr_legacy 0.076 g after review (intl differ: MEXT 0.058)",
+    "resolution": "Keep SR measured panel (region rule): MEXT's AA-volume basis runs uniformly LOW across all seven contested AAs (method/basis, not per-row defects) and BLS is recipe-computed. One-story divergence. Approved by Shahab 2026-09-14."
+   }
+  },
+  {
+   "nutrient_id": 1218,
+   "name": "Tyrosine",
+   "unit": "g",
+   "verdict": "review",
+   "reasons": [
+    "all 1 independent(s) differ >±20% from sr_legacy 0.064: MEXT 0.049"
+   ],
+   "decision": {
+    "value": 0.064,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-14: kept sr_legacy 0.064 g after review (intl differ: MEXT 0.049)",
+    "resolution": "Keep SR measured panel (region rule): MEXT's AA-volume basis runs uniformly LOW across all seven contested AAs (method/basis, not per-row defects) and BLS is recipe-computed. One-story divergence. Approved by Shahab 2026-09-14."
+   }
+  },
+  {
+   "nutrient_id": 1211,
+   "name": "Threonine",
+   "unit": "g",
+   "verdict": "confirm",
+   "reasons": [
+    "1/1 independent(s) within ±20%: MEXT 0.054"
+   ],
+   "decision": {
+    "value": 0.062,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-14: kept sr_legacy 0.062 g; refs within range: MEXT 0.054"
+   }
+  },
+  {
+   "nutrient_id": 1210,
+   "name": "Tryptophan",
+   "unit": "g",
+   "verdict": "confirm",
+   "reasons": [
+    "2/2 independent(s) within ±20%: MEXT 0.017, AFCD 0.018"
+   ],
+   "decision": {
+    "value": 0.027,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-14: kept sr_legacy 0.027 g; refs within range: MEXT 0.017, AFCD 0.018"
+   }
+  },
+  {
+   "nutrient_id": 1219,
+   "name": "Valine",
+   "unit": "g",
+   "verdict": "review",
+   "reasons": [
+    "all 1 independent(s) differ >±20% from sr_legacy 0.096: MEXT 0.075"
+   ],
+   "decision": {
+    "value": 0.096,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-14: kept sr_legacy 0.096 g after review (intl differ: MEXT 0.075)",
+    "resolution": "Keep SR measured panel (region rule): MEXT's AA-volume basis runs uniformly LOW across all seven contested AAs (method/basis, not per-row defects) and BLS is recipe-computed. One-story divergence. Approved by Shahab 2026-09-14."
+   }
+  },
+  {
+   "nutrient_id": 1234,
+   "name": "Taurine",
+   "unit": "mg",
+   "verdict": "adopt_foreign",
+   "reasons": [
+    "no USDA value; 1 measured source(s) available"
+   ],
+   "decision": {
+    "value": 0.0,
+    "source": "literature",
+    "comment": "Validated 2026-09-14: no USDA value; set from Spitze03 (Plant-matter taurine survey) — refs: Spitze03 0",
+    "resolution": "Plant biochemical zero (Spitze survey) - 4th application of the convention. Approved by Shahab 2026-09-14."
+   }
+  },
+  {
+   "nutrient_id": 1004,
+   "name": "Total Fat",
+   "unit": "g",
+   "verdict": "confirm",
+   "reasons": [
+    "3/4 independent(s) within ±20%: MEXT 0.1, CoFID 0.1, AFCD 0.1"
+   ],
+   "decision": {
+    "value": 0.1,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-14: kept sr_legacy 0.1 g; refs within range: MEXT 0.1, CoFID 0.1, AFCD 0.1"
+   }
+  },
+  {
+   "nutrient_id": 1269,
+   "name": "Linoleic acid",
+   "unit": "g",
+   "verdict": "confirm",
+   "reasons": [
+    "1/3 independent(s) within ±20%: CIQUAL 0.032"
+   ],
+   "decision": {
+    "value": 0.032,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-14: kept sr_legacy 0.032 g; refs within range: CIQUAL 0.032"
+   }
+  },
+  {
+   "nutrient_id": 1271,
+   "name": "Arachidonic acid",
+   "unit": "g",
+   "verdict": "confirm",
+   "reasons": [
+    "1/1 independent(s) within ±20%: AFCD 0"
+   ],
+   "decision": {
+    "value": 0.0,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-14: kept sr_legacy 0 g; refs within range: AFCD 0"
+   }
+  },
+  {
+   "nutrient_id": 1270,
+   "name": "Alpha-linolenic acid",
+   "unit": "g",
+   "verdict": "confirm",
+   "reasons": [
+    "3/3 independent(s) within ±20%: MEXT 0.005, CIQUAL 0.011, AFCD 0"
+   ],
+   "decision": {
+    "value": 0.01,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-14: kept sr_legacy 0.01 g; refs within range: MEXT 0.005, CIQUAL 0.011, AFCD 0"
+   }
+  },
+  {
+   "nutrient_id": 1278,
+   "name": "EPA",
+   "unit": "g",
+   "verdict": "confirm",
+   "reasons": [
+    "2/2 independent(s) within ±20%: CIQUAL 0, AFCD 0"
+   ],
+   "decision": {
+    "value": 0.0,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-14: kept sr_legacy 0 g; refs within range: CIQUAL 0, AFCD 0"
+   }
+  },
+  {
+   "nutrient_id": 1272,
+   "name": "DHA",
+   "unit": "g",
+   "verdict": "confirm",
+   "reasons": [
+    "2/2 independent(s) within ±20%: CIQUAL 0, AFCD 0"
+   ],
+   "decision": {
+    "value": 0.0,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-14: kept sr_legacy 0 g; refs within range: CIQUAL 0, AFCD 0"
+   }
+  },
+  {
+   "nutrient_id": 1293,
+   "name": "Fatty acids, total polyunsaturated",
+   "unit": "g",
+   "verdict": "review",
+   "reasons": [
+    "all 3 independent(s) differ >±20% from sr_legacy 0.043: MEXT 0.02, CoFID 0.01, AFCD 0"
+   ],
+   "decision": {
+    "value": 0.043,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-14: kept sr_legacy 0.043 g after review (intl differ: MEXT 0.02, CoFID 0.01, AFCD 0)",
+    "resolution": "Keep SR 0.043: trace FAs in 0.1 g fat, component-coherent (LA+ALA 0.042); foreign lows are near-detection noise."
+   }
+  },
+  {
+   "nutrient_id": 1280,
+   "name": "DPA 22:5 n-3",
+   "unit": "g",
+   "verdict": "confirm",
+   "reasons": [
+    "1/1 independent(s) within ±20%: AFCD 0"
+   ],
+   "decision": {
+    "value": 0.0,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-14: kept sr_legacy 0 g; refs within range: AFCD 0"
+   }
+  },
+  {
+   "nutrient_id": 1087,
+   "name": "Calcium",
+   "unit": "mg",
+   "verdict": "confirm",
+   "reasons": [
+    "1/5 independent(s) within ±20%: BLS 6.7"
+   ],
+   "decision": {
+    "value": 8.0,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-14: kept sr_legacy 8 mg; refs within range: BLS 6.7",
+    "num_samples": 6
+   }
+  },
+  {
+   "nutrient_id": 1091,
+   "name": "Phosphorus",
+   "unit": "mg",
+   "verdict": "confirm",
+   "reasons": [
+    "3/5 independent(s) within ±20%: BLS 32.5, CIQUAL 37.2, AFCD 46"
+   ],
+   "decision": {
+    "value": 40.0,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-14: kept sr_legacy 40 mg; refs within range: BLS 32.5, CIQUAL 37.2, AFCD 46",
+    "num_samples": 6
+   }
+  },
+  {
+   "nutrient_id": 1092,
+   "name": "Potassium",
+   "unit": "mg",
+   "verdict": "confirm",
+   "reasons": [
+    "5/5 independent(s) within ±20%: BLS 383.8, MEXT 340, CIQUAL 363, CoFID 365, AFCD 316"
+   ],
+   "decision": {
+    "value": 328.0,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-14: kept sr_legacy 328 mg; refs within range: BLS 383.8, MEXT 340, CIQUAL 363, CoFID 365, AFCD 316"
+   }
+  },
+  {
+   "nutrient_id": 1093,
+   "name": "Sodium",
+   "unit": "mg",
+   "verdict": "review",
+   "reasons": [
+    "all 5 independent(s) differ >±20% from sr_legacy 5: BLS 2.6, MEXT 1, CIQUAL 20.6, CoFID 1, AFCD 8"
+   ],
+   "decision": {
+    "value": 5.0,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-14: kept sr_legacy 5 mg after review (intl differ: BLS 2.6, MEXT 1, CIQUAL 20.6, CoFID 1, AFCD 8)",
+    "num_samples": 6,
+    "resolution": "Keep SR 5: mid-cluster of 1-8; CIQUAL 20.6 is the outlier; trace-level row."
+   }
+  },
+  {
+   "nutrient_id": 1088,
+   "name": "Chloride",
+   "unit": "mg",
+   "verdict": "adopt_foreign",
+   "reasons": [
+    "no USDA value; 2 measured source(s) available",
+    "anchor is a tie-break between split sources — review must arbitrate"
+   ],
+   "decision": {
+    "value": 61.0,
+    "source": "literature",
+    "comment": "Validated 2026-09-14: no USDA value; set from CIQUAL (4003 Pomme de terre, bouillie/cuite à l'eau) — refs: CIQUAL 61, CoFID 74",
+    "resolution": "Adopt CIQUAL 61 - tie-break median of an all-compiled band (BLS 43 computed / CIQUAL 61 / CoFID 74); no analysed chloride exists for boiled potato. Approved by Shahab 2026-09-14."
+   }
+  },
+  {
+   "nutrient_id": 1090,
+   "name": "Magnesium",
+   "unit": "mg",
+   "verdict": "confirm",
+   "reasons": [
+    "4/5 independent(s) within ±20%: BLS 21.8, MEXT 18, CIQUAL 17.3, CoFID 18"
+   ],
+   "decision": {
+    "value": 20.0,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-14: kept sr_legacy 20 mg; refs within range: BLS 21.8, MEXT 18, CIQUAL 17.3, CoFID 18",
+    "num_samples": 6
+   }
+  },
+  {
+   "nutrient_id": 1089,
+   "name": "Iron",
+   "unit": "mg",
+   "verdict": "confirm",
+   "reasons": [
+    "3/5 independent(s) within ±20%: CIQUAL 0.27, CoFID 0.34, AFCD 0.31"
+   ],
+   "decision": {
+    "value": 0.31,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-14: kept sr_legacy 0.31 mg; refs within range: CIQUAL 0.27, CoFID 0.34, AFCD 0.31",
+    "num_samples": 6
+   }
+  },
+  {
+   "nutrient_id": 1098,
+   "name": "Copper",
+   "unit": "mg",
+   "verdict": "review",
+   "reasons": [
+    "all 5 independent(s) differ >±20% from sr_legacy 0.167: BLS 0.1092, MEXT 0.08, CIQUAL 0.076, CoFID 0.06, AFCD 0.056"
+   ],
+   "decision": {
+    "value": 0.109,
+    "source": "literature",
+    "comment": "Validated 2026-09-14: SR 0.167 OVERRIDDEN -> BLS K110132 analysed 0.109 (frame-exact boiled measurement). SR sits 1.5-3x above FIVE independents (analysed cluster 0.056-0.109), and the modern FND raw trio reads 0.091-0.130 (n=8 x3 varieties) -> boiled ~0.08-0.11. Handbook-era overstatement; FCDB's agreeing 0.167 is an SR-R20 echo.",
+    "resolution": "Override keep-primary: modern-US raw trio + five-way analysed convergence against a handbook value. Approved by Shahab 2026-09-14."
+   }
+  },
+  {
+   "nutrient_id": 1101,
+   "name": "Manganese",
+   "unit": "mg",
+   "verdict": "confirm",
+   "reasons": [
+    "1/5 independent(s) within ±20%: CoFID 0.12"
+   ],
+   "decision": {
+    "value": 0.14,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-14: kept sr_legacy 0.14 mg; refs within range: CoFID 0.12",
+    "num_samples": 6
+   }
+  },
+  {
+   "nutrient_id": 1095,
+   "name": "Zinc",
+   "unit": "mg",
+   "verdict": "confirm",
+   "reasons": [
+    "2/5 independent(s) within ±20%: BLS 0.3092, AFCD 0.23"
+   ],
+   "decision": {
+    "value": 0.27,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-14: kept sr_legacy 0.27 mg; refs within range: BLS 0.3092, AFCD 0.23",
+    "num_samples": 6
+   }
+  },
+  {
+   "nutrient_id": 1100,
+   "name": "Iodine",
+   "unit": "µg",
+   "verdict": "adopt_foreign",
+   "reasons": [
+    "no USDA value; 5 measured source(s) available",
+    "detection-limit info: CIQUAL <= 5"
+   ],
+   "decision": {
+    "value": 0.5,
+    "source": "literature",
+    "comment": "Validated 2026-09-14: <LOD convention 0.5 (butternut precedent), now with a FRAME-EXACT US basis: TDS 11367 'Potato, peeled, boiled' reads 0 with SD 0.1 - below LOQ. MEXT 0/AFCD 1.3/CoFID 1 agree trace-level; BLS 4.3 is the German outlier; CIQUAL censored <=5.",
+    "resolution": "Override machine's CoFID-1 median pick: the frame-exact US TDS near-zero governs per the region rule; stored as the established <LOD convention value. Approved by Shahab 2026-09-14."
+   }
+  },
+  {
+   "nutrient_id": 1103,
+   "name": "Selenium",
+   "unit": "µg",
+   "verdict": "confirm",
+   "reasons": [
+    "2/2 independent(s) within ±20%: MEXT 0, AFCD 0.5",
+    "detection-limit info: CIQUAL <= 10, CoFID trace"
+   ],
+   "decision": {
+    "value": 0.3,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-14: kept sr_legacy 0.3 µg; refs within range: MEXT 0, AFCD 0.5",
+    "derivation_description": "deriv BFSN: Based on another form of the food or similar food"
+   }
+  },
+  {
+   "nutrient_id": 1106,
+   "name": "Vitamin A",
+   "unit": "IU",
+   "verdict": "confirm",
+   "reasons": [
+    "4/4 independent(s) within ±20%: MEXT 0, CIQUAL 0, CoFID 0, AFCD 0"
+   ],
+   "decision": {
+    "value": 0.0,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-14: kept sr_legacy 0 IU; refs within range: MEXT 0, CIQUAL 0, CoFID 0, AFCD 0",
+    "derivation_description": "deriv NC: Calculated"
+   }
+  },
+  {
+   "nutrient_id": 1110,
+   "name": "Vitamin D",
+   "unit": "IU",
+   "verdict": "confirm",
+   "reasons": [
+    "4/4 independent(s) within ±20%: MEXT 0, CIQUAL 0, CoFID 0, AFCD 0"
+   ],
+   "decision": {
+    "value": 0.0,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-14: kept sr_legacy 0 IU; refs within range: MEXT 0, CIQUAL 0, CoFID 0, AFCD 0",
+    "derivation_description": "deriv Z: Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)"
+   }
+  },
+  {
+   "nutrient_id": 1109,
+   "name": "Vitamin E",
+   "unit": "IU",
+   "verdict": "confirm",
+   "reasons": [
+    "4/4 independent(s) within ±20%: MEXT 0.149, CIQUAL 0.0149, CoFID 0.0149, AFCD 0"
+   ],
+   "decision": {
+    "value": 0.0149,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-14: kept sr_legacy 0.0149 IU; refs within range: MEXT 0.149, CIQUAL 0.0149, CoFID 0.0149, AFCD 0",
+    "derivation_description": "deriv BFSN: Based on another form of the food or similar food"
+   }
+  },
+  {
+   "nutrient_id": 1185,
+   "name": "Vitamin K",
+   "unit": "µg",
+   "verdict": "confirm",
+   "reasons": [
+    "1/2 independent(s) within ±20%: CIQUAL 2.1"
+   ],
+   "decision": {
+    "value": 2.2,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-14: kept sr_legacy 2.2 µg; refs within range: CIQUAL 2.1",
+    "derivation_description": "deriv BFSN: Based on another form of the food or similar food"
+   }
+  },
+  {
+   "nutrient_id": 1165,
+   "name": "Thiamin",
+   "unit": "mg",
+   "verdict": "confirm",
+   "reasons": [
+    "1/5 independent(s) within ±20%: CIQUAL 0.079"
+   ],
+   "decision": {
+    "value": 0.098,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-14: kept sr_legacy 0.098 mg; refs within range: CIQUAL 0.079",
+    "num_samples": 6
+   }
+  },
+  {
+   "nutrient_id": 1166,
+   "name": "Riboflavin",
+   "unit": "mg",
+   "verdict": "confirm",
+   "reasons": [
+    "1/3 independent(s) within ±20%: AFCD 0.013",
+    "detection-limit info: CIQUAL <= 0.04, CoFID trace"
+   ],
+   "decision": {
+    "value": 0.019,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-14: kept sr_legacy 0.019 mg; refs within range: AFCD 0.013",
+    "num_samples": 6
+   }
+  },
+  {
+   "nutrient_id": 1167,
+   "name": "Niacin",
+   "unit": "mg",
+   "verdict": "review",
+   "reasons": [
+    "all 4 independent(s) differ >±20% from sr_legacy 1.312: MEXT 0.8, CIQUAL 1.73, CoFID 0.5, AFCD 0.1"
+   ],
+   "decision": {
+    "value": 1.312,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-14: kept sr_legacy 1.312 mg after review (intl differ: MEXT 0.8, CIQUAL 1.73, CoFID 0.5, AFCD 0.1)",
+    "num_samples": 6,
+    "resolution": "Keep SR 1.312 - STRENGTHENED by the retention axis: FND raw trio 1.48-1.59 (n=8 x3) x boil retention = 1.1-1.27, exactly bracketing SR's boiled value; foreign scatter 0.1-1.73 is method noise."
+   }
+  },
+  {
+   "nutrient_id": 1170,
+   "name": "Pantothenic acid",
+   "unit": "mg",
+   "verdict": "confirm",
+   "reasons": [
+    "2/4 independent(s) within ±20%: CIQUAL 0.57, CoFID 0.43"
+   ],
+   "decision": {
+    "value": 0.509,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-14: kept sr_legacy 0.509 mg; refs within range: CIQUAL 0.57, CoFID 0.43"
+   }
+  },
+  {
+   "nutrient_id": 1175,
+   "name": "Pyridoxine",
+   "unit": "mg",
+   "verdict": "review",
+   "reasons": [
+    "all 5 independent(s) differ >±20% from sr_legacy 0.269: BLS 0.0462, MEXT 0.18, CIQUAL 0.34, CoFID 0.06, AFCD 0.05"
+   ],
+   "decision": {
+    "value": 0.11,
+    "source": "calculated",
+    "comment": "Validated 2026-09-14: SR 0.269 OVERRIDDEN -> 0.11 = FND raw trio mean 0.149 (0.1573/0.1441/0.145, n=8 each) x 0.75 USDA boil-retention. The foreign field is genuinely BIMODAL (0.046-0.06 vs 0.18-0.34) so no single point is trustworthy; the modern-US-anchored retention arithmetic lands mid-field and conservative for a min-credited nutrient. SR 0.269 tops the entire field (handbook era).",
+    "resolution": "Override keep-primary via the retention-arithmetic axis (first use as a decision basis; it also CONFIRMED niacin). Conservative min-credit direction. Approved by Shahab 2026-09-14."
+   }
+  },
+  {
+   "nutrient_id": 1177,
+   "name": "Folic acid",
+   "unit": "µg",
+   "verdict": "confirm",
+   "reasons": [
+    "1/3 independent(s) within ±20%: AFCD 10"
+   ],
+   "decision": {
+    "value": 9.0,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-14: kept sr_legacy 9 µg; refs within range: AFCD 10",
+    "num_samples": 6
+   }
+  },
+  {
+   "nutrient_id": 1178,
+   "name": "Cobalamin",
+   "unit": "µg",
+   "verdict": "confirm",
+   "reasons": [
+    "4/4 independent(s) within ±20%: MEXT 0, CIQUAL 0, CoFID 0, AFCD 0"
+   ],
+   "decision": {
+    "value": 0.0,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-14: kept sr_legacy 0 µg; refs within range: MEXT 0, CIQUAL 0, CoFID 0, AFCD 0",
+    "derivation_description": "deriv Z: Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)"
+   }
+  },
+  {
+   "nutrient_id": 1176,
+   "name": "Biotin",
+   "unit": "µg",
+   "verdict": "adopt_foreign",
+   "reasons": [
+    "no USDA value; 2 measured source(s) available"
+   ],
+   "decision": {
+    "value": 0.3,
+    "source": "literature",
+    "comment": "Validated 2026-09-14: no USDA value; set from MEXT (02019 Potatoes, tuber, boiled) — refs: MEXT 0.3, CoFID 0.3",
+    "resolution": "Adopt 0.3 - rare three-way exact agreement (MEXT analysed, CoFID compiled, BLS literature all 0.3). Approved by Shahab 2026-09-14."
+   }
+  },
+  {
+   "nutrient_id": 1180,
+   "name": "Choline",
+   "unit": "mg",
+   "verdict": "usda_only",
+   "reasons": [
+    "no independent foreign value"
+   ],
+   "decision": {
+    "value": 13.2,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-14: kept sr_legacy 13.2 mg — no independent measurement in any local resource",
+    "derivation_description": "deriv BFSN: Based on another form of the food or similar food"
+   }
+  },
+  {
+   "nutrient_id": 1008,
+   "name": "Energy",
+   "unit": "kcal",
+   "verdict": "confirm",
+   "reasons": [
+    "1/1 independent(s) within ±20%: CoFID 74"
+   ],
+   "decision": {
+    "value": 86.0,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-14: kept sr_legacy 86 kcal; refs within range: CoFID 74",
+    "derivation_description": "deriv NC: Calculated"
+   }
+  },
+  {
+   "nutrient_id": 1051,
+   "name": "Water",
+   "unit": "g",
+   "verdict": "confirm",
+   "reasons": [
+    "5/5 independent(s) within ±20%: BLS 76.3, MEXT 81, CIQUAL 78.3, CoFID 78.9, AFCD 81.5"
+   ],
+   "decision": {
+    "value": 77.46,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-14: kept sr_legacy 77.46 g; refs within range: BLS 76.3, MEXT 81, CIQUAL 78.3, CoFID 78.9, AFCD 81.5",
+    "num_samples": 6
+   }
+  },
+  {
+   "nutrient_id": 1007,
+   "name": "Ash",
+   "unit": "g",
+   "verdict": "confirm",
+   "reasons": [
+    "2/3 independent(s) within ±20%: MEXT 0.6, AFCD 0.8"
+   ],
+   "decision": {
+    "value": 0.72,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-14: kept sr_legacy 0.72 g; refs within range: MEXT 0.6, AFCD 0.8",
+    "num_samples": 6
+   }
+  },
+  {
+   "nutrient_id": 1079,
+   "name": "Crude Fiber",
+   "unit": "g",
+   "verdict": "confirm",
+   "reasons": [
+    "4/4 independent(s) within ±20%: MEXT 1.6, CIQUAL 1.8, CoFID 1.6, AFCD 2"
+   ],
+   "decision": {
+    "value": 1.8,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-14: kept sr_legacy 1.8 g; refs within range: MEXT 1.6, CIQUAL 1.8, CoFID 1.6, AFCD 2"
+   }
+  },
+  {
+   "nutrient_id": 1005,
+   "name": "Carbohydrate",
+   "unit": "g",
+   "verdict": "confirm",
+   "reasons": [
+    "2/3 independent(s) within ±20%: MEXT 16.8, CIQUAL 16.8"
+   ],
+   "decision": {
+    "value": 20.01,
+    "source": "sr_legacy",
+    "comment": "Validated 2026-09-14: kept sr_legacy 20.01 g; refs within range: MEXT 16.8, CIQUAL 16.8",
+    "derivation_description": "deriv NC: Calculated"
+   }
+  }
+ ],
+ "reviewed_by": "Shahab",
+ "review_date": "2026-09-14"
+}

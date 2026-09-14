@@ -1,0 +1,9 @@
+{
+  "slug": "potato_boiled",
+  "food_id": 10068,
+  "written_at": "2026-09-14T12:34:05",
+  "reviewed_by": "Shahab",
+  "signed_off_by": "Shahab",
+  "decisions_file": "decisions.json",
+  "backup": "/Users/shahab/Documents/Apps/nutDataGen/backups/cat_food_formulator_pre_intake_potato_boiled_20260914_123404.dump"
+}
