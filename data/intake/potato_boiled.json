@@ -15,7 +15,7 @@
   },
   "notes": [
     "price_per_unit 0.0035/g confirmed by Shahab 2026-09-14 - COOKED-gram basis (rice-parity; sticker ~$1-1.30/lb raw x ~1.2-1.25 peel/boil yield factor lands here).",
-    "FRAME: FED-STATE basis per the rice 10033 precedent (boiled-drained) - the DB's starches store what recipes weigh and feed. SR 170440 'boiled, cooked without skin, flesh, without salt' = peeled, boiled, unsalted, exactly the customer prep. First MANDATORY-COOK ingredient (distinct from the steam-lightly veg class): raw potato is unsafe for cats (glycoalkaloids + indigestible raw starch).",
+    "FRAME: COOKED (fed-state) basis - SR 170440 'boiled, cooked without skin, flesh, without salt' = peeled, boiled, unsalted, exactly the customer prep; cooking_method boiled-drained. CORRECTION 2026-09-14: the original note claimed this followed 'the rice 10033 precedent' - FALSE: rice is DRY-basis (365 kcal/water 11.2, verified by macro fingerprint) and its boiled-drained flag describes PREP, not basis. The cooked frame stands on its own merits: raw potato is unsafe as a basis (glycoalkaloids + indigestible raw starch) and weigh-after-cooking is the only accurate dosing under variable cook yields. DOSING BASIS RULE: potato recipe amounts = COOKED grams (weigh after cooking; buy ~1.25x raw); rice amounts = DRY grams. State per ingredient on The Lils.",
     "CUSTOMER GUIDANCE (three hard rules for the popup): never raw; never green or sprouted potatoes (glycoalkaloids concentrate under skin and in sprouts - peeling + discarding green ones removes the hazard); boil in plain water, no salt.",
     "FOUNDATION deliberately NOT paired: FND has only RAW entries (russet/red/gold 2346401-03, 2022 study, n=8) - frame-mismatched with the fed state. They serve as retention ANCHORS instead: raw K 450 (n=8) -> SR boiled 328 is the expected ~27% boil leach - coherent, validating the cooked entry's modern relevance. SR-primary food like rice.",
     "PURPOSE: second starch, GRAIN-FREE alternative to rice 10033 (same role, same price); bonus mild Met dilution (Met 0.027 -> 0.31/1000 kcal); K-rich (328 cooked) toward the potassium minimum in meat-heavy recipes.",
@@ -25,30 +25,57 @@
   ],
   "sources": {
     "fcdb": [
-      {"key": 801, "note": "Potato, boiled - Danish; check for stats (cv_intl candidate if n's present)"}
+      {
+        "key": 801,
+        "note": "Potato, boiled - Danish; check for stats (cv_intl candidate if n's present)"
+      }
     ],
     "bls": [
-      {"key": "K110132", "note": "Potatoe peeled, boiled - German, exact frame; echo screen decides"}
+      {
+        "key": "K110132",
+        "note": "Potatoe peeled, boiled - German, exact frame; echo screen decides"
+      }
     ],
     "mext": [
-      {"key": "02019", "note": "Potatoes, tuber, boiled - Japanese analysed; total-K = K1 for plants"}
+      {
+        "key": "02019",
+        "note": "Potatoes, tuber, boiled - Japanese analysed; total-K = K1 for plants"
+      }
     ],
     "ciqual": [
-      {"key": 4003, "note": "Pomme de terre, bouillie/cuite a l'eau - boiled; peel status unstated (French boiled convention is peeled) - minor frame note"}
+      {
+        "key": 4003,
+        "note": "Pomme de terre, bouillie/cuite a l'eau - boiled; peel status unstated (French boiled convention is peeled) - minor frame note"
+      }
     ],
     "cofid": [
-      {"key": "13-490", "note": "Potatoes, old, boiled in unsalted water, flesh only - UK, EXACT frame; chloride + biotin carrier"}
+      {
+        "key": "13-490",
+        "note": "Potatoes, old, boiled in unsalted water, flesh only - UK, EXACT frame; chloride + biotin carrier"
+      }
     ],
     "afcd": [
-      {"key": "F007320", "note": "Potato, pale skin, peeled, boiled, drained - the generic (non-variety) AU entry; check Derivation flags"}
+      {
+        "key": "F007320",
+        "note": "Potato, pale skin, peeled, boiled, drained - the generic (non-variety) AU entry; check Derivation flags"
+      }
     ],
     "iodine_db": [
-      {"key": "11367", "note": "Potato, peeled, boiled - US TDS in the EXACT fed frame (no cooking adjustment needed - a first for iodine anchoring)"}
+      {
+        "key": "11367",
+        "note": "Potato, peeled, boiled - US TDS in the EXACT fed frame (no cooking adjustment needed - a first for iodine anchoring)"
+      }
     ]
   },
   "literature": [
-    {"source": "Spitze03", "item": "Plant-matter taurine survey", "nutrient_id": 1234,
-     "value": 0, "unit": "mg", "quality": "analysed",
-     "note": "Plants carry no taurine - biochemical zero, not unmeasured (Spitze 2003 plant survey). Butternut/zucchini/green-beans convention."}
+    {
+      "source": "Spitze03",
+      "item": "Plant-matter taurine survey",
+      "nutrient_id": 1234,
+      "value": 0,
+      "unit": "mg",
+      "quality": "analysed",
+      "note": "Plants carry no taurine - biochemical zero, not unmeasured (Spitze 2003 plant survey). Butternut/zucchini/green-beans convention."
+    }
   ]
 }
