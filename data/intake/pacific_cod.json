@@ -1,0 +1,83 @@
+{
+  "slug": "pacific_cod",
+  "food": {
+    "food_name": "pacific cod wild raw",
+    "category": "Fish & Seafood",
+    "base_unit": "g",
+    "portion_qty": 100.0,
+    "grams_per_unit": 1.0,
+    "sr_legacy_fdc_id": 171955,
+    "foundation_fdc_id": 2684444,
+    "cooking_method": null,
+    "price_per_unit": 0.0198,
+    "source": "grocery",
+    "protein_species": "fish",
+    "display_name": "Pacific cod, wild Alaskan (fillets)"
+  },
+  "notes": [
+    "price_per_unit 0.0198/g = Shahab's $8.99/lb (Safeway, Waterfront Bistro Wild Alaskan Cod, 16 oz IQF bag) / 453.592, confirmed 2026-09-14. Premium whitefish vs pollock 0.0120.",
+    "FRAME-OVER-SPECIES BUILD (decided with Shahab 2026-09-14 from bag label photos): the product is PACIFIC cod - the bag's own binomial reads GADUS MACROCEPHALUS ('wild Alaskan cod', caught Alaska / processed China, IQF, two-ingredient line: cod + STP). But the species-exact SR 174191 is a TREATED retail population ('may have been previously frozen', Na 303 n=11, protein soak-diluted to 15.27) - entering it would misstate every protein-linked row ~14% low and Na 3.4x high vs the actual bag. The bag PANEL (per 100 g: protein 17.7, Na 88.5, vit D ~35 IU, kcal 75 by 4-4-9) sits on UNTREATED Atlantic SR 171955 within label rounding (protein 17.81 = 0.6% off, D 36 = 2% off). Treatment effect >> congener effect on every FEDIAF row -> primary = SR 171955. This is the treatment analog of the NZ-lamb frame flip. SR 174191 serves as per-protein cross-check only (its choline 133-nutrient panel available for per-protein transfer if a gap surfaces).",
+    "PANEL TEST (pollock lesson, 2nd application, same house brand): STP declared in the ingredient line but Na 100 mg/serving << 250 avoid-threshold and protein 20 g/serving >> 14 -> LIGHT dip, untreated class - the cleanest fish bag tested (their pollock ran Na 119.5). AVOID-FRAME customer guidance transfers verbatim: avoid bags reading sodium >=250 mg/serving or protein <14 g/serving; the panel, not the ingredient line, is the frame test.",
+    "FND 2684444 (Atlantic wild raw, 40 nutrients, no AAs) is paired SOLELY as the modern-population + MEASURED-IODINE carrier: iodine 113.7 ug (n=8) - the DB's SECOND measured-iodine food (pollock 185.5 was first). Its frame is the TREATED retail population (Na 298.8 n=8) -> expect row-by-row frame rejections: Na REJECT (soak artifact; see retail-class correction note), P scrutiny (STP adds P; SR governs, light-dip note), protein-diluted rows reject to SR; Se/minerals corroborate per-protein. Soak direction on iodine: dilution ~10-15%, so 113.7 slightly UNDERSTATES untreated tissue - noted for the max screen; TDS arbitrates.",
+    "IODINE MAX-SCREEN: 113.7 ug -> ~1512 ug/1000 kcal-of-cod; at 45% caloric inclusion ~680 vs the 1.1 mg/1000 kcal max (62%) - headroom, and lighter per calorie than pollock. DOUBLE-COUNT GUARD: iodine_db '(100328) Fish, cod, Atlantic, wild, raw' IS the FND 2684444 population (ODS echo of the same n=8 measurement) - corroboration display only, NEVER independent evidence; not listed as a source. 15192 baked = frame-off, skipped.",
+    "REAL-D FISH (vs pollock's trace-honest 8 IU): SR 36 IU and the bag label ~35 IU AGREE - the first label-USDA vitamin D agreement in the fish series. MAX-SCREEN: at 45% caloric inclusion cod alone contributes ~215 IU/1000 kcal vs the 227 legal max -> cod-heavy recipes force D3 drops to ~zero (formulator max row enforces; feeds Shahab's planned editorial D advisory row). Review must still rank D by derivation code (pollock ritual); MEXT 10205 analysed D expected to corroborate ~40 IU.",
+    "SPECIES MAP: EXACT G. macrocephalus = MEXT 10205 (madara, Japanese analysed), CIQUAL 26125 (Cabillaud ou morue du Pacifique, cru), iodine_db 15019 (US TDS Pacific raw). ATLANTIC congener G. morhua = SR 171955 (primary), FND 2684444, BLS T204100 (Kabeljau), FCDB 72, CoFID 16-372, CIQUAL 26043. Where Atlantic and Pacific genuinely differ (Se, D, FA), the exact-species analysed columns arbitrate. EXCLUDED: FCDB 570 'Torsk, tusk, raw' = tusk/cusk (Brosme brosme), a different fish despite the Danish name; AFCD carries NO raw gadid cod (smoked only + crocodile false-hits) - source absent; BLS T204200 deep-frozen = same population alternate frame, not listed.",
+    "SR 171955 panel: 97 nutrients incl. full 12/12 AA panel, big n's (Na n=44) - only the standard four gaps (taurine, Cl, iodine, biotin). Fills: iodine = FND MEASURED with native stats (fdc_range CV expected, pollock convention); Cl + biotin = CoFID 16-372 carrier (chloride anchors: salmon 56, tilapia 61); taurine = fish-family literature estimate below. Choline present in SR natively.",
+    "Fish doctrine hooks: fish-diet vitamin K rule -> pairs with K1 corrector 10065; very lean (fat ~0.7) -> tallow 10064 is the natural diluent; gadids are LOW-THIAMINASE (safer raw) and Pacific cod is moderate-low mercury (~0.1 ppm, a notch above pollock, well under concern) - customer-note material. Marine vit K ~nil expected (salmon 0.5 / tilapia 1.4 anchors).",
+    "FCDB 72 (cod fillet raw): check for n's/min-max - cv_intl candidate (Danish staple fish, stats likely).",
+    "NA/K RETAIL-CLASS CORRECTION (Shahab caught it 2026-09-14, pre-write): the draft slate had Na = SR 54, but SR untreated describes pristine fresh fillets - a frame the IQF customer CANNOT buy (every IQF bag gets at least a dip; this one declares it; panel 88.5/100g). The four foreign RETAIL tables converge on the light-dip class (BLS 72, FCDB 76, CoFID 91, MEXT 110) and bracket the bag. ADOPT Na = 91 (CoFID 16-372, DH-2013 analysed program - same program as the chloride adoption, 3% from the bag); SR 54 = untreated floor and FND 298.8 = heavy-soak ceiling, both documented in the comment. COMPANION FIX K = 350 (MEXT 10205 analysed, exact species; cluster 322-357 + bag 310 vs SR 413 outlier; the dip that adds Na drip-leaches K, and overstating K is the UNSAFE direction for a binding min). PRINCIPLE: when the bag panel and the foreign retail cluster agree against a US handbook value, the US row is frame-defective for the product class - the panel arbitrates (extends the pollock panel-test doctrine from frame classification to row-level arbitration). Label also corroborates the FND trace-mineral adoptions: label Fe 0.09/100g sits on FND 0.065-0.073, not SR 0.38."
+  ],
+  "sources": {
+    "mext": [
+      {
+        "key": "10205",
+        "note": "Fish, cod, Pacific cod, raw (madara) - EXACT species, Japanese analysed panel; the Pacific-vs-Atlantic arbitrator for Se/D/FA; iodine datapoint expected"
+      }
+    ],
+    "ciqual": [
+      {
+        "key": 26125,
+        "note": "Cabillaud ou morue du Pacifique, cru - EXACT species (macrocephalus); echo screen decides"
+      },
+      {
+        "key": 26043,
+        "note": "Cabillaud, cru - Atlantic congener (morhua), the fuller French aliment-moyen panel; echo screen decides"
+      }
+    ],
+    "bls": [
+      {
+        "key": "T204100",
+        "note": "Cod raw (Kabeljau) - Atlantic congener; echo screen decides independence"
+      }
+    ],
+    "fcdb": [
+      {
+        "key": 72,
+        "note": "Cod, fillet, raw - Atlantic congener, Danish; check for stats (cv_intl candidate)"
+      }
+    ],
+    "cofid": [
+      {
+        "key": "16-372",
+        "note": "Cod, flesh only, raw - Atlantic congener, UK; the chloride + biotin carrier; UK-measured iodine expected as corroboration"
+      }
+    ],
+    "iodine_db": [
+      {
+        "key": "15019",
+        "note": "Fish, cod, Pacific, raw - EXACT species US TDS; arbitrates the FND 113.7 measured iodine (which is Atlantic + soak-diluted); (100328) sibling row excluded as FND echo"
+      }
+    ]
+  },
+  "literature": [
+    {
+      "source": "FishFamily",
+      "item": "Gadid muscle taurine (family band: tilapia-est 84, salmon-Spitze 130, pollock-est 100)",
+      "nutrient_id": 1234,
+      "value": 100,
+      "unit": "mg",
+      "quality": "estimated",
+      "note": "No cod taurine measurement in any local resource; gadid muscle is taurine-substantial. Family-band mid 100 mirrors pollock 10066, SPARSE-EVIDENCE flag; prefer any measured value surfacing at review"
+    }
+  ]
+}
